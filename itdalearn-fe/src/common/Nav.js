@@ -1,21 +1,12 @@
 import { Navbar, Container, Nav, Badge } from "react-bootstrap";
-import { createContext } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import { logout } from "../store";
-
-export const ThemeContext = createContext(null);
 
 export default function Nav_setting() {
-  //여기서부터
+  
   let navigate = useNavigate();
-  const dispatch = useDispatch();
   let state = useSelector((state) => state);
-
-  function handleLogout() {
-    dispatch(logout());
-  }
 
   const imageStyle = {
     width: 100,
@@ -23,14 +14,13 @@ export default function Nav_setting() {
   };
 
   return (
-    <div className="Nav_Theme">
-      <Navbar>
+    <>
+      <Navbar bg="light" data-bs-theme="light">
         <Container>
           <Nav.Link
             onClick={() => {
               navigate("/");
             }}
-            className="Nav_Toggletheme"
           >
             <img
               src={process.env.PUBLIC_URL + "/favicon.ico"}
@@ -41,32 +31,28 @@ export default function Nav_setting() {
           <Nav>
             <Nav.Link
               onClick={() => {
-                navigate("/class");
+                navigate("/course");
               }}
-              className="Nav_Toggletheme"
             >
               강의
             </Nav.Link>
 
             <Nav.Link
               onClick={() => {
-                navigate("/reference");
+                alert("게시판 연결시켜주세요~")
               }}
-              className="Nav_Toggletheme"
             >
-              레퍼런스
+              게시판
             </Nav.Link>
             {!state.login.isLogin ? (
               <Nav.Link
-                onClick={() => navigate("/login")}
-                className="Nav_Toggletheme"
+                onClick={() => alert("로그인 연결시켜주세요~")}
               >
                 로그인
               </Nav.Link>
             ) : (
               <Nav.Link
-                onClick={() => handleLogout()}
-                className="Nav_Toggletheme"
+                onClick={() => alert("로그아웃 연결시켜주세요~")}
               >
                 로그아웃
               </Nav.Link>
@@ -76,7 +62,6 @@ export default function Nav_setting() {
               onClick={() => {
                 navigate("/cart");
               }}
-              className="Nav_Toggletheme"
             >
               장바구니
               <Badge className="ms-2" bg="secondary">
@@ -86,6 +71,6 @@ export default function Nav_setting() {
           </Nav>
         </Container>
       </Navbar>
-    </div>
+    </>
   );
 }

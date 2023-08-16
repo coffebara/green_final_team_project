@@ -1,0 +1,57 @@
+#Footer_bg_color{
+    background-color: rgb(226, 226, 226);
+    
+}
+
+.Darkmode{
+    background-color: black;
+    color: white;
+}
+
+#Footer_setting {
+    display: flex; 
+    
+}
+
+#Footer_list_style{
+    list-style-type: none;
+}
+
+#Footer_ul_detail_setting {
+    text-align: left;
+    width: 100% ;
+    margin: 1em 0 4em;
+  }
+
+
+#Footer_ul_setting {
+  width: 100% ;
+  margin: 1em 0 4em;
+}
+
+
+#Footer_img1 {
+    width: 13vh;
+    height: 8vh;
+}
+#Footer_img2 {
+    width: 8vh;
+    height: 8vh;
+}
+
+#Footer_span {
+    font-size: large;
+    font-weight: bold;
+}
+
+#Footer_list_style>li {
+    padding: 10px 0px;
+}
+
+#Cursor {
+    cursor: pointer;
+}
+#Cursor_left{
+    font-size: 12px;
+    padding: 1px 0px;
+}

@@ -1,0 +1,168 @@
+body {
+    margin: 0;
+}
+ul,li{
+    margin: 0;
+    padding: 0;
+    list-style-type: none
+}
+/* 타이틀 */
+#checkout_title {
+    display: flex;
+    height: 150px;
+    background-color: rgb(213, 215, 218);
+    color: black;
+    font-size: 30px;
+    text-align: left;
+    align-items: center;
+}
+
+/* 컨텐츠 영역 */
+/* 가운데 컨테이너 */
+.checkout_container {
+    /* height: 100%; */
+    text-align: left;
+    width: 1400px;
+    margin-right: auto;
+    margin-left: auto;
+}
+.checkout_contents{
+    margin-top: 40px;
+}
+.checkout_info_subtitle{
+    margin-top: 60px;
+    margin-bottom: 20px;
+}
+/* input  */
+.checkout_input{
+    width: 100%;
+    height: 40px;
+    border: 1px solid #c5c5c5;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px 0;
+}
+.checkout_area{
+    width: 100%;
+    border: 1px solid #c5c5c5;
+    border-radius: 5px;
+    padding: 10px;
+    margin-top: 10px;
+    outline: none;
+}
+.checkout_area:focus{
+    border-bottom-width: 2px;
+}
+
+/* 에러 메세지 */
+.errorMessage{
+    font-size: 12px;
+    font-weight: bold;
+    color: red;
+    display: none;
+}
+
+/* 신청한 강좌 목록 */
+.checkout_table{
+    width: 100%;
+    margin-bottom: 20px;
+}
+.checkout_table th, .checkout_table td{
+    padding: 15px 0;
+    /* border-bottom: 1px solid tomato; */
+    border-bottom: 1px solid rgba(0,0,0,.08);
+}
+.checkout_table td:first-child {
+    width: 80%;
+}
+.checkout_table td:last-child {
+    width: 20%;
+}
+.checkout_price{
+    color:#d61b1b;
+}
+.checkout_total{
+    font-weight: 900;
+}
+.cart_cancelBtn{
+    display: block;
+    color: #ff0000;
+    width: 20px;
+    text-align: center;
+    font-weight: 600;
+}
+.cart_cancelBtn:hover{
+    background-color: #ff0000;
+    border-radius: 100%;
+    color: white;
+    cursor: pointer;
+}
+
+/* 결제 방법 */
+#payment_box{
+    margin: 50px 0;
+}
+.payment_method, .payment_agreement{
+    border: 1px solid rgba(0,0,0,.08);
+    padding: 15px 15px;
+}
+
+.payment_method li{
+    margin: 20px 0;
+    font-weight: 600;
+    }
+.payment_method input{
+    margin-right: 10px;
+}
+.payment_agreement input{
+    margin-right: 10px;
+}
+/* 인풋 체크 */
+.payment_method_explain{
+    display: none;
+    width: 100%;
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 2px;
+    /* line-height: 1.5; */
+    background-color: rgba(0,0,0,.08);
+    font-weight: normal;
+}
+
+.show{
+    display: block;
+}
+
+#payment_mustCheck{
+    font-weight: 600;
+}
+.payment_agreement_span{
+    color: #105796;
+    cursor: pointer;
+}
+.payment_btn{
+    border: 2px solid #FF4949;
+    background-color: white;
+    color: #FF4949;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 900;
+    padding: 5px;
+    width: 100px;
+    cursor: pointer;
+    transition: 0.1s;
+}
+.payment_btn:hover{
+    background-color: #FF4949;
+    color: white;
+}
+
+.payment_TermsOfUse{
+    margin: 15px;
+    max-height: 200px;
+    overflow: auto;
+    display: none;
+    font-weight: normal;
+    color: #c5c5c5;
+}
