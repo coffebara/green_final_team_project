@@ -1,0 +1,45 @@
+
+  .Nav_Theme {
+    background-color: white;
+    border-top: 1px solid rgb(223, 221, 221);
+    border-bottom: 1px solid rgb(223, 221, 221)
+  }
+
+  .Nav_Toggletheme {
+    color: black;
+  }
+
+    
+  .Nav_Switch {
+    color: white;
+  }
+  
+
+
+  .Button_Switch {
+    color: black;
+    border:1px solid black;
+  }
+
+
+
+/* 아래것 복붙하면 됨 */
+
+
+  .Text_Theme {
+    background-color: white;
+  }
+
+
+
+  .Text_Toggletheme {
+    color: black;
+  }
+  
+
+
+  
+  .Border_Toggletheme {
+    border: 1px solid rgb(216, 213, 213);
+  }
+
