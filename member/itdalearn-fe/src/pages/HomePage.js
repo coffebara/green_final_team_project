@@ -1,20 +1,20 @@
-import React, {useEffect, useState} from 'react';
-import axios from 'axios';
+import Banner1 from "../components/home/Banner1";
+import Banner3 from "../components/home/Banner3";
+import Banner2 from "../components/home/Banner2";
+import Nav from "../common/Nav";
+import Footer from "../common/Footer";
+import "../styles/Banner.css";
 
-function App() {
-   const [hello, setHello] = useState('')
+export default function HomePage() {
+  //여기서부터
 
-    useEffect(() => {
-        axios.get('/api/hello')
-        .then(response => setHello(response.data))
-        .catch(error => console.log(error))
-    }, []);
-
-    return (
-        <div>
-            백엔드에서 가져온 데이터입니다 : {hello}
-        </div>
-    );
+  return (
+    <>
+      <Nav />
+      <Banner1 />
+      <Banner2 />
+      <Banner3 />
+      <Footer />
+    </>
+  );
 }
-
-export default App;
