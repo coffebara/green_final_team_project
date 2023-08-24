@@ -1,0 +1,24 @@
+# 테스트용 application
+
+#spring:
+#    datasource:
+#        url: jdbc:h2:mem:test #메모리로 테스트 db를 사용할 수 있음
+#        username: sa
+#        driver-class-name: org.h2.Driver
+
+#    jpa:
+#      hibernate:
+#        ddl-auto: create-drop
+#      properties:
+#        hibernate:
+#          show_sql: true
+#          format_sql: true
+#--- 위 내용 없어도 스프링부트에서 자동으로 메모리 db로 실행함
+
+logging:
+  level:
+    org.hibernate.SQL: debug
+    org.hibernate.type: trace
+
+server:
+  port: 9090

@@ -13,6 +13,7 @@ import CourseInfoPage from "./pages/CourseInfoPage";
 import data from "./common/data.js";
 import { Routes, Route } from "react-router-dom";
 import TermsOfUse from "./components/checkout/TermsOfUse";
+
 import BoardFreeList from "./pages/BoardFreeList";
 import BoardFreeDetailPage from "./pages/BoardFreeDetailPage";
 import BoardFreeWritePage from "./pages/BoardFreeWritePage";
@@ -29,10 +30,12 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/course" element={<CoursePage />} />
         <Route path="/course/:id" element={<CourseInfoPage items={items} />} />
+
         <Route path="/board" element={<BoardFreeList />} />
         <Route path="/board/:idx" element={<BoardFreeDetailPage />} />
         <Route path="/write" element={<BoardFreeWritePage />} />
         <Route path="/update/:idx" element={<BoardFreeUpdate />} />
+
         <Route path="cart" element={<CartPage />} />
         <Route path="checkout" element={<CheckoutPage />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />

@@ -3,7 +3,9 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 
+
 export default function NavSetting() {
+
   
   let navigate = useNavigate();
   let state = useSelector((state) => state);
@@ -39,7 +41,11 @@ export default function NavSetting() {
 
             <Nav.Link
               onClick={() => {
+
                 navigate("/board");
+
+                alert("게시판 연결시켜주세요~")
+
               }}
             >
               게시판
