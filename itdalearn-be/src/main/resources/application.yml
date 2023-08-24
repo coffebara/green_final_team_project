@@ -1,20 +1,62 @@
-spring:
-        
-  datasource:
-    driver-class-name: oracle.jdbc.OracleDriver
-    url: jdbc:oracle:thin:@localhost:1521/xe
-    username: scott
-    # password 주의 !
-    password: TIGER
+#spring:
+#  h2:
+#    console:
+#      enabled: true
+#      settings:
+#        web-allow-others: true
+#
+#  datasource:
+#    driver-class-name: oracle.jdbc.OracleDriver
+#    url: jdbc:oracle:thin:@localhost:1521/xe
+#    username: 'scott'
+#    password: 'TIGER'
+#
+#  jpa:
+#    hibernate:
+#      ddl-auto: create
+#    properties:
+#      hibernate:
+##          show_sql: true
+#      format_sql: 'true'
+#
 
-  jpa:
-    hibernate:
-      ddl-auto: create
-    properties:
-      hibernate:
-#          show_sql: true
-      format_sql: true
+
 
 
 server:
   port: 9090
+# H2 Database
+spring:
+  h2:
+    console:
+      enabled: true
+      settings:
+        web-allow-others: true
+  datasource:
+    driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+    url: jdbc:log4jdbc:h2:mem:testdb
+
+  # JPA
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+    generate-ddl: true
+    defer-datasource-initialization: true
+
+# Mybatis
+mybatis:
+  mapper-locations: classpath:mapper/**.xml
+  configuration:
+    map-underscore-to-camel-case: true
+    call-setters-on-nulls: false
+
+# 쿼리 로그 관련 설정
+logging:
+  level:
+    jdbc.sqlonly: OFF
+    jdbc.sqltiming: INFO
+    jdbc.resultsettable: OFF
+    jdbc.audit: OFF
+    jdbc.resultset: OFF
+    jdbc.connection: OFF
