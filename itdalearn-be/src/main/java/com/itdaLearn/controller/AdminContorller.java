@@ -1,26 +1,33 @@
 package com.itdaLearn.controller;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
+import javax.persistence.EntityNotFoundException;
 import javax.validation.Valid;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 
 import com.itdaLearn.dto.CourseFormDto;
+import com.itdaLearn.dto.CourseSearchDto;
+import com.itdaLearn.entity.Course;
 import com.itdaLearn.repository.CourseRepository;
 import com.itdaLearn.service.CourseService;
 
 import lombok.RequiredArgsConstructor;
-
 
 @Controller
 @RequiredArgsConstructor
@@ -28,39 +35,107 @@ public class AdminContorller {
 
 	private final CourseService courseService;
 	private final CourseRepository courseRepository;
-	
-	@GetMapping("/admin/courses")	
+
+	// 코스 전체 조회
+//	@GetMapping("/admin/courses")
+//	@ResponseBody
+//	public Map<String, Object> courseList() {
+//
+//		Map<String, Object> courseList = new HashMap<String, Object>();
+//		List courses = courseRepository.findAll();
+//		courseList.put("courseList", courses);
+//
+//		return courseList;
+//
+//	}
+
+	// 코스 메인 페이지
+	@GetMapping(value = { "/admin/courses", "/admin/courses/{page}" })
 	@ResponseBody
-	public Map<String, Object> courseList() {
-		
-		Map<String, Object> courseList = new HashMap<String, Object>();
-		List courses = courseRepository.findAll();
-		courseList.put("courseList", courses);
-		
-		return courseList;
-		
+	// value에 상품 관리 화면 진입시 URL에 페이지 번호가 없는 경우와 페이지 번호가 있는 경우 2가지를 매핑
+	public Map<String, Object> courseManage(CourseSearchDto courseSerachDto,
+			@PathVariable("page") Optional<Integer> page) {
+			
+
+		Pageable pageable = PageRequest.of(page.isPresent() ? page.get() : 0, 10);
+		Page<Course> course = courseService.getAdminCoursePage(courseSerachDto, pageable);
+		Map<String, Object> courseMng = new HashMap<>();
+		// 조회 조건과 페이징 정보를 파라미터로 넘겨서 Page<Item> 객체를 반환 받습니다
+		courseMng.put("courseList", course);
+		// 조회한 상품 데이터 및 페이징 정보를 뷰에 전달합니다.
+		courseMng.put("courseSearchDto", courseSerachDto);
+		// 페이지 전환 시 기존 검색 조건을 유지한 채 이동할 수 있도록 뷰에 다시 전달
+//		courseMng.put("maxPage", 21);
+		// 상품 관리 메뉴 하단에 보여줄 페이지 번호의 최대 개수
+		return courseMng;
 	}
 	
-	@PostMapping(value= "/admin/course")
-	public String itemNew(@Valid CourseFormDto courseFormDto, BindingResult bindingResult, 
-			Model model) {
+	
 
-		System.out.println(courseFormDto.toString());
-		
-		if(bindingResult.hasErrors()) {
-			System.out.println(bindingResult.toString());
-			return "redirect:/admin/courses";
+	// 코스 생성
+	@PostMapping(value = "/admin/course")
+	@ResponseBody
+	public ResponseEntity courseNew(@Valid CourseFormDto courseFormDto, BindingResult bindingResult) {
+
+		if (bindingResult.hasErrors()) {
+			return new ResponseEntity<String>("검증 오류 발생.", HttpStatus.FOUND);
 		}
 
 		try {
 			courseService.saveCourse(courseFormDto);
-			
-//상품 저장 로직을 호출합니다. 매개 변수로 상품 정보와 상품 이미지 정보를 담고 있는 itemImgFileList를 넘겨줍니다.			
+
 		} catch (Exception e) {
-			System.out.println("야호 실패!");
-			model.addAttribute("errorMessage","상품 등록 중 에러가 발생하였습니다.");
-			return "item/itemForm";
+//			model.addAttribute("errorMessage","상품 등록 중 에러가 발생하였습니다.");
+			return new ResponseEntity<String>("상품 등록 중 에러 발생.", HttpStatus.FOUND);
 		}
-		return "redirect:/admin/courses";
-	}//상품이 정상적으로 등록되었다면 메인 페이지로 이동
+		return new ResponseEntity<String>("생성되었습니다.", HttpStatus.OK);
+	}
+
+	// 코스 상세보기
+	@GetMapping(value = "/admin/course/{id}")
+	@ResponseBody
+	public Map<String, Object> courseDetail(@PathVariable("id") Long course_no) {
+
+		Map<String, Object> courseInfo = new HashMap<>();
+
+		try {
+			CourseFormDto courseFormDto = courseService.getCourseDtl(course_no);
+			courseInfo.put("courseFormDto", courseFormDto);
+
+		} catch (EntityNotFoundException e) {
+			courseInfo.put("errorMessage", e);
+		}
+
+		return courseInfo;
+	}
+
+	// 코스 수정
+	@PatchMapping(value = "/admin/course/{id}")
+	@ResponseBody
+	public ResponseEntity updateCourse(CourseFormDto courseFormDto) {
+
+		try {
+			Long savedCourseNo = courseService.updateCourse(courseFormDto);
+		} catch (Exception e) {
+
+			e.printStackTrace();
+		}
+
+		return new ResponseEntity<String>("수정되었습니다.", HttpStatus.FOUND);
+	}
+
+	// 코스 삭제
+	@DeleteMapping(value = "/admin/course/{id}")
+	@ResponseBody
+	public ResponseEntity deleteCourse(@PathVariable("id") Long course_no) {
+
+		try {
+			courseService.deleteCouseByNo(course_no);
+		} catch (EntityNotFoundException e) {
+			System.out.println(e);
+		}
+
+		return new ResponseEntity<Long>(course_no, HttpStatus.FOUND);
+	}
+
 }
