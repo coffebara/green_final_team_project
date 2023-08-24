@@ -1,14 +1,14 @@
 import Nav from "../common/Nav";
 import Footer from "../common/Footer";
-import Admin_Course from "../components/Admin/Admin_Course.js";
+import Order from "../components/Order/Order";
 
-export default function Admin_CoursePage() {
+export default function OrderPage() {
 
     
     return (
         <>
             <Nav />
-            <Admin_Course/>
+            <Order />
             <Footer />
         </>
     );
