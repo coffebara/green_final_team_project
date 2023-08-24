@@ -1,0 +1,54 @@
+#Banner_bg1 {
+    height: auto;
+ 
+}
+
+#Banner_bg1_center1 {
+    margin: 2em 0 0.67em;
+}
+
+#Banner_bg1_center2 {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 32rem;
+    line-height: 1.5;
+}
+
+#Banner_bg1_button {
+    margin: 2em 0 4em;
+    background-color: black;
+}
+
+
+#Banner_bg3 {
+    height: auto;
+
+}
+
+#Banner_bg3_center1 {
+    margin: 5em 0em 2em 0em;
+}
+
+#Banner_bg3_center2 {
+    margin: 2.5em 0 0.67em;
+
+}
+
+#Banner_bg3_center3 {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1em;
+    max-width: 32rem;
+    line-height: 1.5;
+}
+
+
+#Banner_bg3_button {
+    margin: 1em 0 4em;
+    background-color: black;
+}
+
+#cursor{
+    cursor: pointer;
+}
+

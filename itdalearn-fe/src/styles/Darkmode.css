@@ -1,0 +1,79 @@
+
+#light {
+  background-color: white;
+  color: black;
+}
+
+#dark {
+
+  background-color: black;
+  color: white;
+}
+ 
+  #light .Nav_Theme {
+    background-color: white;
+    border-top: 1px solid rgb(223, 221, 221);
+    border-bottom: 1px solid rgb(223, 221, 221)
+  }
+  
+  #dark .Nav_Theme {
+    background-color: rgb(51, 50, 50);
+  }
+
+
+  #light .Nav_Toggletheme {
+    color: black;
+  }
+  
+  #dark .Nav_Toggletheme {
+    color: white;
+  }
+    
+  #light .Nav_Switch {
+    color: white;
+  }
+  
+  #dark .Nav_Switch {
+    color: black;
+  }
+
+  #light .Button_Switch {
+    color: black;
+    border:1px solid black;
+  }
+  
+  #dark .Button_Switch {
+    color: white;
+    border:1px solid white;
+  }
+
+
+/* 아래것 복붙하면 됨 */
+
+
+  #light .Text_Theme {
+    background-color: white;
+  }
+  
+  #dark .Text_Theme {
+    background-color: black;
+  }
+
+
+  #light .Text_Toggletheme {
+    color: black;
+  }
+  
+  #dark .Text_Toggletheme {
+    color: white;
+  }
+
+  
+  #light .Border_Toggletheme {
+    border: 1px solid rgb(216, 213, 213);
+  }
+  
+  #dark .Border_Toggletheme {
+
+    border: 1px solid rgb(49, 48, 48);
+  }

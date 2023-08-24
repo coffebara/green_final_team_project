@@ -1,4 +1,4 @@
-package com.itdaLearn;
+package com;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -7,7 +7,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class IdtaLearnApplication {
 
 	public static void main(String[] args) {
+
 		SpringApplication.run(IdtaLearnApplication.class, args);
+
+
 	}
 
 }
