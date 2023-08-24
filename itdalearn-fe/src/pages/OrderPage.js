@@ -1,14 +1,14 @@
 import Nav from "../common/Nav";
 import Footer from "../common/Footer";
-import SignUp from "../components/Member/SignUp";
+import Order from "../components/Order/Order";
 
+export default function OrderPage() {
 
-export default function Member_SignUpPage() {
-
+    
     return (
         <>
             <Nav />
-            <SignUp />       
+            <Order />
             <Footer />
         </>
     );

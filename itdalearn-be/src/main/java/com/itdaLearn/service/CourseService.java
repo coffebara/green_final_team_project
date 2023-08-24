@@ -64,6 +64,4 @@ public class CourseService {
 		return courseRepository.getAdminCoursePage(courseSearchDto, pageable);
 	}//관리자가 보는 아이템 페이지를 가져옵니다.
 	
-
-
 }

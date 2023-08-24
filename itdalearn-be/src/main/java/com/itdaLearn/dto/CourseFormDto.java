@@ -17,7 +17,7 @@ import lombok.ToString;
 public class CourseFormDto {
 	
 	private Long courseNo;
-	
+
 	@NotNull(message= "강의명은 필수 입력값입니다.")
 	private String courseTitle;
 	

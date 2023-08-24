@@ -22,6 +22,7 @@ import lombok.ToString;
 @Setter
 @ToString
 public class Course {
+
 	@SequenceGenerator(name = "ITEM_SEQUENCE_GEN", sequenceName = "seq_item", initialValue = 1, allocationSize = 1) 																												
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ITEM_SEQUENCE_GEN")
 	@Id

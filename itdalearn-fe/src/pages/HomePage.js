@@ -6,6 +6,7 @@ import Nav from "../common/Nav";
 import Footer from "../common/Footer";
 import "../styles/Banner.css";
 
+
 export default function HomePage() {
     //여기서부터
 

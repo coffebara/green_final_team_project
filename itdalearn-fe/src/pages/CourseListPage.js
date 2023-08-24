@@ -1,14 +1,14 @@
 import Nav from "../common/Nav";
 import Footer from "../common/Footer";
-import SignUp from "../components/Member/SignUp";
+import CourseList from "../components/CourseList/CourseList";
 
+export default function Admin_CoursePage() {
 
-export default function Member_SignUpPage() {
-
+    
     return (
         <>
             <Nav />
-            <SignUp />       
+            <CourseList />
             <Footer />
         </>
     );
