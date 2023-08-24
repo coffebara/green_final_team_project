@@ -21,7 +21,10 @@ export default function Footer() {
                 팀장: 김상준
               </li>
               <li id="Cursor_left" className="Nav_Toggletheme">
-                팀원: 김주홍, 박철준, 지성현승, 한현승
+
+                팀원: 권혜연, 지성현, 한현승
+
+
               </li>
               <li id="Cursor_left" className="Nav_Toggletheme">
                 이메일: greensn7447@gmail.com
@@ -52,12 +55,16 @@ export default function Footer() {
               </li>
               <li
                 onClick={() => {
-                  navigate("/reference");
+
+                  navigate("/board");
+
                 }}
                 id="Cursor"
                 className="Nav_Toggletheme"
               >
-                레퍼런스
+
+                게시판
+
               </li>
               <li
                 onClick={() => {

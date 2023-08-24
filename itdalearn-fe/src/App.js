@@ -22,6 +22,12 @@ import OrderPage from "./pages/OrderPage";
 import OrderListPage from "./pages/OrderListPage";
 
 
+import BoardFreeList from "./pages/BoardFreeList";
+import BoardFreeDetailPage from "./pages/BoardFreeDetailPage";
+import BoardFreeWritePage from "./pages/BoardFreeWritePage";
+import BoardFreeUpdate from "./pages/BoardFreeUpdate";
+import React from "react";
+
 function App() {
   // 디테일 페이지 용
   const items = data;
@@ -32,6 +38,12 @@ function App() {
         <Route path="/" element={<HomePage />} />
         {/* 메인화면 _ 특정 강의 몇개만 보여지는 화면 */}
         <Route path="/course" element={<CoursePage />} />
+
+        <Route path="/board" element={<BoardFreeList />} />
+        <Route path="/board/:idx" element={<BoardFreeDetailPage />} />
+        <Route path="/write" element={<BoardFreeWritePage />} />
+        <Route path="/update/:idx" element={<BoardFreeUpdate />} />
+
         <Route path="/courselist" element={<CourseListPage />} />
         <Route path="/course/:id" element={<CourseInfoPage />} /> 
         <Route path="cart" element={<CartPage />} />

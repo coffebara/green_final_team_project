@@ -4,10 +4,13 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class IdtaLearnApplication {
+public class ItdaLearnApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(IdtaLearnApplication.class, args);
+
+		SpringApplication.run(ItdaLearnApplication.class, args);
+
+
 	}
 
 }

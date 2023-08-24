@@ -1,0 +1,22 @@
+.board_board{
+    border-top: solid 1px #d5d3d3;
+
+}
+.board_board_bottom{
+    border-bottom: solid 1px black;
+
+
+}
+
+.board_detail{
+    border:solid 1px black;
+}
+.board_detail_main{
+    border-top: solid 1px black;
+}
+.board_detail_main2{
+    border-bottom: solid 1px black;
+}
+.test{
+    border-top: solid 1px #d5d3d3;
+}
