@@ -25,6 +25,7 @@
     "yarn": "^1.22.19"
 
   },
+  "proxy" : "http://localhost:9090",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
