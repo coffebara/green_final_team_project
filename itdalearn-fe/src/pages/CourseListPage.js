@@ -1,6 +1,6 @@
 import Nav from "../common/Nav";
 import Footer from "../common/Footer";
-import Admin_Course from "../components/Admin/Admin_Course.js";
+import CourseList from "../components/CourseList/CourseList";
 
 export default function Admin_CoursePage() {
 
@@ -8,7 +8,7 @@ export default function Admin_CoursePage() {
     return (
         <>
             <Nav />
-            <Admin_Course/>
+            <CourseList />
             <Footer />
         </>
     );
