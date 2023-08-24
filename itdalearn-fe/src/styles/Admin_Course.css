@@ -1,0 +1,17 @@
+
+
+.courseListTable {
+    margin: 20px;
+}
+
+.courseListTable th,.courseListTable tr,.courseListTable td {
+    border: 1px solid black;
+}
+
+.courseListTable td,.courseListTable th{
+    padding: 20px;
+}
+
+.courseListBtn {
+    background-color: white;
+}

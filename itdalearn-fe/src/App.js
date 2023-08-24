@@ -13,6 +13,9 @@ import CourseInfoPage from "./pages/CourseInfoPage";
 import data from "./common/data.js";
 import { Routes, Route } from "react-router-dom";
 import TermsOfUse from "./components/checkout/TermsOfUse";
+import Admin_CoursePage from "./pages/Admin_CoursePage"
+import Admin_CourseWritePage from "./pages/Admin_CourseWritePage"
+import Admin_CourseDetailPage from "./pages/Admin_CourseDetailPage"
 
 function App() {
   // 디테일 페이지 용
@@ -29,6 +32,10 @@ function App() {
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/terms" element={<TermsOfUse />} />
         <Route path="/*" element={<div>잘못된 경로입니다.</div>} />
+
+        <Route path="/admin/courses" element={<Admin_CoursePage/>} />
+        <Route path="/admin/course" element={<Admin_CourseWritePage/>}/>
+        <Route path="/admin/course/:id" element={<Admin_CourseDetailPage/>}/>
       </Routes>
     </div>
   );
