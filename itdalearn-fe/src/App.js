@@ -45,7 +45,7 @@ function App() {
         <Route path="/update/:idx" element={<BoardFreeUpdate />} />
 
         <Route path="/courselist" element={<CourseListPage />} />
-        <Route path="/course/:id" element={<CourseInfoPage />} /> 
+        <Route path="/course/:id" element={<CourseInfoPage />} />
         <Route path="cart" element={<CartPage />} />
         <Route path="checkout" element={<CheckoutPage />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />

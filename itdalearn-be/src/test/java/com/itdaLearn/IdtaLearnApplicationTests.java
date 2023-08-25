@@ -1,0 +1,14 @@
+package com.itdaLearn;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.TestPropertySource;
+
+@SpringBootTest
+//@TestPropertySource(locations="classpath:application-test.yml")
+class IdtaLearnApplicationTests {
+
+	@Test
+	void contextLoads() {
+	}
+}
