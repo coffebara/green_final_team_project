@@ -29,8 +29,19 @@ public class BoardController {
     }
 
     @PostMapping("/board")
-    Header<BoardEntity> createBoard(@RequestBody BoardSaveDto boardSaveDto) {
-        return boardService.insertBoard(boardSaveDto);
+    public Header<BoardEntity> createBoard(@RequestBody BoardSaveDto boardSaveDto) {
+        // 삽입할 엔티티 생성
+        BoardEntity entity = boardSaveDto.toEntity();
+
+        // insertBoard 메서드 호출
+        int insertionResult = boardService.insertBoard(entity);
+
+        // 반환값을 활용하여 삽입 결과 확인
+        if (insertionResult > 0) {
+            return Header.OK(entity); // 삽입 성공
+        } else {
+            return Header.ERROR("Failed to insert"); // 삽입 실패
+        }
     }
 
     @PatchMapping("/board")

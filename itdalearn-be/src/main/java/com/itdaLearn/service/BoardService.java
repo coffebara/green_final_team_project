@@ -77,4 +77,8 @@ public class BoardService {
             return Header.ERROR("ERROR");
         }
     }
+    public int insertBoard(BoardEntity entity) {
+        // BoardMapper의 insertBoard 메서드 호출
+        return boardMapper.insertBoard(entity);
+    }
 }

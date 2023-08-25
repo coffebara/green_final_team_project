@@ -36,7 +36,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         ;
 
         http.authorizeRequests()
-                .mvcMatchers("/", "/members/**", "/item/**", "/images/**", "/admin/**", "/cart/**", "/order/**", "/orders/**", "/cart/orders").permitAll();
+                .mvcMatchers("/", "/members/**", "/item/**", "/images/**", "/admin/**", "/cart/**", "/order/**", "/orders/**", "/cart/orders", "/board/**", "/board","/write " ,"/write/**").permitAll();
 //                .mvcMatchers("/admin/**").hasRole("ADMIN")
 //                .anyRequest().authenticated()
 //        ;
@@ -59,7 +59,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/css/**", "/js/**", "/img/**", "/cart/**", "/order/**", "/orders/**", "/cart/orders");
+        web.ignoring().antMatchers("/css/**", "/js/**", "/img/**", "/cart/**", "/order/**", "/orders/**", "/cart/orders","/board/**", "/board","/write", "/write/**");
     }
 
 }

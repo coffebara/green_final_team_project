@@ -5,38 +5,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4561f421-cbb5-4665-98bf-050af1a4e065" name="변경" comment="0824 1631">
-      <change beforePath="$PROJECT_DIR$/itdalearn-be/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" afterPath="$PROJECT_DIR$/itdalearn-be/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/itdalearn-be/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/itdalearn-be/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/itdalearn-be/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/itdalearn-be/gradlew" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/itdalearn-be/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/itdalearn-be/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/itdalearn-be/.gradle/8.2.1/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/itdalearn-be/.gradle/8.2.1/checksums/checksums.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/itdalearn-be/.gradle/8.2.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/itdalearn-be/.gradle/8.2.1/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/itdalearn-be/.gradle/8.2.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/itdalearn-be/.gradle/8.2.1/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/itdalearn-be/.gradle/8.2.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/itdalearn-be/.gradle/8.2.1/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/itdalearn-be/.gradle/8.2.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/itdalearn-be/.gradle/8.2.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/itdalearn-be/.gradle/8.2.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/itdalearn-be/.gradle/8.2.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/itdalearn-be/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/itdalearn-be/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/itdalearn-be/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/itdalearn-be/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/itdalearn-be/.project" beforeDir="false" afterPath="$PROJECT_DIR$/itdalearn-be/.project" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/itdalearn-be/bin/main/application-test.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/itdalearn-be/bin/main/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/itdalearn-be/bin/main/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/itdalearn-be/build/resources/main/application-test.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/itdalearn-be/build/resources/main/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/itdalearn-be/build/resources/main/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/itdalearn-be/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/itdalearn-be/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/itdalearn-be/src/main/java/com/itdaLearn/ItdalearnBe1Application.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/itdalearn-be/src/main/java/com/itdaLearn/Mapper/BoardMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/itdalearn-be/src/main/java/com/itdaLearn/Mapper/BoardMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/itdalearn-be/src/main/java/com/itdaLearn/config/WebMvcConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/itdalearn-be/src/main/java/com/itdaLearn/config/WebMvcConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/itdalearn-be/src/main/java/com/itdaLearn/controller/1.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/itdalearn-be/src/main/java/com/itdaLearn/dto/1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/itdalearn-be/src/main/java/com/itdaLearn/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/itdalearn-be/src/main/java/com/itdaLearn/config/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/itdalearn-be/src/main/java/com/itdaLearn/controller/BoardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/itdalearn-be/src/main/java/com/itdaLearn/controller/BoardController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/itdalearn-be/src/main/java/com/itdaLearn/dto/BoardSaveDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/itdalearn-be/src/main/java/com/itdaLearn/dto/BoardSaveDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/itdalearn-be/src/main/java/com/itdaLearn/entity/1.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/itdalearn-be/src/main/java/com/itdaLearn/exception/1.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/itdalearn-be/src/main/java/com/itdaLearn/repository/1.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/itdalearn-be/src/main/java/com/itdaLearn/service/1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/itdalearn-be/src/main/java/com/itdaLearn/entity/BoardEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/itdalearn-be/src/main/java/com/itdaLearn/entity/BoardEntity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/itdalearn-be/src/main/java/com/itdaLearn/service/BoardService.java" beforeDir="false" afterPath="$PROJECT_DIR$/itdalearn-be/src/main/java/com/itdaLearn/service/BoardService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/itdalearn-be/src/main/resources/application-test.yml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/itdalearn-be/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/itdalearn-be/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/itdalearn-be/src/main/resources/import.sql" beforeDir="false" afterPath="$PROJECT_DIR$/itdalearn-be/src/main/resources/import.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/itdalearn-fe/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/itdalearn-fe/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/itdalearn-fe/.idea/itdalearn-fe.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/itdalearn-fe/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/itdalearn-fe/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/itdalearn-fe/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/itdalearn-fe/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/itdalearn-fe/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/itdalearn-fe/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/itdalearn-fe/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/itdalearn-fe/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/itdalearn-fe/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/itdalearn-fe/src/api/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/itdalearn-fe/src/api/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/itdalearn-fe/src/common/Footer.js" beforeDir="false" afterPath="$PROJECT_DIR$/itdalearn-fe/src/common/Footer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/itdalearn-fe/src/common/Nav.js" beforeDir="false" afterPath="$PROJECT_DIR$/itdalearn-fe/src/common/Nav.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/itdalearn-fe/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/itdalearn-fe/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/itdalearn-fe/src/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/itdalearn-fe/src/store.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/itdalearn-fe/src/styles/Sorry.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/itdalearn-be/src/main/resources/mapper/board.xml" beforeDir="false" afterPath="$PROJECT_DIR$/itdalearn-be/src/main/resources/mapper/board.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,30 +47,30 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/tjdgu/Desktop/green_final_team_project/itdalearn-be/build.gradle",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "프로젝트",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "configurable.group.appearance",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/tjdgu/Desktop/green_final_team_project&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;프로젝트&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.appearance&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "h2"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;h2&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\tjdgu\Desktop\green_final_team_project\itdalearn-be\src\main\java\com\itdaLearn" />
@@ -118,6 +112,8 @@
       <workItem from="1692864885400" duration="308000" />
       <workItem from="1692924208263" duration="75000" />
       <workItem from="1692924304883" duration="652000" />
+      <workItem from="1692932781416" duration="1159000" />
+      <workItem from="1692935538778" duration="54000" />
     </task>
     <task id="LOCAL-00001" summary="0824 1631">
       <option name="closed" value="true" />

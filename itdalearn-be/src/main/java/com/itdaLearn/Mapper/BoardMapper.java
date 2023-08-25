@@ -16,6 +16,7 @@ public interface BoardMapper {
 
     int insertBoard(BoardEntity entity);
 
+
     int updateBoard(BoardEntity entity);
 
     int deleteBoard(Long idx);

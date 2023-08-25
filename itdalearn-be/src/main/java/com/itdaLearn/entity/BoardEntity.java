@@ -22,7 +22,8 @@ import java.util.Date;
 @DynamicUpdate
 public class BoardEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @SequenceGenerator(name = "SEQ_TB_BOARD", sequenceName = "SEQ_TB_BOARD", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_TB_BOARD")
     private Long idx;
     private String title;
     private String contents;
