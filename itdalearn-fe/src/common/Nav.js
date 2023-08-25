@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 
 export default function NavSetting() {
-
+  
   let navigate = useNavigate();
   let state = useSelector((state) => state);
 
@@ -14,63 +14,63 @@ export default function NavSetting() {
   };
 
   return (
-      <>
-        <Navbar bg="light" data-bs-theme="light">
-          <Container>
+    <>
+      <Navbar bg="light" data-bs-theme="light">
+        <Container>
+          <Nav.Link
+            onClick={() => {
+              navigate("/");
+            }}
+          >
+            <img
+              src={process.env.PUBLIC_URL + "/favicon.ico"}
+              style={imageStyle}
+            />
+          </Nav.Link>
+
+          <Nav>
             <Nav.Link
-                onClick={() => {
-                  navigate("/");
-                }}
+              onClick={() => {
+                navigate("/course");
+              }}
             >
-              <img
-                  src={process.env.PUBLIC_URL + "/favicon.ico"}
-                  style={imageStyle}
-              />
+              강의
             </Nav.Link>
 
-            <Nav>
+            <Nav.Link
+              onClick={() => {
+                navigate("/board");
+              }}
+            >
+              게시판
+            </Nav.Link>
+            {!state.login.isLogin ? (
               <Nav.Link
-                  onClick={() => {
-                    navigate("/course");
-                  }}
+                onClick={() => alert("로그인 연결시켜주세요~")}
               >
-                강의
+                로그인
               </Nav.Link>
+            ) : (
+              <Nav.Link
+                onClick={() => alert("로그아웃 연결시켜주세요~")}
+              >
+                로그아웃
+              </Nav.Link>
+            )}
 
-              <Nav.Link
-                  onClick={() => {
-                    navigate("/board");
-                  }}
-              >
-                게시판
-              </Nav.Link>
-              {!state.login.isLogin ? (
-                  <Nav.Link
-                      onClick={() => alert("로그인 연결시켜주세요~")}
-                  >
-                    로그인
-                  </Nav.Link>
-              ) : (
-                  <Nav.Link
-                      onClick={() => alert("로그아웃 연결시켜주세요~")}
-                  >
-                    로그아웃
-                  </Nav.Link>
-              )}
-
-              <Nav.Link
-                  onClick={() => {
-                    navigate("/cart");
-                  }}
-              >
-                장바구니
-                <Badge className="ms-2" bg="secondary">
-                  {state.cart.length}
-                </Badge>
-              </Nav.Link>
-            </Nav>
-          </Container>
-        </Navbar>
-      </>
+            <Nav.Link
+              onClick={() => {
+                navigate("/cart");
+              }}
+            >
+              장바구니
+              <Badge className="ms-2" bg="secondary">
+                {state.cart.length}
+              </Badge>
+            </Nav.Link>
+          </Nav>
+        </Container>
+      </Navbar>
+    </>
   );
 }

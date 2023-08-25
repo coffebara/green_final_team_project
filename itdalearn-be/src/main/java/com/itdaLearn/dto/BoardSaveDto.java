@@ -1,6 +1,5 @@
 package com.itdaLearn.dto;
 
-
 import com.itdaLearn.entity.BoardEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

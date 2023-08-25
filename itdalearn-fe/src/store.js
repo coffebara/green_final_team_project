@@ -30,7 +30,6 @@ let cart = createSlice({
             }
             console.log("세션에서 가져와야하는 값: " + action.payload);
             console.log("최종 state: " + state);
-
         // },
         // refreshCart(state, action) {
         //     console.log("기존 state 값: " + state);
@@ -39,7 +38,6 @@ let cart = createSlice({
         //             state.push(action.payload[i]);
         //         }
         //     }
-
             // console.log("세션에서 가져와야하는 값: " + action.payload);
             // console.log("최종 state: " + state);
             // state.map((item) => {console.log(item)});
