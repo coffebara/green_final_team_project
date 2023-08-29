@@ -1,9 +1,12 @@
 /* BoardWrite.js */
 import React, {useState} from 'react';
+import Form from 'react-bootstrap/Form';
+import InputGroup from 'react-bootstrap/InputGroup';
 import {useNavigate} from 'react-router-dom';
 import axios from 'axios';
 import NavSetting from "../common/Nav";
 import Footer from "../common/Footer";
+import Modal from 'react-bootstrap/Modal';
 
 
 export default function BoardFreeWrite() {
@@ -14,11 +17,12 @@ export default function BoardFreeWrite() {
         createdBy: '',
         contents: '',
     });
+    const [showModal, setShowModal] = useState(false);
 
-    const {title, createdBy, contents} = board; //비구조화 할당
+    const {title, createdBy, contents} = board;
 
     const onChange = (event) => {
-        const {value, name} = event.target; //event.target에서 name과 value만 가져오기
+        const {value, name} = event.target;
         setBoard({
             ...board,
             [name]: value,
@@ -26,6 +30,10 @@ export default function BoardFreeWrite() {
     };
 
     const saveBoard = async () => {
+        if (title === '' || createdBy === ''||contents==='') {
+            setShowModal(true);
+            return;
+        }
         await axios.post(`//localhost:9090/board`, board).then((res) => {
             alert('등록되었습니다.');
             navigate('/board');
@@ -36,40 +44,52 @@ export default function BoardFreeWrite() {
         navigate('/board');
     };
 
+    const closeModal = () => {
+        setShowModal(false); // 모달 닫기
+    };
+
+
     return (
         <div>
             <NavSetting/>
+            <div  className="board_free_list_title  "><h2>글쓰기</h2></div>
             <div>
-                <span>제목</span>
-                <input type="text" name="title" value={title} onChange={onChange}/>
+                <InputGroup className="container w-50 board_free_write_title">
+                    <Form.Control name="title"  placeholder="제목"
+                                  value={title} onChange={onChange}/>
+                </InputGroup>
             </div>
-            <br/>
             <div>
-                <span>작성자</span>
-                <input
-                    type="text"
-                    name="createdBy"
-                    value={createdBy}
-                    onChange={onChange}
-                />
+                <InputGroup className="container w-50 board_free_write_createdBy">
+                    <Form.Control name="createdBy"  placeholder="작성자"
+                                  value={createdBy} onChange={onChange}/>
+                </InputGroup>
             </div>
-            <br/>
-            <div>
-                <span>내용</span>
-                <textarea
-                    name="contents"
-                    cols="30"
-                    rows="10"
-                    value={contents}
-                    onChange={onChange}
-                ></textarea>
+            <div className="detail_content" >
+            <InputGroup className="container w-50 board_free_write_contents">
+                <Form.Control  className="board_free_write_form" name="contents" as="textarea"
+                              placeholder="내용"
+                              value={contents} onChange={onChange}
+                              cols="30"
+                              rows="10"/>
+
+            </InputGroup>
+
             </div>
-            <br/>
-            <div>
-                <button onClick={saveBoard}>저장</button>
-                <button onClick={backToList}>취소</button>
+            <div className="board_free_write_button">
+                <button className="btn btn-success board_free_write_buttons" onClick={saveBoard}>저장</button>
+                <button className="btn btn-danger board_free_write_buttons" onClick={backToList}>취소</button>
             </div>
             <Footer/>
+            <Modal show={showModal} onHide={closeModal}>
+                <Modal.Header closeButton>
+                    <Modal.Title>경고</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>제목과 작성자, 내용은 필수 입력 사항입니다.</Modal.Body>
+                <Modal.Footer>
+                    <button className="btn btn-primary" onClick={closeModal}>확인</button>
+                </Modal.Footer>
+            </Modal>
         </div>
     );
 };

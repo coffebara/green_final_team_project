@@ -40,26 +40,9 @@ public class BoardService {
         return Header.OK(boardList, pagination);
     }
 
-    // 나머지 메서드들...
-
     public Header<BoardEntity> getBoardOne(Long idx) {
         return Header.OK(boardMapper.getBoardOne(idx));
     }
-
-    public Header<BoardEntity> insertBoard(BoardSaveDto boardSaveDto) {
-        BoardEntity entity = boardSaveDto.toEntity();
-        boardMapper.insertBoard(entity);  // 쿼리 실행
-
-        // 데이터베이스에서 생성된 ID 값을 가져와서 설정
-        entity.setIdx(boardMapper.getGeneratedIdx());  // 해당 메소드는 BoardMapper 인터페이스에 추가해야 함
-
-        if (entity.getIdx() != null) {
-            return Header.OK(entity);
-        } else {
-            return Header.ERROR("ERROR");
-        }
-    }
-
 
     public Header<BoardEntity> updateBoard(BoardSaveDto boardSaveDto) {
         BoardEntity entity = boardSaveDto.toEntity();
@@ -78,7 +61,6 @@ public class BoardService {
         }
     }
     public int insertBoard(BoardEntity entity) {
-        // BoardMapper의 insertBoard 메서드 호출
         return boardMapper.insertBoard(entity);
     }
 }
