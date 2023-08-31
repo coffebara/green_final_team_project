@@ -6,17 +6,25 @@ import javax.persistence.EntityManager;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.Pageable;import org.springframework.data.mapping.AccessOptions.SetOptions.Propagation;
+
+
+
 import org.springframework.util.StringUtils;
 
-import com.itdaLearn.dto.CourseSearchDto;
+
 import com.itdaLearn.dto.MainCourseDto;
 import com.itdaLearn.dto.QMainCourseDto;
+
+
+import com.querydsl.core.Tuple;
+
+import org.springframework.data.domain.Pageable;
+
+import com.itdaLearn.dto.CourseSearchDto;
 import com.itdaLearn.entity.Course;
 import com.itdaLearn.entity.QCourse;
-import com.itdaLearn.entity.QCourseImg;
 import com.querydsl.core.QueryResults;
-import com.querydsl.core.Tuple;
+
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 
@@ -58,6 +66,7 @@ public class CourseRepositoryCustomImpl implements CourseRepositoryCustom {
 		
 		return new PageImpl<>(content, pageable, total);
 	}//조회한 데이터를 Page 클래스의 구현체인 PageImpl 객체로 반환합니다.
+
 
 	
 	  private BooleanExpression CourseTitleLike(String searchQuery) {
@@ -102,5 +111,9 @@ public class CourseRepositoryCustomImpl implements CourseRepositoryCustom {
 //검색어가 null 아니면 상품명에 해당 검색어가 포함되는 상품을 조회하는 조건을 반환합니다.		
 		return searchQuery.isEmpty() ? null : QCourse.course.courseTitle.like("%" + searchQuery + "%");
 	}
+
+	
+
+
 }
 

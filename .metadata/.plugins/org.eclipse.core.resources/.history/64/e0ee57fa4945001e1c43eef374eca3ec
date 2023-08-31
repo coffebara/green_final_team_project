@@ -1,0 +1,5 @@
+package com.itdaLearn.dto;
+
+public class CourseImgDto {
+
+}

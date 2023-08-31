@@ -14,10 +14,14 @@ import javax.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
+import lombok.ToString;
+
+
 @Entity
 @Table(name = "course_img")
 @Getter
 @Setter
+@ToString
 public class CourseImg {
 
 	@SequenceGenerator(name = "ITEM_SEQUENCE_GEN", sequenceName = "seq_item", initialValue = 1, allocationSize = 1)

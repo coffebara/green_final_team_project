@@ -1,0 +1,55 @@
+package com.itdaLearn.dto;
+
+import javax.validation.constraints.NotNull;
+
+import org.modelmapper.ModelMapper;
+
+import com.itdaLearn.constant.CourseCategory;
+import com.itdaLearn.constant.CourseLevel;
+import com.itdaLearn.entity.Course;
+
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
+@Getter @Setter
+@ToString
+public class CourseFormDto {
+	
+	private Long courseNo;
+
+	@NotNull(message= "강의명은 필수 입력값입니다.")
+	private String courseTitle;
+	
+//	@NotNull(message= "강사명은 필수 입력값입니다.")
+	private String courseTeacher;
+	
+//	@NotNull(message= "가격은 필수 입력값입니다.")
+	private Integer coursePrice;
+	
+//	@NotNull(message= "강의 설명은 필수 입력값입니다.")
+	private String courseDec1;
+	
+//	@NotNull(message= "강의 설명은 필수 입력값입니다.")
+	private String courseDec2;
+	
+//	@NotNull(message= "강의 설명은 필수 입력값입니다.")
+	private String courseDec3;
+	
+	private CourseLevel courseLevel;
+	private CourseCategory courseCategory;
+	
+	private CourseImgDto courseImgDto;
+	
+	private Long courseImgNo;
+	
+	private static ModelMapper modelMapper = new ModelMapper();
+	
+	public Course createCourse() {
+		return modelMapper.map(this, Course.class);
+	}
+
+	public static CourseFormDto of(Course course) {
+		return modelMapper.map(course, CourseFormDto.class);
+	}
+}

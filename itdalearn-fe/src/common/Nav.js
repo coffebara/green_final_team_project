@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 
-export default function Nav_setting() {
+export default function NavSetting() {
   
   let navigate = useNavigate();
   let state = useSelector((state) => state);
@@ -40,7 +40,7 @@ export default function Nav_setting() {
 
             <Nav.Link
               onClick={() => {
-                alert("게시판 연결시켜주세요~")
+                navigate("/board");
               }}
             >
               게시판

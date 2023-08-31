@@ -7,7 +7,11 @@ import com.itdaLearn.entity.CourseImg;
 import lombok.Getter;
 import lombok.Setter;
 
+import lombok.ToString;
+
 @Getter @Setter
+@ToString
+
 public class CourseImgDto {
 
 	private Long courseImgDtoNo;

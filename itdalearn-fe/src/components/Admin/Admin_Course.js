@@ -60,12 +60,14 @@ export default function Admin_Course() {
             }
             if (endPage > totalPage) {
                 endPage = totalPage;
+
             }
 
             const tmpPages = [];
             for (let i = startPage; i <= endPage; i++) {
                 tmpPages.push(i);
             }
+
             setDisplayPageNum(tmpPages);
         };
         getDisplayPageNum();
@@ -114,6 +116,7 @@ export default function Admin_Course() {
 
     //---- 검색 -----------------------
 
+
     // 검색 입력값 받기
     const handleOnChange = (e) => {
         setInputs({
@@ -156,7 +159,8 @@ export default function Admin_Course() {
                             <tr key={i}>
                                 <td scope="row">{item.courseNo}</td>
                                 <td
-                                    style={{ cursor: "pointer", color: "tomato"}}
+                                    style={{ cursor: "pointer", color: "tomato" }}
+
                                     onClick={() => handleMoveDetailPage(item.courseNo)}
                                 >
                                     {item.courseTitle}
@@ -179,27 +183,38 @@ export default function Admin_Course() {
                     totalPage={totalPage}
                 />
             </div>
-            <form onSubmit={handleSubmit}>
-                <div className="form-inline justify-content-center">
-                    <div>
-                        <select className="form-control" name="searchBy" onChange={handleOnChange}>
-                            <option value="">- 검색 방법 선택 -</option>
-                            <option value="courseTitle">상품명</option>
-                            <option value="courseTeacher">강사명</option>
-                        </select>
+            <div className="container mt-3 mb-5 text-center">
+                <form onSubmit={handleSubmit} >
+                    <div className="row">
+                        <div className="col-2">
+                            <select
+                                className="form-control form-select"
+                                name="searchBy"
+                                onChange={handleOnChange}
+                            >
+                                <option value="">검색 필터...</option>
+                                <option value="courseTitle">상품명</option>
+                                <option value="courseTeacher">강사명</option>
+                            </select>
+                        </div>
+                        <div className="col-6">
+                            <input
+                                name="searchQuery"
+                                type="text"
+                                className="form-control"
+                                placeholder="검색어를 입력해주세요"
+                                onChange={handleOnChange}
+                            />
+                            </div>
+                            <div className="col-1">
+                            <button id="searchBtn" type="submit" className="btn btn-primary">
+                                검색
+                            </button>
+                        </div>
                     </div>
-                    <input
-                        name="searchQuery"
-                        type="text"
-                        className="form-control"
-                        placeholder="검색어를 입력해주세요"
-                        onChange={handleOnChange}
-                    />
-                    <button id="searchBtn" type="submit" className="btn btn-primary">
-                        검색
-                    </button>
-                </div>
-            </form>
+                </form>
+            </div>
+
         </Container>
     );
 }

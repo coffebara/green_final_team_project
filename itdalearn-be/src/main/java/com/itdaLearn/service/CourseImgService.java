@@ -39,10 +39,11 @@ public class CourseImgService {
 		courseImg.updateCourseImg(oriImgName, imgName, imgUrl);
 		courseImgRepository.save(courseImg);//입력받은 상품 이미지 정보를 저장
 	}
-	public void updateCourseImg(Long courseImgId, MultipartFile courseImgFile) throws Exception{
+
+	public void updateCourseImg(Long courseImgNo, MultipartFile courseImgFile) throws Exception{
 		if(!courseImgFile.isEmpty()) {
-			CourseImg savedCourseImg = courseImgRepository.findById(courseImgId)
-									.orElseThrow(EntityNotFoundException::new);
+			CourseImg savedCourseImg = courseImgRepository.findByCourseCourseNo(courseImgNo);
+
 			//기존 이미지 파일 삭제
 			if(!StringUtils.isEmpty(savedCourseImg.getImgName())) {
 				fileService.deleteFile(courseImgLocation+"/"+savedCourseImg.getImgName());

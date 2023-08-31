@@ -42,6 +42,7 @@ public class SecurityConfig {
                 .mvcMatchers(HttpMethod.OPTIONS, "/**","/members/**", "/item/**", "/images/**", "/admin/**", "/cart/**", "/order/**", "/orders/**", "/cart/orders/**", "/admin/course", "/admin/**", "/cartCourse/**", "/order/**", "/admin/**", "/board/**", "/board", "/write " ,"/write/**", "/main/**").permitAll()
                 .anyRequest().permitAll();
 
+
         http.formLogin()
 
         .loginPage("/members/login") // 해당 메소드가 있다면 해당 파일이 출력
@@ -64,73 +65,5 @@ public class SecurityConfig {
 }
 
 
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.context.annotation.Bean;
-//import org.springframework.context.annotation.Configuration;
-//import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-//import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-//import org.springframework.security.config.annotation.web.builders.WebSecurity;
-//import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-//import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-//import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-//import org.springframework.security.crypto.password.PasswordEncoder;
-//import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
-//
-//
-//
-//@Configuration
-//@EnableWebSecurity
-//public class SecurityConfig extends WebSecurityConfigurerAdapter {
-//
-//
-//    @Override
-//    protected void configure(HttpSecurity http) throws Exception {
-//    	http.csrf().disable();
-//    	http.formLogin()
-//                .loginPage("/loginForm")
-//                .defaultSuccessUrl("/")
-//                .usernameParameter("email")
-//                .failureUrl("/members/login/error")
-//                .and()
-//                .logout()
-//                .logoutRequestMatcher(new AntPathRequestMatcher("/members/logout"))
-//                .logoutSuccessUrl("/")
-//        ;
-//
-//        http.authorizeRequests()
-//        		.antMatchers("/user/**").authenticated() // 인증만 되면 들어갈 수 있는 주소
-//        		.antMatchers("/manager/**").access("hasRole('ROLE_ADMIN') or hasRole('ROLE_MANAGER')")
-//        		.antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")
-//                .mvcMatchers("//", "/members/**", "/item/**", "/images/**", "/admin/**", "/cart/**", "/order/**", "/orders/**", "/cart/orders/**", "/admin/course", "/admin/**", "/cartCourse/**", "/order/**", "/admin/**", "/board/**", "/board", "/write " ,"/write/**", "/main/**").permitAll();
-//
-////               .mvcMatchers("/admin/**").hasRole("ADMIN")
-////                .anyRequest().authenticated()
-////        ;
-//
-////        http.exceptionHandling()
-////                .authenticationEntryPoint(new CustomAuthenticationEntryPoint())
-////        ;
-//    }
-//
-//    @Bean
-//    public PasswordEncoder passwordEncoder() {
-//        return new BCryptPasswordEncoder();
-//    }
-//    
-//    @Bean
-//   public BCryptPasswordEncoder encodePwd() {
-//       return new BCryptPasswordEncoder();
-//   }
-//
-////    @Override
-////    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-////        auth.userDetailsService(memberService)
-////                .passwordEncoder(passwordEncoder());
-////    }
-//
-//    @Override
-//    public void configure(WebSecurity web) throws Exception {
-//        web.ignoring().antMatchers("/images/","/css/**", "/js/**", "/img/**", "/cart/**", "/order/**", "/orders/**", "/cart/orders/**", "/admin/courses", "/admin/**", "/cartCourse/**", "/order/**", "/board/**", "/board", "/write", "/write/**", "/admin/**", "/main/**");
-//    }
-//
-//}
+
+
