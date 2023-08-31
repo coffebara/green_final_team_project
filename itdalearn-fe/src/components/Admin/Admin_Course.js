@@ -60,12 +60,14 @@ export default function Admin_Course() {
             }
             if (endPage > totalPage) {
                 endPage = totalPage;
+
             }
 
             const tmpPages = [];
             for (let i = startPage; i <= endPage; i++) {
                 tmpPages.push(i);
             }
+
             setDisplayPageNum(tmpPages);
         };
         getDisplayPageNum();
@@ -114,6 +116,7 @@ export default function Admin_Course() {
 
     //---- 검색 -----------------------
 
+
     // 검색 입력값 받기
     const handleOnChange = (e) => {
         setInputs({
@@ -157,6 +160,7 @@ export default function Admin_Course() {
                                 <td scope="row">{item.courseNo}</td>
                                 <td
                                     style={{ cursor: "pointer", color: "tomato" }}
+
                                     onClick={() => handleMoveDetailPage(item.courseNo)}
                                 >
                                     {item.courseTitle}
@@ -210,6 +214,7 @@ export default function Admin_Course() {
                     </div>
                 </form>
             </div>
+
         </Container>
     );
 }

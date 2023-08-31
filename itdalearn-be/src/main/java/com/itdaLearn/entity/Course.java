@@ -36,7 +36,7 @@ public class Course {
 	
 	@Column(nullable = false)
 	private Integer coursePrice;
-	
+
 	@Column(nullable = false, length = 1000)
 	private String courseDec1;
 	
@@ -44,6 +44,7 @@ public class Course {
 	private String courseDec2;
 	
 	@Column(nullable = false, length = 1000)
+
 	private String courseDec3;
 	
 	@Enumerated(EnumType.STRING)

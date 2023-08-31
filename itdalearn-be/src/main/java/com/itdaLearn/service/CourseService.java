@@ -11,6 +11,10 @@ import org.springframework.web.multipart.MultipartFile;
 import com.itdaLearn.dto.CourseFormDto;
 import com.itdaLearn.dto.CourseImgDto;
 import com.itdaLearn.dto.CourseSearchDto;
+
+import com.itdaLearn.dto.MainCourseDto;
+
+
 import com.itdaLearn.entity.Course;
 import com.itdaLearn.entity.CourseImg;
 import com.itdaLearn.repository.CourseImgRepository;
@@ -27,6 +31,7 @@ public class CourseService {
 	private final CourseImgService courseImgService;
 	private final CourseImgRepository courseImgRepository;
 
+
 	// 코스 생성
 	public Long saveCourse(CourseFormDto courseFormDto, MultipartFile courseImgFile) throws Exception {
 
@@ -38,6 +43,7 @@ public class CourseService {
 
 		courseImgService.saveCourseImg(courseImg, courseImgFile);
 
+
 		return course.getCourseNo();
 	}
 
@@ -45,6 +51,21 @@ public class CourseService {
 	public void deleteCouseByNo(Long courseNo) {
 
 		Course course = courseRepository.findById(courseNo).orElseThrow(EntityNotFoundException::new);
+
+
+	// 강의 상세보기
+	@Transactional(readOnly = true)
+	public CourseFormDto getCourseDtl(Long courseNo) {
+		
+		CourseImg courseImg = courseImgRepository.findByCourseCourseNo(courseNo);
+		CourseImgDto coursImgDto = CourseImgDto.of(courseImg);
+		
+		Course course = courseRepository.findById(courseNo).orElseThrow(EntityNotFoundException::new);
+		CourseFormDto courseFormDto = CourseFormDto.of(course);
+		
+		courseFormDto.setCourseImgDto(coursImgDto);
+
+
 		CourseImg courseImg = courseImgRepository.findByCourseCourseNo(courseNo);
 		
 		courseImgRepository.delete(courseImg);
@@ -63,11 +84,13 @@ public class CourseService {
 		
 		courseFormDto.setCourseImgDto(courseImgDto);
 
+
 		return courseFormDto;
 	}
 
 	// 코스 업데이트
 	public Long updateCourse(CourseFormDto courseFormDto, MultipartFile courseImgFile) throws Exception {
+
 		
 		Course course = courseRepository.findById(courseFormDto.getCourseFormDtoNo())
 				.orElseThrow(EntityNotFoundException::new);
@@ -75,6 +98,7 @@ public class CourseService {
 		Long courseImgNo = courseFormDto.getCourseImgNo();
 
 		courseImgService.updateCourseImg(courseImgNo, courseImgFile);
+
 		return course.getCourseNo();
 	}
 
@@ -82,5 +106,12 @@ public class CourseService {
 	public Page<Course> getAdminCoursePage(CourseSearchDto courseSearchDto, Pageable pageable) {
 		return courseRepository.getAdminCoursePage(courseSearchDto, pageable);
 	}// 관리자가 보는 아이템 페이지를 가져옵니다.
+
+	
+	@Transactional(readOnly = true)
+	public Page<MainCourseDto> getMainItemPage(CourseSearchDto courseSearchDto, Pageable pageable) {
+		return courseRepository.getMainItemPage(courseSearchDto, pageable);
+	}
+
 
 }

@@ -51,9 +51,11 @@ public class CourseServiceTest {
 		CourseFormDto courseFormDto = new CourseFormDto();
 		courseFormDto.setCourseTitle("테스트 자바 강의");
 		courseFormDto.setCourseTeacher("김현승");
+
 		courseFormDto.setCourseDec1("테스트 강의 입니다111.");
 		courseFormDto.setCourseDec2("테스트 강의 입니다222.");
 		courseFormDto.setCourseDec3("테스트 강의 입니다333.");
+
 		courseFormDto.setCoursePrice(1000);
 		courseFormDto.setCourseLevel(CourseLevel.LOW);
 		courseFormDto.setCourseCategory(CourseCategory.BE);
@@ -71,6 +73,7 @@ public class CourseServiceTest {
 		assertEquals(courseFormDto.getCoursePrice(), course.getCoursePrice());
 		assertEquals(courseFormDto.getCourseLevel(), course.getCourseLevel());
 		assertEquals(courseFormDto.getCourseCategory(), course.getCourseCategory());
+
 		assertEquals(multipartFile.getOriginalFilename(), courseImg.getOriImgName());
 	}// 테스트 관리자 권한으로 실행되도록 하고 saveItem 메서드가 관리자 권한을 가진 사용자만 호출할 수 있도록
 
@@ -93,6 +96,7 @@ public class CourseServiceTest {
 	public Course createCourse(String title, String teacher, String dec, Integer price, CourseLevel level,
 			CourseCategory category) {
 
+
 		Course newCourse = new Course();
 		newCourse.setCourseTitle(title);
 		newCourse.setCourseTeacher(teacher);
@@ -100,6 +104,7 @@ public class CourseServiceTest {
 		newCourse.setCoursePrice(price);
 		newCourse.setCourseCategory(category);
 		newCourse.setCourseLevel(level);
+
 
 		return newCourse;
 	}
@@ -128,6 +133,7 @@ public class CourseServiceTest {
 				.save(createCourse("테스트 강의", "김상준", "하하하", 5000, CourseLevel.HIGH, CourseCategory.BE));
 
 		// when
+
 		CourseFormDto courseFormDto = new CourseFormDto();
 		courseFormDto.setCourseTitle("테스트 자바 강의");
 		courseFormDto.setCourseTeacher("김현승");
@@ -135,6 +141,7 @@ public class CourseServiceTest {
 		courseFormDto.setCoursePrice(1000);
 		courseFormDto.setCourseLevel(CourseLevel.LOW);
 		courseFormDto.setCourseCategory(CourseCategory.BE);
+
 		courseFormDto.setCourseFormDtoNo(1L);
 		
 //		MultipartFile newImg = 
@@ -142,6 +149,7 @@ public class CourseServiceTest {
 
 		// then
 //		assertEquals(saveCourseNo, newCourse.getCourseNo());
+
 
 	}
 }

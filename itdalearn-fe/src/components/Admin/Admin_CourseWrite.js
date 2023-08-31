@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import "../../styles/Admin_Course.css";
 import { useNavigate } from "react-router-dom";
+
 import "../../styles/admin_Course_Write.css";
 
 export default function Admin_CourseWrite() {
@@ -33,11 +34,13 @@ export default function Admin_CourseWrite() {
         formData.append("courseImgFile", imgFile);
 
         await axios
+
             .post(baseUrl + "/admin/course", formData)
             .then((res) => {
                 if (res.status === 200) {
                     window.alert("강의가 등록되었습니다.");
                     navigate("/admin/courses");
+
                 }
             })
             .catch(function (err) {
@@ -55,6 +58,7 @@ export default function Admin_CourseWrite() {
 
     //사진 업로드
     const handleChangeFile = (e) => {
+
         setImgFile(e.target.files[0]);
         setImgBase64([]);
         if (e.target.files[0]) {
@@ -345,3 +349,4 @@ export default function Admin_CourseWrite() {
 //         </form>
 //     );
 // }
+

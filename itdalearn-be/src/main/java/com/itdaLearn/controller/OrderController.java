@@ -16,7 +16,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
-
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -76,6 +76,16 @@ public class OrderController {
 		orderlist.put("orders", orderHistDtoList);
 		return orderlist;
 	}
-
 	
+	@PostMapping("/order/{orderNo}/cancel")
+	public @ResponseBody ResponseEntity cancelOrder(@PathVariable("orderNo") Long orderNo, Principal principal) {
+				String emailString = "test@tester.com";
+		if(!orderService.validateOrder(orderNo, emailString)) {
+			//취소할 주문 번호는 조작이 가능하므로 다른 사람의 주문을 취소하지 못하도록 주문 취소 권한검사를 합니다. 
+			 return new ResponseEntity<String>("주문 취소 권한이 없습니다.", HttpStatus.FORBIDDEN);
+		}//권한이 없는 경우 403 Forbidden 응답 코드와 함께 "주문 취소 권한이 없습니다" 메시지를 반환합니다. 
+		orderService.cancelOrder(orderNo);
+		return new ResponseEntity<Long> (orderNo, HttpStatus.OK);
+	}//결과값으로 생성된 주문 번호와 요청이 성공헀다는 http 응답 상태 코드를 반환합니다. 
+	//주문 기능 구현이 완료됐습니다.정상적으로 동작하는지 테스트 코드를 작성하겠습니다. 
 }

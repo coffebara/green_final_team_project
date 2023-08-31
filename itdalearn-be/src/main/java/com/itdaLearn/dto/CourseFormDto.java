@@ -15,9 +15,11 @@ import lombok.Setter;
 @Getter @Setter
 public class CourseFormDto {
 	
+
 	private Long courseFormDtoNo;
 
 	@NotBlank(message= "강의명은 필수 입력값입니다.")
+
 	private String courseTitle;
 	
 	@NotBlank(message= "강사명은 필수 입력값입니다.")
@@ -26,6 +28,7 @@ public class CourseFormDto {
 	@NotNull(message= "가격은 필수 입력값입니다.")
 	private Integer coursePrice;
 	
+
 	@NotBlank(message= "강의 설명은 필수 입력값입니다.")
 	private String courseDec1;
 	
@@ -33,6 +36,7 @@ public class CourseFormDto {
 	private String courseDec2;
 	
 	@NotBlank(message= "강의 설명은 필수 입력값입니다.")
+
 	private String courseDec3;
 	
 	private CourseLevel courseLevel;

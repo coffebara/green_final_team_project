@@ -26,8 +26,10 @@ import org.springframework.web.multipart.MultipartFile;
 import com.itdaLearn.dto.CourseFormDto;
 import com.itdaLearn.dto.CourseSearchDto;
 import com.itdaLearn.entity.Course;
+
 import com.itdaLearn.entity.CourseImg;
 import com.itdaLearn.repository.CourseImgRepository;
+
 import com.itdaLearn.repository.CourseRepository;
 import com.itdaLearn.service.CourseService;
 
@@ -39,7 +41,10 @@ public class AdminContorller {
 
 	private final CourseService courseService;
 	private final CourseRepository courseRepository;
+
+
 	private final CourseImgRepository courseIgrepository;
+
 
 	// 코스 전체 조회
 //	@GetMapping("/admin/courses")
@@ -89,7 +94,11 @@ public class AdminContorller {
 			System.out.println("검증 오류 발생");
 			return new ResponseEntity<String>("검증 오류 발생.", HttpStatus.FOUND);
 		}
+
+
+
 		if (courseImgFile.isEmpty() && courseFormDto.getCourseFormDtoNo() == null) {
+
 			System.out.println("이미지 오류 발생");
 			return new ResponseEntity<String>("상품 이미지는 필수 입력값입니다.", HttpStatus.FOUND);
 		}
@@ -97,6 +106,8 @@ public class AdminContorller {
 		try {
 			courseService.saveCourse(courseFormDto, courseImgFile);
 		} catch (Exception e) {
+
+
 			return new ResponseEntity<String>("상품 등록 중 에러 발생.", HttpStatus.FOUND);
 		}
 		return new ResponseEntity<String>("생성되었습니다.", HttpStatus.OK);
@@ -128,37 +139,47 @@ public class AdminContorller {
 
 		
 		if(bindingResult.hasErrors()) {
+
 			System.out.println("검증 오류 발생");
 //			return new ResponseEntity<String>("검증 오류 발생.", HttpStatus.FOUND);
 		}
 		if (courseImgFile.isEmpty() && courseFormDto.getCourseFormDtoNo() == null) {
+
 			System.out.println("이미지 오류 발생");
 			return new ResponseEntity<String>("상품 이미지는 필수 입력값입니다.", HttpStatus.FOUND);
 		}
 		
 		try {
 			courseService.updateCourse(courseFormDto, courseImgFile);
+
 			
+
 		} catch (Exception e) {
 //			model.addAttribute("errorMessage","상품 등록 중 에러가 발생하였습니다.");
 			return new ResponseEntity<String>("상품 등록 중 에러 발생.", HttpStatus.FOUND);
 		}
 
+
 		return new ResponseEntity<String>("수정되었습니다.", HttpStatus.OK);
+
 	}
 
 	// 코스 삭제
 	@DeleteMapping(value = "/admin/course/{id}")
 	@ResponseBody
+
 	public ResponseEntity deleteCourse(@PathVariable("id") Long courseNo) {
 
 		try {
 			courseService.deleteCouseByNo(courseNo);
+
 		} catch (EntityNotFoundException e) {
 			System.out.println(e);
 		}
 
+
 		return new ResponseEntity<Long>(courseNo, HttpStatus.FOUND);
+
 	}
 
 }

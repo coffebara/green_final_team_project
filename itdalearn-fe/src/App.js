@@ -17,9 +17,9 @@ import Admin_CourseWritePage from "./pages/Admin_CourseWritePage"
 import Admin_CourseDetailPage from "./pages/Admin_CourseDetailPage"
 import Member_SignUpPage from "./pages/Member_SignUpPage";
 import CourseListPage from "./pages/CourseListPage"
-import CartList from "./components/cart/CartList"
-import OrderPage from "./pages/OrderPage";
-import OrderListPage from "./pages/OrderListPage";
+import MyPage from "./pages/MyPage";
+import OrdersPage from "./pages/OrdersPage"
+import Member_SignInPage from "./pages/Member_SignInPage.js";
 
 
 import BoardFreeList from "./pages/BoardFreeList";
@@ -36,7 +36,6 @@ function App() {
     <div className="App">
       <Routes>
         <Route path="/" element={<HomePage />} />
-        {/* 메인화면 _ 특정 강의 몇개만 보여지는 화면 */}
         <Route path="/course" element={<CoursePage />} />
 
         <Route path="/board" element={<BoardFreeList />} />
@@ -56,9 +55,12 @@ function App() {
         <Route path="/admin/course" element={<Admin_CourseWritePage/>}/>
         <Route path="/admin/course/:id" element={<Admin_CourseDetailPage/>}/>
         <Route path="/signup" element={<Member_SignUpPage />} />
-        <Route path="/cartlist" element={<CartList />} />
-        <Route path="/order" element={<OrderPage />} />
-        <Route path="/orderList" element={<OrderListPage />} />
+
+        <Route path="/orders" element={<OrdersPage />} />
+        <Route path="/mypage" element={<MyPage />} />
+        <Route path="/members/login" element={<Member_SignInPage />} />
+        <Route path="/members" element={<Member_SignUpPage />} />
+
 
       </Routes>
     </div>

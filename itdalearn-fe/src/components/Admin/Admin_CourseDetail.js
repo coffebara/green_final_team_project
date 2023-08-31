@@ -12,6 +12,7 @@ export default function Admin_CourseDetail() {
     const courseLevels = ["HIGH", "MID", "LOW"];
     const courseCategories = ["BE", "FE"];
     const [courseDetails, setCourseDetails] = useState({
+
         courseTitle: "",
         courseTeacher: "",
         coursePrice: "",
@@ -22,6 +23,7 @@ export default function Admin_CourseDetail() {
         courseCategory: courseCategories[0],
         courseFormDtoNo: "",
         courseImgNo: "",
+
     });
     const [isUpdatable, setIsUpdatable] = useState(false);
     const [courseImgDto, setCourseImgDto] = useState({
@@ -67,6 +69,7 @@ export default function Admin_CourseDetail() {
     };
 
     useEffect(() => {
+
         getCourseDetails();
     }, []);
 
@@ -101,6 +104,7 @@ export default function Admin_CourseDetail() {
             .catch((error) => {
                 if (error.response.status === 302) {
                     window.alert("강의가 수정이 실패하였습니다.");
+
                 }
             });
     };
@@ -132,6 +136,7 @@ export default function Admin_CourseDetail() {
 
     //사진 업로드
     const handleChangeFile = (e) => {
+
         setCourseImgFile(e.target.files[0]);
         setImgBase64([]);
         if (e.target.files[0]) {
@@ -148,6 +153,7 @@ export default function Admin_CourseDetail() {
     };
     return (
         <div className="container mt-5">
+
             {/* 모달 시작 */}
             <Modal
                 show={isModalShow}
@@ -158,7 +164,9 @@ export default function Admin_CourseDetail() {
             >
                 <div>
                     <Modal.Body>
+
                         <h4>해당 강의를 삭제하시겠습니까?</h4>
+
                     </Modal.Body>
                     <Modal.Footer>
                         <Button
@@ -178,6 +186,7 @@ export default function Admin_CourseDetail() {
                     </Modal.Footer>
                 </div>
             </Modal>
+
             <h2 className="mb-5">강의 상세보기</h2>
             <form
                 class="row g-3 needs-validation mb-5 text_align_left"
@@ -372,10 +381,12 @@ export default function Admin_CourseDetail() {
                         </>
                     )}
                 </div>
+
             </form>
         </div>
     );
 }
+
 
 // import axios from "axios";
 // import { useEffect, useState } from "react";
@@ -694,3 +705,4 @@ export default function Admin_CourseDetail() {
 //         </div>
 //     );
 // }
+
