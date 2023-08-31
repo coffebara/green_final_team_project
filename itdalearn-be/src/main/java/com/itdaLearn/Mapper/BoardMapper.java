@@ -21,7 +21,5 @@ public interface BoardMapper {
 
     int deleteBoard(Long idx);
 
-    // BoardMapper 인터페이스에 추가
-    Long getGeneratedIdx();
 
 }

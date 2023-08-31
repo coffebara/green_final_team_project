@@ -103,43 +103,42 @@ export default function BoardFreeList() {
         <div>
             <NavSetting/>
             <div className="container w-75">
-                <div className="board_board_bottom">게시판</div>
-                <div className="d-flex bd-highlight board_board_bottom">
-
-                    <div className=" bd-highlight">&nbsp;&nbsp;&nbsp;&nbsp;글번호&nbsp;
+                <div  className="board_free_list_title row row-cols-auto"><h2>게시판</h2></div>
+                <div className="d-flex bd-highlight board_free_list_table ">
+                    <div className="board_free_list bd-highlight">&nbsp;&nbsp;&nbsp;&nbsp;글번호&nbsp;
                         <ul >
                             {boardList.map((board) => (
                                 // 4) map 함수로 데이터 출력
-                                <div className="board_board" key={board.idx}>
+                                <div className=" board_free_list_board" key={board.idx}>
                                     &nbsp;&nbsp;  &nbsp;&nbsp;  {board.idx}&nbsp;
                                 </div>
                             ))}
                         </ul>
                     </div>
-                    <div className=" flex-grow-1 bd-highlight">&nbsp;&nbsp;글제목&nbsp;&nbsp;
+                    <div className="board_free_list flex-grow-1 bd-highlight ">&nbsp;&nbsp;글제목&nbsp;&nbsp;
                         <ul>
                             {boardList.map((board) => (
                                 // 4) map 함수로 데이터 출력
-                                <li className="board_board" key={board.idx}>
-                                    &nbsp;&nbsp;  <Link to={`/board/${board.idx}`}>{board.title}</Link>&nbsp;&nbsp;
+                                <li className="board_free_list_board " key={board.idx}>
+                                    &nbsp;&nbsp;  <Link className="board_free_list_board_list" to={`/board/${board.idx}`}>{board.title}</Link>&nbsp;&nbsp;
                                 </li>
                             ))}
                         </ul></div>
-                    <div className=" bd-highlight ">&nbsp;&nbsp;작성자&nbsp;&nbsp;
+                    <div className="board_free_list bd-highlight ">&nbsp;&nbsp;작성자&nbsp;&nbsp;
                         <ul>
                             {boardList.map((board) => (
                                 // 4) map 함수로 데이터 출력
-                                <div className="board_board" key={board.idx}>
+                                <div className="board_free_list_board" key={board.idx}>
                                     &nbsp; &nbsp; {board.createdBy}&nbsp;&nbsp;&nbsp;
                                 </div>
                             ))}
                         </ul>
                     </div>
-                    <div className=" bd-highlight">&nbsp;&nbsp;작성일&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <div className="board_free_list bd-highlight">&nbsp;&nbsp;작성일&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <ul>
                             {boardList.map((board) => (
                                 // 4) map 함수로 데이터 출력
-                                <div className="board_board" key={board.idx}>
+                                <div className="board_free_list_board" key={board.idx}>
                                     &nbsp;&nbsp;  {formatDate(board.createdAt)}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 </div>
                             ))}
@@ -147,39 +146,37 @@ export default function BoardFreeList() {
                     </div>
 
                 </div>
-                <div>
-                    <button onClick={onClick} value={1}>
+                <div className="board_free_list_button">
+                    <button className="btn btn-primary board_free_list_buttons" onClick={onClick} value={1}>
                         &lt;&lt;
                     </button>
-                    <button onClick={onClick} value={prevBlock}>
+                    <button className="btn btn-primary board_free_list_buttons" onClick={onClick} value={prevBlock}>
                         &lt;
                     </button>
                     {pageList.map((page, index) => (
-                        <button key={index} onClick={onClick} value={page}>
+                        <button className="btn btn-primary board_free_list_buttons" key={index} onClick={onClick} value={page}>
                             {page}
                         </button>
                     ))}
-                    <button onClick={onClick} value={nextBlock}>
+                    <button className="btn btn-primary board_free_list_buttons" onClick={onClick} value={nextBlock}>
                         &gt;
                     </button>
-                    <button onClick={onClick} value={lastPage}>
+                    <button className="btn btn-primary board_free_list_buttons" onClick={onClick} value={lastPage}>
                         &gt;&gt;
                     </button>
                 </div>
-                <br/>
+
                 <div>
-                    <select name="sk" onChange={onChange}>
-                        <option value="">-선택-</option>
+                    <select className="board_free_list_buttons" name="sk" onChange={onChange}>
                         <option value="title">제목</option>
                         <option value="contents">내용</option>
                     </select>
 
                     <input type="text" name="sv" id="" onChange={onChange}/>
-                    <button className="btn btn-outline-primary" onClick={onSearch}>검색</button>
+                    <button className="btn btn-info board_free_list_buttons" onClick={onSearch}>검색</button>
                 </div>
-                <br/>
-                <div>
-                    <button onClick={moveToWrite}>글쓰기</button>
+                <div className="board_free_list_last_button ">
+                    <button className="btn btn-info" onClick={moveToWrite}>글쓰기</button>
                 </div>
             </div>
             <Footer/>
