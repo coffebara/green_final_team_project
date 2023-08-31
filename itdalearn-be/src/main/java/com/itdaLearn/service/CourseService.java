@@ -51,21 +51,6 @@ public class CourseService {
 	public void deleteCouseByNo(Long courseNo) {
 
 		Course course = courseRepository.findById(courseNo).orElseThrow(EntityNotFoundException::new);
-
-
-	// 강의 상세보기
-	@Transactional(readOnly = true)
-	public CourseFormDto getCourseDtl(Long courseNo) {
-		
-		CourseImg courseImg = courseImgRepository.findByCourseCourseNo(courseNo);
-		CourseImgDto coursImgDto = CourseImgDto.of(courseImg);
-		
-		Course course = courseRepository.findById(courseNo).orElseThrow(EntityNotFoundException::new);
-		CourseFormDto courseFormDto = CourseFormDto.of(course);
-		
-		courseFormDto.setCourseImgDto(coursImgDto);
-
-
 		CourseImg courseImg = courseImgRepository.findByCourseCourseNo(courseNo);
 		
 		courseImgRepository.delete(courseImg);

@@ -41,23 +41,7 @@ public class AdminContorller {
 
 	private final CourseService courseService;
 	private final CourseRepository courseRepository;
-
-
 	private final CourseImgRepository courseIgrepository;
-
-
-	// 코스 전체 조회
-//	@GetMapping("/admin/courses")
-//	@ResponseBody
-//	public Map<String, Object> courseList() {
-//
-//		Map<String, Object> courseList = new HashMap<String, Object>();
-//		List courses = courseRepository.findAll();
-//		courseList.put("courseList", courses);
-//
-//		return courseList;
-//
-//	}
 
 	// 코스 메인 페이지
 	@GetMapping(value = { "/admin/courses", "/admin/courses/{page}" })
@@ -94,11 +78,7 @@ public class AdminContorller {
 			System.out.println("검증 오류 발생");
 			return new ResponseEntity<String>("검증 오류 발생.", HttpStatus.FOUND);
 		}
-
-
-
 		if (courseImgFile.isEmpty() && courseFormDto.getCourseFormDtoNo() == null) {
-
 			System.out.println("이미지 오류 발생");
 			return new ResponseEntity<String>("상품 이미지는 필수 입력값입니다.", HttpStatus.FOUND);
 		}
@@ -123,7 +103,6 @@ public class AdminContorller {
 		try {
 			CourseFormDto courseFormDto = courseService.getCourseDtl(courseNo);
 			courseInfo.put("courseFormDto", courseFormDto);
-
 		} catch (EntityNotFoundException e) {
 			courseInfo.put("errorMessage", e);
 		}
@@ -137,9 +116,7 @@ public class AdminContorller {
 	public ResponseEntity updateCourse(@Valid CourseFormDto courseFormDto, BindingResult bindingResult,
 			@RequestParam("courseImgFile") MultipartFile courseImgFile) {
 
-		
 		if(bindingResult.hasErrors()) {
-
 			System.out.println("검증 오류 발생");
 //			return new ResponseEntity<String>("검증 오류 발생.", HttpStatus.FOUND);
 		}
@@ -151,14 +128,10 @@ public class AdminContorller {
 		
 		try {
 			courseService.updateCourse(courseFormDto, courseImgFile);
-
-			
-
 		} catch (Exception e) {
 //			model.addAttribute("errorMessage","상품 등록 중 에러가 발생하였습니다.");
 			return new ResponseEntity<String>("상품 등록 중 에러 발생.", HttpStatus.FOUND);
 		}
-
 
 		return new ResponseEntity<String>("수정되었습니다.", HttpStatus.OK);
 
@@ -172,14 +145,11 @@ public class AdminContorller {
 
 		try {
 			courseService.deleteCouseByNo(courseNo);
-
 		} catch (EntityNotFoundException e) {
 			System.out.println(e);
 		}
 
 
 		return new ResponseEntity<Long>(courseNo, HttpStatus.FOUND);
-
 	}
-
 }
