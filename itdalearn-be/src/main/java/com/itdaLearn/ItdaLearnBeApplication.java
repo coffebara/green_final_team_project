@@ -4,11 +4,11 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ItdaLearnBeApplication {
+public class ItdaLearnApplication {
 
 	public static void main(String[] args) {
 
-		SpringApplication.run(ItdaLearnBeApplication.class, args);
+		SpringApplication.run(ItdaLearnApplication.class, args);
 
 
 	}

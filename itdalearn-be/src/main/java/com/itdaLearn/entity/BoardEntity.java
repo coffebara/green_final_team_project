@@ -1,4 +1,4 @@
-zpackage com.itdaLearn.entity;
+package com.itdaLearn.entity;
 
 
 import lombok.AllArgsConstructor;

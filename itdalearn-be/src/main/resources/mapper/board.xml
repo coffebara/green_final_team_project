@@ -70,7 +70,7 @@
         , CREATED_BY
         , CREATED_AT
         ) VALUES (
-        #{idx, jdbcType=NUMERIC},
+        SEQ_TB_BOARD.NEXTVAL,
         #{title}
         , #{contents}
         , #{createdBy}

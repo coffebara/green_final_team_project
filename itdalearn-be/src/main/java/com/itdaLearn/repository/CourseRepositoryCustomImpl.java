@@ -6,25 +6,16 @@ import javax.persistence.EntityManager;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
-
-
-
+import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 
-
+import com.itdaLearn.dto.CourseSearchDto;
 import com.itdaLearn.dto.MainCourseDto;
 import com.itdaLearn.dto.QMainCourseDto;
-
-
-import com.querydsl.core.Tuple;
-
-import org.springframework.data.domain.Pageable;
-
-import com.itdaLearn.dto.CourseSearchDto;
 import com.itdaLearn.entity.Course;
 import com.itdaLearn.entity.QCourse;
+import com.itdaLearn.entity.QCourseImg;
 import com.querydsl.core.QueryResults;
-
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 

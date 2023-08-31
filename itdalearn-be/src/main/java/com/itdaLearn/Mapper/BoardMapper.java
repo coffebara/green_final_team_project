@@ -1,4 +1,4 @@
-zpackage com.itdaLearn.Mapper;
+package com.itdaLearn.Mapper;
 
 import com.itdaLearn.entity.BoardEntity;
 import org.apache.ibatis.annotations.Mapper;
