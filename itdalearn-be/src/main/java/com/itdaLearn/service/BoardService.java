@@ -1,0 +1,84 @@
+package com.itdaLearn.service;
+
+import com.itdaLearn.Mapper.BoardMapper;
+import com.itdaLearn.dto.BoardSaveDto;
+import com.itdaLearn.entity.BoardEntity;
+import com.itdaLearn.something.Header;
+import com.itdaLearn.something.Pagination;
+import com.itdaLearn.something.Search;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+import java.util.HashMap;
+import java.util.List;
+
+@RequiredArgsConstructor
+@Service
+public class BoardService {
+    private final BoardMapper boardMapper;
+
+    public Header<List<BoardEntity>> getBoardList(int page, int size, Search search) {
+        HashMap<String, Object> paramMap = new HashMap<>();
+
+        if (page <= 1) {
+            paramMap.put("pageStart", 0);
+        } else {
+            paramMap.put("pageStart", (page - 1) * size);
+        }
+        paramMap.put("pageEnd", page * size);
+        paramMap.put("size", size);
+        paramMap.put("sk", search.getSk());
+        paramMap.put("sv", search.getSv());
+
+        List<BoardEntity> boardList = boardMapper.getBoardList(paramMap);
+        Pagination pagination = new Pagination(
+                boardMapper.getBoardTotalCount(paramMap),
+                page,
+                size,
+                10
+        );
+
+        return Header.OK(boardList, pagination);
+    }
+
+    // 나머지 메서드들...
+
+    public Header<BoardEntity> getBoardOne(Long idx) {
+        return Header.OK(boardMapper.getBoardOne(idx));
+    }
+
+    public Header<BoardEntity> insertBoard(BoardSaveDto boardSaveDto) {
+        BoardEntity entity = boardSaveDto.toEntity();
+        boardMapper.insertBoard(entity);  // 쿼리 실행
+
+        // 데이터베이스에서 생성된 ID 값을 가져와서 설정
+        entity.setIdx(boardMapper.getGeneratedIdx());  // 해당 메소드는 BoardMapper 인터페이스에 추가해야 함
+
+        if (entity.getIdx() != null) {
+            return Header.OK(entity);
+        } else {
+            return Header.ERROR("ERROR");
+        }
+    }
+
+
+    public Header<BoardEntity> updateBoard(BoardSaveDto boardSaveDto) {
+        BoardEntity entity = boardSaveDto.toEntity();
+        if (boardMapper.updateBoard(entity) > 0) {
+            return Header.OK(entity);
+        } else {
+            return Header.ERROR("ERROR");
+        }
+    }
+
+    public Header<String> deleteBoard(Long idx) {
+        if (boardMapper.deleteBoard(idx) > 0) {
+            return Header.OK();
+        } else {
+            return Header.ERROR("ERROR");
+        }
+    }
+    public int insertBoard(BoardEntity entity) {
+        // BoardMapper의 insertBoard 메서드 호출
+        return boardMapper.insertBoard(entity);
+    }
+}

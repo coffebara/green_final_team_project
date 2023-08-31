@@ -1,0 +1,12 @@
+package com.itdaLearn.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.itdaLearn.entity.CourseImg;
+
+import antlr.collections.List;
+
+public interface CourseImgRepository extends JpaRepository<CourseImg, Long>{
+	
+	List<CourseImg> findByCourseNoOrderByNoAsc(Long itemId);
+}
