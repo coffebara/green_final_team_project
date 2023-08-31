@@ -36,13 +36,13 @@ public class CartService {
 	private final CartCourseRespository cartCourseRespository;
 	private final OrderService orderService;
 		
-	public Long addCart(CartCourseDto cartItemDto, String email) {
+	public Long addCart(CartCourseDto cartCourseDto, String email) {
 		      
-		      Course course = courseRepository.findById(cartItemDto.getCourseNo())
+		      Course course = courseRepository.findById(cartCourseDto.getCourseNo())
 		    		  .orElseThrow(EntityNotFoundException::new);
 		    	
-		      String emailstring = "test@tester.com";
-		      Member member = memberRepository.findByEmail(emailstring);
+		   
+		      Member member = memberRepository.findByEmail(email);
 		    
 		      System.out.println(member);
 		  
@@ -69,8 +69,10 @@ public class CartService {
 	      
 	      List<CartDetailDto> cartDetailDtoList = new ArrayList<>();
 	      
-	      String emailString = "test@tester.com";
-	      Member member = memberRepository.findByEmail(emailString);
+	     
+	      
+	      Member member = memberRepository.findByEmail(email);
+	      
 	      Cart cart = cartRepository.findByMemberId(member.getId());
 	
 	      if(cart == null) {
@@ -79,7 +81,7 @@ public class CartService {
 	      }
 	    	
 	      cartDetailDtoList = cartCourseRespository.findCartDetailDtoList(cart.getCartNo());
-	      
+	      System.out.println(cartDetailDtoList);
 	      return cartDetailDtoList;
 	   }
 	   
@@ -87,6 +89,7 @@ public class CartService {
 	
 	   public boolean validateCartCourse(Long cartCourseNo, String email) {
 		   
+		  
 		   Member curMember = memberRepository.findByEmail(email);
 		   
 		   CartCourse cartCourse = cartCourseRespository.findById(cartCourseNo)
@@ -122,8 +125,8 @@ public class CartService {
 	    		orderDto.setCourseNo(cartCourse.getCourse().getCourseNo());
 	    		orderDtoList.add(orderDto);
 	    	}
-	    	String emailsString = "test@tester.com";
-	    	Long orderNo = orderService.orders(orderDtoList, emailsString);
+	    	
+	    	Long orderNo = orderService.orders(orderDtoList, email);
 	    	
 	    	  for(CartOrderDto cartOrderDto : cartOrderDtoList) {
 	    		  CartCourse cartCourse = cartCourseRespository

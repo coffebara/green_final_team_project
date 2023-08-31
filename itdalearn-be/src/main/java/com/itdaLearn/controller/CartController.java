@@ -13,8 +13,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -51,15 +53,15 @@ public class CartController {
 	      
 	      String email = "test@tester.com";
 	
-	      Long cartItemId;
+	      Long cartCourseNo;
 	      
 	      try {
-	         cartItemId = cartService.addCart(cartCourseDto, email);
+	         cartCourseNo = cartService.addCart(cartCourseDto, email);
 	
 	      } catch(Exception e) {
 	         return new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
 	      }
-	      return new ResponseEntity<Long>(cartItemId, HttpStatus.OK);
+	      return new ResponseEntity<Long>(cartCourseNo, HttpStatus.OK);
 	   }
 	   
 	   @ResponseBody
@@ -73,15 +75,16 @@ public class CartController {
 	      Map<String, Object> cartlist = new HashMap<>();
 	      
 	      cartlist.put("cartCources", cartDetailList);
-	      System.out.println(cartlist);
+	      
+//	      System.out.println(cartlist);
 	      return cartlist;     
 	   }
 	   
 	   @PostMapping(value = "/cart/orders")
-	   public @ResponseBody ResponseEntity orderCartItem( CartOrderDto cartOrderDto, Principal principal) {
-		   
+	   public @ResponseBody ResponseEntity orderCartItem(@RequestBody CartOrderDto cartOrderDto, Principal principal) {
+		   System.out.println(cartOrderDto.toString());
 		   List<CartOrderDto> cartOrderDtoList = cartOrderDto.getCartOrderDtoList();
-		   
+//		   System.out.println(cartOrderDtoList.toString());
 		   if(cartOrderDtoList == null || cartOrderDtoList.size() == 0 ) {
 			   //주문할 상품을 선택하지 않았는지 체크합니다. 
 			   return new ResponseEntity<String>("주문할 상품을 선택해주세요", HttpStatus.FORBIDDEN);	   
@@ -98,5 +101,23 @@ public class CartController {
 		   Long orderNo = cartService.orderCartCourse(cartOrderDtoList, email);
 				   				 
 		   return new ResponseEntity<Long>(orderNo, HttpStatus.OK);
+	   }
+	   
+	   
+	   
+	   @DeleteMapping(value = "/cartCourse/{cartCourseNo}")
+	   //http메서드에서 delete의 경우 요청된 자원을 삭제할 때 사용
+	   public @ResponseBody ResponseEntity deleteCartItem(@PathVariable("cartCourseNo") Long cartCourseNo, Principal principal) {
+		   
+		   String mailString = "test@tester.com";
+		   
+		   if(!cartService.validateCartCourse(cartCourseNo, mailString)){
+//				   principal.getName())) {
+			   // 수정 권한을 체크합니다. 
+			   return new ResponseEntity<String>("수정 권한이 없습니다.", HttpStatus.FORBIDDEN);
+		   }
+		   cartService.deleteCartCourse(cartCourseNo);
+		   //해당 장바구니 상품을 삭제합니다. 
+		   return new ResponseEntity<Long>(cartCourseNo, HttpStatus.OK);
 	   }
 }

@@ -1,13 +1,13 @@
 import Nav from "../common/Nav";
 import Footer from "../common/Footer";
-import OrderList from "../components/Order/OrderList";
+import Orders from "../components/Order/Orders";
 
-export default function OrderListPage() {
+export default function MyPage() {
   
     return (
         <>
             <Nav />
-            <OrderList />
+            <Orders />
             <Footer />
         </>
     );

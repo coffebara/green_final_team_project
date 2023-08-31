@@ -1,0 +1,60 @@
+.bannerImg img {
+    width: 100%;
+    margin-bottom: 60px;
+}
+
+.maintitle {
+    font-family: "TheJamsil5Regular";
+    font-size: 16px;
+}
+
+.mainbody {
+    font-family: "TheJamsil5Regular"; 
+    font-size: 14px;
+}
+
+.button Button {
+    font-family: "TheJamsil5Regular"; 
+    margin-left: 90px;
+ 
+   
+}
+
+.mainSearchKeyword div{
+    font-family: "TheJamsil5Regular"; 
+    color: #009688;
+    display: inline;
+    padding: 10px;
+    border: 1px solid #009688;
+    border-radius: 30%;
+}
+
+.searchbox {
+    margin-top: 30px;
+    margin-left: 33%;
+    
+}
+
+.icon {
+    float: left;
+    margin-top: 65px;
+    margin-left: 427px;
+
+}
+
+
+.buttongroup Button {
+    font-family: "TheJamsil5Regular"; 
+    margin-top: -30px;
+}
+
+.pagination {
+   margin-top: 50px;
+   margin-left: 250px;
+}
+
+.searchbtn {
+    margin-top: -38px;
+    margin-left: 490px;
+    width: 100px;
+}

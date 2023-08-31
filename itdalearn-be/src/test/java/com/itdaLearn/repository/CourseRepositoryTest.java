@@ -33,19 +33,20 @@ public class CourseRepositoryTest {
 	void createCourseTest() {
 		Course course = new Course();
 		course.setCourseTitle("스프링");
-		course.setCourseDec("예제로 배워보는 스프링 MVC");
+		course.setCourseDec1(null);
 		course.setCoursePrice(40000);
 		course.setCourseLevel(CourseLevel.HIGH);
 		course.setCourseCategory(CourseCategory.BE);
 		
 		Course savedCourse = courseRepository.save(course);
 		
-		assertEquals(courseRepository.findById(savedCourse.getCourseNo()), Optional.of(course));			
+		System.out.println(courseRepository.findById(savedCourse.getCourseNo()).toString());
+		
+		assertEquals(courseRepository.findById(savedCourse.getCourseNo()), Optional.of(course));
+
 		// jpaRepository의 return값은 optional로 나옴. 그럼 어떻게 비교를 해야하는가?
 		// Optional.of(객체) 
 	}
-	
-
 	
 	//수정 테스트
 	

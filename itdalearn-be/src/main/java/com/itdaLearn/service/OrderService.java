@@ -17,12 +17,15 @@ import com.itdaLearn.dto.OrderCourseDto;
 import com.itdaLearn.dto.OrderDto;
 import com.itdaLearn.dto.OrderHistDto;
 import com.itdaLearn.entity.Course;
+import com.itdaLearn.entity.CourseImg;
 import com.itdaLearn.entity.Member;
 import com.itdaLearn.entity.Order;
 import com.itdaLearn.entity.OrderCourse;
+import com.itdaLearn.repository.CourseImgRepository;
 import com.itdaLearn.repository.CourseRepository;
 import com.itdaLearn.repository.MemberRepository;
 import com.itdaLearn.repository.OrderRepository;
+
 
 import lombok.RequiredArgsConstructor;
 
@@ -34,9 +37,11 @@ public class OrderService {
 	private final CourseRepository courseRepository;
 	private final MemberRepository memberRepository;
 	private final OrderRepository orderRepository;
+	private final CourseImgRepository courseImgRepository;
 	
 	public Long order(OrderDto orderDto, String email) {
 		
+			
 		Course course = courseRepository.findById(orderDto.getCourseNo())
 				.orElseThrow(EntityNotFoundException::new);
 
@@ -62,6 +67,7 @@ public class OrderService {
 		
 		List<OrderHistDto> orderHistDtos = new ArrayList<>();
 		
+		
 		for(Order order : orders) {
 			
 			OrderHistDto orderHistDto = new OrderHistDto(order);
@@ -70,7 +76,9 @@ public class OrderService {
 			
 			for( OrderCourse orderCourse : orderCourses) {
 				
-				OrderCourseDto orderCourseDto = new OrderCourseDto(orderCourse);
+				CourseImg courseImg = courseImgRepository.findByCourseCourseNo(orderCourse.getCourse().getCourseNo());
+				
+				OrderCourseDto orderCourseDto = new OrderCourseDto(orderCourse, courseImg.getImgUrl());
 				orderHistDto.addOrderItemDto(orderCourseDto);
 				
 			}
@@ -104,8 +112,8 @@ public class OrderService {
 	
 	public Long orders(List<OrderDto> orderDtoList, String email) {
 		
-		String emailString = "test@tester.com";
-		Member member = memberRepository.findByEmail(emailString);
+		
+		Member member = memberRepository.findByEmail(email);
 		
 		List<OrderCourse> orderCourseList = new ArrayList<>();
 		

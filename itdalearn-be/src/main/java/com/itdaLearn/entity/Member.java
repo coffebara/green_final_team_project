@@ -7,14 +7,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-
-import com.itdaLearn.dto.MemberFormDto;
-
-
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+@Data
 @Entity
 @Table(name="member")
 @Getter @Setter
@@ -24,26 +22,39 @@ public class Member {
 	@Id
     @Column(name = "member_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long id; //디비 자동생성
 
-    private String name;
+	@Column(name = "member_no", unique = true)
+	private String memberNo;
+	
+    private String memberName; //유저이름
 
     @Column(unique = true)
-    private String email;
+    private String email; //이메일 로그인할 때 입력값
 
-    private String password;
-   
-    public static Member createMember(MemberFormDto memberFormDto, String password){
-    	
-        Member member = new Member();
-        member.setName(memberFormDto.getName());
-        member.setEmail(memberFormDto.getEmail());
-     
-        //String password = passwordEncoder.encode(memberFormDto.getPassword());
-       
-        member.setPassword(password);
-       
-        return member;
-    }
+    @Column(name = "activated")
+    private boolean activated;
+    
+    private String memberPwd;
+    
+    private String role; 
+    
+    private String memberTel;
+
+//    @CreationTimestamp
+//    private Timestamp createDate;
+    
+//    public static Member createMember(MemberFormDto memberFormDto, String password){
+//    	
+//        Member member = new Member();
+//        member.setUsername(memberFormDto.getUsername());
+//        member.setEmail(memberFormDto.getEmail());
+//     
+//        //String password = passwordEncoder.encode(memberFormDto.getPassword());
+//       
+//        member.setPassword(password);
+//       
+//        return member;
+//    }
 
 }

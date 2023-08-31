@@ -1,22 +1,99 @@
 body {
     margin: 0;
 }
+
+.carttotalbox {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    font-family: "TheJamsil5Light";
+    width: 80%;
+    margin-left: 12%;
+}
+
+.cartbox Button {
+    width: 250px;
+    margin: 5px;
+    font-family: "TheJamsil5Regular";
+    font-size: 16px;
+}
+.cartbox {
+    margin-top: 33px;
+    border: 1px solid grey;
+    border-radius: 10px;
+    padding: 10px;
+    height: 500px; 
+    color: #616161;
+
+}
+
+
+.cartbox li {
+    font-size: 12px;
+    text-align: left;
+    padding-left: 2%;
+    color: #616161;
+}
+
+.carttablebox {
+    width: 900px;
+    height: auto;
+    padding: 20px;
+    
+   
+}
+
+.pricebox {
+    text-align: left;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+.won {
+  text-align: right;
+ 
+}
+.priceboxtotal {
+    display : flex;
+    gap: 80px;
+}
+.red {
+    color:#bf360c;
+}
+.user {
+    font-size: 14px;
+    color: #616161;
+    text-align: left;
+    padding: 10px;
+}
+
+
+.carttablebox img {
+    width: 120px;
+    height: 80px;
+    padding: 5px;
+    margin-left: 10px;
+}
+
+
 .cart_container {
     /* height: 100%;  늘어남*/
     width: 1400px;
-    margin-right: auto;
-    margin-left: auto;
+    /* margin-right: auto;
+    margin-left: auto; */
 }
 /* 타이틀 */
 
 #cart_title {
     display: flex;
-    height: 150px;
+    height: 180px;
     background-color: rgb(213, 215, 218);
     color: black;
     font-size: 30px;
     text-align: left;
+    padding-left: 16%;
     align-items: center;
+    font-family: "TheJamsil5Regular";
 }
 
 /* 카트 */
@@ -200,25 +277,32 @@ body {
     color: white;
 }
 
+.font3 {
+    font-family: "TheJamsil5Regular";
+}
 
-/* grid-template-areas 사용법 .container {
-    display: grid;
-    grid-template-rows: repeat(3, 100px);
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-areas:
-        "header header header"
-        "main main aside"
-        "footer footer footer";
+.title {
+    margin-top: 30px;
+    font-family: "TheJamsil5Regular";
+    text-align: left;
+    padding-left: 13%;
 }
-header {
-    grid-area: header;
+
+
+.cartimg {
+    height: 80px;
+    width: 100px;
+    margin-left: -200px;
+
 }
-main {
-    grid-area: main;
+
+.carttable {
+    width: 80%;
+    padding-left: 15%;
+    padding-top: 4%;
+ 
 }
-aside {
-    grid-area: aside;
+
+.input {
+    width: 30px;
 }
-footer {
-    grid-area: footer;
-} */

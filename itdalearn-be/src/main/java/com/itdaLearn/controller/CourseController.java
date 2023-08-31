@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.persistence.EntityNotFoundException;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,17 +36,23 @@ public class CourseController {
 		
 		return courseList;		
 	}
-	 @ResponseBody
-	 @GetMapping(value = "/course/{courseNo}")
-	    public Map<String, Object> itemDtl(Model model, @PathVariable Long courseNo) {
-	    	
-		    CourseFormDto courseFormDto = courseService.getCourseDtl(courseNo);
-	    	
-	    	Map<String, Object> coursedetailMap = new HashMap<>();
-	    	
-	    	coursedetailMap.put("course", courseFormDto);
-	    	   	
-	    	return coursedetailMap;
-	    }//다음으로 상품 상세 페이지를 만들겠습니다. 
+	
+	@GetMapping(value = "/course/{id}")
+	@ResponseBody
+	public Map<String, Object> courseDetail(@PathVariable("id") Long courseNo) {
+
+		Map<String, Object> courseInfo = new HashMap<>();
+
+		try {
+			CourseFormDto courseFormDto = courseService.getCourseDtl(courseNo);
+			courseInfo.put("courseFormDto", courseFormDto);
+
+		} catch (EntityNotFoundException e) {
+			courseInfo.put("errorMessage", e);
+		}
+
+		return courseInfo;
+	}
+
 
 }

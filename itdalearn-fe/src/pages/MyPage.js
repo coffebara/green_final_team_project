@@ -1,14 +1,13 @@
 import Nav from "../common/Nav";
 import Footer from "../common/Footer";
-import Order from "../components/Order/Order";
+import MyPageView from "../components/Order/MyPageView";
 
-export default function OrderPage() {
-
-    
+export default function MyPage() {
+  
     return (
         <>
             <Nav />
-            <Order />
+            <MyPageView />
             <Footer />
         </>
     );

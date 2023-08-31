@@ -16,20 +16,32 @@ import lombok.ToString;
 @ToString
 public class CourseFormDto {
 	
+	private Long courseNo;
+
 	@NotNull(message= "강의명은 필수 입력값입니다.")
 	private String courseTitle;
 	
 	@NotNull(message= "강사명은 필수 입력값입니다.")
 	private String courseTeacher;
 	
-	@NotNull(message= "강의 설명은 필수 입력값입니다.")
-	private String courseDec;
-	
 	@NotNull(message= "가격은 필수 입력값입니다.")
 	private Integer coursePrice;
 	
+	@NotNull(message= "강의 설명은 필수 입력값입니다.")
+	private String courseDec1;
+	
+	@NotNull(message= "강의 설명은 필수 입력값입니다.")
+	private String courseDec2;
+	
+	@NotNull(message= "강의 설명은 필수 입력값입니다.")
+	private String courseDec3;
+	
 	private CourseLevel courseLevel;
 	private CourseCategory courseCategory;
+	
+	private CourseImgDto courseImgDto;
+	
+	private Long courseImgNo;
 	
 	private static ModelMapper modelMapper = new ModelMapper();
 	
