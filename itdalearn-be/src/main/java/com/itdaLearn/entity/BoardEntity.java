@@ -1,12 +1,10 @@
-package com.itdaLearn.entity;
+zpackage com.itdaLearn.entity;
 
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.DynamicInsert;
-import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -15,10 +13,9 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@Entity
 @Table(name = "TB_BOARD")
 
-@DynamicInsert
-@DynamicUpdate
 public class BoardEntity {
     @Id
     @SequenceGenerator(name = "SEQ_TB_BOARD", sequenceName = "SEQ_TB_BOARD", allocationSize = 1)

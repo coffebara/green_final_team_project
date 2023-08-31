@@ -5,6 +5,10 @@ import axios from 'axios';
 import NavSetting from "../common/Nav";
 import Footer from "../common/Footer";
 import "../styles/BoardFreeList.css"
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import InputGroup from 'react-bootstrap/InputGroup';
+
 
 export default function BoardFree({idx, title, contents, createdBy, createdAt}) {
     const navigate = useNavigate();
@@ -36,21 +40,35 @@ export default function BoardFree({idx, title, contents, createdBy, createdAt}) 
     return (
         <div>
             <NavSetting/>
-            <div className="container board_detail w-50 ">
-                <div className="board_detail_main2">
-                    <h2>{title}</h2>
+            <div>
+            <div className="container board_free_detail w-50 ">
+                <div className="board_free_table">
+                <div className="row row-cols-auto">
+                    <h2 className="board_free_title" >{title}</h2>
                 </div>
-                    <span className="fw-bold">{createdBy}</span>
-                    <p>{formatDate(createdAt)}</p>
-                    <div className="board_detail_main">
-                        <p>{contents}</p>
-
-                </div></div>
-                <div>
-                    <button onClick={moveToUpdate}>수정</button>
-                    <button onClick={deleteBoard}>삭제</button>
-                    <button onClick={moveToList}>목록</button>
-
+                <div className="fw-bold row row-cols-auto">
+                    <h5 className="board_free_createdby">{createdBy}</h5>
+                </div>
+                <div className="row row-cols-auto">
+                    <p className="board_free_createdat">{formatDate(createdAt)}</p>
+                </div>
+                </div>
+                <div className="row row-cols-auto board_free_contents ">
+                     <p className="content-box text-left board_free_contents_white">{contents}</p>
+                </div>
+            </div>
+                <InputGroup className="container w-50">
+                    <Form.Control
+                        placeholder="댓글을 적어주세요"/>
+                    <Button variant="outline-secondary" id="button-addon2">
+                        등록
+                    </Button>
+                </InputGroup>
+                <div className=" board_free_contents_button ">
+                    <button className="btn btn-success board_free_contents_buttons" onClick={moveToUpdate}>수정</button>
+                    <button className="btn btn-danger board_free_contents_buttons" onClick={deleteBoard}>삭제</button>
+                    <button className="btn btn-warning board_free_contents_buttons" onClick={moveToList}>목록</button>
+                </div>
             </div>
             <Footer/>
         </div>

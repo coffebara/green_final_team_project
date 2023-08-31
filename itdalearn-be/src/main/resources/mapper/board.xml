@@ -64,23 +64,19 @@
     <insert id="insertBoard" parameterType="com.itdaLearn.entity.BoardEntity" keyProperty="idx" keyColumn="idx">
         INSERT INTO TB_BOARD
         (
+        IDX,
         TITLE
         , CONTENTS
         , CREATED_BY
         , CREATED_AT
         ) VALUES (
+        #{idx, jdbcType=NUMERIC},
         #{title}
         , #{contents}
         , #{createdBy}
         , SYSDATE
         )
     </insert>
-    <select id="getGeneratedIdx" resultType="Long">
-        SELECT SEQ_TB_BOARD.NEXTVAL FROM DUAL
-    </select>
-
-
-
 
     <update id="updateBoard" parameterType="com.itdaLearn.entity.BoardEntity">
         UPDATE TB_BOARD

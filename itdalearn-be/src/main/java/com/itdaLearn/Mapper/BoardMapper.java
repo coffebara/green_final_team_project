@@ -1,4 +1,4 @@
-package com.itdaLearn.Mapper;
+zpackage com.itdaLearn.Mapper;
 
 import com.itdaLearn.entity.BoardEntity;
 import org.apache.ibatis.annotations.Mapper;
@@ -21,7 +21,5 @@ public interface BoardMapper {
 
     int deleteBoard(Long idx);
 
-    // BoardMapper 인터페이스에 추가
-    Long getGeneratedIdx();
 
 }
