@@ -60,7 +60,7 @@ export default function SignUp() {
     memberPwd: "",
     memberPwdCheck: "",
     memberName: "",
-    email: "",
+    memberEmail: "",
     memberTel: "",
   });
 
@@ -78,7 +78,7 @@ export default function SignUp() {
           memberNo: memberSignUp.memberNo,
           memberPwd: memberSignUp.memberPwd,
           memberName: memberSignUp.memberName,
-          email: memberSignUp.email,
+          memberEmail: memberSignUp.memberEmail,
           memberTel: memberSignUp.memberTel,
         },
       ).catch(error => console.log(error))
@@ -158,8 +158,8 @@ export default function SignUp() {
                     fullWidth
                     label="이메일"
                     onChange={handleSignUp}
-                    value={memberSignUp.email}
-                    name="email"
+                    value={memberSignUp.memberEmail}
+                    name="memberEmail"
                   />
                 </Grid>
                 <Grid item xs={12}>

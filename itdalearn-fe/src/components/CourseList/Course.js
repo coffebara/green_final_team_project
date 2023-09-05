@@ -20,7 +20,7 @@ export default function Course() {
     const courseLevels = ["HIGH", "MID", "LOW"];
     const courseCategories = ["BE", "FE"];
     const [courseDetails, setCourseDetails] = useState({
-      // courseNo: "",
+      courseNo: "",
       courseTitle: "",
       courseTeacher: "",
       coursePrice: "",
@@ -62,13 +62,11 @@ export default function Course() {
       getCourseDetails();
   }, []);
 
-    const addCartItem = () => {
-        
+    const addCartItem = () => {  
         console.log("상품아이디" + id);
-        axios.post("http://localhost:9090/cart", {
-        
-         courseNo : id,
-          
+        axios.post("http://localhost:9090/cart",
+        {  
+         courseNo : id
       })
       .then((response) => {
         console.log("카트담기 성공");

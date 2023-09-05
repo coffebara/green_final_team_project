@@ -9,6 +9,8 @@ import javax.validation.Valid;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -26,7 +28,7 @@ import com.itdaLearn.dto.CartCourseDto;
 import com.itdaLearn.dto.CartDetailDto;
 import com.itdaLearn.dto.CartOrderDto;
 import com.itdaLearn.service.CartService;
-
+import com.itdaLearn.service.PrincipalDetails;
 
 import lombok.RequiredArgsConstructor;
 
@@ -35,10 +37,11 @@ import lombok.RequiredArgsConstructor;
 public class CartController {
 	
 	private final CartService cartService;
+
 	   
 	   @PostMapping(value= "/cart")
-	   public @ResponseBody ResponseEntity order(@RequestBody @Valid CartCourseDto cartCourseDto, BindingResult bindingResult, Principal principal) {
-	      
+	   public @ResponseBody ResponseEntity order(@RequestBody @Valid CartCourseDto cartCourseDto, BindingResult bindingResult,Principal principal) {
+		
 	      if(bindingResult.hasErrors()) {
 	
 	         StringBuilder sb = new StringBuilder();
@@ -51,12 +54,13 @@ public class CartController {
 	         return new ResponseEntity<String>(sb.toString(), HttpStatus.BAD_REQUEST);
 	      }
 	      
-	      String email = "test@tester.com";
-	
+	      String memberNo = principal.getName();
+	      System.out.println(memberNo);
+	     
 	      Long cartCourseNo;
 	      
 	      try {
-	         cartCourseNo = cartService.addCart(cartCourseDto, email);
+	         cartCourseNo = cartService.addCart(cartCourseDto, memberNo);
 	
 	      } catch(Exception e) {
 	         return new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
@@ -66,25 +70,24 @@ public class CartController {
 	   
 	   @ResponseBody
 	   @GetMapping(value="/cart")
-	   public Map<String, Object> orderHist(Principal principal, Model model) {
+	   public Map<String, Object> orderHist(PrincipalDetails principalDetails, Model model) {
 		  
-		   String email = "test@tester.com";
+		   String memberNo = principalDetails.getMember().getMemberNo();
 		   
-	      List<CartDetailDto> cartDetailList = cartService.getCartList(email);
+	      List<CartDetailDto> cartDetailList = cartService.getCartList(memberNo);
 	
 	      Map<String, Object> cartlist = new HashMap<>();
 	      
 	      cartlist.put("cartCources", cartDetailList);
-	      
-//	      System.out.println(cartlist);
+	     
 	      return cartlist;     
 	   }
 	   
 	   @PostMapping(value = "/cart/orders")
-	   public @ResponseBody ResponseEntity orderCartItem(@RequestBody CartOrderDto cartOrderDto, Principal principal) {
-		   System.out.println(cartOrderDto.toString());
+	   public @ResponseBody ResponseEntity orderCartItem(@RequestBody CartOrderDto cartOrderDto, PrincipalDetails principalDetails) {
+		  
 		   List<CartOrderDto> cartOrderDtoList = cartOrderDto.getCartOrderDtoList();
-//		   System.out.println(cartOrderDtoList.toString());
+//		 
 		   if(cartOrderDtoList == null || cartOrderDtoList.size() == 0 ) {
 			   //주문할 상품을 선택하지 않았는지 체크합니다. 
 			   return new ResponseEntity<String>("주문할 상품을 선택해주세요", HttpStatus.FORBIDDEN);	   
@@ -92,26 +95,26 @@ public class CartController {
 		   
 		   for( CartOrderDto cartOrder : cartOrderDtoList) {
 			
-			   String email = "test@tester.com";
-			   if(!cartService.validateCartCourse(cartOrder.getCartCourseNo(), email)) {
+			   String memberNo = principalDetails.getMember().getMemberNo();
+			   if(!cartService.validateCartCourse(cartOrder.getCartCourseNo(), memberNo)) {
 				    return new ResponseEntity<String>("주문 권한이 없습니다.", HttpStatus.FORBIDDEN);
 			   }
 		   }
-		   String email = "test@tester.com";
-		   Long orderNo = cartService.orderCartCourse(cartOrderDtoList, email);
+		   String memberNo = principalDetails.getMember().getMemberNo();
+		   Long orderNo = cartService.orderCartCourse(cartOrderDtoList, memberNo);
 				   				 
 		   return new ResponseEntity<Long>(orderNo, HttpStatus.OK);
 	   }
 	   
 	   
-	   
+	  
 	   @DeleteMapping(value = "/cartCourse/{cartCourseNo}")
 	   //http메서드에서 delete의 경우 요청된 자원을 삭제할 때 사용
-	   public @ResponseBody ResponseEntity deleteCartItem(@PathVariable("cartCourseNo") Long cartCourseNo, Principal principal) {
+	   public @ResponseBody ResponseEntity deleteCartItem(@PathVariable("cartCourseNo") Long cartCourseNo, PrincipalDetails principalDetails) {
 		   
-		   String mailString = "test@tester.com";
+		   String memberNo = principalDetails.getMember().getMemberNo();
 		   
-		   if(!cartService.validateCartCourse(cartCourseNo, mailString)){
+		   if(!cartService.validateCartCourse(cartCourseNo, memberNo)){
 //				   principal.getName())) {
 			   // 수정 권한을 체크합니다. 
 			   return new ResponseEntity<String>("수정 권한이 없습니다.", HttpStatus.FORBIDDEN);

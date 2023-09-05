@@ -1,60 +1,57 @@
 package com.itdaLearn.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import lombok.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.List;
 
-@Data
-@Entity
-@Table(name="member")
-@Getter @Setter
+@Table(name = "member")
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Getter
 @ToString
+@Entity
 public class Member {
-	
-	@Id
-    @Column(name = "member_id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id; //디비 자동생성
 
-	@Column(name = "member_no", unique = true)
-	private String memberNo;
-	
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "member_id", updatable = false)
+    private Long id;
+
+    @Column(name = "member_no", nullable = false, unique = true)
+    private String memberNo;
+
+    private String memberPwd;
+
     private String memberName; //유저이름
 
     @Column(unique = true)
-    private String email; //이메일 로그인할 때 입력값
+    private String memberEmail; //이메일 로그인할 때 입력값
 
-    @Column(name = "activated")
-    private boolean activated;
-    
-    private String memberPwd;
-    
-    private String role; 
-    
+    private String  role;
+
     private String memberTel;
 
-//    @CreationTimestamp
-//    private Timestamp createDate;
-    
-//    public static Member createMember(MemberFormDto memberFormDto, String password){
-//    	
-//        Member member = new Member();
-//        member.setUsername(memberFormDto.getUsername());
-//        member.setEmail(memberFormDto.getEmail());
-//     
-//        //String password = passwordEncoder.encode(memberFormDto.getPassword());
-//       
-//        member.setPassword(password);
-//       
-//        return member;
-//    }
+    @Builder
+    public Member(String memberNo, String memberPwd, String memberName, String memberEmail, String role, String memberTel) {
+        this.memberNo = memberNo;
+        this.memberPwd = memberPwd;
+        this.memberName = memberName;
+        this.memberEmail = memberEmail;
+        this.role = role;
+        this.memberTel = memberTel;
+    }
+
+    public List<String> getRoleList() {
+        if (this.role.length() > 0) {
+            return Arrays.asList(this.role.split(","));
+        }
+        return new ArrayList<>();
+    }
 
 }

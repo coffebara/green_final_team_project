@@ -59,6 +59,10 @@ const defaultTheme = createTheme(
       }
 );
 
+
+
+
+
 export default function Index() {
 
     const baseUrl = "http://localhost:9090";
@@ -73,17 +77,17 @@ export default function Index() {
       searchBy: "",
       searchQuery: "",
   });
+
+
+  function findObjectsBykey(objArray, key, value) {
+    return objArray.filter((obj) => obj[key] === value);
+}
+
+const aliceObjects = findObjectsBykey(courses, "all"); // 카테고리 초기 값
+
+
+const [handButtonClick, sethandButtonClick] = useState(aliceObjects);
      let navigate = useNavigate();
-    
-    // useEffect(() => {
-    //     const getCourses = async () => {
-    //         const response = await axios.get(baseUrl + "/courses");
-    //         console.log(response);
-    //         setCourses(response.data.courseList);
-    //         console.log(courses);
-    //     };
-    //     getCourses();
-    // }, []);
 
 
     const getCourseList = async () => {
@@ -289,6 +293,44 @@ const handleSubmit = (e) => {
                 </div>
             </form>
   </Box>
+
+  <Button
+                            id="lt-btn"
+                            variant="outlined"
+                            onClick={() => {
+                                sethandButtonClick(findObjectsBykey(courses, "all"));
+                            }}
+                        >
+                            전체
+                        </Button>
+                        <Button
+                            id="lt-btn"
+                            variant="outlined"
+                            onClick={() => {
+                                sethandButtonClick(findObjectsBykey(courses, "courseLevel", "LOW"));
+                            }}
+                        >
+                            초급
+                        </Button>
+                        <Button
+                            id="lt-btn"
+                            variant="outlined"
+                            onClick={() => {
+                                sethandButtonClick(findObjectsBykey(courses, "courseLevel", "MID"));
+                            }}
+                        >
+                            중급
+                        </Button>
+                        <Button
+                            id="lt-btn"
+                            variant="outlined"
+                            onClick={() => {
+                                sethandButtonClick(findObjectsBykey(courses, "courseLevel", "HIGH"));
+                            }}
+                        >
+                            고급
+                        </Button>
+
       </div>
         <Container sx={{ py: 8 }} maxWidth="md">
           {/* End hero unit */}
@@ -316,6 +358,7 @@ const handleSubmit = (e) => {
                         <div className='mainbody'>
                         <div>{item.courseTeacher}</div>
                         <div>₩{item.coursePrice}원</div>
+                        <div>{item.courseLevel}</div>
                         <div>{item.courseDec}</div>
                         </div>
                     </Typography>

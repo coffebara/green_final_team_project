@@ -1,21 +1,66 @@
 package com.itdaLearn.config;
 
+import com.itdaLearn.jwt.JwtAuthenticationFilter;
+import com.itdaLearn.jwt.JwtAuthorizationFilter;
+import com.itdaLearn.repository.MemberRepository;
+import com.itdaLearn.service.PrincipalDetailsService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import org.springframework.http.HttpMethod;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
+import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.context.SecurityContextPersistenceFilter;
+import org.springframework.web.filter.CorsFilter;
 
-import lombok.RequiredArgsConstructor;
 
-@Configuration // IoC 빈(bean)을 등록
-@EnableWebSecurity // 필터 체인 관리 시작 어노테이션
 @RequiredArgsConstructor
-//@EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true) // 특정 주소 접근시 권한 및 인증을 위한 어노테이션 활성화
-public class SecurityConfig {
+@EnableWebSecurity
+@Configuration
+@EnableGlobalMethodSecurity(securedEnabled = true)
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+    private final CorsFilter corsFilter;
+    private final MemberRepository memberRepository;
+
+    private final PrincipalDetailsService memberService;
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http.addFilterBefore(new JwtAuthenticationFilter(authenticationManager()), UsernamePasswordAuthenticationFilter.class);
+        http.csrf().disable()                           // csrf 방지
+                .headers().frameOptions().disable();
+        http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS) // 세션사용 x
+                .and()
+                .addFilter(corsFilter) // 모든 요청은 모든 필터를 타고감 (cors 정책에서 벗어날 수 있따)
+                .formLogin().disable()
+                .httpBasic().disable()
+                .addFilter(new JwtAuthenticationFilter(authenticationManager()))
+                .addFilter(new JwtAuthorizationFilter(authenticationManager(), memberRepository))
+                .authorizeRequests()
+
+//                .antMatchers("/cart/**").access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
+//                .antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")
+////                .mvcMatchers(HttpMethod.OPTIONS, "/**","/members/**", "/item/**", "/images/**", "/admin/**", "/cart/**", "/order/**", "/orders/**", "/cart/orders/**", "/admin/course", "/admin/**", "/cartCourse/**", "/order/**", "/admin/**", "/board/**", "/board", "/write " ,"/write/**", "/main/**").permitAll()
+//                .anyRequest().permitAll();
+                .antMatchers("/course/**")
+                .access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
+                .antMatchers("/api/v1/admin/**")
+                .access("hasRole('ROLE_ADMIN')")
+                .anyRequest().permitAll();
+
+        http.exceptionHandling().accessDeniedPage("/denied");
+
+    }
 
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
@@ -23,47 +68,19 @@ public class SecurityConfig {
         return (web) -> web.ignoring().antMatchers("/css/**", "/js/**", "/img/**", "/font/**", "/images/","/css/**", "/js/**", "/img/**", "/cart/**", "/order/**", "/orders/**", "/cart/orders/**", "/admin/courses", "/admin/**", "/cartCourse/**", "/order/**", "/board/**", "/board", "/write", "/write/**", "/admin/**", "/main/**");
     }
 
-    // 해당 메서드의 리턴되는 오브젝트를 IoC로 등록해준다
     @Bean
-    public BCryptPasswordEncoder encodePwd() {
+    public AuthenticationManager authenticationManager(HttpSecurity http, BCryptPasswordEncoder bCryptPasswordEncoder, UserDetailsService userDetailsService)
+            throws Exception {
+        return http.getSharedObject(AuthenticationManagerBuilder.class)
+                .userDetailsService(memberService)
+                .passwordEncoder(bCryptPasswordEncoder)
+                .and()
+                .build();
+    }
+
+    @Bean
+    public BCryptPasswordEncoder bCryptPasswordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
-    @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.cors().disable()                      // cors 방지
-                .csrf().disable()                           // csrf 방지
-                .headers().frameOptions().disable();
-
-        http.authorizeRequests()
-                .antMatchers("/user/**").authenticated()
-                .antMatchers("/manager/**").access("hasRole('ROLE_ADMIN') or hasRole('ROLE_MANAGER')")
-                .antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")
-                .mvcMatchers(HttpMethod.OPTIONS, "/**","/members/**", "/item/**", "/images/**", "/admin/**", "/cart/**", "/order/**", "/orders/**", "/cart/orders/**", "/admin/course", "/admin/**", "/cartCourse/**", "/order/**", "/admin/**", "/board/**", "/board", "/write " ,"/write/**", "/main/**").permitAll()
-                .anyRequest().permitAll();
-
-
-        http.formLogin()
-
-        .loginPage("/members/login") // 해당 메소드가 있다면 해당 파일이 출력
-        .loginProcessingUrl("/login") // login form에서 action을 동일하게 적어줘야 한다.
-        .defaultSuccessUrl("http://localhost:3000/") // 로그인이 성공했을 때 돌아갈 주소를 적어준다.
-//        .failureUrl("/login?error=true") // 로그인이 실패했을 때 돌아가는 주소
-        .usernameParameter("memberNo")
-        .passwordParameter("memberPwd")
-        .and()
-        .logout()
-        .logoutUrl("/logout")
-        .logoutSuccessUrl("/course") // 로그아웃을 성공했을 때 돌아가는 주소
-        .invalidateHttpSession(true) // 로그아웃 시 session을 전부 날린다.
-        .deleteCookies("JSESSIONID", "remember-me"); // 인자로 적은 값의 cookies를 죽인다.
-        // status code 핸들링
-        http.exceptionHandling().accessDeniedPage("/denied");
-
-        return http.build();
-    }
 }
-
-
-
-

@@ -36,16 +36,15 @@ public class CartService {
 	private final CartCourseRespository cartCourseRespository;
 	private final OrderService orderService;
 		
-	public Long addCart(CartCourseDto cartCourseDto, String email) {
-		      
+	public Long addCart(CartCourseDto cartCourseDto, String memberNo) {
+				//String email
 		      Course course = courseRepository.findById(cartCourseDto.getCourseNo())
 		    		  .orElseThrow(EntityNotFoundException::new);
 		    	
-		   
-		      Member member = memberRepository.findByEmail(email);
+		     //.findByEmail(email);
+		      Member member = memberRepository.findByMemberNo(memberNo);
+		    		
 		    
-		      System.out.println(member);
-		  
 		      Cart cart = cartRepository.findByMemberId(member.getId());
 
 		      if(cart == null) {
@@ -64,14 +63,15 @@ public class CartService {
 		
 		   }
 	   
-	   @Transactional(readOnly = true)
-	   public List<CartDetailDto> getCartList(String email){
+	   @Transactional(readOnly = true) //String email
+	   public List<CartDetailDto> getCartList(String memberNo){
 	      
 	      List<CartDetailDto> cartDetailDtoList = new ArrayList<>();
 	      
 	     
+	      //.findByEmail(email);
 	      
-	      Member member = memberRepository.findByEmail(email);
+	      Member member = memberRepository.findByMemberNo(memberNo);
 	      
 	      Cart cart = cartRepository.findByMemberId(member.getId());
 	
@@ -81,23 +81,24 @@ public class CartService {
 	      }
 	    	
 	      cartDetailDtoList = cartCourseRespository.findCartDetailDtoList(cart.getCartNo());
-	      System.out.println(cartDetailDtoList);
+	   
 	      return cartDetailDtoList;
 	   }
 	   
-	   @Transactional(readOnly = true)
 	
-	   public boolean validateCartCourse(Long cartCourseNo, String email) {
+	   @Transactional(readOnly = true) //String email
+	   public boolean validateCartCourse(Long cartCourseNo, String memberNo) {
 		   
-		  
-		   Member curMember = memberRepository.findByEmail(email);
+		  //.findByEmail(email);
+		   Member curMember = memberRepository.findByMemberNo(memberNo);
+				   
 		   
 		   CartCourse cartCourse = cartCourseRespository.findById(cartCourseNo)
 				   .orElseThrow(EntityNotFoundException::new);
 				
 		   Member savedMember = cartCourse.getCart().getMember();
 				  
-		   if(!StringUtils.pathEquals(curMember.getEmail(), savedMember.getEmail())){
+		   if(!StringUtils.pathEquals(curMember.getMemberNo(), savedMember.getMemberNo())){
 			   return false;
 		   } 
  
@@ -110,8 +111,8 @@ public class CartService {
 		    			.orElseThrow(EntityNotFoundException::new);
 		    cartCourseRespository.delete(cartCourse);    	
 	    }
-	   
-	   public Long orderCartCourse (List<CartOrderDto> cartOrderDtoList, String email) {
+	   //String email
+	   public Long orderCartCourse (List<CartOrderDto> cartOrderDtoList, String memberNo) {
 	    	
 		   List<OrderDto> orderDtoList = new ArrayList<>();
 	    	
@@ -125,10 +126,11 @@ public class CartService {
 	    		orderDto.setCourseNo(cartCourse.getCourse().getCourseNo());
 	    		orderDtoList.add(orderDto);
 	    	}
-	    	
-	    	Long orderNo = orderService.orders(orderDtoList, email);
+	    	//email
+	    	Long orderNo = orderService.orders(orderDtoList, memberNo);
 	    	
 	    	  for(CartOrderDto cartOrderDto : cartOrderDtoList) {
+	    		  
 	    		  CartCourse cartCourse = cartCourseRespository
 	    				  .findById(cartOrderDto.getCartCourseNo())
 	    				  .orElseThrow(EntityNotFoundException::new);

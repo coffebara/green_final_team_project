@@ -4,14 +4,10 @@ spring:
       maxFileSize: 20MB
       maxRequestSize: 100MB
       
-  jpa:
-    hibernate:
-      ddl-auto: create
-      
 logging.level:
   org.hibernate.SQL: debug
 
       
-itemImgLocation: C:/shop/item
+courseImgLocation: C:/shop/course
 
 uploadPath: file:///c:/shop/
