@@ -1,12 +1,13 @@
 package com.itdaLearn.controller;
 
-import com.itdaLearn.dto.AddMemberRequest;
-import com.itdaLearn.repository.MemberRepository;
-import com.itdaLearn.service.MemberService;
-import lombok.RequiredArgsConstructor;
+import java.util.logging.Logger;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
-import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
@@ -16,10 +17,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.security.Principal;
-import java.util.logging.Logger;
+import com.itdaLearn.dto.AddMemberRequest;
+import com.itdaLearn.repository.MemberRepository;
+import com.itdaLearn.service.MemberService;
+import com.itdaLearn.service.PrincipalDetails;
+
+import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @Controller
@@ -38,6 +41,16 @@ public class MemberApiController {
         logger.info(String.valueOf(token.getPrincipal()));
         return "main.html";
     }
+    
+    // 테슽트용 컨트롤러
+    @PostMapping("/user")
+    @ResponseBody
+    public String Member1(Authentication authentication) {
+    	PrincipalDetails principal = (PrincipalDetails) authentication.getPrincipal();
+    	System.out.println("authentication: " + principal.getUsername());
+    	return "user";
+    }
+    
 
 //    @PostMapping("/members")
 //    public String members(AddMemberRequest request) {

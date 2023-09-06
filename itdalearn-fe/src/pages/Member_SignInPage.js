@@ -15,6 +15,9 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import jwt_decode from 'jwt-decode';
+import {setRoles} from '../store';
+import { useDispatch, useSelector  } from "react-redux";
 
 function Copyright(props) {
   return (
@@ -39,6 +42,9 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function SignIn() {
+  const dispatch = useDispatch();
+  let roles = useSelector(state => state.userRoles)
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -80,10 +86,17 @@ const onClickSignIn = () => {
       memberPwd: memberSignIn.memberPwd,
     })
     .then((response) => {
+      const jwtToken = response.headers['authorization'];
+      console.log('jwtToken: ' + jwtToken) // 받아온 토큰
+      localStorage.setItem("token", jwtToken)
+      let decode =  jwt_decode(jwtToken) // 토큰을 디코드함함
+      console.log(decode)
+      // dispatch(setRoles(decode.role[0]))
       // 로그인 요청이 성공하면, 여기서 페이지 이동을 합니다.
       navigate("/");
     })
     .catch((error) => console.log(error));
+
 };
   return (
     <ThemeProvider theme={defaultTheme}>

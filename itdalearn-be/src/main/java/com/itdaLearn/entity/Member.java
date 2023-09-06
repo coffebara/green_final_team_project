@@ -48,6 +48,7 @@ public class Member implements UserDetails{
     }
 
     public List<String> getRoleList() {
+    	System.out.println(getRole());
         if (this.role.length() > 0) {
             return Arrays.asList(this.role.split(","));
         }

@@ -33,6 +33,7 @@ import Stack from '@mui/material/Stack';
 import FolderIcon from '@mui/icons-material/Folder';
 import PageviewIcon from '@mui/icons-material/Pageview';
 import AssignmentIcon from '@mui/icons-material/Assignment';
+import { useSelector } from 'react-redux';
 SwiperCore.use([Navigation, Pagination, Autoplay])	
 
 
@@ -77,7 +78,7 @@ export default function Index() {
       searchBy: "",
       searchQuery: "",
   });
-
+  // console.log(useSelector(state => state.roles))
 
   function findObjectsBykey(objArray, key, value) {
     return objArray.filter((obj) => obj[key] === value);

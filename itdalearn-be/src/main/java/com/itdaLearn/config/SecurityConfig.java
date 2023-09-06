@@ -23,16 +23,16 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import org.springframework.security.web.context.SecurityContextPersistenceFilter;
 import org.springframework.web.filter.CorsFilter;
 
-
 @RequiredArgsConstructor
 @EnableWebSecurity
 @Configuration
 @EnableGlobalMethodSecurity(securedEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    private final CorsFilter corsFilter;
-    private final MemberRepository memberRepository;
+	private final CorsConfig corsConfig;
+	private final MemberRepository memberRepository;
 
+<<<<<<< HEAD
     private final PrincipalDetailsService memberService;
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -58,31 +58,66 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/api/v1/admin/**")
                 .access("hasRole('ROLE_ADMIN')")
                 .anyRequest().permitAll();
+=======
+	private final PrincipalDetailsService memberService;
 
-        http.exceptionHandling().accessDeniedPage("/denied");
+	@Override
+	protected void configure(HttpSecurity http) throws Exception {
+        http.addFilterBefore(new JwtAuthenticationFilter(authenticationManager()), UsernamePasswordAuthenticationFilter.class);
+		http.addFilter(corsConfig.corsFilter()).csrf().disable() // csrf 방지
+				.headers().frameOptions().disable();
+		http
+				.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS) // 세션사용 x
+				.and()
+//                .addFilter(corsFilter) // 모든 요청은 모든 필터를 타고감 (cors 정책에서 벗어날 수 있따)
+				.formLogin().disable().httpBasic().disable()
+				.addFilter(new JwtAuthenticationFilter(authenticationManager()))
+				.addFilter(new JwtAuthorizationFilter(authenticationManager(), memberRepository)).authorizeRequests()
+				.antMatchers("/cart", "/user")
+					.access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
+				.antMatchers("/admin/**")
+					.access("hasRole('ROLE_ADMIN')")
+				.anyRequest().permitAll();
 
-    }
+//                .antMatchers("/cart/**").access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
+//                .antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")
+//                .mvcMatchers(HttpMethod.OPTIONS, "/**","/members/**", "/item/**", "/images/**", "/admin/**", "/cart/**", "/order/**", "/orders/**", "/cart/orders/**", "/admin/course", "/admin/**", "/cartCourse/**", "/order/**", "/admin/**", "/board/**", "/board", "/write " ,"/write/**", "/main/**").permitAll()
+//                .anyRequest().permitAll();
+//                .antMatchers("/course/**")
+//                .access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
+//				.antMatchers("/api/v1/user/**").access("hasRole('ROLE_USER')").antMatchers("/api/v1/admin/**")
+//				.access("hasRole('ROLE_ADMIN')").anyRequest().permitAll();
+//
+		http.exceptionHandling().accessDeniedPage("/denied");
+>>>>>>> cbc8797bbbaf82e0b7ebd6c78b9b0fee6320a5e6
 
+	}
+
+	@Bean
+	public WebSecurityCustomizer webSecurityCustomizer() {
+		// 정적 리소스들이 보안필터를 거치지 않게끔
+		return (web) -> web.ignoring().antMatchers("/css/**", "/js/**", "/img/**", "/font/**", "/images/", "/css/**");
+	}
+
+<<<<<<< HEAD
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
         // 정적 리소스들이 보안필터를 거치지 않게끔
         return (web) -> web.ignoring().antMatchers("/css/**", "/js/**", "/img/**", 
         		"/font/**", "/images/");
     }
+=======
+	@Bean
+	public AuthenticationManager authenticationManager(HttpSecurity http, BCryptPasswordEncoder bCryptPasswordEncoder,
+			UserDetailsService userDetailsService) throws Exception {
+		return http.getSharedObject(AuthenticationManagerBuilder.class).userDetailsService(memberService)
+				.passwordEncoder(bCryptPasswordEncoder).and().build();
+	}
+>>>>>>> cbc8797bbbaf82e0b7ebd6c78b9b0fee6320a5e6
 
-    @Bean
-    public AuthenticationManager authenticationManager(HttpSecurity http, BCryptPasswordEncoder bCryptPasswordEncoder, UserDetailsService userDetailsService)
-            throws Exception {
-        return http.getSharedObject(AuthenticationManagerBuilder.class)
-                .userDetailsService(memberService)
-                .passwordEncoder(bCryptPasswordEncoder)
-                .and()
-                .build();
-    }
-
-    @Bean
-    public BCryptPasswordEncoder bCryptPasswordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
+	@Bean
+	public BCryptPasswordEncoder bCryptPasswordEncoder() {
+		return new BCryptPasswordEncoder();
+	}
 
 }
