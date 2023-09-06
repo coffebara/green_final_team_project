@@ -33,11 +33,11 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
             throws IOException, ServletException {
         System.out.println("인증이나 권한이 필요한 주소 요청이 됨");
 
-        String jwtHeader = request.getHeader("Authorization");
+        String jwtHeader = request.getHeader(JwtProperties.HEADER_STRING);
         System.out.println("jwtHeader = " + jwtHeader);
 
         // 헤더가 있는지 확인
-        if (jwtHeader == null || !jwtHeader.startsWith("Bearer")) { // 헤더가 있는데 Bearer이 아니면
+        if (jwtHeader == null || !jwtHeader.startsWith(JwtProperties.TOKEN_PREFIX)) { // 헤더가 있는데 Bearer이 아니면
             chain.doFilter(request, response);
             return;
         }

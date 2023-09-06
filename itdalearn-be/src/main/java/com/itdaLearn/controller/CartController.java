@@ -1,6 +1,5 @@
 package com.itdaLearn.controller;
 
-import java.security.Principal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -10,18 +9,15 @@ import javax.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.itdaLearn.dto.CartCourseDto;
@@ -40,8 +36,11 @@ public class CartController {
 
 	   
 	   @PostMapping(value= "/cart")
-	   public @ResponseBody ResponseEntity order(@RequestBody @Valid CartCourseDto cartCourseDto, BindingResult bindingResult,Principal principal) {
+	   public @ResponseBody ResponseEntity order(@RequestBody @Valid CartCourseDto cartCourseDto, BindingResult bindingResult, Authentication authentication) {
 		
+
+		   PrincipalDetails principalDetails = (PrincipalDetails) authentication.getPrincipal();
+		   System.out.println("principalDetails: " + principalDetails.toString());
 	      if(bindingResult.hasErrors()) {
 	
 	         StringBuilder sb = new StringBuilder();
@@ -54,7 +53,7 @@ public class CartController {
 	         return new ResponseEntity<String>(sb.toString(), HttpStatus.BAD_REQUEST);
 	      }
 	      
-	      String memberNo = principal.getName();
+	      String memberNo = principalDetails.getMember().getMemberNo(); //null
 	      System.out.println(memberNo);
 	     
 	      Long cartCourseNo;
@@ -70,8 +69,9 @@ public class CartController {
 	   
 	   @ResponseBody
 	   @GetMapping(value="/cart")
-	   public Map<String, Object> orderHist(PrincipalDetails principalDetails, Model model) {
+	   public Map<String, Object> orderHist(Authentication authentication, Model model) {
 		  
+		   PrincipalDetails principalDetails = (PrincipalDetails) authentication.getPrincipal();
 		   String memberNo = principalDetails.getMember().getMemberNo();
 		   
 	      List<CartDetailDto> cartDetailList = cartService.getCartList(memberNo);

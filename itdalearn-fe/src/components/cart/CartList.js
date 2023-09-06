@@ -51,7 +51,11 @@ export default function CartList() {
   // 전체 체크 클릭 시 발생하는 함수
 
     const getCourses = async () => {
-      const response = await axios.get(baseUrl + "/cart"); 
+      const response = await axios.get(baseUrl + "/cart",{
+        headers: {
+            Authorization: localStorage.getItem("token"),
+        }
+    }) 
       setCourses(response.data.cartCources); 
       console.log(courses);
     };
