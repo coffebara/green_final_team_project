@@ -1,6 +1,7 @@
 package com.itdaLearn.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -26,11 +27,6 @@ import org.springframework.web.multipart.MultipartFile;
 import com.itdaLearn.dto.CourseFormDto;
 import com.itdaLearn.dto.CourseSearchDto;
 import com.itdaLearn.entity.Course;
-
-import com.itdaLearn.entity.CourseImg;
-import com.itdaLearn.repository.CourseImgRepository;
-
-import com.itdaLearn.repository.CourseRepository;
 import com.itdaLearn.service.CourseService;
 
 import lombok.RequiredArgsConstructor;
@@ -40,24 +36,6 @@ import lombok.RequiredArgsConstructor;
 public class AdminContorller {
 
 	private final CourseService courseService;
-	private final CourseRepository courseRepository;
-
-
-	private final CourseImgRepository courseIgrepository;
-
-
-	// 코스 전체 조회
-//	@GetMapping("/admin/courses")
-//	@ResponseBody
-//	public Map<String, Object> courseList() {
-//
-//		Map<String, Object> courseList = new HashMap<String, Object>();
-//		List courses = courseRepository.findAll();
-//		courseList.put("courseList", courses);
-//
-//		return courseList;
-//
-//	}
 
 	// 코스 메인 페이지
 	@GetMapping(value = { "/admin/courses", "/admin/courses/{page}" })
@@ -75,8 +53,6 @@ public class AdminContorller {
 		// 조회한 상품 데이터 및 페이징 정보를 뷰에 전달합니다.
 		courseMng.put("courseSearchDto", courseSerachDto);
 		// 페이지 전환 시 기존 검색 조건을 유지한 채 이동할 수 있도록 뷰에 다시 전달
-//		courseMng.put("maxPage", 21);
-		// 상품 관리 메뉴 하단에 보여줄 페이지 번호의 최대 개수
 		return courseMng;
 	}
 	
@@ -86,9 +62,8 @@ public class AdminContorller {
 	@PostMapping(value = "/admin/course")
 	@ResponseBody
 	public ResponseEntity courseNew(@Valid CourseFormDto courseFormDto, BindingResult bindingResult,
-			@RequestParam("courseImgFile") MultipartFile courseImgFile) {
+			@RequestParam("courseImgFile") List<MultipartFile> courseImgFileList) {
 		
-		System.out.println(courseImgFile);
 
 		if (bindingResult.hasErrors()) {
 			System.out.println("검증 오류 발생");
@@ -96,18 +71,14 @@ public class AdminContorller {
 		}
 
 
-
-		if (courseImgFile.isEmpty() && courseFormDto.getCourseFormDtoNo() == null) {
-
-			System.out.println("이미지 오류 발생");
+		if (courseImgFileList.get(0).isEmpty() && courseFormDto.getCourseFormDtoNo() == null) {
+			System.out.println("첫 이미지 오류 발생");
 			return new ResponseEntity<String>("상품 이미지는 필수 입력값입니다.", HttpStatus.FOUND);
 		}
 
 		try {
-			courseService.saveCourse(courseFormDto, courseImgFile);
+			courseService.saveCourse(courseFormDto, courseImgFileList);
 		} catch (Exception e) {
-
-
 			return new ResponseEntity<String>("상품 등록 중 에러 발생.", HttpStatus.FOUND);
 		}
 		return new ResponseEntity<String>("생성되었습니다.", HttpStatus.OK);
@@ -135,25 +106,19 @@ public class AdminContorller {
 	@PatchMapping(value = "/admin/course/{id}")
 	@ResponseBody
 	public ResponseEntity updateCourse(@Valid CourseFormDto courseFormDto, BindingResult bindingResult,
-			@RequestParam("courseImgFile") MultipartFile courseImgFile) {
+			@RequestParam("courseImgFile") List<MultipartFile> courseImgFileList) {
 
-		
 		if(bindingResult.hasErrors()) {
-
 			System.out.println("검증 오류 발생");
 //			return new ResponseEntity<String>("검증 오류 발생.", HttpStatus.FOUND);
 		}
-		if (courseImgFile.isEmpty() && courseFormDto.getCourseFormDtoNo() == null) {
-
-			System.out.println("이미지 오류 발생");
+		if (courseImgFileList.get(0).isEmpty() && courseFormDto.getCourseFormDtoNo() == null) {
+			System.out.println("첫 이미지 오류 발생");
 			return new ResponseEntity<String>("상품 이미지는 필수 입력값입니다.", HttpStatus.FOUND);
 		}
 		
 		try {
-			courseService.updateCourse(courseFormDto, courseImgFile);
-
-			
-
+			courseService.updateCourse(courseFormDto, courseImgFileList);
 		} catch (Exception e) {
 //			model.addAttribute("errorMessage","상품 등록 중 에러가 발생하였습니다.");
 			return new ResponseEntity<String>("상품 등록 중 에러 발생.", HttpStatus.FOUND);

@@ -30,6 +30,7 @@ export default function Course() {
       courseLevel: courseLevels[0],
       courseCategory: courseCategories[0],
   });
+  const [courseImgDtoList, setCourseImgDtoList] = useState([]);
   const [courseImgDto, setCourseImgDto] = useState({
     courseImgDtoNo: "",
     imgName: "",
@@ -49,12 +50,9 @@ export default function Course() {
       const getCourseDetails = async () => {
           try {
               const response = await axios.get(baseUrl + "/course/" + id);
-              
+              console.log(response)
               setCourseDetails(response.data.courseFormDto);
-              setCourseImgDto(response.data.courseFormDto.courseImgDto);
-              console.log(courseDetails.courseDec1);
-              console.log(courseDetails.courseDec2);
-              console.log(courseDetails.courseDec3);
+              setCourseImgDtoList(response.data.courseFormDto.courseImgDtoList);
           } catch (error) {
               console.log(error);
           }
@@ -113,10 +111,10 @@ export default function Course() {
     return (
         <>
      <div className="coursedetailback">
-        <div><img src={courseImgDto.imgUrl} /></div>
+        <div><img src={courseImgDtoList[0]?.imgUrl} /></div>
 
         <div className="coursedetailtext"> 
-        <p> Category&nbsp; : &nbsp;{courseCategories} </p>
+        <p> Category&nbsp; : &nbsp;{courseDetails.courseCategory === "BE"? "백엔드" : "프론트엔드"} </p>
         <h3>{courseDetails.courseTitle}<IconButton color="secondary" aria-label="add to shopping cart" onClick={() => addCartItem()}>
         <AddShoppingCartIcon />
       </IconButton> </h3>
@@ -151,15 +149,18 @@ export default function Course() {
 
             <h4>상세 설명</h4>
             <br />
+            <div><img src={courseImgDtoList[1]?.imgUrl} /></div>
              <p>{courseDetails.courseDec1}</p>
              
             <br />
              <h4>강의 소개</h4>
              <br />
+             <div><img src={courseImgDtoList[2]?.imgUrl} /></div>
             <p>{courseDetails.courseDec2}</p> 
             <br />
             <h4>추천 대상</h4>
             <br />
+            <div><img src={courseImgDtoList[3]?.imgUrl} /></div>
             <p>{courseDetails.courseDec3}</p>
    
     </Box>

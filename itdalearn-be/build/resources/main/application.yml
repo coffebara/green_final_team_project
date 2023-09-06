@@ -22,12 +22,14 @@ spring:
   # JPA
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
     properties:
       hibernate:
         show_sql: true
       format_sql: true
     defer-datasource-initialization: true
+
+
 
 # Mybatis
 mybatis:
@@ -36,6 +38,7 @@ mybatis:
     map-underscore-to-camel-case: true
     call-setters-on-nulls: false
       
+
 
 # 쿼리 로그 관련 설정
 logging:

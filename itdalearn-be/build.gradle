@@ -6,7 +6,7 @@ plugins {
 
 }
 
-group = 'com.itdaLearn'
+group = 'com.itdalearn'
 version = '0.0.1-SNAPSHOT'
 
 java {
