@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -27,6 +28,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.itdaLearn.dto.CartCourseDto;
 import com.itdaLearn.dto.CartDetailDto;
 import com.itdaLearn.dto.CartOrderDto;
+import com.itdaLearn.entity.Member;
+import com.itdaLearn.repository.MemberRepository;
 import com.itdaLearn.service.CartService;
 import com.itdaLearn.service.PrincipalDetails;
 
@@ -37,11 +40,16 @@ import lombok.RequiredArgsConstructor;
 public class CartController {
 	
 	private final CartService cartService;
+	private final MemberRepository memberRepository;
 
 	   
 	   @PostMapping(value= "/cart")
-	   public @ResponseBody ResponseEntity order(@RequestBody @Valid CartCourseDto cartCourseDto, BindingResult bindingResult,Principal principal) {
+	   public @ResponseBody ResponseEntity order(@RequestBody @Valid CartCourseDto cartCourseDto, BindingResult bindingResult,Authentication authentication) {
 		
+		   
+		   UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+		  
+		  
 	      if(bindingResult.hasErrors()) {
 	
 	         StringBuilder sb = new StringBuilder();
@@ -54,13 +62,13 @@ public class CartController {
 	         return new ResponseEntity<String>(sb.toString(), HttpStatus.BAD_REQUEST);
 	      }
 	      
-	      String memberNo = principal.getName();
-	      System.out.println(memberNo);
+	     
+	   
 	     
 	      Long cartCourseNo;
 	      
 	      try {
-	         cartCourseNo = cartService.addCart(cartCourseDto, memberNo);
+	         cartCourseNo = cartService.addCart(cartCourseDto, userDetails.getUsername());
 	
 	      } catch(Exception e) {
 	         return new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);

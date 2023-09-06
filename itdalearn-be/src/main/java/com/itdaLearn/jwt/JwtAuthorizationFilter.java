@@ -59,12 +59,14 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
 
             PrincipalDetails principalDetails = new PrincipalDetails(member);
 
+            
             // Jwt 토큰 서명을 통해서 서명이 정상이면 Authentication 객체를 만들어 준다
             Authentication authentication =
                     new UsernamePasswordAuthenticationToken(principalDetails, null, principalDetails.getAuthorities());
 
             // 강제로 시큐리티의 세션에 접근하여 Authentication 객체를 저장
             SecurityContextHolder.getContext().setAuthentication(authentication);
+            System.out.println(authentication);
 
             chain.doFilter(request, response);
         }

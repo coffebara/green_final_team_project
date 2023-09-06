@@ -27,6 +27,11 @@ public class MemberService {
                 .memberTel(dto.getMemberTel())
                 .build()).getId();
     }
+    
+    public Member findById(Long userId) {
+    	return memberRepository.findById(userId)
+    			.orElseThrow( () -> new IllegalArgumentException("Unexpected user"));
+    }
 }
 
 

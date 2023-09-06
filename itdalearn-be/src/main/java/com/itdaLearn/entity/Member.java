@@ -16,7 +16,7 @@ import java.util.List;
 @Getter
 @ToString
 @Entity
-public class Member {
+public class Member implements UserDetails{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -30,15 +30,15 @@ public class Member {
 
     private String memberName; //유저이름
 
-    @Column(unique = true)
+    @Column(unique = true, nullable = false, name="member_email")
     private String memberEmail; //이메일 로그인할 때 입력값
 
-    private String  role;
+    private String role;
 
     private String memberTel;
 
     @Builder
-    public Member(String memberNo, String memberPwd, String memberName, String memberEmail, String role, String memberTel) {
+    public Member(String memberNo, String memberPwd, String memberName, String memberEmail, String role, String memberTel, String auth) {
         this.memberNo = memberNo;
         this.memberPwd = memberPwd;
         this.memberName = memberName;
@@ -53,5 +53,47 @@ public class Member {
         }
         return new ArrayList<>();
     }
+
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		
+		return List.of(new SimpleGrantedAuthority("user"));
+	}
+
+	@Override
+	public String getPassword() {
+	
+		return memberPwd;
+	}
+
+	@Override
+	public String getUsername() {
+		
+		return memberNo;
+	}
+
+	@Override
+	public boolean isAccountNonExpired() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	public boolean isAccountNonLocked() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	public boolean isCredentialsNonExpired() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	public boolean isEnabled() {
+		// TODO Auto-generated method stub
+		return true;
+	}
 
 }

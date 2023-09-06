@@ -36,10 +36,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private final PrincipalDetailsService memberService;
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.addFilterBefore(new JwtAuthenticationFilter(authenticationManager()), UsernamePasswordAuthenticationFilter.class);
-        http.csrf().disable()                           // csrf 방지
+        		http.addFilterBefore(new JwtAuthenticationFilter(authenticationManager()), UsernamePasswordAuthenticationFilter.class);
+        		http.csrf().disable()                           // csrf 방지
                 .headers().frameOptions().disable();
-        http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS) // 세션사용 x
+        		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS) // 세션사용 x
                 .and()
                 .addFilter(corsFilter) // 모든 요청은 모든 필터를 타고감 (cors 정책에서 벗어날 수 있따)
                 .formLogin().disable()
@@ -48,10 +48,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .addFilter(new JwtAuthorizationFilter(authenticationManager(), memberRepository))
                 .authorizeRequests()
 
-//                .antMatchers("/cart/**").access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
-//                .antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")
-////                .mvcMatchers(HttpMethod.OPTIONS, "/**","/members/**", "/item/**", "/images/**", "/admin/**", "/cart/**", "/order/**", "/orders/**", "/cart/orders/**", "/admin/course", "/admin/**", "/cartCourse/**", "/order/**", "/admin/**", "/board/**", "/board", "/write " ,"/write/**", "/main/**").permitAll()
-//                .anyRequest().permitAll();
+//              .antMatchers("/cart/**").access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
+//              .antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")
+//				.mvcMatchers(HttpMethod.OPTIONS, "/**","/members/**", "/item/**", "/images/**", "/admin/**", "/cart/**", "/order/**", "/orders/**", "/cart/orders/**", "/admin/course", "/admin/**", "/cartCourse/**", "/order/**", "/admin/**", "/board/**", "/board", "/write " ,"/write/**", "/main/**", "/kakaoPay", "/kakaoPaySuccess").permitAll()
+//              .anyRequest().permitAll();
+                
                 .antMatchers("/course/**")
                 .access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
                 .antMatchers("/api/v1/admin/**")
@@ -65,7 +66,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
         // 정적 리소스들이 보안필터를 거치지 않게끔
-        return (web) -> web.ignoring().antMatchers("/css/**", "/js/**", "/img/**", "/font/**", "/images/","/css/**", "/js/**", "/img/**", "/cart/**", "/order/**", "/orders/**", "/cart/orders/**", "/admin/courses", "/admin/**", "/cartCourse/**", "/order/**", "/board/**", "/board", "/write", "/write/**", "/admin/**", "/main/**");
+        return (web) -> web.ignoring().antMatchers("/css/**", "/js/**", "/img/**", 
+        		"/font/**", "/images/");
     }
 
     @Bean

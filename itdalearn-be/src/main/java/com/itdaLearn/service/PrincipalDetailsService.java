@@ -4,6 +4,8 @@ package com.itdaLearn.service;
 import com.itdaLearn.entity.Member;
 import com.itdaLearn.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
+
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -23,5 +25,7 @@ public class PrincipalDetailsService implements UserDetailsService {
         System.out.println("member = " + member);
         return new PrincipalDetails(member);
     }
+    
+    
 
 }
