@@ -50,3 +50,4 @@ logging:
     jdbc.audit: OFF
     jdbc.resultset: OFF
     jdbc.connection: OFF
+    

@@ -80,7 +80,9 @@ public class CourseRepositoryCustomImpl implements CourseRepositoryCustom {
 						course.courseDec1,
 						courseImg.imgUrl,
 						course.coursePrice,
-						course.courseTeacher)
+						course.courseTeacher,
+						course.courseCategory,
+						course.courseLevel)
 						)
 				.from(courseImg)
 				.join(courseImg.course, course)
