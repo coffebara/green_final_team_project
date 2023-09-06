@@ -27,7 +27,6 @@ public interface CourseRepository extends JpaRepository<Course, Long>, QuerydslP
 		List<Course> findByCourseDec1(@Param("courseDec1") String courseDec1);
 
 		
-	//itemDetail 필드에 지정된 텍스트가 포함된 모든 아이템을 찾아내고, 그 결과를 가격 내림차순으로 정렬
 		@Query(value = "select * from course c where c.courseDec1 like "
 				+ "%:courseDec1% order by c.coursePrice desc", nativeQuery = true)
 		List<Course> findByCourseDec1ByNative(@Param("courseDec1") String courseDec1);

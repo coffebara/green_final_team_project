@@ -1,5 +1,8 @@
 package com.itdaLearn.dto;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
@@ -7,6 +10,7 @@ import org.modelmapper.ModelMapper;
 
 import com.itdaLearn.constant.CourseCategory;
 import com.itdaLearn.constant.CourseLevel;
+import com.itdaLearn.constant.SellStatus;
 import com.itdaLearn.entity.Course;
 
 import lombok.Getter;
@@ -36,15 +40,15 @@ public class CourseFormDto {
 	private String courseDec2;
 	
 	@NotBlank(message= "강의 설명은 필수 입력값입니다.")
-
 	private String courseDec3;
 	
+	private SellStatus sellStatus;
 	private CourseLevel courseLevel;
 	private CourseCategory courseCategory;
 	
-	private CourseImgDto courseImgDto;
-	
-	private Long courseImgNo;
+	private List<CourseImgDto> courseImgDtoList = new ArrayList<>(); 
+
+	private List<Long> courseImgNos = new ArrayList<>();
 	
 	private static ModelMapper modelMapper = new ModelMapper();
 	

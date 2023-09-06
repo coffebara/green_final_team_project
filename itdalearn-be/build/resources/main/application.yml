@@ -1,0 +1,52 @@
+server:
+  port: 9090
+# H2 Database
+spring:
+  h2:
+    console:
+      enabled: true
+      settings:
+        web-allow-others: true
+#  오라클
+  datasource:
+    driver-class-name: oracle.jdbc.OracleDriver
+    url: jdbc:oracle:thin:@localhost:1521/xe
+    username: tester2
+    password: 1234 # password 주의 !
+    
+    #driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+    #url: jdbc:log4jdbc:h2:mem:testdb
+    
+    
+
+  # JPA
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        show_sql: true
+      format_sql: true
+    defer-datasource-initialization: true
+
+
+
+# Mybatis
+mybatis:
+  mapper-locations: classpath:mapper/**.xml
+  configuration:
+    map-underscore-to-camel-case: true
+    call-setters-on-nulls: false
+      
+
+
+# 쿼리 로그 관련 설정
+logging:
+  level:
+    org.hibernate.SQL: debug #    hibernate에 실행하는 쿼리가 로그 레벨로 출력
+    jdbc.sqlonly: OFF
+    jdbc.sqltiming: INFO
+    jdbc.resultsettable: OFF
+    jdbc.audit: OFF
+    jdbc.resultset: OFF
+    jdbc.connection: OFF

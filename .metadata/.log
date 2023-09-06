@@ -1,4 +1,4 @@
-!SESSION 2023-08-28 10:45:22.002 -----------------------------------------------
+!SESSION 2023-09-06 10:51:41.444 -----------------------------------------------
 eclipse.buildId=4.27.0.20230309-1200
 java.version=17.0.7
 java.vendor=Eclipse Adoptium
@@ -6,2074 +6,241 @@ BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=ko_KR
 Framework arguments:  -product org.eclipse.epp.package.jee.product
 Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.jee.product
 
-This is a continuation of log file C:\Users\qwshp\Desktop\finalproject\.metadata\.bak_0.log
-Created Time: 2023-08-28 11:33:30.835
+This is a continuation of log file C:\Users\qwshp\Desktop\branchupdate\.metadata\.bak_0.log
+Created Time: 2023-09-06 10:58:06.138
 
-!ENTRY org.eclipse.jdt.core 4 0 2023-08-28 11:33:30.835
-!MESSAGE Lombok annotation handler class lombok.eclipse.handlers.HandleValue failed
-!STACK 0
-java.lang.ClassCastException: class org.eclipse.jdt.internal.compiler.ast.FieldDeclaration cannot be cast to class org.eclipse.jdt.internal.compiler.ast.TypeDeclaration (org.eclipse.jdt.internal.compiler.ast.FieldDeclaration and org.eclipse.jdt.internal.compiler.ast.TypeDeclaration are in unnamed module of loader org.eclipse.osgi.internal.loader.EquinoxClassLoader @3985cca0)
-	at lombok.eclipse.handlers.HandleValue.handle(HandleValue.java:66)
-	at lombok.eclipse.HandlerLibrary$AnnotationHandlerContainer.handle(HandlerLibrary.java:106)
-	at lombok.eclipse.HandlerLibrary.handleAnnotation(HandlerLibrary.java:237)
-	at lombok.eclipse.TransformEclipseAST$AnnotationVisitor.visitAnnotationOnField(TransformEclipseAST.java:245)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:110)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:79)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:74)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:69)
-	at lombok.eclipse.EclipseAST.traverse(EclipseAST.java:224)
-	at lombok.eclipse.TransformEclipseAST.go(TransformEclipseAST.java:222)
-	at lombok.eclipse.TransformEclipseAST.transform(TransformEclipseAST.java:183)
-	at lombok.eclipse.TransformEclipseAST.transform_swapped(TransformEclipseAST.java:107)
-	at jdk.internal.reflect.GeneratedMethodAccessor54.invoke(Unknown Source)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at lombok.launch.PatchFixesHider$Util.invokeMethod(PatchFixesHider.java:133)
-	at lombok.launch.PatchFixesHider$Transform.transform_swapped(PatchFixesHider.java:256)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.endParse(Parser.java:11979)
-	at org.eclipse.jdt.internal.core.util.CommentRecorderParser.endParse(CommentRecorderParser.java:135)
-	at org.eclipse.jdt.internal.compiler.SourceElementParser.endParse(SourceElementParser.java:830)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13180)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13407)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13364)
-	at org.eclipse.jdt.internal.compiler.SourceElementParser.parseCompilationUnit(SourceElementParser.java:1122)
-	at org.eclipse.jdt.internal.core.CompilationUnitProblemFinder.process(CompilationUnitProblemFinder.java:273)
-	at org.eclipse.jdt.internal.core.CompilationUnit.buildStructure(CompilationUnit.java:193)
-	at org.eclipse.jdt.internal.core.Openable.generateInfos(Openable.java:266)
-	at org.eclipse.jdt.internal.core.JavaElement.openWhenClosed(JavaElement.java:597)
-	at org.eclipse.jdt.internal.core.CompilationUnit.makeConsistent(CompilationUnit.java:1148)
-	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.makeConsistent(ReconcileWorkingCopyOperation.java:173)
-	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.executeOperation(ReconcileWorkingCopyOperation.java:94)
-	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:740)
-	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:806)
-	at org.eclipse.jdt.internal.core.CompilationUnit.reconcile(CompilationUnit.java:1325)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:132)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy$1.run(JavaReconcilingStrategy.java:94)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:91)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:158)
-	at org.eclipse.jdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(CompositeReconcilingStrategy.java:94)
-	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:107)
-	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:78)
-	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
-
-!ENTRY org.eclipse.jdt.core 4 0 2023-08-28 11:33:34.671
-!MESSAGE Lombok annotation handler class lombok.eclipse.handlers.HandleValue failed
-!STACK 0
-java.lang.ClassCastException: class org.eclipse.jdt.internal.compiler.ast.FieldDeclaration cannot be cast to class org.eclipse.jdt.internal.compiler.ast.TypeDeclaration (org.eclipse.jdt.internal.compiler.ast.FieldDeclaration and org.eclipse.jdt.internal.compiler.ast.TypeDeclaration are in unnamed module of loader org.eclipse.osgi.internal.loader.EquinoxClassLoader @3985cca0)
-	at lombok.eclipse.handlers.HandleValue.handle(HandleValue.java:66)
-	at lombok.eclipse.HandlerLibrary$AnnotationHandlerContainer.handle(HandlerLibrary.java:106)
-	at lombok.eclipse.HandlerLibrary.handleAnnotation(HandlerLibrary.java:237)
-	at lombok.eclipse.TransformEclipseAST$AnnotationVisitor.visitAnnotationOnField(TransformEclipseAST.java:245)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:110)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:79)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:74)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:69)
-	at lombok.eclipse.EclipseAST.traverse(EclipseAST.java:224)
-	at lombok.eclipse.TransformEclipseAST.go(TransformEclipseAST.java:222)
-	at lombok.eclipse.TransformEclipseAST.transform(TransformEclipseAST.java:183)
-	at lombok.eclipse.TransformEclipseAST.transform_swapped(TransformEclipseAST.java:107)
-	at jdk.internal.reflect.GeneratedMethodAccessor54.invoke(Unknown Source)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at lombok.launch.PatchFixesHider$Util.invokeMethod(PatchFixesHider.java:133)
-	at lombok.launch.PatchFixesHider$Transform.transform_swapped(PatchFixesHider.java:256)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.endParse(Parser.java:11979)
-	at org.eclipse.jdt.internal.core.util.CommentRecorderParser.endParse(CommentRecorderParser.java:135)
-	at org.eclipse.jdt.internal.compiler.SourceElementParser.endParse(SourceElementParser.java:830)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13180)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13407)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13364)
-	at org.eclipse.jdt.internal.compiler.SourceElementParser.parseCompilationUnit(SourceElementParser.java:1122)
-	at org.eclipse.jdt.internal.core.CompilationUnitProblemFinder.process(CompilationUnitProblemFinder.java:273)
-	at org.eclipse.jdt.internal.core.CompilationUnit.buildStructure(CompilationUnit.java:193)
-	at org.eclipse.jdt.internal.core.Openable.generateInfos(Openable.java:266)
-	at org.eclipse.jdt.internal.core.JavaElement.openWhenClosed(JavaElement.java:597)
-	at org.eclipse.jdt.internal.core.CompilationUnit.makeConsistent(CompilationUnit.java:1148)
-	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.makeConsistent(ReconcileWorkingCopyOperation.java:173)
-	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.executeOperation(ReconcileWorkingCopyOperation.java:94)
-	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:740)
-	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:806)
-	at org.eclipse.jdt.internal.core.CompilationUnit.reconcile(CompilationUnit.java:1325)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:132)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy$1.run(JavaReconcilingStrategy.java:94)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:91)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:158)
-	at org.eclipse.jdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(CompositeReconcilingStrategy.java:94)
-	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:107)
-	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:78)
-	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
-
-!ENTRY org.eclipse.jdt.core 4 0 2023-08-28 11:33:36.099
-!MESSAGE Lombok annotation handler class lombok.eclipse.handlers.HandleValue failed
-!STACK 0
-java.lang.ClassCastException: class org.eclipse.jdt.internal.compiler.ast.FieldDeclaration cannot be cast to class org.eclipse.jdt.internal.compiler.ast.TypeDeclaration (org.eclipse.jdt.internal.compiler.ast.FieldDeclaration and org.eclipse.jdt.internal.compiler.ast.TypeDeclaration are in unnamed module of loader org.eclipse.osgi.internal.loader.EquinoxClassLoader @3985cca0)
-	at lombok.eclipse.handlers.HandleValue.handle(HandleValue.java:66)
-	at lombok.eclipse.HandlerLibrary$AnnotationHandlerContainer.handle(HandlerLibrary.java:106)
-	at lombok.eclipse.HandlerLibrary.handleAnnotation(HandlerLibrary.java:237)
-	at lombok.eclipse.TransformEclipseAST$AnnotationVisitor.visitAnnotationOnField(TransformEclipseAST.java:245)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:110)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:79)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:74)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:69)
-	at lombok.eclipse.EclipseAST.traverse(EclipseAST.java:224)
-	at lombok.eclipse.TransformEclipseAST.go(TransformEclipseAST.java:222)
-	at lombok.eclipse.TransformEclipseAST.transform(TransformEclipseAST.java:183)
-	at lombok.eclipse.TransformEclipseAST.transform_swapped(TransformEclipseAST.java:107)
-	at jdk.internal.reflect.GeneratedMethodAccessor54.invoke(Unknown Source)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at lombok.launch.PatchFixesHider$Util.invokeMethod(PatchFixesHider.java:133)
-	at lombok.launch.PatchFixesHider$Transform.transform_swapped(PatchFixesHider.java:256)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.endParse(Parser.java:11979)
-	at org.eclipse.jdt.internal.core.util.CommentRecorderParser.endParse(CommentRecorderParser.java:135)
-	at org.eclipse.jdt.internal.compiler.SourceElementParser.endParse(SourceElementParser.java:830)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13180)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13407)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13364)
-	at org.eclipse.jdt.internal.compiler.SourceElementParser.parseCompilationUnit(SourceElementParser.java:1122)
-	at org.eclipse.jdt.internal.core.CompilationUnitProblemFinder.process(CompilationUnitProblemFinder.java:273)
-	at org.eclipse.jdt.internal.core.CompilationUnit.buildStructure(CompilationUnit.java:193)
-	at org.eclipse.jdt.internal.core.Openable.generateInfos(Openable.java:266)
-	at org.eclipse.jdt.internal.core.JavaElement.openWhenClosed(JavaElement.java:597)
-	at org.eclipse.jdt.internal.core.CompilationUnit.makeConsistent(CompilationUnit.java:1148)
-	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.makeConsistent(ReconcileWorkingCopyOperation.java:173)
-	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.executeOperation(ReconcileWorkingCopyOperation.java:94)
-	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:740)
-	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:806)
-	at org.eclipse.jdt.internal.core.CompilationUnit.reconcile(CompilationUnit.java:1325)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:132)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy$1.run(JavaReconcilingStrategy.java:94)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:91)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:158)
-	at org.eclipse.jdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(CompositeReconcilingStrategy.java:94)
-	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:107)
-	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:78)
-	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
-
-!ENTRY org.eclipse.jdt.core 4 0 2023-08-28 11:33:39.417
-!MESSAGE Lombok annotation handler class lombok.eclipse.handlers.HandleValue failed
-!STACK 0
-java.lang.ClassCastException: class org.eclipse.jdt.internal.compiler.ast.FieldDeclaration cannot be cast to class org.eclipse.jdt.internal.compiler.ast.TypeDeclaration (org.eclipse.jdt.internal.compiler.ast.FieldDeclaration and org.eclipse.jdt.internal.compiler.ast.TypeDeclaration are in unnamed module of loader org.eclipse.osgi.internal.loader.EquinoxClassLoader @3985cca0)
-	at lombok.eclipse.handlers.HandleValue.handle(HandleValue.java:66)
-	at lombok.eclipse.HandlerLibrary$AnnotationHandlerContainer.handle(HandlerLibrary.java:106)
-	at lombok.eclipse.HandlerLibrary.handleAnnotation(HandlerLibrary.java:237)
-	at lombok.eclipse.TransformEclipseAST$AnnotationVisitor.visitAnnotationOnField(TransformEclipseAST.java:245)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:110)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:79)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:74)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:69)
-	at lombok.eclipse.EclipseAST.traverse(EclipseAST.java:224)
-	at lombok.eclipse.TransformEclipseAST.go(TransformEclipseAST.java:222)
-	at lombok.eclipse.TransformEclipseAST.transform(TransformEclipseAST.java:183)
-	at lombok.eclipse.TransformEclipseAST.transform_swapped(TransformEclipseAST.java:107)
-	at jdk.internal.reflect.GeneratedMethodAccessor54.invoke(Unknown Source)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at lombok.launch.PatchFixesHider$Util.invokeMethod(PatchFixesHider.java:133)
-	at lombok.launch.PatchFixesHider$Transform.transform_swapped(PatchFixesHider.java:256)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.endParse(Parser.java:11979)
-	at org.eclipse.jdt.internal.core.util.CommentRecorderParser.endParse(CommentRecorderParser.java:135)
-	at org.eclipse.jdt.internal.compiler.SourceElementParser.endParse(SourceElementParser.java:830)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13180)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13407)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13364)
-	at org.eclipse.jdt.internal.compiler.SourceElementParser.parseCompilationUnit(SourceElementParser.java:1122)
-	at org.eclipse.jdt.internal.core.CompilationUnitProblemFinder.process(CompilationUnitProblemFinder.java:273)
-	at org.eclipse.jdt.internal.core.CompilationUnit.buildStructure(CompilationUnit.java:193)
-	at org.eclipse.jdt.internal.core.Openable.generateInfos(Openable.java:266)
-	at org.eclipse.jdt.internal.core.JavaElement.openWhenClosed(JavaElement.java:597)
-	at org.eclipse.jdt.internal.core.CompilationUnit.makeConsistent(CompilationUnit.java:1148)
-	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.makeConsistent(ReconcileWorkingCopyOperation.java:173)
-	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.executeOperation(ReconcileWorkingCopyOperation.java:94)
-	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:740)
-	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:806)
-	at org.eclipse.jdt.internal.core.CompilationUnit.reconcile(CompilationUnit.java:1325)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:132)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy$1.run(JavaReconcilingStrategy.java:94)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:91)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:158)
-	at org.eclipse.jdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(CompositeReconcilingStrategy.java:94)
-	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:107)
-	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:78)
-	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
-
-!ENTRY org.eclipse.jdt.core 4 0 2023-08-28 11:33:44.403
-!MESSAGE Lombok annotation handler class lombok.eclipse.handlers.HandleValue failed
-!STACK 0
-java.lang.ClassCastException: class org.eclipse.jdt.internal.compiler.ast.FieldDeclaration cannot be cast to class org.eclipse.jdt.internal.compiler.ast.TypeDeclaration (org.eclipse.jdt.internal.compiler.ast.FieldDeclaration and org.eclipse.jdt.internal.compiler.ast.TypeDeclaration are in unnamed module of loader org.eclipse.osgi.internal.loader.EquinoxClassLoader @3985cca0)
-	at lombok.eclipse.handlers.HandleValue.handle(HandleValue.java:66)
-	at lombok.eclipse.HandlerLibrary$AnnotationHandlerContainer.handle(HandlerLibrary.java:106)
-	at lombok.eclipse.HandlerLibrary.handleAnnotation(HandlerLibrary.java:237)
-	at lombok.eclipse.TransformEclipseAST$AnnotationVisitor.visitAnnotationOnField(TransformEclipseAST.java:245)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:110)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:79)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:74)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:69)
-	at lombok.eclipse.EclipseAST.traverse(EclipseAST.java:224)
-	at lombok.eclipse.TransformEclipseAST.go(TransformEclipseAST.java:222)
-	at lombok.eclipse.TransformEclipseAST.transform(TransformEclipseAST.java:183)
-	at lombok.eclipse.TransformEclipseAST.transform_swapped(TransformEclipseAST.java:107)
-	at jdk.internal.reflect.GeneratedMethodAccessor54.invoke(Unknown Source)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at lombok.launch.PatchFixesHider$Util.invokeMethod(PatchFixesHider.java:133)
-	at lombok.launch.PatchFixesHider$Transform.transform_swapped(PatchFixesHider.java:256)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.endParse(Parser.java:11979)
-	at org.eclipse.jdt.internal.core.util.CommentRecorderParser.endParse(CommentRecorderParser.java:135)
-	at org.eclipse.jdt.internal.compiler.SourceElementParser.endParse(SourceElementParser.java:830)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13180)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13407)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13364)
-	at org.eclipse.jdt.internal.compiler.SourceElementParser.parseCompilationUnit(SourceElementParser.java:1122)
-	at org.eclipse.jdt.internal.core.CompilationUnitProblemFinder.process(CompilationUnitProblemFinder.java:273)
-	at org.eclipse.jdt.internal.core.CompilationUnit.buildStructure(CompilationUnit.java:193)
-	at org.eclipse.jdt.internal.core.Openable.generateInfos(Openable.java:266)
-	at org.eclipse.jdt.internal.core.JavaElement.openWhenClosed(JavaElement.java:597)
-	at org.eclipse.jdt.internal.core.CompilationUnit.makeConsistent(CompilationUnit.java:1148)
-	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.makeConsistent(ReconcileWorkingCopyOperation.java:173)
-	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.executeOperation(ReconcileWorkingCopyOperation.java:94)
-	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:740)
-	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:806)
-	at org.eclipse.jdt.internal.core.CompilationUnit.reconcile(CompilationUnit.java:1325)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:132)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy$1.run(JavaReconcilingStrategy.java:94)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:91)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:158)
-	at org.eclipse.jdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(CompositeReconcilingStrategy.java:94)
-	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:107)
-	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:78)
-	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
-
-!ENTRY org.eclipse.jdt.core 4 0 2023-08-28 11:33:46.065
-!MESSAGE Lombok annotation handler class lombok.eclipse.handlers.HandleValue failed
-!STACK 0
-java.lang.ClassCastException: class org.eclipse.jdt.internal.compiler.ast.FieldDeclaration cannot be cast to class org.eclipse.jdt.internal.compiler.ast.TypeDeclaration (org.eclipse.jdt.internal.compiler.ast.FieldDeclaration and org.eclipse.jdt.internal.compiler.ast.TypeDeclaration are in unnamed module of loader org.eclipse.osgi.internal.loader.EquinoxClassLoader @3985cca0)
-	at lombok.eclipse.handlers.HandleValue.handle(HandleValue.java:66)
-	at lombok.eclipse.HandlerLibrary$AnnotationHandlerContainer.handle(HandlerLibrary.java:106)
-	at lombok.eclipse.HandlerLibrary.handleAnnotation(HandlerLibrary.java:237)
-	at lombok.eclipse.TransformEclipseAST$AnnotationVisitor.visitAnnotationOnField(TransformEclipseAST.java:245)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:110)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:79)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:74)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:69)
-	at lombok.eclipse.EclipseAST.traverse(EclipseAST.java:224)
-	at lombok.eclipse.TransformEclipseAST.go(TransformEclipseAST.java:222)
-	at lombok.eclipse.TransformEclipseAST.transform(TransformEclipseAST.java:183)
-	at lombok.eclipse.TransformEclipseAST.transform_swapped(TransformEclipseAST.java:107)
-	at jdk.internal.reflect.GeneratedMethodAccessor54.invoke(Unknown Source)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at lombok.launch.PatchFixesHider$Util.invokeMethod(PatchFixesHider.java:133)
-	at lombok.launch.PatchFixesHider$Transform.transform_swapped(PatchFixesHider.java:256)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.endParse(Parser.java:11979)
-	at org.eclipse.jdt.internal.core.util.CommentRecorderParser.endParse(CommentRecorderParser.java:135)
-	at org.eclipse.jdt.internal.compiler.SourceElementParser.endParse(SourceElementParser.java:830)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13180)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13407)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13364)
-	at org.eclipse.jdt.internal.compiler.SourceElementParser.parseCompilationUnit(SourceElementParser.java:1122)
-	at org.eclipse.jdt.internal.core.CompilationUnitProblemFinder.process(CompilationUnitProblemFinder.java:273)
-	at org.eclipse.jdt.internal.core.CompilationUnit.buildStructure(CompilationUnit.java:193)
-	at org.eclipse.jdt.internal.core.Openable.generateInfos(Openable.java:266)
-	at org.eclipse.jdt.internal.core.JavaElement.openWhenClosed(JavaElement.java:597)
-	at org.eclipse.jdt.internal.core.CompilationUnit.makeConsistent(CompilationUnit.java:1148)
-	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.makeConsistent(ReconcileWorkingCopyOperation.java:173)
-	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.executeOperation(ReconcileWorkingCopyOperation.java:94)
-	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:740)
-	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:806)
-	at org.eclipse.jdt.internal.core.CompilationUnit.reconcile(CompilationUnit.java:1325)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:132)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy$1.run(JavaReconcilingStrategy.java:94)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:91)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:158)
-	at org.eclipse.jdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(CompositeReconcilingStrategy.java:94)
-	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:107)
-	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:78)
-	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
-
-!ENTRY org.eclipse.jdt.core 4 0 2023-08-28 11:33:48.843
-!MESSAGE Lombok annotation handler class lombok.eclipse.handlers.HandleValue failed
-!STACK 0
-java.lang.ClassCastException: class org.eclipse.jdt.internal.compiler.ast.FieldDeclaration cannot be cast to class org.eclipse.jdt.internal.compiler.ast.TypeDeclaration (org.eclipse.jdt.internal.compiler.ast.FieldDeclaration and org.eclipse.jdt.internal.compiler.ast.TypeDeclaration are in unnamed module of loader org.eclipse.osgi.internal.loader.EquinoxClassLoader @3985cca0)
-	at lombok.eclipse.handlers.HandleValue.handle(HandleValue.java:66)
-	at lombok.eclipse.HandlerLibrary$AnnotationHandlerContainer.handle(HandlerLibrary.java:106)
-	at lombok.eclipse.HandlerLibrary.handleAnnotation(HandlerLibrary.java:237)
-	at lombok.eclipse.TransformEclipseAST$AnnotationVisitor.visitAnnotationOnField(TransformEclipseAST.java:245)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:110)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:79)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:74)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:69)
-	at lombok.eclipse.EclipseAST.traverse(EclipseAST.java:224)
-	at lombok.eclipse.TransformEclipseAST.go(TransformEclipseAST.java:222)
-	at lombok.eclipse.TransformEclipseAST.transform(TransformEclipseAST.java:183)
-	at lombok.eclipse.TransformEclipseAST.transform_swapped(TransformEclipseAST.java:107)
-	at jdk.internal.reflect.GeneratedMethodAccessor54.invoke(Unknown Source)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at lombok.launch.PatchFixesHider$Util.invokeMethod(PatchFixesHider.java:133)
-	at lombok.launch.PatchFixesHider$Transform.transform_swapped(PatchFixesHider.java:256)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.endParse(Parser.java:11979)
-	at org.eclipse.jdt.internal.core.util.CommentRecorderParser.endParse(CommentRecorderParser.java:135)
-	at org.eclipse.jdt.internal.compiler.SourceElementParser.endParse(SourceElementParser.java:830)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13180)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13407)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13364)
-	at org.eclipse.jdt.internal.compiler.SourceElementParser.parseCompilationUnit(SourceElementParser.java:1122)
-	at org.eclipse.jdt.internal.core.CompilationUnitProblemFinder.process(CompilationUnitProblemFinder.java:273)
-	at org.eclipse.jdt.internal.core.CompilationUnit.buildStructure(CompilationUnit.java:193)
-	at org.eclipse.jdt.internal.core.Openable.generateInfos(Openable.java:266)
-	at org.eclipse.jdt.internal.core.JavaElement.openWhenClosed(JavaElement.java:597)
-	at org.eclipse.jdt.internal.core.CompilationUnit.makeConsistent(CompilationUnit.java:1148)
-	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.makeConsistent(ReconcileWorkingCopyOperation.java:173)
-	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.executeOperation(ReconcileWorkingCopyOperation.java:94)
-	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:740)
-	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:806)
-	at org.eclipse.jdt.internal.core.CompilationUnit.reconcile(CompilationUnit.java:1325)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:132)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy$1.run(JavaReconcilingStrategy.java:94)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:91)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:158)
-	at org.eclipse.jdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(CompositeReconcilingStrategy.java:94)
-	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:107)
-	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:78)
-	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
-
-!ENTRY org.eclipse.jdt.core 4 0 2023-08-28 11:33:51.814
-!MESSAGE Lombok annotation handler class lombok.eclipse.handlers.HandleValue failed
-!STACK 0
-java.lang.ClassCastException: class org.eclipse.jdt.internal.compiler.ast.FieldDeclaration cannot be cast to class org.eclipse.jdt.internal.compiler.ast.TypeDeclaration (org.eclipse.jdt.internal.compiler.ast.FieldDeclaration and org.eclipse.jdt.internal.compiler.ast.TypeDeclaration are in unnamed module of loader org.eclipse.osgi.internal.loader.EquinoxClassLoader @3985cca0)
-	at lombok.eclipse.handlers.HandleValue.handle(HandleValue.java:66)
-	at lombok.eclipse.HandlerLibrary$AnnotationHandlerContainer.handle(HandlerLibrary.java:106)
-	at lombok.eclipse.HandlerLibrary.handleAnnotation(HandlerLibrary.java:237)
-	at lombok.eclipse.TransformEclipseAST$AnnotationVisitor.visitAnnotationOnField(TransformEclipseAST.java:245)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:110)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:79)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:74)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:69)
-	at lombok.eclipse.EclipseAST.traverse(EclipseAST.java:224)
-	at lombok.eclipse.TransformEclipseAST.go(TransformEclipseAST.java:222)
-	at lombok.eclipse.TransformEclipseAST.transform(TransformEclipseAST.java:183)
-	at lombok.eclipse.TransformEclipseAST.transform_swapped(TransformEclipseAST.java:107)
-	at jdk.internal.reflect.GeneratedMethodAccessor54.invoke(Unknown Source)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at lombok.launch.PatchFixesHider$Util.invokeMethod(PatchFixesHider.java:133)
-	at lombok.launch.PatchFixesHider$Transform.transform_swapped(PatchFixesHider.java:256)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.endParse(Parser.java:11979)
-	at org.eclipse.jdt.internal.core.util.CommentRecorderParser.endParse(CommentRecorderParser.java:135)
-	at org.eclipse.jdt.internal.compiler.SourceElementParser.endParse(SourceElementParser.java:830)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13180)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13407)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13364)
-	at org.eclipse.jdt.internal.compiler.SourceElementParser.parseCompilationUnit(SourceElementParser.java:1122)
-	at org.eclipse.jdt.internal.core.CompilationUnitProblemFinder.process(CompilationUnitProblemFinder.java:273)
-	at org.eclipse.jdt.internal.core.CompilationUnit.buildStructure(CompilationUnit.java:193)
-	at org.eclipse.jdt.internal.core.Openable.generateInfos(Openable.java:266)
-	at org.eclipse.jdt.internal.core.JavaElement.openWhenClosed(JavaElement.java:597)
-	at org.eclipse.jdt.internal.core.CompilationUnit.makeConsistent(CompilationUnit.java:1148)
-	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.makeConsistent(ReconcileWorkingCopyOperation.java:173)
-	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.executeOperation(ReconcileWorkingCopyOperation.java:94)
-	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:740)
-	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:806)
-	at org.eclipse.jdt.internal.core.CompilationUnit.reconcile(CompilationUnit.java:1325)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:132)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy$1.run(JavaReconcilingStrategy.java:94)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:91)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:158)
-	at org.eclipse.jdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(CompositeReconcilingStrategy.java:94)
-	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:107)
-	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:78)
-	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
-
-!ENTRY org.eclipse.jdt.core 4 0 2023-08-28 11:33:53.880
-!MESSAGE Lombok annotation handler class lombok.eclipse.handlers.HandleValue failed
-!STACK 0
-java.lang.ClassCastException: class org.eclipse.jdt.internal.compiler.ast.FieldDeclaration cannot be cast to class org.eclipse.jdt.internal.compiler.ast.TypeDeclaration (org.eclipse.jdt.internal.compiler.ast.FieldDeclaration and org.eclipse.jdt.internal.compiler.ast.TypeDeclaration are in unnamed module of loader org.eclipse.osgi.internal.loader.EquinoxClassLoader @3985cca0)
-	at lombok.eclipse.handlers.HandleValue.handle(HandleValue.java:66)
-	at lombok.eclipse.HandlerLibrary$AnnotationHandlerContainer.handle(HandlerLibrary.java:106)
-	at lombok.eclipse.HandlerLibrary.handleAnnotation(HandlerLibrary.java:237)
-	at lombok.eclipse.TransformEclipseAST$AnnotationVisitor.visitAnnotationOnField(TransformEclipseAST.java:245)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:110)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:79)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:74)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:69)
-	at lombok.eclipse.EclipseAST.traverse(EclipseAST.java:224)
-	at lombok.eclipse.TransformEclipseAST.go(TransformEclipseAST.java:222)
-	at lombok.eclipse.TransformEclipseAST.transform(TransformEclipseAST.java:183)
-	at lombok.eclipse.TransformEclipseAST.transform_swapped(TransformEclipseAST.java:107)
-	at jdk.internal.reflect.GeneratedMethodAccessor54.invoke(Unknown Source)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at lombok.launch.PatchFixesHider$Util.invokeMethod(PatchFixesHider.java:133)
-	at lombok.launch.PatchFixesHider$Transform.transform_swapped(PatchFixesHider.java:256)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.endParse(Parser.java:11979)
-	at org.eclipse.jdt.internal.core.util.CommentRecorderParser.endParse(CommentRecorderParser.java:135)
-	at org.eclipse.jdt.internal.compiler.SourceElementParser.endParse(SourceElementParser.java:830)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13180)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13407)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13364)
-	at org.eclipse.jdt.internal.compiler.SourceElementParser.parseCompilationUnit(SourceElementParser.java:1122)
-	at org.eclipse.jdt.internal.core.CompilationUnitProblemFinder.process(CompilationUnitProblemFinder.java:273)
-	at org.eclipse.jdt.internal.core.CompilationUnit.buildStructure(CompilationUnit.java:193)
-	at org.eclipse.jdt.internal.core.Openable.generateInfos(Openable.java:266)
-	at org.eclipse.jdt.internal.core.JavaElement.openWhenClosed(JavaElement.java:597)
-	at org.eclipse.jdt.internal.core.CompilationUnit.makeConsistent(CompilationUnit.java:1148)
-	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.makeConsistent(ReconcileWorkingCopyOperation.java:173)
-	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.executeOperation(ReconcileWorkingCopyOperation.java:94)
-	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:740)
-	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:806)
-	at org.eclipse.jdt.internal.core.CompilationUnit.reconcile(CompilationUnit.java:1325)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:132)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy$1.run(JavaReconcilingStrategy.java:94)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:91)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:158)
-	at org.eclipse.jdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(CompositeReconcilingStrategy.java:94)
-	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:107)
-	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:78)
-	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
-
-!ENTRY org.eclipse.jdt.core 4 0 2023-08-28 11:33:57.418
-!MESSAGE Lombok annotation handler class lombok.eclipse.handlers.HandleValue failed
-!STACK 0
-java.lang.ClassCastException: class org.eclipse.jdt.internal.compiler.ast.FieldDeclaration cannot be cast to class org.eclipse.jdt.internal.compiler.ast.TypeDeclaration (org.eclipse.jdt.internal.compiler.ast.FieldDeclaration and org.eclipse.jdt.internal.compiler.ast.TypeDeclaration are in unnamed module of loader org.eclipse.osgi.internal.loader.EquinoxClassLoader @3985cca0)
-	at lombok.eclipse.handlers.HandleValue.handle(HandleValue.java:66)
-	at lombok.eclipse.HandlerLibrary$AnnotationHandlerContainer.handle(HandlerLibrary.java:106)
-	at lombok.eclipse.HandlerLibrary.handleAnnotation(HandlerLibrary.java:237)
-	at lombok.eclipse.TransformEclipseAST$AnnotationVisitor.visitAnnotationOnField(TransformEclipseAST.java:245)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:110)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:79)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:74)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:69)
-	at lombok.eclipse.EclipseAST.traverse(EclipseAST.java:224)
-	at lombok.eclipse.TransformEclipseAST.go(TransformEclipseAST.java:222)
-	at lombok.eclipse.TransformEclipseAST.transform(TransformEclipseAST.java:183)
-	at lombok.eclipse.TransformEclipseAST.transform_swapped(TransformEclipseAST.java:107)
-	at jdk.internal.reflect.GeneratedMethodAccessor54.invoke(Unknown Source)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at lombok.launch.PatchFixesHider$Util.invokeMethod(PatchFixesHider.java:133)
-	at lombok.launch.PatchFixesHider$Transform.transform_swapped(PatchFixesHider.java:256)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.endParse(Parser.java:11979)
-	at org.eclipse.jdt.internal.core.util.CommentRecorderParser.endParse(CommentRecorderParser.java:135)
-	at org.eclipse.jdt.internal.compiler.SourceElementParser.endParse(SourceElementParser.java:830)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13180)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13407)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13364)
-	at org.eclipse.jdt.internal.compiler.SourceElementParser.parseCompilationUnit(SourceElementParser.java:1122)
-	at org.eclipse.jdt.internal.core.CompilationUnitProblemFinder.process(CompilationUnitProblemFinder.java:273)
-	at org.eclipse.jdt.internal.core.CompilationUnit.buildStructure(CompilationUnit.java:193)
-	at org.eclipse.jdt.internal.core.Openable.generateInfos(Openable.java:266)
-	at org.eclipse.jdt.internal.core.JavaElement.openWhenClosed(JavaElement.java:597)
-	at org.eclipse.jdt.internal.core.CompilationUnit.makeConsistent(CompilationUnit.java:1148)
-	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.makeConsistent(ReconcileWorkingCopyOperation.java:173)
-	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.executeOperation(ReconcileWorkingCopyOperation.java:94)
-	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:740)
-	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:806)
-	at org.eclipse.jdt.internal.core.CompilationUnit.reconcile(CompilationUnit.java:1325)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:132)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy$1.run(JavaReconcilingStrategy.java:94)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:91)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:158)
-	at org.eclipse.jdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(CompositeReconcilingStrategy.java:94)
-	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:107)
-	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:78)
-	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
-
-!ENTRY org.eclipse.jdt.core 4 0 2023-08-28 11:34:01.223
-!MESSAGE Lombok annotation handler class lombok.eclipse.handlers.HandleValue failed
-!STACK 0
-java.lang.ClassCastException: class org.eclipse.jdt.internal.compiler.ast.FieldDeclaration cannot be cast to class org.eclipse.jdt.internal.compiler.ast.TypeDeclaration (org.eclipse.jdt.internal.compiler.ast.FieldDeclaration and org.eclipse.jdt.internal.compiler.ast.TypeDeclaration are in unnamed module of loader org.eclipse.osgi.internal.loader.EquinoxClassLoader @3985cca0)
-	at lombok.eclipse.handlers.HandleValue.handle(HandleValue.java:66)
-	at lombok.eclipse.HandlerLibrary$AnnotationHandlerContainer.handle(HandlerLibrary.java:106)
-	at lombok.eclipse.HandlerLibrary.handleAnnotation(HandlerLibrary.java:237)
-	at lombok.eclipse.TransformEclipseAST$AnnotationVisitor.visitAnnotationOnField(TransformEclipseAST.java:245)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:110)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:79)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:74)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:69)
-	at lombok.eclipse.EclipseAST.traverse(EclipseAST.java:224)
-	at lombok.eclipse.TransformEclipseAST.go(TransformEclipseAST.java:222)
-	at lombok.eclipse.TransformEclipseAST.transform(TransformEclipseAST.java:183)
-	at lombok.eclipse.TransformEclipseAST.transform_swapped(TransformEclipseAST.java:107)
-	at jdk.internal.reflect.GeneratedMethodAccessor54.invoke(Unknown Source)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at lombok.launch.PatchFixesHider$Util.invokeMethod(PatchFixesHider.java:133)
-	at lombok.launch.PatchFixesHider$Transform.transform_swapped(PatchFixesHider.java:256)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.endParse(Parser.java:11979)
-	at org.eclipse.jdt.internal.core.util.CommentRecorderParser.endParse(CommentRecorderParser.java:135)
-	at org.eclipse.jdt.internal.compiler.SourceElementParser.endParse(SourceElementParser.java:830)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13180)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13407)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13364)
-	at org.eclipse.jdt.internal.compiler.SourceElementParser.parseCompilationUnit(SourceElementParser.java:1122)
-	at org.eclipse.jdt.internal.core.CompilationUnitProblemFinder.process(CompilationUnitProblemFinder.java:273)
-	at org.eclipse.jdt.internal.core.CompilationUnit.buildStructure(CompilationUnit.java:193)
-	at org.eclipse.jdt.internal.core.Openable.generateInfos(Openable.java:266)
-	at org.eclipse.jdt.internal.core.JavaElement.openWhenClosed(JavaElement.java:597)
-	at org.eclipse.jdt.internal.core.CompilationUnit.makeConsistent(CompilationUnit.java:1148)
-	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.makeConsistent(ReconcileWorkingCopyOperation.java:173)
-	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.executeOperation(ReconcileWorkingCopyOperation.java:94)
-	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:740)
-	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:806)
-	at org.eclipse.jdt.internal.core.CompilationUnit.reconcile(CompilationUnit.java:1325)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:132)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy$1.run(JavaReconcilingStrategy.java:94)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:91)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:158)
-	at org.eclipse.jdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(CompositeReconcilingStrategy.java:94)
-	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:107)
-	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:78)
-	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
-
-!ENTRY org.eclipse.jdt.core 4 0 2023-08-28 11:34:10.007
-!MESSAGE Lombok annotation handler class lombok.eclipse.handlers.HandleValue failed
-!STACK 0
-java.lang.ClassCastException: class org.eclipse.jdt.internal.compiler.ast.FieldDeclaration cannot be cast to class org.eclipse.jdt.internal.compiler.ast.TypeDeclaration (org.eclipse.jdt.internal.compiler.ast.FieldDeclaration and org.eclipse.jdt.internal.compiler.ast.TypeDeclaration are in unnamed module of loader org.eclipse.osgi.internal.loader.EquinoxClassLoader @3985cca0)
-	at lombok.eclipse.handlers.HandleValue.handle(HandleValue.java:66)
-	at lombok.eclipse.HandlerLibrary$AnnotationHandlerContainer.handle(HandlerLibrary.java:106)
-	at lombok.eclipse.HandlerLibrary.handleAnnotation(HandlerLibrary.java:237)
-	at lombok.eclipse.TransformEclipseAST$AnnotationVisitor.visitAnnotationOnField(TransformEclipseAST.java:245)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:110)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:79)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:74)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:69)
-	at lombok.eclipse.EclipseAST.traverse(EclipseAST.java:224)
-	at lombok.eclipse.TransformEclipseAST.go(TransformEclipseAST.java:222)
-	at lombok.eclipse.TransformEclipseAST.transform(TransformEclipseAST.java:183)
-	at lombok.eclipse.TransformEclipseAST.transform_swapped(TransformEclipseAST.java:107)
-	at jdk.internal.reflect.GeneratedMethodAccessor54.invoke(Unknown Source)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at lombok.launch.PatchFixesHider$Util.invokeMethod(PatchFixesHider.java:133)
-	at lombok.launch.PatchFixesHider$Transform.transform_swapped(PatchFixesHider.java:256)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.endParse(Parser.java:11979)
-	at org.eclipse.jdt.internal.core.util.CommentRecorderParser.endParse(CommentRecorderParser.java:135)
-	at org.eclipse.jdt.internal.compiler.SourceElementParser.endParse(SourceElementParser.java:830)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13180)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13407)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13364)
-	at org.eclipse.jdt.internal.compiler.SourceElementParser.parseCompilationUnit(SourceElementParser.java:1122)
-	at org.eclipse.jdt.internal.core.CompilationUnitProblemFinder.process(CompilationUnitProblemFinder.java:273)
-	at org.eclipse.jdt.internal.core.CompilationUnit.buildStructure(CompilationUnit.java:193)
-	at org.eclipse.jdt.internal.core.Openable.generateInfos(Openable.java:266)
-	at org.eclipse.jdt.internal.core.JavaElement.openWhenClosed(JavaElement.java:597)
-	at org.eclipse.jdt.internal.core.CompilationUnit.makeConsistent(CompilationUnit.java:1148)
-	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.makeConsistent(ReconcileWorkingCopyOperation.java:173)
-	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.executeOperation(ReconcileWorkingCopyOperation.java:94)
-	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:740)
-	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:806)
-	at org.eclipse.jdt.internal.core.CompilationUnit.reconcile(CompilationUnit.java:1325)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:132)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy$1.run(JavaReconcilingStrategy.java:94)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:91)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:158)
-	at org.eclipse.jdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(CompositeReconcilingStrategy.java:94)
-	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:107)
-	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:78)
-	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
-
-!ENTRY org.eclipse.jdt.core 4 0 2023-08-28 11:34:14.892
-!MESSAGE Lombok annotation handler class lombok.eclipse.handlers.HandleValue failed
-!STACK 0
-java.lang.ClassCastException: class org.eclipse.jdt.internal.compiler.ast.FieldDeclaration cannot be cast to class org.eclipse.jdt.internal.compiler.ast.TypeDeclaration (org.eclipse.jdt.internal.compiler.ast.FieldDeclaration and org.eclipse.jdt.internal.compiler.ast.TypeDeclaration are in unnamed module of loader org.eclipse.osgi.internal.loader.EquinoxClassLoader @3985cca0)
-	at lombok.eclipse.handlers.HandleValue.handle(HandleValue.java:66)
-	at lombok.eclipse.HandlerLibrary$AnnotationHandlerContainer.handle(HandlerLibrary.java:106)
-	at lombok.eclipse.HandlerLibrary.handleAnnotation(HandlerLibrary.java:237)
-	at lombok.eclipse.TransformEclipseAST$AnnotationVisitor.visitAnnotationOnField(TransformEclipseAST.java:245)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:110)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:79)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:74)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:69)
-	at lombok.eclipse.EclipseAST.traverse(EclipseAST.java:224)
-	at lombok.eclipse.TransformEclipseAST.go(TransformEclipseAST.java:222)
-	at lombok.eclipse.TransformEclipseAST.transform(TransformEclipseAST.java:183)
-	at lombok.eclipse.TransformEclipseAST.transform_swapped(TransformEclipseAST.java:107)
-	at jdk.internal.reflect.GeneratedMethodAccessor54.invoke(Unknown Source)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at lombok.launch.PatchFixesHider$Util.invokeMethod(PatchFixesHider.java:133)
-	at lombok.launch.PatchFixesHider$Transform.transform_swapped(PatchFixesHider.java:256)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.endParse(Parser.java:11979)
-	at org.eclipse.jdt.internal.core.util.CommentRecorderParser.endParse(CommentRecorderParser.java:135)
-	at org.eclipse.jdt.internal.compiler.SourceElementParser.endParse(SourceElementParser.java:830)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13180)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13407)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13364)
-	at org.eclipse.jdt.internal.compiler.SourceElementParser.parseCompilationUnit(SourceElementParser.java:1122)
-	at org.eclipse.jdt.internal.core.CompilationUnitProblemFinder.process(CompilationUnitProblemFinder.java:273)
-	at org.eclipse.jdt.internal.core.CompilationUnit.buildStructure(CompilationUnit.java:193)
-	at org.eclipse.jdt.internal.core.Openable.generateInfos(Openable.java:266)
-	at org.eclipse.jdt.internal.core.JavaElement.openWhenClosed(JavaElement.java:597)
-	at org.eclipse.jdt.internal.core.CompilationUnit.makeConsistent(CompilationUnit.java:1148)
-	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.makeConsistent(ReconcileWorkingCopyOperation.java:173)
-	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.executeOperation(ReconcileWorkingCopyOperation.java:94)
-	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:740)
-	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:806)
-	at org.eclipse.jdt.internal.core.CompilationUnit.reconcile(CompilationUnit.java:1325)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:132)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy$1.run(JavaReconcilingStrategy.java:94)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:91)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:158)
-	at org.eclipse.jdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(CompositeReconcilingStrategy.java:94)
-	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:107)
-	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:78)
-	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
-
-!ENTRY org.eclipse.jdt.core 4 0 2023-08-28 11:34:31.936
-!MESSAGE Lombok annotation handler class lombok.eclipse.handlers.HandleValue failed
-!STACK 0
-java.lang.ClassCastException: class org.eclipse.jdt.internal.compiler.ast.FieldDeclaration cannot be cast to class org.eclipse.jdt.internal.compiler.ast.TypeDeclaration (org.eclipse.jdt.internal.compiler.ast.FieldDeclaration and org.eclipse.jdt.internal.compiler.ast.TypeDeclaration are in unnamed module of loader org.eclipse.osgi.internal.loader.EquinoxClassLoader @3985cca0)
-	at lombok.eclipse.handlers.HandleValue.handle(HandleValue.java:66)
-	at lombok.eclipse.HandlerLibrary$AnnotationHandlerContainer.handle(HandlerLibrary.java:106)
-	at lombok.eclipse.HandlerLibrary.handleAnnotation(HandlerLibrary.java:237)
-	at lombok.eclipse.TransformEclipseAST$AnnotationVisitor.visitAnnotationOnField(TransformEclipseAST.java:245)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:110)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:79)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:74)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:69)
-	at lombok.eclipse.EclipseAST.traverse(EclipseAST.java:224)
-	at lombok.eclipse.TransformEclipseAST.go(TransformEclipseAST.java:222)
-	at lombok.eclipse.TransformEclipseAST.transform(TransformEclipseAST.java:183)
-	at lombok.eclipse.TransformEclipseAST.transform_swapped(TransformEclipseAST.java:107)
-	at jdk.internal.reflect.GeneratedMethodAccessor54.invoke(Unknown Source)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at lombok.launch.PatchFixesHider$Util.invokeMethod(PatchFixesHider.java:133)
-	at lombok.launch.PatchFixesHider$Transform.transform_swapped(PatchFixesHider.java:256)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.endParse(Parser.java:11979)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13180)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13407)
-	at org.eclipse.jdt.internal.codeassist.select.SelectionParser.parse(SelectionParser.java:1705)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13364)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.dietParse(Parser.java:11750)
-	at org.eclipse.jdt.internal.codeassist.select.SelectionParser.dietParse(SelectionParser.java:1529)
-	at org.eclipse.jdt.internal.codeassist.SelectionEngine.select(SelectionEngine.java:994)
-	at org.eclipse.jdt.internal.core.Openable.codeSelect(Openable.java:167)
-	at org.eclipse.jdt.internal.core.CompilationUnit.codeSelect(CompilationUnit.java:389)
-	at org.eclipse.jdt.internal.core.CompilationUnit.codeSelect(CompilationUnit.java:382)
-	at org.eclipse.jdt.internal.ui.javaeditor.JavaElementHyperlinkDetector.detectHyperlinks(JavaElementHyperlinkDetector.java:124)
-	at org.eclipse.ui.texteditor.HyperlinkDetectorRegistry$HyperlinkDetectorDelegate.detectHyperlinks(HyperlinkDetectorRegistry.java:81)
-	at org.eclipse.jface.text.hyperlink.HyperlinkManager.findHyperlinks(HyperlinkManager.java:289)
-	at org.eclipse.jface.text.hyperlink.HyperlinkManager.findHyperlinks(HyperlinkManager.java:262)
-	at org.eclipse.jface.text.hyperlink.HyperlinkManager.mouseDown(HyperlinkManager.java:408)
-	at org.eclipse.swt.widgets.TypedListener.handleEvent(TypedListener.java:196)
-	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:89)
-	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4256)
-	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1066)
-	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:4054)
-	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3642)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1155)
-	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1046)
-	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:155)
-	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:643)
-	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
-	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:550)
-	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:171)
-	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:152)
-	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:203)
-	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:136)
-	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
-	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:402)
-	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:255)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:659)
-	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:596)
-	at org.eclipse.equinox.launcher.Main.run(Main.java:1467)
-
-!ENTRY org.eclipse.jdt.core 4 0 2023-08-28 11:35:04.387
-!MESSAGE Lombok annotation handler class lombok.eclipse.handlers.HandleValue failed
-!STACK 0
-java.lang.ClassCastException: class org.eclipse.jdt.internal.compiler.ast.FieldDeclaration cannot be cast to class org.eclipse.jdt.internal.compiler.ast.TypeDeclaration (org.eclipse.jdt.internal.compiler.ast.FieldDeclaration and org.eclipse.jdt.internal.compiler.ast.TypeDeclaration are in unnamed module of loader org.eclipse.osgi.internal.loader.EquinoxClassLoader @3985cca0)
-	at lombok.eclipse.handlers.HandleValue.handle(HandleValue.java:66)
-	at lombok.eclipse.HandlerLibrary$AnnotationHandlerContainer.handle(HandlerLibrary.java:106)
-	at lombok.eclipse.HandlerLibrary.handleAnnotation(HandlerLibrary.java:237)
-	at lombok.eclipse.TransformEclipseAST$AnnotationVisitor.visitAnnotationOnField(TransformEclipseAST.java:245)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:110)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:79)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:74)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:69)
-	at lombok.eclipse.EclipseAST.traverse(EclipseAST.java:224)
-	at lombok.eclipse.TransformEclipseAST.go(TransformEclipseAST.java:222)
-	at lombok.eclipse.TransformEclipseAST.transform(TransformEclipseAST.java:183)
-	at lombok.eclipse.TransformEclipseAST.transform_swapped(TransformEclipseAST.java:107)
-	at jdk.internal.reflect.GeneratedMethodAccessor54.invoke(Unknown Source)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at lombok.launch.PatchFixesHider$Util.invokeMethod(PatchFixesHider.java:133)
-	at lombok.launch.PatchFixesHider$Transform.transform_swapped(PatchFixesHider.java:256)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.endParse(Parser.java:11979)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13180)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13407)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13364)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.dietParse(Parser.java:11750)
-	at org.eclipse.jdt.internal.compiler.Compiler.internalBeginToCompile(Compiler.java:851)
-	at org.eclipse.jdt.internal.compiler.Compiler.beginToCompile(Compiler.java:394)
-	at org.eclipse.jdt.internal.compiler.Compiler.compile(Compiler.java:444)
-	at org.eclipse.jdt.internal.compiler.Compiler.compile(Compiler.java:426)
-	at org.eclipse.jdt.internal.core.builder.AbstractImageBuilder.compile(AbstractImageBuilder.java:379)
-	at org.eclipse.jdt.internal.core.builder.IncrementalImageBuilder.compile(IncrementalImageBuilder.java:371)
-	at org.eclipse.jdt.internal.core.builder.AbstractImageBuilder.compile(AbstractImageBuilder.java:311)
-	at org.eclipse.jdt.internal.core.builder.IncrementalImageBuilder.incrementalBuildLoop(IncrementalImageBuilder.java:190)
-	at org.eclipse.jdt.internal.core.builder.IncrementalImageBuilder.build(IncrementalImageBuilder.java:147)
-	at org.eclipse.jdt.internal.core.builder.JavaBuilder.buildDeltas(JavaBuilder.java:290)
-	at org.eclipse.jdt.internal.core.builder.JavaBuilder.build(JavaBuilder.java:213)
-	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:1020)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:247)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:303)
-	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:392)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:395)
-	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:506)
-	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:454)
-	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:536)
-	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:196)
-	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:289)
-	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
-
-!ENTRY org.springframework.tooling.boot.ls 1 0 2023-08-28 11:35:04.409
-!MESSAGE Classpath changed for project: itdalearn-be
-
-!ENTRY org.eclipse.jdt.core 4 0 2023-08-28 11:35:04.918
-!MESSAGE Lombok annotation handler class lombok.eclipse.handlers.HandleValue failed
-!STACK 0
-java.lang.ClassCastException: class org.eclipse.jdt.internal.compiler.ast.FieldDeclaration cannot be cast to class org.eclipse.jdt.internal.compiler.ast.TypeDeclaration (org.eclipse.jdt.internal.compiler.ast.FieldDeclaration and org.eclipse.jdt.internal.compiler.ast.TypeDeclaration are in unnamed module of loader org.eclipse.osgi.internal.loader.EquinoxClassLoader @3985cca0)
-	at lombok.eclipse.handlers.HandleValue.handle(HandleValue.java:66)
-	at lombok.eclipse.HandlerLibrary$AnnotationHandlerContainer.handle(HandlerLibrary.java:106)
-	at lombok.eclipse.HandlerLibrary.handleAnnotation(HandlerLibrary.java:237)
-	at lombok.eclipse.TransformEclipseAST$AnnotationVisitor.visitAnnotationOnField(TransformEclipseAST.java:245)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:110)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:79)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:74)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:69)
-	at lombok.eclipse.EclipseAST.traverse(EclipseAST.java:224)
-	at lombok.eclipse.TransformEclipseAST.go(TransformEclipseAST.java:222)
-	at lombok.eclipse.TransformEclipseAST.transform(TransformEclipseAST.java:183)
-	at lombok.eclipse.TransformEclipseAST.transform_swapped(TransformEclipseAST.java:107)
-	at jdk.internal.reflect.GeneratedMethodAccessor54.invoke(Unknown Source)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at lombok.launch.PatchFixesHider$Util.invokeMethod(PatchFixesHider.java:133)
-	at lombok.launch.PatchFixesHider$Transform.transform_swapped(PatchFixesHider.java:256)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.endParse(Parser.java:11979)
-	at org.eclipse.jdt.internal.core.util.CommentRecorderParser.endParse(CommentRecorderParser.java:135)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13180)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13407)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13364)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.dietParse(Parser.java:11750)
-	at org.eclipse.jdt.internal.compiler.Compiler.internalBeginToCompile(Compiler.java:851)
-	at org.eclipse.jdt.internal.compiler.Compiler.beginToCompile(Compiler.java:394)
-	at org.eclipse.jdt.internal.compiler.Compiler.resolve(Compiler.java:1038)
-	at org.eclipse.jdt.internal.compiler.Compiler.resolve(Compiler.java:1111)
-	at org.eclipse.jdt.internal.core.CompilationUnitProblemFinder.process(CompilationUnitProblemFinder.java:282)
-	at org.eclipse.jdt.internal.core.CompilationUnitProblemFinder.process(CompilationUnitProblemFinder.java:348)
-	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.makeConsistent(ReconcileWorkingCopyOperation.java:193)
-	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.executeOperation(ReconcileWorkingCopyOperation.java:94)
-	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:740)
-	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:806)
-	at org.eclipse.jdt.internal.core.CompilationUnit.reconcile(CompilationUnit.java:1325)
-	at org.eclipse.jdt.internal.core.CompilationUnit.reconcile(CompilationUnit.java:1284)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:139)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy$1.run(JavaReconcilingStrategy.java:94)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:91)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:158)
-	at org.eclipse.jdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(CompositeReconcilingStrategy.java:94)
-	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:107)
-	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:78)
-	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
-
-!ENTRY org.eclipse.jdt.core 4 0 2023-08-28 11:35:04.921
-!MESSAGE Lombok annotation handler class lombok.eclipse.handlers.HandleValue failed
-!STACK 0
-java.lang.ClassCastException: class org.eclipse.jdt.internal.compiler.ast.FieldDeclaration cannot be cast to class org.eclipse.jdt.internal.compiler.ast.TypeDeclaration (org.eclipse.jdt.internal.compiler.ast.FieldDeclaration and org.eclipse.jdt.internal.compiler.ast.TypeDeclaration are in unnamed module of loader org.eclipse.osgi.internal.loader.EquinoxClassLoader @3985cca0)
-	at lombok.eclipse.handlers.HandleValue.handle(HandleValue.java:66)
-	at lombok.eclipse.HandlerLibrary$AnnotationHandlerContainer.handle(HandlerLibrary.java:106)
-	at lombok.eclipse.HandlerLibrary.handleAnnotation(HandlerLibrary.java:237)
-	at lombok.eclipse.TransformEclipseAST$AnnotationVisitor.visitAnnotationOnField(TransformEclipseAST.java:245)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:110)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:79)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:74)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:69)
-	at lombok.eclipse.EclipseAST.traverse(EclipseAST.java:224)
-	at lombok.eclipse.TransformEclipseAST.go(TransformEclipseAST.java:222)
-	at lombok.eclipse.TransformEclipseAST.transform(TransformEclipseAST.java:183)
-	at lombok.eclipse.TransformEclipseAST.transform_swapped(TransformEclipseAST.java:107)
-	at jdk.internal.reflect.GeneratedMethodAccessor54.invoke(Unknown Source)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at lombok.launch.PatchFixesHider$Util.invokeMethod(PatchFixesHider.java:133)
-	at lombok.launch.PatchFixesHider$Transform.transform_swapped(PatchFixesHider.java:256)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.endParse(Parser.java:11979)
-	at org.eclipse.jdt.internal.core.util.CommentRecorderParser.endParse(CommentRecorderParser.java:135)
-	at org.eclipse.jdt.internal.compiler.SourceElementParser.endParse(SourceElementParser.java:830)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13180)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13407)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13364)
-	at org.eclipse.jdt.internal.compiler.SourceElementParser.parseCompilationUnit(SourceElementParser.java:1122)
-	at org.eclipse.jdt.internal.core.search.indexing.SourceIndexer.indexDocument(SourceIndexer.java:115)
-	at org.eclipse.jdt.internal.core.search.JavaSearchParticipant.indexDocument(JavaSearchParticipant.java:83)
-	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.indexDocument(IndexManager.java:676)
-	at org.eclipse.jdt.internal.core.search.indexing.IndexManager$2.execute(IndexManager.java:1291)
-	at org.eclipse.jdt.internal.core.search.processing.JobManager.indexerLoop(JobManager.java:514)
-	at java.base/java.lang.Thread.run(Thread.java:833)
-
-!ENTRY org.eclipse.jdt.core 4 0 2023-08-28 11:35:04.924
-!MESSAGE Lombok annotation handler class lombok.eclipse.handlers.HandleValue failed
-!STACK 0
-java.lang.ClassCastException: class org.eclipse.jdt.internal.compiler.ast.FieldDeclaration cannot be cast to class org.eclipse.jdt.internal.compiler.ast.TypeDeclaration (org.eclipse.jdt.internal.compiler.ast.FieldDeclaration and org.eclipse.jdt.internal.compiler.ast.TypeDeclaration are in unnamed module of loader org.eclipse.osgi.internal.loader.EquinoxClassLoader @3985cca0)
-	at lombok.eclipse.handlers.HandleValue.handle(HandleValue.java:66)
-	at lombok.eclipse.HandlerLibrary$AnnotationHandlerContainer.handle(HandlerLibrary.java:106)
-	at lombok.eclipse.HandlerLibrary.handleAnnotation(HandlerLibrary.java:237)
-	at lombok.eclipse.TransformEclipseAST$AnnotationVisitor.visitAnnotationOnField(TransformEclipseAST.java:245)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:110)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:79)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:74)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:69)
-	at lombok.eclipse.EclipseAST.traverse(EclipseAST.java:224)
-	at lombok.eclipse.TransformEclipseAST.go(TransformEclipseAST.java:222)
-	at lombok.eclipse.TransformEclipseAST.transform(TransformEclipseAST.java:183)
-	at lombok.eclipse.TransformEclipseAST.transform_swapped(TransformEclipseAST.java:107)
-	at jdk.internal.reflect.GeneratedMethodAccessor54.invoke(Unknown Source)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at lombok.launch.PatchFixesHider$Util.invokeMethod(PatchFixesHider.java:133)
-	at lombok.launch.PatchFixesHider$Transform.transform_swapped(PatchFixesHider.java:256)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.endParse(Parser.java:11979)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13180)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13407)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13364)
-	at org.eclipse.jdt.internal.core.search.indexing.SourceIndexer.resolveDocument(SourceIndexer.java:166)
-	at org.eclipse.jdt.internal.core.search.JavaSearchParticipant.resolveDocument(JavaSearchParticipant.java:117)
-	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.indexResolvedDocument(IndexManager.java:682)
-	at org.eclipse.jdt.internal.core.search.indexing.IndexManager$2.execute(IndexManager.java:1296)
-	at org.eclipse.jdt.internal.core.search.processing.JobManager.indexerLoop(JobManager.java:514)
-	at java.base/java.lang.Thread.run(Thread.java:833)
-
-!ENTRY org.eclipse.jdt.core 4 0 2023-08-28 11:35:04.958
-!MESSAGE Lombok annotation handler class lombok.eclipse.handlers.HandleValue failed
-!STACK 0
-java.lang.ClassCastException: class org.eclipse.jdt.internal.compiler.ast.FieldDeclaration cannot be cast to class org.eclipse.jdt.internal.compiler.ast.TypeDeclaration (org.eclipse.jdt.internal.compiler.ast.FieldDeclaration and org.eclipse.jdt.internal.compiler.ast.TypeDeclaration are in unnamed module of loader org.eclipse.osgi.internal.loader.EquinoxClassLoader @3985cca0)
-	at lombok.eclipse.handlers.HandleValue.handle(HandleValue.java:66)
-	at lombok.eclipse.HandlerLibrary$AnnotationHandlerContainer.handle(HandlerLibrary.java:106)
-	at lombok.eclipse.HandlerLibrary.handleAnnotation(HandlerLibrary.java:237)
-	at lombok.eclipse.TransformEclipseAST$AnnotationVisitor.visitAnnotationOnField(TransformEclipseAST.java:245)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:110)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:79)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:74)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:69)
-	at lombok.eclipse.EclipseAST.traverse(EclipseAST.java:224)
-	at lombok.eclipse.TransformEclipseAST.go(TransformEclipseAST.java:222)
-	at lombok.eclipse.TransformEclipseAST.transform(TransformEclipseAST.java:183)
-	at lombok.eclipse.TransformEclipseAST.transform_swapped(TransformEclipseAST.java:107)
-	at jdk.internal.reflect.GeneratedMethodAccessor54.invoke(Unknown Source)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at lombok.launch.PatchFixesHider$Util.invokeMethod(PatchFixesHider.java:133)
-	at lombok.launch.PatchFixesHider$Transform.transform_swapped(PatchFixesHider.java:256)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.endParse(Parser.java:11979)
-	at org.eclipse.jdt.internal.core.util.CommentRecorderParser.endParse(CommentRecorderParser.java:135)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13180)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13407)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13364)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.dietParse(Parser.java:11750)
-	at org.eclipse.jdt.internal.compiler.Compiler.internalBeginToCompile(Compiler.java:851)
-	at org.eclipse.jdt.internal.compiler.Compiler.beginToCompile(Compiler.java:394)
-	at org.eclipse.jdt.internal.compiler.Compiler.resolve(Compiler.java:1038)
-	at org.eclipse.jdt.internal.compiler.Compiler.resolve(Compiler.java:1111)
-	at org.eclipse.jdt.internal.core.CompilationUnitProblemFinder.process(CompilationUnitProblemFinder.java:282)
-	at org.eclipse.jdt.internal.core.CompilationUnitProblemFinder.process(CompilationUnitProblemFinder.java:348)
-	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.makeConsistent(ReconcileWorkingCopyOperation.java:193)
-	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.executeOperation(ReconcileWorkingCopyOperation.java:103)
-	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:740)
-	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:806)
-	at org.eclipse.jdt.internal.core.CompilationUnit.reconcile(CompilationUnit.java:1325)
-	at org.eclipse.jdt.internal.core.CompilationUnit.reconcile(CompilationUnit.java:1284)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:139)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy$1.run(JavaReconcilingStrategy.java:94)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:91)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:158)
-	at org.eclipse.jdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(CompositeReconcilingStrategy.java:94)
-	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:107)
-	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:78)
-	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
-
-!ENTRY org.eclipse.jdt.core 4 0 2023-08-28 11:35:07.720
-!MESSAGE Lombok annotation handler class lombok.eclipse.handlers.HandleValue failed
-!STACK 0
-java.lang.ClassCastException: class org.eclipse.jdt.internal.compiler.ast.FieldDeclaration cannot be cast to class org.eclipse.jdt.internal.compiler.ast.TypeDeclaration (org.eclipse.jdt.internal.compiler.ast.FieldDeclaration and org.eclipse.jdt.internal.compiler.ast.TypeDeclaration are in unnamed module of loader org.eclipse.osgi.internal.loader.EquinoxClassLoader @3985cca0)
-	at lombok.eclipse.handlers.HandleValue.handle(HandleValue.java:66)
-	at lombok.eclipse.HandlerLibrary$AnnotationHandlerContainer.handle(HandlerLibrary.java:106)
-	at lombok.eclipse.HandlerLibrary.handleAnnotation(HandlerLibrary.java:237)
-	at lombok.eclipse.TransformEclipseAST$AnnotationVisitor.visitAnnotationOnField(TransformEclipseAST.java:245)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:110)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:79)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:74)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:69)
-	at lombok.eclipse.EclipseAST.traverse(EclipseAST.java:224)
-	at lombok.eclipse.TransformEclipseAST.go(TransformEclipseAST.java:222)
-	at lombok.eclipse.TransformEclipseAST.transform(TransformEclipseAST.java:183)
-	at lombok.eclipse.TransformEclipseAST.transform_swapped(TransformEclipseAST.java:107)
-	at jdk.internal.reflect.GeneratedMethodAccessor54.invoke(Unknown Source)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at lombok.launch.PatchFixesHider$Util.invokeMethod(PatchFixesHider.java:133)
-	at lombok.launch.PatchFixesHider$Transform.transform_swapped(PatchFixesHider.java:256)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.endParse(Parser.java:11979)
-	at org.eclipse.jdt.internal.core.util.CommentRecorderParser.endParse(CommentRecorderParser.java:135)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13180)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13407)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13364)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.dietParse(Parser.java:11750)
-	at org.eclipse.jdt.internal.compiler.Compiler.internalBeginToCompile(Compiler.java:851)
-	at org.eclipse.jdt.internal.compiler.Compiler.beginToCompile(Compiler.java:394)
-	at org.eclipse.jdt.internal.compiler.Compiler.resolve(Compiler.java:1038)
-	at org.eclipse.jdt.internal.compiler.Compiler.resolve(Compiler.java:1111)
-	at org.eclipse.jdt.internal.core.CompilationUnitProblemFinder.process(CompilationUnitProblemFinder.java:282)
-	at org.eclipse.jdt.internal.core.CompilationUnitProblemFinder.process(CompilationUnitProblemFinder.java:348)
-	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.makeConsistent(ReconcileWorkingCopyOperation.java:193)
-	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.executeOperation(ReconcileWorkingCopyOperation.java:94)
-	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:740)
-	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:806)
-	at org.eclipse.jdt.internal.core.CompilationUnit.reconcile(CompilationUnit.java:1325)
-	at org.eclipse.jdt.internal.core.CompilationUnit.reconcile(CompilationUnit.java:1284)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:139)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy$1.run(JavaReconcilingStrategy.java:94)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:91)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:158)
-	at org.eclipse.jdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(CompositeReconcilingStrategy.java:94)
-	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:107)
-	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:78)
-	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
-
-!ENTRY org.eclipse.jdt.core 4 0 2023-08-28 11:35:07.745
-!MESSAGE Lombok annotation handler class lombok.eclipse.handlers.HandleValue failed
-!STACK 0
-java.lang.ClassCastException: class org.eclipse.jdt.internal.compiler.ast.FieldDeclaration cannot be cast to class org.eclipse.jdt.internal.compiler.ast.TypeDeclaration (org.eclipse.jdt.internal.compiler.ast.FieldDeclaration and org.eclipse.jdt.internal.compiler.ast.TypeDeclaration are in unnamed module of loader org.eclipse.osgi.internal.loader.EquinoxClassLoader @3985cca0)
-	at lombok.eclipse.handlers.HandleValue.handle(HandleValue.java:66)
-	at lombok.eclipse.HandlerLibrary$AnnotationHandlerContainer.handle(HandlerLibrary.java:106)
-	at lombok.eclipse.HandlerLibrary.handleAnnotation(HandlerLibrary.java:237)
-	at lombok.eclipse.TransformEclipseAST$AnnotationVisitor.visitAnnotationOnField(TransformEclipseAST.java:245)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:110)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:79)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:74)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:69)
-	at lombok.eclipse.EclipseAST.traverse(EclipseAST.java:224)
-	at lombok.eclipse.TransformEclipseAST.go(TransformEclipseAST.java:222)
-	at lombok.eclipse.TransformEclipseAST.transform(TransformEclipseAST.java:183)
-	at lombok.eclipse.TransformEclipseAST.transform_swapped(TransformEclipseAST.java:107)
-	at jdk.internal.reflect.GeneratedMethodAccessor54.invoke(Unknown Source)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at lombok.launch.PatchFixesHider$Util.invokeMethod(PatchFixesHider.java:133)
-	at lombok.launch.PatchFixesHider$Transform.transform_swapped(PatchFixesHider.java:256)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.endParse(Parser.java:11979)
-	at org.eclipse.jdt.internal.core.util.CommentRecorderParser.endParse(CommentRecorderParser.java:135)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13180)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13407)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13364)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.dietParse(Parser.java:11750)
-	at org.eclipse.jdt.internal.compiler.Compiler.internalBeginToCompile(Compiler.java:851)
-	at org.eclipse.jdt.internal.compiler.Compiler.beginToCompile(Compiler.java:394)
-	at org.eclipse.jdt.internal.compiler.Compiler.resolve(Compiler.java:1038)
-	at org.eclipse.jdt.internal.compiler.Compiler.resolve(Compiler.java:1111)
-	at org.eclipse.jdt.internal.core.CompilationUnitProblemFinder.process(CompilationUnitProblemFinder.java:282)
-	at org.eclipse.jdt.internal.core.CompilationUnitProblemFinder.process(CompilationUnitProblemFinder.java:348)
-	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.makeConsistent(ReconcileWorkingCopyOperation.java:193)
-	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.executeOperation(ReconcileWorkingCopyOperation.java:103)
-	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:740)
-	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:806)
-	at org.eclipse.jdt.internal.core.CompilationUnit.reconcile(CompilationUnit.java:1325)
-	at org.eclipse.jdt.internal.core.CompilationUnit.reconcile(CompilationUnit.java:1284)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:139)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy$1.run(JavaReconcilingStrategy.java:94)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:91)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:158)
-	at org.eclipse.jdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(CompositeReconcilingStrategy.java:94)
-	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:107)
-	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:78)
-	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
-
-!ENTRY org.eclipse.jdt.core 4 0 2023-08-28 11:35:10.084
-!MESSAGE Lombok annotation handler class lombok.eclipse.handlers.HandleValue failed
-!STACK 0
-java.lang.ClassCastException: class org.eclipse.jdt.internal.compiler.ast.FieldDeclaration cannot be cast to class org.eclipse.jdt.internal.compiler.ast.TypeDeclaration (org.eclipse.jdt.internal.compiler.ast.FieldDeclaration and org.eclipse.jdt.internal.compiler.ast.TypeDeclaration are in unnamed module of loader org.eclipse.osgi.internal.loader.EquinoxClassLoader @3985cca0)
-	at lombok.eclipse.handlers.HandleValue.handle(HandleValue.java:66)
-	at lombok.eclipse.HandlerLibrary$AnnotationHandlerContainer.handle(HandlerLibrary.java:106)
-	at lombok.eclipse.HandlerLibrary.handleAnnotation(HandlerLibrary.java:237)
-	at lombok.eclipse.TransformEclipseAST$AnnotationVisitor.visitAnnotationOnField(TransformEclipseAST.java:245)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:110)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:79)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:74)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:69)
-	at lombok.eclipse.EclipseAST.traverse(EclipseAST.java:224)
-	at lombok.eclipse.TransformEclipseAST.go(TransformEclipseAST.java:222)
-	at lombok.eclipse.TransformEclipseAST.transform(TransformEclipseAST.java:183)
-	at lombok.eclipse.TransformEclipseAST.transform_swapped(TransformEclipseAST.java:107)
-	at jdk.internal.reflect.GeneratedMethodAccessor54.invoke(Unknown Source)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at lombok.launch.PatchFixesHider$Util.invokeMethod(PatchFixesHider.java:133)
-	at lombok.launch.PatchFixesHider$Transform.transform_swapped(PatchFixesHider.java:256)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.endParse(Parser.java:11979)
-	at org.eclipse.jdt.internal.core.util.CommentRecorderParser.endParse(CommentRecorderParser.java:135)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13180)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13407)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13364)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.dietParse(Parser.java:11750)
-	at org.eclipse.jdt.internal.compiler.Compiler.internalBeginToCompile(Compiler.java:851)
-	at org.eclipse.jdt.internal.compiler.Compiler.beginToCompile(Compiler.java:394)
-	at org.eclipse.jdt.internal.compiler.Compiler.resolve(Compiler.java:1038)
-	at org.eclipse.jdt.internal.compiler.Compiler.resolve(Compiler.java:1111)
-	at org.eclipse.jdt.internal.core.CompilationUnitProblemFinder.process(CompilationUnitProblemFinder.java:282)
-	at org.eclipse.jdt.internal.core.CompilationUnitProblemFinder.process(CompilationUnitProblemFinder.java:348)
-	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.makeConsistent(ReconcileWorkingCopyOperation.java:193)
-	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.executeOperation(ReconcileWorkingCopyOperation.java:94)
-	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:740)
-	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:806)
-	at org.eclipse.jdt.internal.core.CompilationUnit.reconcile(CompilationUnit.java:1325)
-	at org.eclipse.jdt.internal.core.CompilationUnit.reconcile(CompilationUnit.java:1284)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:139)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy$1.run(JavaReconcilingStrategy.java:94)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:91)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:158)
-	at org.eclipse.jdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(CompositeReconcilingStrategy.java:94)
-	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:107)
-	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:78)
-	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
-
-!ENTRY org.eclipse.jdt.core 4 0 2023-08-28 11:35:10.102
-!MESSAGE Lombok annotation handler class lombok.eclipse.handlers.HandleValue failed
-!STACK 0
-java.lang.ClassCastException: class org.eclipse.jdt.internal.compiler.ast.FieldDeclaration cannot be cast to class org.eclipse.jdt.internal.compiler.ast.TypeDeclaration (org.eclipse.jdt.internal.compiler.ast.FieldDeclaration and org.eclipse.jdt.internal.compiler.ast.TypeDeclaration are in unnamed module of loader org.eclipse.osgi.internal.loader.EquinoxClassLoader @3985cca0)
-	at lombok.eclipse.handlers.HandleValue.handle(HandleValue.java:66)
-	at lombok.eclipse.HandlerLibrary$AnnotationHandlerContainer.handle(HandlerLibrary.java:106)
-	at lombok.eclipse.HandlerLibrary.handleAnnotation(HandlerLibrary.java:237)
-	at lombok.eclipse.TransformEclipseAST$AnnotationVisitor.visitAnnotationOnField(TransformEclipseAST.java:245)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:110)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:79)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:74)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:69)
-	at lombok.eclipse.EclipseAST.traverse(EclipseAST.java:224)
-	at lombok.eclipse.TransformEclipseAST.go(TransformEclipseAST.java:222)
-	at lombok.eclipse.TransformEclipseAST.transform(TransformEclipseAST.java:183)
-	at lombok.eclipse.TransformEclipseAST.transform_swapped(TransformEclipseAST.java:107)
-	at jdk.internal.reflect.GeneratedMethodAccessor54.invoke(Unknown Source)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at lombok.launch.PatchFixesHider$Util.invokeMethod(PatchFixesHider.java:133)
-	at lombok.launch.PatchFixesHider$Transform.transform_swapped(PatchFixesHider.java:256)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.endParse(Parser.java:11979)
-	at org.eclipse.jdt.internal.core.util.CommentRecorderParser.endParse(CommentRecorderParser.java:135)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13180)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13407)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13364)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.dietParse(Parser.java:11750)
-	at org.eclipse.jdt.internal.compiler.Compiler.internalBeginToCompile(Compiler.java:851)
-	at org.eclipse.jdt.internal.compiler.Compiler.beginToCompile(Compiler.java:394)
-	at org.eclipse.jdt.internal.compiler.Compiler.resolve(Compiler.java:1038)
-	at org.eclipse.jdt.internal.compiler.Compiler.resolve(Compiler.java:1111)
-	at org.eclipse.jdt.internal.core.CompilationUnitProblemFinder.process(CompilationUnitProblemFinder.java:282)
-	at org.eclipse.jdt.internal.core.CompilationUnitProblemFinder.process(CompilationUnitProblemFinder.java:348)
-	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.makeConsistent(ReconcileWorkingCopyOperation.java:193)
-	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.executeOperation(ReconcileWorkingCopyOperation.java:103)
-	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:740)
-	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:806)
-	at org.eclipse.jdt.internal.core.CompilationUnit.reconcile(CompilationUnit.java:1325)
-	at org.eclipse.jdt.internal.core.CompilationUnit.reconcile(CompilationUnit.java:1284)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:139)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy$1.run(JavaReconcilingStrategy.java:94)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:91)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:158)
-	at org.eclipse.jdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(CompositeReconcilingStrategy.java:94)
-	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:107)
-	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:78)
-	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
-
-!ENTRY org.eclipse.jdt.core 4 0 2023-08-28 11:35:12.696
-!MESSAGE Lombok annotation handler class lombok.eclipse.handlers.HandleValue failed
-!STACK 0
-java.lang.ClassCastException: class org.eclipse.jdt.internal.compiler.ast.FieldDeclaration cannot be cast to class org.eclipse.jdt.internal.compiler.ast.TypeDeclaration (org.eclipse.jdt.internal.compiler.ast.FieldDeclaration and org.eclipse.jdt.internal.compiler.ast.TypeDeclaration are in unnamed module of loader org.eclipse.osgi.internal.loader.EquinoxClassLoader @3985cca0)
-	at lombok.eclipse.handlers.HandleValue.handle(HandleValue.java:66)
-	at lombok.eclipse.HandlerLibrary$AnnotationHandlerContainer.handle(HandlerLibrary.java:106)
-	at lombok.eclipse.HandlerLibrary.handleAnnotation(HandlerLibrary.java:237)
-	at lombok.eclipse.TransformEclipseAST$AnnotationVisitor.visitAnnotationOnField(TransformEclipseAST.java:245)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:110)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:79)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:74)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:69)
-	at lombok.eclipse.EclipseAST.traverse(EclipseAST.java:224)
-	at lombok.eclipse.TransformEclipseAST.go(TransformEclipseAST.java:222)
-	at lombok.eclipse.TransformEclipseAST.transform(TransformEclipseAST.java:183)
-	at lombok.eclipse.TransformEclipseAST.transform_swapped(TransformEclipseAST.java:107)
-	at jdk.internal.reflect.GeneratedMethodAccessor54.invoke(Unknown Source)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at lombok.launch.PatchFixesHider$Util.invokeMethod(PatchFixesHider.java:133)
-	at lombok.launch.PatchFixesHider$Transform.transform_swapped(PatchFixesHider.java:256)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.endParse(Parser.java:11979)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13180)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13407)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13364)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.dietParse(Parser.java:11750)
-	at org.eclipse.jdt.internal.compiler.Compiler.internalBeginToCompile(Compiler.java:851)
-	at org.eclipse.jdt.internal.compiler.Compiler.beginToCompile(Compiler.java:394)
-	at org.eclipse.jdt.internal.compiler.Compiler.compile(Compiler.java:444)
-	at org.eclipse.jdt.internal.compiler.Compiler.compile(Compiler.java:426)
-	at org.eclipse.jdt.internal.core.builder.AbstractImageBuilder.compile(AbstractImageBuilder.java:379)
-	at org.eclipse.jdt.internal.core.builder.IncrementalImageBuilder.compile(IncrementalImageBuilder.java:371)
-	at org.eclipse.jdt.internal.core.builder.AbstractImageBuilder.compile(AbstractImageBuilder.java:311)
-	at org.eclipse.jdt.internal.core.builder.IncrementalImageBuilder.incrementalBuildLoop(IncrementalImageBuilder.java:190)
-	at org.eclipse.jdt.internal.core.builder.IncrementalImageBuilder.build(IncrementalImageBuilder.java:147)
-	at org.eclipse.jdt.internal.core.builder.JavaBuilder.buildDeltas(JavaBuilder.java:290)
-	at org.eclipse.jdt.internal.core.builder.JavaBuilder.build(JavaBuilder.java:213)
-	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:1020)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:247)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:303)
-	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:392)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:395)
-	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:506)
-	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:454)
-	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:536)
-	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:196)
-	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:289)
-	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
-
-!ENTRY org.springframework.tooling.boot.ls 1 0 2023-08-28 11:35:12.727
-!MESSAGE Classpath changed for project: itdalearn-be
-
-!ENTRY org.eclipse.jdt.core 4 0 2023-08-28 11:35:12.903
-!MESSAGE Lombok annotation handler class lombok.eclipse.handlers.HandleValue failed
-!STACK 0
-java.lang.ClassCastException: class org.eclipse.jdt.internal.compiler.ast.FieldDeclaration cannot be cast to class org.eclipse.jdt.internal.compiler.ast.TypeDeclaration (org.eclipse.jdt.internal.compiler.ast.FieldDeclaration and org.eclipse.jdt.internal.compiler.ast.TypeDeclaration are in unnamed module of loader org.eclipse.osgi.internal.loader.EquinoxClassLoader @3985cca0)
-	at lombok.eclipse.handlers.HandleValue.handle(HandleValue.java:66)
-	at lombok.eclipse.HandlerLibrary$AnnotationHandlerContainer.handle(HandlerLibrary.java:106)
-	at lombok.eclipse.HandlerLibrary.handleAnnotation(HandlerLibrary.java:237)
-	at lombok.eclipse.TransformEclipseAST$AnnotationVisitor.visitAnnotationOnField(TransformEclipseAST.java:245)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:110)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:79)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:74)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:69)
-	at lombok.eclipse.EclipseAST.traverse(EclipseAST.java:224)
-	at lombok.eclipse.TransformEclipseAST.go(TransformEclipseAST.java:222)
-	at lombok.eclipse.TransformEclipseAST.transform(TransformEclipseAST.java:183)
-	at lombok.eclipse.TransformEclipseAST.transform_swapped(TransformEclipseAST.java:107)
-	at jdk.internal.reflect.GeneratedMethodAccessor54.invoke(Unknown Source)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at lombok.launch.PatchFixesHider$Util.invokeMethod(PatchFixesHider.java:133)
-	at lombok.launch.PatchFixesHider$Transform.transform_swapped(PatchFixesHider.java:256)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.endParse(Parser.java:11979)
-	at org.eclipse.jdt.internal.core.util.CommentRecorderParser.endParse(CommentRecorderParser.java:135)
-	at org.eclipse.jdt.internal.compiler.SourceElementParser.endParse(SourceElementParser.java:830)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13180)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13407)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13364)
-	at org.eclipse.jdt.internal.compiler.SourceElementParser.parseCompilationUnit(SourceElementParser.java:1122)
-	at org.eclipse.jdt.internal.core.search.indexing.SourceIndexer.indexDocument(SourceIndexer.java:115)
-	at org.eclipse.jdt.internal.core.search.JavaSearchParticipant.indexDocument(JavaSearchParticipant.java:83)
-	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.indexDocument(IndexManager.java:676)
-	at org.eclipse.jdt.internal.core.search.indexing.IndexManager$2.execute(IndexManager.java:1291)
-	at org.eclipse.jdt.internal.core.search.processing.JobManager.indexerLoop(JobManager.java:514)
-	at java.base/java.lang.Thread.run(Thread.java:833)
-
-!ENTRY org.eclipse.jdt.core 4 0 2023-08-28 11:35:12.905
-!MESSAGE Lombok annotation handler class lombok.eclipse.handlers.HandleValue failed
-!STACK 0
-java.lang.ClassCastException: class org.eclipse.jdt.internal.compiler.ast.FieldDeclaration cannot be cast to class org.eclipse.jdt.internal.compiler.ast.TypeDeclaration (org.eclipse.jdt.internal.compiler.ast.FieldDeclaration and org.eclipse.jdt.internal.compiler.ast.TypeDeclaration are in unnamed module of loader org.eclipse.osgi.internal.loader.EquinoxClassLoader @3985cca0)
-	at lombok.eclipse.handlers.HandleValue.handle(HandleValue.java:66)
-	at lombok.eclipse.HandlerLibrary$AnnotationHandlerContainer.handle(HandlerLibrary.java:106)
-	at lombok.eclipse.HandlerLibrary.handleAnnotation(HandlerLibrary.java:237)
-	at lombok.eclipse.TransformEclipseAST$AnnotationVisitor.visitAnnotationOnField(TransformEclipseAST.java:245)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:110)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:79)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:74)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:69)
-	at lombok.eclipse.EclipseAST.traverse(EclipseAST.java:224)
-	at lombok.eclipse.TransformEclipseAST.go(TransformEclipseAST.java:222)
-	at lombok.eclipse.TransformEclipseAST.transform(TransformEclipseAST.java:183)
-	at lombok.eclipse.TransformEclipseAST.transform_swapped(TransformEclipseAST.java:107)
-	at jdk.internal.reflect.GeneratedMethodAccessor54.invoke(Unknown Source)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at lombok.launch.PatchFixesHider$Util.invokeMethod(PatchFixesHider.java:133)
-	at lombok.launch.PatchFixesHider$Transform.transform_swapped(PatchFixesHider.java:256)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.endParse(Parser.java:11979)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13180)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13407)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13364)
-	at org.eclipse.jdt.internal.core.search.indexing.SourceIndexer.resolveDocument(SourceIndexer.java:166)
-	at org.eclipse.jdt.internal.core.search.JavaSearchParticipant.resolveDocument(JavaSearchParticipant.java:117)
-	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.indexResolvedDocument(IndexManager.java:682)
-	at org.eclipse.jdt.internal.core.search.indexing.IndexManager$2.execute(IndexManager.java:1296)
-	at org.eclipse.jdt.internal.core.search.processing.JobManager.indexerLoop(JobManager.java:514)
-	at java.base/java.lang.Thread.run(Thread.java:833)
-
-!ENTRY org.eclipse.jdt.core 4 0 2023-08-28 11:35:13.233
-!MESSAGE Lombok annotation handler class lombok.eclipse.handlers.HandleValue failed
-!STACK 0
-java.lang.ClassCastException: class org.eclipse.jdt.internal.compiler.ast.FieldDeclaration cannot be cast to class org.eclipse.jdt.internal.compiler.ast.TypeDeclaration (org.eclipse.jdt.internal.compiler.ast.FieldDeclaration and org.eclipse.jdt.internal.compiler.ast.TypeDeclaration are in unnamed module of loader org.eclipse.osgi.internal.loader.EquinoxClassLoader @3985cca0)
-	at lombok.eclipse.handlers.HandleValue.handle(HandleValue.java:66)
-	at lombok.eclipse.HandlerLibrary$AnnotationHandlerContainer.handle(HandlerLibrary.java:106)
-	at lombok.eclipse.HandlerLibrary.handleAnnotation(HandlerLibrary.java:237)
-	at lombok.eclipse.TransformEclipseAST$AnnotationVisitor.visitAnnotationOnField(TransformEclipseAST.java:245)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:110)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:79)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:74)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:69)
-	at lombok.eclipse.EclipseAST.traverse(EclipseAST.java:224)
-	at lombok.eclipse.TransformEclipseAST.go(TransformEclipseAST.java:222)
-	at lombok.eclipse.TransformEclipseAST.transform(TransformEclipseAST.java:183)
-	at lombok.eclipse.TransformEclipseAST.transform_swapped(TransformEclipseAST.java:107)
-	at jdk.internal.reflect.GeneratedMethodAccessor54.invoke(Unknown Source)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at lombok.launch.PatchFixesHider$Util.invokeMethod(PatchFixesHider.java:133)
-	at lombok.launch.PatchFixesHider$Transform.transform_swapped(PatchFixesHider.java:256)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.endParse(Parser.java:11979)
-	at org.eclipse.jdt.internal.core.util.CommentRecorderParser.endParse(CommentRecorderParser.java:135)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13180)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13407)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13364)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.dietParse(Parser.java:11750)
-	at org.eclipse.jdt.internal.compiler.Compiler.internalBeginToCompile(Compiler.java:851)
-	at org.eclipse.jdt.internal.compiler.Compiler.beginToCompile(Compiler.java:394)
-	at org.eclipse.jdt.internal.compiler.Compiler.resolve(Compiler.java:1038)
-	at org.eclipse.jdt.internal.compiler.Compiler.resolve(Compiler.java:1111)
-	at org.eclipse.jdt.internal.core.CompilationUnitProblemFinder.process(CompilationUnitProblemFinder.java:282)
-	at org.eclipse.jdt.internal.core.CompilationUnitProblemFinder.process(CompilationUnitProblemFinder.java:348)
-	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.makeConsistent(ReconcileWorkingCopyOperation.java:193)
-	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.executeOperation(ReconcileWorkingCopyOperation.java:94)
-	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:740)
-	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:806)
-	at org.eclipse.jdt.internal.core.CompilationUnit.reconcile(CompilationUnit.java:1325)
-	at org.eclipse.jdt.internal.core.CompilationUnit.reconcile(CompilationUnit.java:1284)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:139)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy$1.run(JavaReconcilingStrategy.java:94)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:91)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:158)
-	at org.eclipse.jdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(CompositeReconcilingStrategy.java:94)
-	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:107)
-	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:78)
-	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
-
-!ENTRY org.eclipse.jdt.core 4 0 2023-08-28 11:35:13.247
-!MESSAGE Lombok annotation handler class lombok.eclipse.handlers.HandleValue failed
-!STACK 0
-java.lang.ClassCastException: class org.eclipse.jdt.internal.compiler.ast.FieldDeclaration cannot be cast to class org.eclipse.jdt.internal.compiler.ast.TypeDeclaration (org.eclipse.jdt.internal.compiler.ast.FieldDeclaration and org.eclipse.jdt.internal.compiler.ast.TypeDeclaration are in unnamed module of loader org.eclipse.osgi.internal.loader.EquinoxClassLoader @3985cca0)
-	at lombok.eclipse.handlers.HandleValue.handle(HandleValue.java:66)
-	at lombok.eclipse.HandlerLibrary$AnnotationHandlerContainer.handle(HandlerLibrary.java:106)
-	at lombok.eclipse.HandlerLibrary.handleAnnotation(HandlerLibrary.java:237)
-	at lombok.eclipse.TransformEclipseAST$AnnotationVisitor.visitAnnotationOnField(TransformEclipseAST.java:245)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:110)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:79)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:74)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:69)
-	at lombok.eclipse.EclipseAST.traverse(EclipseAST.java:224)
-	at lombok.eclipse.TransformEclipseAST.go(TransformEclipseAST.java:222)
-	at lombok.eclipse.TransformEclipseAST.transform(TransformEclipseAST.java:183)
-	at lombok.eclipse.TransformEclipseAST.transform_swapped(TransformEclipseAST.java:107)
-	at jdk.internal.reflect.GeneratedMethodAccessor54.invoke(Unknown Source)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at lombok.launch.PatchFixesHider$Util.invokeMethod(PatchFixesHider.java:133)
-	at lombok.launch.PatchFixesHider$Transform.transform_swapped(PatchFixesHider.java:256)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.endParse(Parser.java:11979)
-	at org.eclipse.jdt.internal.core.util.CommentRecorderParser.endParse(CommentRecorderParser.java:135)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13180)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13407)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13364)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.dietParse(Parser.java:11750)
-	at org.eclipse.jdt.internal.compiler.Compiler.internalBeginToCompile(Compiler.java:851)
-	at org.eclipse.jdt.internal.compiler.Compiler.beginToCompile(Compiler.java:394)
-	at org.eclipse.jdt.internal.compiler.Compiler.resolve(Compiler.java:1038)
-	at org.eclipse.jdt.internal.compiler.Compiler.resolve(Compiler.java:1111)
-	at org.eclipse.jdt.internal.core.CompilationUnitProblemFinder.process(CompilationUnitProblemFinder.java:282)
-	at org.eclipse.jdt.internal.core.CompilationUnitProblemFinder.process(CompilationUnitProblemFinder.java:348)
-	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.makeConsistent(ReconcileWorkingCopyOperation.java:193)
-	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.executeOperation(ReconcileWorkingCopyOperation.java:103)
-	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:740)
-	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:806)
-	at org.eclipse.jdt.internal.core.CompilationUnit.reconcile(CompilationUnit.java:1325)
-	at org.eclipse.jdt.internal.core.CompilationUnit.reconcile(CompilationUnit.java:1284)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:139)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy$1.run(JavaReconcilingStrategy.java:94)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:91)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:158)
-	at org.eclipse.jdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(CompositeReconcilingStrategy.java:94)
-	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:107)
-	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:78)
-	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
-
-!ENTRY org.eclipse.jdt.core 4 0 2023-08-28 11:35:15.506
-!MESSAGE Lombok annotation handler class lombok.eclipse.handlers.HandleValue failed
-!STACK 0
-java.lang.ClassCastException: class org.eclipse.jdt.internal.compiler.ast.FieldDeclaration cannot be cast to class org.eclipse.jdt.internal.compiler.ast.TypeDeclaration (org.eclipse.jdt.internal.compiler.ast.FieldDeclaration and org.eclipse.jdt.internal.compiler.ast.TypeDeclaration are in unnamed module of loader org.eclipse.osgi.internal.loader.EquinoxClassLoader @3985cca0)
-	at lombok.eclipse.handlers.HandleValue.handle(HandleValue.java:66)
-	at lombok.eclipse.HandlerLibrary$AnnotationHandlerContainer.handle(HandlerLibrary.java:106)
-	at lombok.eclipse.HandlerLibrary.handleAnnotation(HandlerLibrary.java:237)
-	at lombok.eclipse.TransformEclipseAST$AnnotationVisitor.visitAnnotationOnField(TransformEclipseAST.java:245)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:110)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:79)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:74)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:69)
-	at lombok.eclipse.EclipseAST.traverse(EclipseAST.java:224)
-	at lombok.eclipse.TransformEclipseAST.go(TransformEclipseAST.java:222)
-	at lombok.eclipse.TransformEclipseAST.transform(TransformEclipseAST.java:183)
-	at lombok.eclipse.TransformEclipseAST.transform_swapped(TransformEclipseAST.java:107)
-	at jdk.internal.reflect.GeneratedMethodAccessor54.invoke(Unknown Source)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at lombok.launch.PatchFixesHider$Util.invokeMethod(PatchFixesHider.java:133)
-	at lombok.launch.PatchFixesHider$Transform.transform_swapped(PatchFixesHider.java:256)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.endParse(Parser.java:11979)
-	at org.eclipse.jdt.internal.core.util.CommentRecorderParser.endParse(CommentRecorderParser.java:135)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13180)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13407)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13364)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.dietParse(Parser.java:11750)
-	at org.eclipse.jdt.internal.compiler.Compiler.internalBeginToCompile(Compiler.java:851)
-	at org.eclipse.jdt.internal.compiler.Compiler.beginToCompile(Compiler.java:394)
-	at org.eclipse.jdt.internal.compiler.Compiler.resolve(Compiler.java:1038)
-	at org.eclipse.jdt.internal.compiler.Compiler.resolve(Compiler.java:1111)
-	at org.eclipse.jdt.internal.core.CompilationUnitProblemFinder.process(CompilationUnitProblemFinder.java:282)
-	at org.eclipse.jdt.internal.core.CompilationUnitProblemFinder.process(CompilationUnitProblemFinder.java:348)
-	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.makeConsistent(ReconcileWorkingCopyOperation.java:193)
-	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.executeOperation(ReconcileWorkingCopyOperation.java:94)
-	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:740)
-	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:806)
-	at org.eclipse.jdt.internal.core.CompilationUnit.reconcile(CompilationUnit.java:1325)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:132)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy$1.run(JavaReconcilingStrategy.java:94)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:91)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:158)
-	at org.eclipse.jdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(CompositeReconcilingStrategy.java:94)
-	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:107)
-	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:78)
-	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
-
-!ENTRY org.eclipse.jdt.core 4 0 2023-08-28 11:35:18.847
-!MESSAGE Lombok annotation handler class lombok.eclipse.handlers.HandleValue failed
-!STACK 0
-java.lang.ClassCastException: class org.eclipse.jdt.internal.compiler.ast.FieldDeclaration cannot be cast to class org.eclipse.jdt.internal.compiler.ast.TypeDeclaration (org.eclipse.jdt.internal.compiler.ast.FieldDeclaration and org.eclipse.jdt.internal.compiler.ast.TypeDeclaration are in unnamed module of loader org.eclipse.osgi.internal.loader.EquinoxClassLoader @3985cca0)
-	at lombok.eclipse.handlers.HandleValue.handle(HandleValue.java:66)
-	at lombok.eclipse.HandlerLibrary$AnnotationHandlerContainer.handle(HandlerLibrary.java:106)
-	at lombok.eclipse.HandlerLibrary.handleAnnotation(HandlerLibrary.java:237)
-	at lombok.eclipse.TransformEclipseAST$AnnotationVisitor.visitAnnotationOnField(TransformEclipseAST.java:245)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:110)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:79)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:74)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:69)
-	at lombok.eclipse.EclipseAST.traverse(EclipseAST.java:224)
-	at lombok.eclipse.TransformEclipseAST.go(TransformEclipseAST.java:222)
-	at lombok.eclipse.TransformEclipseAST.transform(TransformEclipseAST.java:183)
-	at lombok.eclipse.TransformEclipseAST.transform_swapped(TransformEclipseAST.java:107)
-	at jdk.internal.reflect.GeneratedMethodAccessor54.invoke(Unknown Source)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at lombok.launch.PatchFixesHider$Util.invokeMethod(PatchFixesHider.java:133)
-	at lombok.launch.PatchFixesHider$Transform.transform_swapped(PatchFixesHider.java:256)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.endParse(Parser.java:11979)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13180)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13407)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13364)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.dietParse(Parser.java:11750)
-	at org.eclipse.jdt.internal.compiler.Compiler.internalBeginToCompile(Compiler.java:851)
-	at org.eclipse.jdt.internal.compiler.Compiler.beginToCompile(Compiler.java:394)
-	at org.eclipse.jdt.internal.compiler.Compiler.compile(Compiler.java:444)
-	at org.eclipse.jdt.internal.compiler.Compiler.compile(Compiler.java:426)
-	at org.eclipse.jdt.internal.core.builder.AbstractImageBuilder.compile(AbstractImageBuilder.java:379)
-	at org.eclipse.jdt.internal.core.builder.IncrementalImageBuilder.compile(IncrementalImageBuilder.java:371)
-	at org.eclipse.jdt.internal.core.builder.AbstractImageBuilder.compile(AbstractImageBuilder.java:311)
-	at org.eclipse.jdt.internal.core.builder.IncrementalImageBuilder.incrementalBuildLoop(IncrementalImageBuilder.java:190)
-	at org.eclipse.jdt.internal.core.builder.IncrementalImageBuilder.build(IncrementalImageBuilder.java:147)
-	at org.eclipse.jdt.internal.core.builder.JavaBuilder.buildDeltas(JavaBuilder.java:290)
-	at org.eclipse.jdt.internal.core.builder.JavaBuilder.build(JavaBuilder.java:213)
-	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:1020)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:247)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:303)
-	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:392)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:395)
-	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:506)
-	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:454)
-	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:536)
-	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:196)
-	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:289)
-	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
-
-!ENTRY org.springframework.tooling.boot.ls 1 0 2023-08-28 11:35:18.891
-!MESSAGE Classpath changed for project: itdalearn-be
-
-!ENTRY org.eclipse.jdt.core 4 0 2023-08-28 11:35:19.087
-!MESSAGE Lombok annotation handler class lombok.eclipse.handlers.HandleValue failed
-!STACK 0
-java.lang.ClassCastException: class org.eclipse.jdt.internal.compiler.ast.FieldDeclaration cannot be cast to class org.eclipse.jdt.internal.compiler.ast.TypeDeclaration (org.eclipse.jdt.internal.compiler.ast.FieldDeclaration and org.eclipse.jdt.internal.compiler.ast.TypeDeclaration are in unnamed module of loader org.eclipse.osgi.internal.loader.EquinoxClassLoader @3985cca0)
-	at lombok.eclipse.handlers.HandleValue.handle(HandleValue.java:66)
-	at lombok.eclipse.HandlerLibrary$AnnotationHandlerContainer.handle(HandlerLibrary.java:106)
-	at lombok.eclipse.HandlerLibrary.handleAnnotation(HandlerLibrary.java:237)
-	at lombok.eclipse.TransformEclipseAST$AnnotationVisitor.visitAnnotationOnField(TransformEclipseAST.java:245)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:110)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:79)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:74)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:69)
-	at lombok.eclipse.EclipseAST.traverse(EclipseAST.java:224)
-	at lombok.eclipse.TransformEclipseAST.go(TransformEclipseAST.java:222)
-	at lombok.eclipse.TransformEclipseAST.transform(TransformEclipseAST.java:183)
-	at lombok.eclipse.TransformEclipseAST.transform_swapped(TransformEclipseAST.java:107)
-	at jdk.internal.reflect.GeneratedMethodAccessor54.invoke(Unknown Source)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at lombok.launch.PatchFixesHider$Util.invokeMethod(PatchFixesHider.java:133)
-	at lombok.launch.PatchFixesHider$Transform.transform_swapped(PatchFixesHider.java:256)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.endParse(Parser.java:11979)
-	at org.eclipse.jdt.internal.core.util.CommentRecorderParser.endParse(CommentRecorderParser.java:135)
-	at org.eclipse.jdt.internal.compiler.SourceElementParser.endParse(SourceElementParser.java:830)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13180)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13407)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13364)
-	at org.eclipse.jdt.internal.compiler.SourceElementParser.parseCompilationUnit(SourceElementParser.java:1122)
-	at org.eclipse.jdt.internal.core.search.indexing.SourceIndexer.indexDocument(SourceIndexer.java:115)
-	at org.eclipse.jdt.internal.core.search.JavaSearchParticipant.indexDocument(JavaSearchParticipant.java:83)
-	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.indexDocument(IndexManager.java:676)
-	at org.eclipse.jdt.internal.core.search.indexing.IndexManager$2.execute(IndexManager.java:1291)
-	at org.eclipse.jdt.internal.core.search.processing.JobManager.indexerLoop(JobManager.java:514)
-	at java.base/java.lang.Thread.run(Thread.java:833)
-
-!ENTRY org.eclipse.jdt.core 4 0 2023-08-28 11:35:19.090
-!MESSAGE Lombok annotation handler class lombok.eclipse.handlers.HandleValue failed
-!STACK 0
-java.lang.ClassCastException: class org.eclipse.jdt.internal.compiler.ast.FieldDeclaration cannot be cast to class org.eclipse.jdt.internal.compiler.ast.TypeDeclaration (org.eclipse.jdt.internal.compiler.ast.FieldDeclaration and org.eclipse.jdt.internal.compiler.ast.TypeDeclaration are in unnamed module of loader org.eclipse.osgi.internal.loader.EquinoxClassLoader @3985cca0)
-	at lombok.eclipse.handlers.HandleValue.handle(HandleValue.java:66)
-	at lombok.eclipse.HandlerLibrary$AnnotationHandlerContainer.handle(HandlerLibrary.java:106)
-	at lombok.eclipse.HandlerLibrary.handleAnnotation(HandlerLibrary.java:237)
-	at lombok.eclipse.TransformEclipseAST$AnnotationVisitor.visitAnnotationOnField(TransformEclipseAST.java:245)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:110)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:79)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:74)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:69)
-	at lombok.eclipse.EclipseAST.traverse(EclipseAST.java:224)
-	at lombok.eclipse.TransformEclipseAST.go(TransformEclipseAST.java:222)
-	at lombok.eclipse.TransformEclipseAST.transform(TransformEclipseAST.java:183)
-	at lombok.eclipse.TransformEclipseAST.transform_swapped(TransformEclipseAST.java:107)
-	at jdk.internal.reflect.GeneratedMethodAccessor54.invoke(Unknown Source)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at lombok.launch.PatchFixesHider$Util.invokeMethod(PatchFixesHider.java:133)
-	at lombok.launch.PatchFixesHider$Transform.transform_swapped(PatchFixesHider.java:256)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.endParse(Parser.java:11979)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13180)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13407)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13364)
-	at org.eclipse.jdt.internal.core.search.indexing.SourceIndexer.resolveDocument(SourceIndexer.java:166)
-	at org.eclipse.jdt.internal.core.search.JavaSearchParticipant.resolveDocument(JavaSearchParticipant.java:117)
-	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.indexResolvedDocument(IndexManager.java:682)
-	at org.eclipse.jdt.internal.core.search.indexing.IndexManager$2.execute(IndexManager.java:1296)
-	at org.eclipse.jdt.internal.core.search.processing.JobManager.indexerLoop(JobManager.java:514)
-	at java.base/java.lang.Thread.run(Thread.java:833)
-
-!ENTRY org.eclipse.jdt.core 4 0 2023-08-28 11:35:19.166
-!MESSAGE Lombok annotation handler class lombok.eclipse.handlers.HandleValue failed
-!STACK 0
-java.lang.ClassCastException: class org.eclipse.jdt.internal.compiler.ast.FieldDeclaration cannot be cast to class org.eclipse.jdt.internal.compiler.ast.TypeDeclaration (org.eclipse.jdt.internal.compiler.ast.FieldDeclaration and org.eclipse.jdt.internal.compiler.ast.TypeDeclaration are in unnamed module of loader org.eclipse.osgi.internal.loader.EquinoxClassLoader @3985cca0)
-	at lombok.eclipse.handlers.HandleValue.handle(HandleValue.java:66)
-	at lombok.eclipse.HandlerLibrary$AnnotationHandlerContainer.handle(HandlerLibrary.java:106)
-	at lombok.eclipse.HandlerLibrary.handleAnnotation(HandlerLibrary.java:237)
-	at lombok.eclipse.TransformEclipseAST$AnnotationVisitor.visitAnnotationOnField(TransformEclipseAST.java:245)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:110)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:79)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:74)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:69)
-	at lombok.eclipse.EclipseAST.traverse(EclipseAST.java:224)
-	at lombok.eclipse.TransformEclipseAST.go(TransformEclipseAST.java:222)
-	at lombok.eclipse.TransformEclipseAST.transform(TransformEclipseAST.java:183)
-	at lombok.eclipse.TransformEclipseAST.transform_swapped(TransformEclipseAST.java:107)
-	at jdk.internal.reflect.GeneratedMethodAccessor54.invoke(Unknown Source)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at lombok.launch.PatchFixesHider$Util.invokeMethod(PatchFixesHider.java:133)
-	at lombok.launch.PatchFixesHider$Transform.transform_swapped(PatchFixesHider.java:256)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.endParse(Parser.java:11979)
-	at org.eclipse.jdt.internal.core.util.CommentRecorderParser.endParse(CommentRecorderParser.java:135)
-	at org.eclipse.jdt.internal.compiler.SourceElementParser.endParse(SourceElementParser.java:830)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13180)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13407)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13364)
-	at org.eclipse.jdt.internal.compiler.SourceElementParser.parseCompilationUnit(SourceElementParser.java:1122)
-	at org.eclipse.jdt.internal.core.search.indexing.SourceIndexer.indexDocument(SourceIndexer.java:115)
-	at org.eclipse.jdt.internal.core.search.JavaSearchParticipant.indexDocument(JavaSearchParticipant.java:83)
-	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.indexDocument(IndexManager.java:676)
-	at org.eclipse.jdt.internal.core.search.indexing.IndexManager$2.execute(IndexManager.java:1291)
-	at org.eclipse.jdt.internal.core.search.processing.JobManager.indexerLoop(JobManager.java:514)
-	at java.base/java.lang.Thread.run(Thread.java:833)
-
-!ENTRY org.eclipse.jdt.core 4 0 2023-08-28 11:35:19.168
-!MESSAGE Lombok annotation handler class lombok.eclipse.handlers.HandleValue failed
-!STACK 0
-java.lang.ClassCastException: class org.eclipse.jdt.internal.compiler.ast.FieldDeclaration cannot be cast to class org.eclipse.jdt.internal.compiler.ast.TypeDeclaration (org.eclipse.jdt.internal.compiler.ast.FieldDeclaration and org.eclipse.jdt.internal.compiler.ast.TypeDeclaration are in unnamed module of loader org.eclipse.osgi.internal.loader.EquinoxClassLoader @3985cca0)
-	at lombok.eclipse.handlers.HandleValue.handle(HandleValue.java:66)
-	at lombok.eclipse.HandlerLibrary$AnnotationHandlerContainer.handle(HandlerLibrary.java:106)
-	at lombok.eclipse.HandlerLibrary.handleAnnotation(HandlerLibrary.java:237)
-	at lombok.eclipse.TransformEclipseAST$AnnotationVisitor.visitAnnotationOnField(TransformEclipseAST.java:245)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:110)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:79)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:74)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:69)
-	at lombok.eclipse.EclipseAST.traverse(EclipseAST.java:224)
-	at lombok.eclipse.TransformEclipseAST.go(TransformEclipseAST.java:222)
-	at lombok.eclipse.TransformEclipseAST.transform(TransformEclipseAST.java:183)
-	at lombok.eclipse.TransformEclipseAST.transform_swapped(TransformEclipseAST.java:107)
-	at jdk.internal.reflect.GeneratedMethodAccessor54.invoke(Unknown Source)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at lombok.launch.PatchFixesHider$Util.invokeMethod(PatchFixesHider.java:133)
-	at lombok.launch.PatchFixesHider$Transform.transform_swapped(PatchFixesHider.java:256)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.endParse(Parser.java:11979)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13180)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13407)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13364)
-	at org.eclipse.jdt.internal.core.search.indexing.SourceIndexer.resolveDocument(SourceIndexer.java:166)
-	at org.eclipse.jdt.internal.core.search.JavaSearchParticipant.resolveDocument(JavaSearchParticipant.java:117)
-	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.indexResolvedDocument(IndexManager.java:682)
-	at org.eclipse.jdt.internal.core.search.indexing.IndexManager$2.execute(IndexManager.java:1296)
-	at org.eclipse.jdt.internal.core.search.processing.JobManager.indexerLoop(JobManager.java:514)
-	at java.base/java.lang.Thread.run(Thread.java:833)
-
-!ENTRY org.eclipse.jdt.core 4 0 2023-08-28 11:35:19.397
-!MESSAGE Lombok annotation handler class lombok.eclipse.handlers.HandleValue failed
-!STACK 0
-java.lang.ClassCastException: class org.eclipse.jdt.internal.compiler.ast.FieldDeclaration cannot be cast to class org.eclipse.jdt.internal.compiler.ast.TypeDeclaration (org.eclipse.jdt.internal.compiler.ast.FieldDeclaration and org.eclipse.jdt.internal.compiler.ast.TypeDeclaration are in unnamed module of loader org.eclipse.osgi.internal.loader.EquinoxClassLoader @3985cca0)
-	at lombok.eclipse.handlers.HandleValue.handle(HandleValue.java:66)
-	at lombok.eclipse.HandlerLibrary$AnnotationHandlerContainer.handle(HandlerLibrary.java:106)
-	at lombok.eclipse.HandlerLibrary.handleAnnotation(HandlerLibrary.java:237)
-	at lombok.eclipse.TransformEclipseAST$AnnotationVisitor.visitAnnotationOnField(TransformEclipseAST.java:245)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:110)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:79)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:74)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:69)
-	at lombok.eclipse.EclipseAST.traverse(EclipseAST.java:224)
-	at lombok.eclipse.TransformEclipseAST.go(TransformEclipseAST.java:222)
-	at lombok.eclipse.TransformEclipseAST.transform(TransformEclipseAST.java:183)
-	at lombok.eclipse.TransformEclipseAST.transform_swapped(TransformEclipseAST.java:107)
-	at jdk.internal.reflect.GeneratedMethodAccessor54.invoke(Unknown Source)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at lombok.launch.PatchFixesHider$Util.invokeMethod(PatchFixesHider.java:133)
-	at lombok.launch.PatchFixesHider$Transform.transform_swapped(PatchFixesHider.java:256)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.endParse(Parser.java:11979)
-	at org.eclipse.jdt.internal.core.util.CommentRecorderParser.endParse(CommentRecorderParser.java:135)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13180)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13407)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13364)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.dietParse(Parser.java:11750)
-	at org.eclipse.jdt.internal.compiler.Compiler.internalBeginToCompile(Compiler.java:851)
-	at org.eclipse.jdt.internal.compiler.Compiler.beginToCompile(Compiler.java:394)
-	at org.eclipse.jdt.internal.compiler.Compiler.resolve(Compiler.java:1038)
-	at org.eclipse.jdt.internal.compiler.Compiler.resolve(Compiler.java:1111)
-	at org.eclipse.jdt.internal.core.CompilationUnitProblemFinder.process(CompilationUnitProblemFinder.java:282)
-	at org.eclipse.jdt.internal.core.CompilationUnitProblemFinder.process(CompilationUnitProblemFinder.java:348)
-	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.makeConsistent(ReconcileWorkingCopyOperation.java:193)
-	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.executeOperation(ReconcileWorkingCopyOperation.java:94)
-	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:740)
-	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:806)
-	at org.eclipse.jdt.internal.core.CompilationUnit.reconcile(CompilationUnit.java:1325)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:132)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy$1.run(JavaReconcilingStrategy.java:94)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:91)
-	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:158)
-	at org.eclipse.jdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(CompositeReconcilingStrategy.java:94)
-	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:107)
-	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:78)
-	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
-
-!ENTRY org.eclipse.jdt.core 4 0 2023-08-28 11:35:21.934
-!MESSAGE Lombok annotation handler class lombok.eclipse.handlers.HandleValue failed
-!STACK 0
-java.lang.ClassCastException: class org.eclipse.jdt.internal.compiler.ast.FieldDeclaration cannot be cast to class org.eclipse.jdt.internal.compiler.ast.TypeDeclaration (org.eclipse.jdt.internal.compiler.ast.FieldDeclaration and org.eclipse.jdt.internal.compiler.ast.TypeDeclaration are in unnamed module of loader org.eclipse.osgi.internal.loader.EquinoxClassLoader @3985cca0)
-	at lombok.eclipse.handlers.HandleValue.handle(HandleValue.java:66)
-	at lombok.eclipse.HandlerLibrary$AnnotationHandlerContainer.handle(HandlerLibrary.java:106)
-	at lombok.eclipse.HandlerLibrary.handleAnnotation(HandlerLibrary.java:237)
-	at lombok.eclipse.TransformEclipseAST$AnnotationVisitor.visitAnnotationOnField(TransformEclipseAST.java:245)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:110)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:79)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:74)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:69)
-	at lombok.eclipse.EclipseAST.traverse(EclipseAST.java:224)
-	at lombok.eclipse.TransformEclipseAST.go(TransformEclipseAST.java:222)
-	at lombok.eclipse.TransformEclipseAST.transform(TransformEclipseAST.java:183)
-	at lombok.eclipse.TransformEclipseAST.transform_swapped(TransformEclipseAST.java:107)
-	at jdk.internal.reflect.GeneratedMethodAccessor54.invoke(Unknown Source)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at lombok.launch.PatchFixesHider$Util.invokeMethod(PatchFixesHider.java:133)
-	at lombok.launch.PatchFixesHider$Transform.transform_swapped(PatchFixesHider.java:256)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.endParse(Parser.java:11979)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13180)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13407)
-	at org.eclipse.jdt.internal.codeassist.select.SelectionParser.parse(SelectionParser.java:1705)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13364)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.dietParse(Parser.java:11750)
-	at org.eclipse.jdt.internal.codeassist.select.SelectionParser.dietParse(SelectionParser.java:1529)
-	at org.eclipse.jdt.internal.codeassist.SelectionEngine.select(SelectionEngine.java:994)
-	at org.eclipse.jdt.internal.core.Openable.codeSelect(Openable.java:167)
-	at org.eclipse.jdt.internal.core.CompilationUnit.codeSelect(CompilationUnit.java:389)
-	at org.eclipse.jdt.internal.core.CompilationUnit.codeSelect(CompilationUnit.java:382)
-	at org.eclipse.jdt.internal.ui.text.java.hover.AbstractJavaEditorTextHover.getJavaElementsAt(AbstractJavaEditorTextHover.java:121)
-	at org.eclipse.jdt.internal.ui.text.java.hover.JavadocHover.internalGetHoverInfo(JavadocHover.java:662)
-	at org.eclipse.jdt.internal.ui.text.java.hover.JavadocHover.getHoverInfo2(JavadocHover.java:658)
-	at org.eclipse.lsp4e.jdt.LSJavaHoverProvider.lambda$0(LSJavaHoverProvider.java:63)
-	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(CompletableFuture.java:1804)
-	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.exec(CompletableFuture.java:1796)
-	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:373)
-	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1182)
-	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1655)
-	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1622)
-	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:165)
-
-!ENTRY org.eclipse.jdt.core 4 0 2023-08-28 11:35:26.536
-!MESSAGE Lombok annotation handler class lombok.eclipse.handlers.HandleValue failed
-!STACK 0
-java.lang.ClassCastException: class org.eclipse.jdt.internal.compiler.ast.FieldDeclaration cannot be cast to class org.eclipse.jdt.internal.compiler.ast.TypeDeclaration (org.eclipse.jdt.internal.compiler.ast.FieldDeclaration and org.eclipse.jdt.internal.compiler.ast.TypeDeclaration are in unnamed module of loader org.eclipse.osgi.internal.loader.EquinoxClassLoader @3985cca0)
-	at lombok.eclipse.handlers.HandleValue.handle(HandleValue.java:66)
-	at lombok.eclipse.HandlerLibrary$AnnotationHandlerContainer.handle(HandlerLibrary.java:106)
-	at lombok.eclipse.HandlerLibrary.handleAnnotation(HandlerLibrary.java:237)
-	at lombok.eclipse.TransformEclipseAST$AnnotationVisitor.visitAnnotationOnField(TransformEclipseAST.java:245)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:110)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:79)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:74)
-	at lombok.eclipse.EclipseAST.traverseChildren(EclipseAST.java:231)
-	at lombok.eclipse.EclipseNode.traverse(EclipseNode.java:69)
-	at lombok.eclipse.EclipseAST.traverse(EclipseAST.java:224)
-	at lombok.eclipse.TransformEclipseAST.go(TransformEclipseAST.java:222)
-	at lombok.eclipse.TransformEclipseAST.transform(TransformEclipseAST.java:183)
-	at lombok.eclipse.TransformEclipseAST.transform_swapped(TransformEclipseAST.java:107)
-	at jdk.internal.reflect.GeneratedMethodAccessor54.invoke(Unknown Source)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at lombok.launch.PatchFixesHider$Util.invokeMethod(PatchFixesHider.java:133)
-	at lombok.launch.PatchFixesHider$Transform.transform_swapped(PatchFixesHider.java:256)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.endParse(Parser.java:11979)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13180)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13407)
-	at org.eclipse.jdt.internal.codeassist.select.SelectionParser.parse(SelectionParser.java:1705)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13364)
-	at org.eclipse.jdt.internal.compiler.parser.Parser.dietParse(Parser.java:11750)
-	at org.eclipse.jdt.internal.codeassist.select.SelectionParser.dietParse(SelectionParser.java:1529)
-	at org.eclipse.jdt.internal.codeassist.SelectionEngine.select(SelectionEngine.java:994)
-	at org.eclipse.jdt.internal.core.Openable.codeSelect(Openable.java:167)
-	at org.eclipse.jdt.internal.core.CompilationUnit.codeSelect(CompilationUnit.java:389)
-	at org.eclipse.jdt.internal.core.CompilationUnit.codeSelect(CompilationUnit.java:382)
-	at org.eclipse.jdt.internal.ui.text.java.hover.AbstractJavaEditorTextHover.getJavaElementsAt(AbstractJavaEditorTextHover.java:121)
-	at org.eclipse.jdt.internal.ui.text.java.hover.JavadocHover.internalGetHoverInfo(JavadocHover.java:662)
-	at org.eclipse.jdt.internal.ui.text.java.hover.JavadocHover.getHoverInfo2(JavadocHover.java:658)
-	at org.eclipse.lsp4e.jdt.LSJavaHoverProvider.lambda$0(LSJavaHoverProvider.java:63)
-	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(CompletableFuture.java:1804)
-	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.exec(CompletableFuture.java:1796)
-	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:373)
-	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1182)
-	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1655)
-	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1622)
-	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:165)
-
-!ENTRY org.eclipse.lsp4e 2 0 2023-08-28 11:36:02.343
-!MESSAGE Timeout waiting for data to generate LS hover
-!STACK 0
-java.util.concurrent.TimeoutException
-	at java.base/java.util.concurrent.CompletableFuture.timedGet(CompletableFuture.java:1960)
-	at java.base/java.util.concurrent.CompletableFuture.get(CompletableFuture.java:2095)
-	at org.eclipse.lsp4e.jdt.LSJavaHoverProvider.getHoverInfo2(LSJavaHoverProvider.java:65)
-	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:163)
-	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:130)
-	at org.eclipse.jdt.internal.ui.text.java.hover.JavaEditorTextHoverProxy.getHoverInfo2(JavaEditorTextHoverProxy.java:89)
-	at org.eclipse.jface.text.TextViewerHoverManager$1.run(TextViewerHoverManager.java:155)
-
-!ENTRY org.springframework.tooling.boot.ls 1 0 2023-08-28 11:36:05.018
-!MESSAGE Classpath changed for project: itdalearn-be
-
-!ENTRY org.springframework.tooling.boot.ls 1 0 2023-08-28 11:41:27.059
-!MESSAGE Classpath changed for project: itdalearn-be
-
-!ENTRY org.springframework.tooling.boot.ls 1 0 2023-08-28 11:43:14.523
-!MESSAGE Classpath changed for project: itdalearn-be
-
-!ENTRY org.springframework.tooling.boot.ls 1 0 2023-08-28 11:45:53.508
-!MESSAGE Classpath changed for project: itdalearn-be
-
-!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-08-28 11:46:19.809
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-09-06 10:58:06.138
 !MESSAGE Using unsafe http transport to retrieve http://downloads.genuitec.com/downloads/products/codetogether/updates/ct20230419/content.xml.xz, see CVE-2021-41033. Consider using https instead.
 
-!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-08-28 11:46:20.275
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-09-06 10:58:06.990
 !MESSAGE Using unsafe http transport to retrieve http://download.eclipse.org/oomph/uss/updates/latest, see CVE-2021-41033. Consider using https instead.
 
-!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-08-28 11:46:21.612
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-09-06 10:58:08.958
 !MESSAGE Using unsafe http transport to retrieve http://download.eclipse.org/oomph/uss/drops/nightly/N20180202-232207, see CVE-2021-41033. Consider using https instead.
 
-!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-08-28 11:46:23.199
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-09-06 10:58:11.607
 !MESSAGE Server returned lastModified <= 0 for https://raw.githubusercontent.com/thymeleaf/thymeleaf-extras-eclipse-plugin/update-site/3.0.1/content.jar
 
-!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-08-28 11:46:25.622
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-09-06 10:58:17.482
 !MESSAGE Using unsafe http transport to retrieve http://testng.org/testng-p2-update-site/, see CVE-2021-41033. Consider using https instead.
 
-!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-08-28 11:46:25.914
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-09-06 10:58:17.919
 !MESSAGE Using unsafe http transport to retrieve http://testng.org/testng-p2-update-site/6.11.0, see CVE-2021-41033. Consider using https instead.
 
-!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-08-28 11:46:26.086
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-09-06 10:58:18.159
 !MESSAGE Using unsafe http transport to retrieve http://testng.org/testng-p2-update-site/updatesites/6.11.0.r201704240320, see CVE-2021-41033. Consider using https instead.
 
-!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-08-28 11:46:26.182
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-09-06 10:58:18.322
 !MESSAGE Using unsafe http transport to retrieve http://testng.org/testng-p2-update-site/6.12.0, see CVE-2021-41033. Consider using https instead.
 
-!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-08-28 11:46:26.368
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-09-06 10:58:18.559
 !MESSAGE Using unsafe http transport to retrieve http://testng.org/testng-p2-update-site/updatesites/6.12.0.r201709030044, see CVE-2021-41033. Consider using https instead.
 
-!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-08-28 11:46:26.472
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-09-06 10:58:18.956
 !MESSAGE Using unsafe http transport to retrieve http://testng.org/testng-p2-update-site/6.13.1, see CVE-2021-41033. Consider using https instead.
 
-!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-08-28 11:46:26.664
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-09-06 10:58:19.293
 !MESSAGE Using unsafe http transport to retrieve http://testng.org/testng-p2-update-site/updatesites/6.13.1.r201712040202, see CVE-2021-41033. Consider using https instead.
 
-!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-08-28 11:46:26.886
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-09-06 10:58:19.452
 !MESSAGE Using unsafe http transport to retrieve http://testng.org/testng-p2-update-site/updatesites/6.13.1.r201712040515, see CVE-2021-41033. Consider using https instead.
 
-!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-08-28 11:46:26.974
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-09-06 10:58:19.591
 !MESSAGE Using unsafe http transport to retrieve http://testng.org/testng-p2-update-site/6.14.2, see CVE-2021-41033. Consider using https instead.
 
-!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-08-28 11:46:27.164
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-09-06 10:58:20.010
 !MESSAGE Using unsafe http transport to retrieve http://testng.org/testng-p2-update-site/updatesites/6.14.2.r201802161450, see CVE-2021-41033. Consider using https instead.
 
-!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-08-28 11:46:27.264
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-09-06 10:58:20.165
 !MESSAGE Using unsafe http transport to retrieve http://testng.org/testng-p2-update-site/6.14.3, see CVE-2021-41033. Consider using https instead.
 
-!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-08-28 11:46:27.442
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-09-06 10:58:20.790
 !MESSAGE Using unsafe http transport to retrieve http://testng.org/testng-p2-update-site/updatesites/6.14.3.r201802240500, see CVE-2021-41033. Consider using https instead.
 
-!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-08-28 11:46:27.537
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-09-06 10:58:21.048
 !MESSAGE Using unsafe http transport to retrieve http://testng.org/testng-p2-update-site/7.0.0, see CVE-2021-41033. Consider using https instead.
 
-!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-08-28 11:46:27.712
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-09-06 10:58:21.325
 !MESSAGE Using unsafe http transport to retrieve http://testng.org/testng-p2-update-site/updatesites/7.0.0.r201908191551, see CVE-2021-41033. Consider using https instead.
 
-!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-08-28 11:46:27.934
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-09-06 10:58:21.463
 !MESSAGE Using unsafe http transport to retrieve http://testng.org/testng-p2-update-site/7.1.0, see CVE-2021-41033. Consider using https instead.
 
-!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-08-28 11:46:28.139
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-09-06 10:58:21.717
 !MESSAGE Using unsafe http transport to retrieve http://testng.org/testng-p2-update-site/updatesites/7.1.0.r202001120626, see CVE-2021-41033. Consider using https instead.
 
-!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-08-28 11:46:28.254
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-09-06 10:58:22.030
 !MESSAGE Using unsafe http transport to retrieve http://testng.org/testng-p2-update-site/7.2.0, see CVE-2021-41033. Consider using https instead.
 
-!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-08-28 11:46:28.452
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-09-06 10:58:22.256
 !MESSAGE Using unsafe http transport to retrieve http://testng.org/testng-p2-update-site/updatesites/7.2.0.r202003151902, see CVE-2021-41033. Consider using https instead.
 
-!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-08-28 11:46:28.553
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-09-06 10:58:22.392
 !MESSAGE Using unsafe http transport to retrieve http://testng.org/testng-p2-update-site/7.3.0, see CVE-2021-41033. Consider using https instead.
 
-!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-08-28 11:46:28.755
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-09-06 10:58:22.618
 !MESSAGE Using unsafe http transport to retrieve http://testng.org/testng-p2-update-site/updatesites/7.3.0.r202008060316, see CVE-2021-41033. Consider using https instead.
 
-!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-08-28 11:46:28.982
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-09-06 10:58:23.583
 !MESSAGE Using unsafe http transport to retrieve http://testng.org/testng-p2-update-site/7.4.0, see CVE-2021-41033. Consider using https instead.
 
-!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-08-28 11:46:29.818
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-09-06 10:58:23.889
 !MESSAGE Using unsafe http transport to retrieve http://testng.org/testng-p2-update-site/updatesites/7.4.0.r202105021533, see CVE-2021-41033. Consider using https instead.
 
-!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-08-28 11:46:30.085
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-09-06 10:58:24.039
 !MESSAGE Using unsafe http transport to retrieve http://testng.org/testng-p2-update-site/7.5.0, see CVE-2021-41033. Consider using https instead.
 
-!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-08-28 11:46:30.273
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-09-06 10:58:24.379
 !MESSAGE Using unsafe http transport to retrieve http://testng.org/testng-p2-update-site/updatesites/7.5.0.r202201070709, see CVE-2021-41033. Consider using https instead.
 
-!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-08-28 11:46:30.365
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-09-06 10:58:24.522
 !MESSAGE Using unsafe http transport to retrieve http://testng.org/testng-p2-update-site/7.6.1, see CVE-2021-41033. Consider using https instead.
 
-!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-08-28 11:46:30.939
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-09-06 10:58:24.813
 !MESSAGE Using unsafe http transport to retrieve http://testng.org/testng-p2-update-site/updatesites/7.6.1.r202207070546, see CVE-2021-41033. Consider using https instead.
 
-!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-08-28 11:46:31.358
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-09-06 10:58:24.965
 !MESSAGE Using unsafe http transport to retrieve http://testng.org/testng-p2-update-site/7.7.0, see CVE-2021-41033. Consider using https instead.
 
-!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-08-28 11:46:31.540
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-09-06 10:58:25.324
 !MESSAGE Using unsafe http transport to retrieve http://testng.org/testng-p2-update-site/updatesites/7.7.0.r202306070455, see CVE-2021-41033. Consider using https instead.
 
-!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-08-28 11:46:31.632
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-09-06 10:58:25.492
 !MESSAGE Using unsafe http transport to retrieve http://testng.org/testng-p2-update-site/7.7.1, see CVE-2021-41033. Consider using https instead.
 
-!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-08-28 11:46:31.812
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-09-06 10:58:25.727
 !MESSAGE Using unsafe http transport to retrieve http://testng.org/testng-p2-update-site/updatesites/7.7.1.r202305281608, see CVE-2021-41033. Consider using https instead.
 
-!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-08-28 11:46:31.909
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-09-06 10:58:25.886
 !MESSAGE Using unsafe http transport to retrieve http://testng.org/testng-p2-update-site/7.8.0, see CVE-2021-41033. Consider using https instead.
 
-!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-08-28 11:46:32.132
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-09-06 10:58:26.120
 !MESSAGE Using unsafe http transport to retrieve http://testng.org/testng-p2-update-site/updatesites/7.8.0.r202306071539, see CVE-2021-41033. Consider using https instead.
 
-!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-08-28 11:46:38.178
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-09-06 10:58:37.962
 !MESSAGE Using unsafe http transport to retrieve http://download.eclipse.org/technology/m2e/releases/, see CVE-2021-41033. Consider using https instead.
 
-!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-08-28 11:46:40.831
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-09-06 10:58:42.623
 !MESSAGE Using unsafe http transport to retrieve http://download.eclipse.org/technology/m2e/releases/content.xml.xz, see CVE-2021-41033. Consider using https instead.
 
-!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-08-28 11:46:42.196
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-09-06 10:58:44.447
 !MESSAGE Using unsafe http transport to retrieve http://download.eclipse.org/technology/m2e/releases/, see CVE-2021-41033. Consider using https instead.
 
-!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2023-08-28 11:46:46.199
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2023-09-06 10:58:50.306
 !MESSAGE No repository found at http://download.eclipse.org/technology/m2e/releases/.
 
-!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-08-28 11:46:46.456
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-09-06 10:58:51.553
 !MESSAGE Using unsafe http transport to retrieve http://download.eclipse.org/usssdk/updates/release/latest, see CVE-2021-41033. Consider using https instead.
 
-!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-08-28 11:46:48.049
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-09-06 10:58:53.291
 !MESSAGE Using unsafe http transport to retrieve http://download.eclipse.org/usssdk/drops/release/1.2.2/content.xml.xz, see CVE-2021-41033. Consider using https instead.
 
-!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-08-28 11:46:49.332
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-09-06 10:58:54.949
 !MESSAGE Using unsafe http transport to retrieve http://downloads.genuitec.com/downloads/products/devstyle/updates/ds20230615, see CVE-2021-41033. Consider using https instead.
 
-!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-08-28 11:47:03.361
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-09-06 10:59:30.505
 !MESSAGE Using unsafe http transport to retrieve http://download.oracle.com/otn_software/oepe/12.2.1.9/photon/repository/dependencies/, see CVE-2021-41033. Consider using https instead.
 
-!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-08-28 11:47:09.429
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-09-06 10:59:43.539
 !MESSAGE Using unsafe http transport to retrieve http://download.eclipse.org/e4/snapshots/org.eclipse.e4.ui/content.xml.xz, see CVE-2021-41033. Consider using https instead.
 
-!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-08-28 11:47:10.772
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-09-06 10:59:45.331
 !MESSAGE Using unsafe http transport to retrieve http://download.eclipse.org/usssdk/updates, see CVE-2021-41033. Consider using https instead.
 
-!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-08-28 11:47:12.129
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-09-06 10:59:47.390
 !MESSAGE Using unsafe http transport to retrieve http://download.eclipse.org/usssdk/updates/release, see CVE-2021-41033. Consider using https instead.
 
-!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-08-28 11:47:13.459
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-09-06 10:59:49.057
 !MESSAGE Using unsafe http transport to retrieve http://download.eclipse.org/usssdk/drops/release/1.2.1, see CVE-2021-41033. Consider using https instead.
 
-!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-08-28 11:47:14.766
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-09-06 10:59:51.172
 !MESSAGE Using unsafe http transport to retrieve http://download.eclipse.org/usssdk/drops/release/1.2.0, see CVE-2021-41033. Consider using https instead.
 
-!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-08-28 11:47:16.122
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-09-06 10:59:53.206
 !MESSAGE Using unsafe http transport to retrieve http://download.eclipse.org/usssdk/drops/release/1.1.0, see CVE-2021-41033. Consider using https instead.
 
-!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-08-28 11:47:17.484
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-09-06 10:59:55.381
 !MESSAGE Using unsafe http transport to retrieve http://download.eclipse.org/usssdk/updates/milestone, see CVE-2021-41033. Consider using https instead.
 
-!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-08-28 11:47:19.454
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-09-06 10:59:57.823
 !MESSAGE Using unsafe http transport to retrieve http://download.eclipse.org/usssdk/drops/milestone/S911-1.2-RC1, see CVE-2021-41033. Consider using https instead.
 
-!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-08-28 11:47:21.309
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-09-06 10:59:59.448
 !MESSAGE Using unsafe http transport to retrieve http://download.eclipse.org/usssdk/drops/milestone/S909-1.2-RC1, see CVE-2021-41033. Consider using https instead.
 
-!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-08-28 11:47:22.658
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-09-06 11:00:01.375
 !MESSAGE Using unsafe http transport to retrieve http://download.eclipse.org/usssdk/drops/milestone/S908-1.2-RC1, see CVE-2021-41033. Consider using https instead.
 
-!ENTRY org.springframework.tooling.boot.ls 1 0 2023-08-28 11:47:23.082
-!MESSAGE Classpath changed for project: itdalearn-be
-
-!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-08-28 11:47:24.009
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-09-06 11:00:03.004
 !MESSAGE Using unsafe http transport to retrieve http://download.eclipse.org/usssdk/drops/milestone/S20210519-025928-1.2.2-M1/content.xml.xz, see CVE-2021-41033. Consider using https instead.
 
-!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-08-28 11:47:25.347
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-09-06 11:00:04.781
 !MESSAGE Using unsafe http transport to retrieve http://download.eclipse.org/usssdk/drops/milestone/S20210406-153234/content.xml.xz, see CVE-2021-41033. Consider using https instead.
 
-!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-08-28 11:47:26.706
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-09-06 11:00:07.024
 !MESSAGE Using unsafe http transport to retrieve http://download.eclipse.org/usssdk/drops/milestone/S20191129-202804-1.2.1-RC2, see CVE-2021-41033. Consider using https instead.
 
-!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-08-28 11:47:28.049
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-09-06 11:00:08.995
 !MESSAGE Using unsafe http transport to retrieve http://download.eclipse.org/usssdk/drops/milestone/S20191118-183434-1.2.1-RC1, see CVE-2021-41033. Consider using https instead.
 
-!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-08-28 11:47:29.409
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-09-06 11:00:10.970
 !MESSAGE Using unsafe http transport to retrieve http://download.eclipse.org/usssdk/drops/milestone/S20170529-101518-1.1-RC2, see CVE-2021-41033. Consider using https instead.
 
-!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-08-28 11:47:30.778
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-09-06 11:00:12.933
 !MESSAGE Using unsafe http transport to retrieve http://download.eclipse.org/usssdk/drops/milestone/S20170525-115740-1.1-RC2, see CVE-2021-41033. Consider using https instead.
 
-!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-08-28 11:47:32.130
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-09-06 11:00:15.146
 !MESSAGE Using unsafe http transport to retrieve http://download.eclipse.org/usssdk/drops/milestone/S20170523-143239-1.1-RC1, see CVE-2021-41033. Consider using https instead.
 
-!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-08-28 11:47:33.479
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-09-06 11:00:18.424
 !MESSAGE Using unsafe http transport to retrieve http://download.eclipse.org/usssdk/drops/milestone/S20170516-113326-1.1-M7, see CVE-2021-41033. Consider using https instead.
 
-!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-08-28 11:47:34.813
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-09-06 11:00:20.773
 !MESSAGE Using unsafe http transport to retrieve http://download.eclipse.org/usssdk/updates/nightly, see CVE-2021-41033. Consider using https instead.
 
-!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-08-28 11:47:36.138
-!MESSAGE Using unsafe http transport to retrieve http://download.eclipse.org/usssdk/drops/nightly/N20230827-034147/content.xml.xz, see CVE-2021-41033. Consider using https instead.
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-09-06 11:00:23.005
+!MESSAGE Using unsafe http transport to retrieve http://download.eclipse.org/usssdk/drops/nightly/N20230905-034157/content.xml.xz, see CVE-2021-41033. Consider using https instead.
 
-!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-08-28 11:47:37.529
-!MESSAGE Using unsafe http transport to retrieve http://download.eclipse.org/usssdk/drops/nightly/N20230826-034242/content.xml.xz, see CVE-2021-41033. Consider using https instead.
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-09-06 11:00:25.074
+!MESSAGE Using unsafe http transport to retrieve http://download.eclipse.org/usssdk/drops/nightly/N20230904-034121/content.xml.xz, see CVE-2021-41033. Consider using https instead.
 
-!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-08-28 11:47:38.939
-!MESSAGE Using unsafe http transport to retrieve http://download.eclipse.org/usssdk/drops/nightly/N20230825-034238/content.xml.xz, see CVE-2021-41033. Consider using https instead.
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-09-06 11:00:27.031
+!MESSAGE Using unsafe http transport to retrieve http://download.eclipse.org/usssdk/drops/nightly/N20230903-034155/content.xml.xz, see CVE-2021-41033. Consider using https instead.
 
-!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-08-28 11:47:40.257
-!MESSAGE Using unsafe http transport to retrieve http://download.eclipse.org/usssdk/drops/nightly/N20230824-034235/content.xml.xz, see CVE-2021-41033. Consider using https instead.
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-09-06 11:00:30.103
+!MESSAGE Using unsafe http transport to retrieve http://download.eclipse.org/usssdk/drops/nightly/N20230902-034320/content.xml.xz, see CVE-2021-41033. Consider using https instead.
 
-!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-08-28 11:47:41.679
-!MESSAGE Using unsafe http transport to retrieve http://download.eclipse.org/usssdk/drops/nightly/N20230823-034202/content.xml.xz, see CVE-2021-41033. Consider using https instead.
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-09-06 11:00:32.126
+!MESSAGE Using unsafe http transport to retrieve http://download.eclipse.org/usssdk/drops/nightly/N20230901-034152/content.xml.xz, see CVE-2021-41033. Consider using https instead.
 
-!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-08-28 11:47:44.308
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-09-06 11:00:36.279
 !MESSAGE Using unsafe http transport to retrieve http://dl.bintray.com/testng-team/testng-p2-release/, see CVE-2021-41033. Consider using https instead.
 
-!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-08-28 11:47:46.613
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-09-06 11:00:39.663
 !MESSAGE Using unsafe http transport to retrieve http://dl.bintray.com/testng-team/testng-p2-release/content.xml.xz, see CVE-2021-41033. Consider using https instead.
 
-!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-08-28 11:47:47.849
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-09-06 11:00:41.605
 !MESSAGE Using unsafe http transport to retrieve http://dl.bintray.com/testng-team/testng-p2-release/, see CVE-2021-41033. Consider using https instead.
 
-!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2023-08-28 11:47:51.629
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2023-09-06 11:00:47.047
 !MESSAGE No repository found at http://dl.bintray.com/testng-team/testng-p2-release/.
 
-!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-08-28 11:48:07.204
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-09-06 11:01:21.239
 !MESSAGE Using unsafe http transport to retrieve http://download.eclipse.org/technology/m2e/releases/, see CVE-2021-41033. Consider using https instead.
 
-!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-08-28 11:48:09.903
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-09-06 11:01:24.920
 !MESSAGE Using unsafe http transport to retrieve http://download.eclipse.org/technology/m2e/releases/content.xml.xz, see CVE-2021-41033. Consider using https instead.
 
-!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-08-28 11:48:11.247
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-09-06 11:01:26.762
 !MESSAGE Using unsafe http transport to retrieve http://download.eclipse.org/technology/m2e/releases/, see CVE-2021-41033. Consider using https instead.
 
-!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-08-28 11:48:16.652
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-09-06 11:01:33.823
 !MESSAGE Using unsafe http transport to retrieve http://dl.bintray.com/testng-team/testng-p2-release/, see CVE-2021-41033. Consider using https instead.
 
-!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-08-28 11:48:19.182
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-09-06 11:01:37.683
 !MESSAGE Using unsafe http transport to retrieve http://dl.bintray.com/testng-team/testng-p2-release/content.xml.xz, see CVE-2021-41033. Consider using https instead.
 
-!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-08-28 11:48:20.386
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-09-06 11:01:39.460
 !MESSAGE Using unsafe http transport to retrieve http://dl.bintray.com/testng-team/testng-p2-release/, see CVE-2021-41033. Consider using https instead.
 
 !ENTRY org.eclipse.lsp4e 2 0 2023-08-28 11:48:50.631

@@ -20,22 +20,23 @@ export default function Course() {
     const courseLevels = ["HIGH", "MID", "LOW"];
     const courseCategories = ["BE", "FE"];
     const [courseDetails, setCourseDetails] = useState({
-        courseNo: "",
-        courseTitle: "",
-        courseTeacher: "",
-        coursePrice: "",
-        courseDec1: "",
-        courseDec2: "",
-        courseDec3: "",
-        courseLevel: courseLevels[0],
-        courseCategory: courseCategories[0],
-    });
-    const [courseImgDto, setCourseImgDto] = useState({
-        courseImgDtoNo: "",
-        imgName: "",
-        imgUrl: "",
-        oriImgName: "",
-    });
+      // courseNo: "",
+      courseTitle: "",
+      courseTeacher: "",
+      coursePrice: "",
+      courseDec1: "",
+      courseDec2: "",
+      courseDec3: "",
+      courseLevel: courseLevels[0],
+      courseCategory: courseCategories[0],
+  });
+  const [courseImgDtoList, setCourseImgDtoList] = useState([]);
+  const [courseImgDto, setCourseImgDto] = useState({
+    courseImgDtoNo: "",
+    imgName: "",
+    imgUrl: "",
+    oriImgName: "",
+});
     //수강평기능
     const [value, setValue] = React.useState(5);
     //수강코스 디테일 정보 탭기능
@@ -46,21 +47,18 @@ export default function Course() {
     };
 
     useEffect(() => {
-        const getCourseDetails = async () => {
-            try {
-                const response = await axios.get(baseUrl + "/course/" + id);
-
-                setCourseDetails(response.data.courseFormDto);
-                setCourseImgDto(response.data.courseFormDto.courseImgDto);
-                console.log(courseDetails.courseDec1);
-                console.log(courseDetails.courseDec2);
-                console.log(courseDetails.courseDec3);
-            } catch (error) {
-                console.log(error);
-            }
-        };
-        getCourseDetails();
-    }, []);
+      const getCourseDetails = async () => {
+          try {
+              const response = await axios.get(baseUrl + "/course/" + id);
+              console.log(response)
+              setCourseDetails(response.data.courseFormDto);
+              setCourseImgDtoList(response.data.courseFormDto.courseImgDtoList);
+          } catch (error) {
+              console.log(error);
+          }
+      };
+      getCourseDetails();
+  }, []);
 
     const addCartItem = () => {
         4;
@@ -110,39 +108,25 @@ export default function Course() {
 
     return (
         <>
-            <div className="coursedetailback">
-                <div>
-                    <img src={courseImgDto.imgUrl} />
-                </div>
+     <div className="coursedetailback">
+        <div><img src={courseImgDtoList[0]?.imgUrl} /></div>
 
-                <div className="coursedetailtext">
-                    <p> Category&nbsp; : &nbsp;{courseCategories} </p>
-                    <h3>
-                        {courseDetails.courseTitle}
-                        <IconButton
-                            color="secondary"
-                            aria-label="add to shopping cart"
-                            onClick={() => addCartItem()}
-                        >
-                            <AddShoppingCartIcon />
-                        </IconButton>{" "}
-                    </h3>
-                    <br />
-                    <br />
-                    <Box
-                        sx={{
-                            "& > legend": { mt: 2 },
-                        }}
-                    />
-                    <Typography component="legend">
-                        (5.0) 144개의 수강평 * 5898명의 수강생
-                    </Typography>
-                    <Rating name="read-only" value={value} readOnly />
-                    <p> 강사 : {courseDetails.courseTeacher}</p>
-                    <p> 난이도 : {courseDetails.courseLevel}</p>
-                </div>
-            </div>
-
+        <div className="coursedetailtext"> 
+        <p> Category&nbsp; : &nbsp;{courseDetails.courseCategory === "BE"? "백엔드" : "프론트엔드"} </p>
+        <h3>{courseDetails.courseTitle}<IconButton color="secondary" aria-label="add to shopping cart" onClick={() => addCartItem()}>
+        <AddShoppingCartIcon />
+      </IconButton> </h3>
+        <br />
+        <br />
+        <Box sx={{
+        '& > legend': { mt: 2 },}}/>
+     <Typography component="legend">(5.0) 144개의 수강평 * 5898명의 수강생</Typography>
+    <Rating name="read-only" value={value} readOnly />
+        <p> 강사 : {courseDetails.courseTeacher}</p>
+        <p> 난이도 : {courseDetails.courseLevel}</p> 
+        </div>
+    </div>
+        
             <div className="coursedetailsecondbox">
                 <div className="detailtab">
                     <Box sx={{ maxWidth: { xs: 320, sm: 780 }, bgcolor: "background.paper" }}>
@@ -170,11 +154,29 @@ export default function Course() {
                         <h4>추천 대상</h4>
                         <br />
                         <p>{courseDetails.courseDec3}</p>
-                    </Box>
-                </div>
+              
                 <div className="coursedetailcart">
                     <hr />
 
+            <h4>상세 설명</h4>
+            <br />
+            <div><img src={courseImgDtoList[1]?.imgUrl} /></div>
+             <p>{courseDetails.courseDec1}</p>
+             
+            <br />
+             <h4>강의 소개</h4>
+             <br />
+             <div><img src={courseImgDtoList[2]?.imgUrl} /></div>
+            <p>{courseDetails.courseDec2}</p> 
+            <br />
+            <h4>추천 대상</h4>
+            <br />
+            <div><img src={courseImgDtoList[3]?.imgUrl} /></div>
+            <p>{courseDetails.courseDec3}</p>
+            </div>
+   
+    </Box>  
+    </div>
                     <h4> 결제 금액 : {courseDetails.coursePrice}원 </h4>
                     <Button variant="contained" onClick={() => addCartItem()}>
                         장바구니 담기
@@ -193,7 +195,7 @@ export default function Course() {
                         <li>◎ 난이도 : LOW(초급)</li>
                     </ul>
                 </div>
-            </div>
+          
         </>
     );
 }

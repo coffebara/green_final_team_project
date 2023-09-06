@@ -78,7 +78,7 @@ public class OrderService {
 			
 			for( OrderCourse orderCourse : orderCourses) {
 				
-				CourseImg courseImg = courseImgRepository.findByCourseCourseNo(orderCourse.getCourse().getCourseNo());
+				CourseImg courseImg = courseImgRepository.findByCourseImgNoAndRepimgYn(orderCourse.getCourse().getCourseNo(), "Y");
 				
 				OrderCourseDto orderCourseDto = new OrderCourseDto(orderCourse, courseImg.getImgUrl());
 				
