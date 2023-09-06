@@ -6,6 +6,10 @@ import com.itdaLearn.entity.Member;
 
 public interface MemberRepository extends JpaRepository<Member, Long> {
 
-    Member findByEmail(String email);
-    Member findByMemberNo(String memberNo);
+//Optional<Member> findByMemberNo(String MemberNo);
+	Member findByMemberNo(String memberNo);
+
+    
 }
+
+

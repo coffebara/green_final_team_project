@@ -4,15 +4,15 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import "../../styles/course.css";
-import * as React from 'react';
-import Box from '@mui/material/Box';
-import Rating from '@mui/material/Rating';
-import Typography from '@mui/material/Typography';
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
-import Button from '@mui/material/Button';
-import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
-import IconButton from '@mui/material/IconButton';
+import * as React from "react";
+import Box from "@mui/material/Box";
+import Rating from "@mui/material/Rating";
+import Typography from "@mui/material/Typography";
+import Tabs from "@mui/material/Tabs";
+import Tab from "@mui/material/Tab";
+import Button from "@mui/material/Button";
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+import IconButton from "@mui/material/IconButton";
 export default function Course() {
     scrollTo(top);
     let { id } = useParams();
@@ -43,9 +43,9 @@ export default function Course() {
     const [valuetab, setValuetab] = React.useState(0);
 
     const handleChange = (event, newValue) => {
-      setValuetab(newValue);
+        setValuetab(newValue);
     };
-    
+
     useEffect(() => {
       const getCourseDetails = async () => {
           try {
@@ -61,52 +61,50 @@ export default function Course() {
   }, []);
 
     const addCartItem = () => {
-        
+        4;
+        console.log("token : " + localStorage.getItem("token"));
         console.log("상품아이디" + id);
-        axios.post("http://localhost:9090/cart", {
-        
-         courseNo : id,
-          
-      })
-      .then((response) => {
-        console.log("카트담기 성공");
-          console.log("200", response.data);
-       
-      
-          if (response.status === 200) {
-              alert('장바구니 담기에 성공하였습니다.');
-              console.log("카트담기 성공");
-             
-          }
-      })
-      .catch((error) => console.log(error.response));
-      
-      };
+        axios
+            .post(
+                "http://localhost:9090/cart",
+                {
+                    courseNo: id,
+                },
+                {
+                    headers: {
+                        Authorization: localStorage.getItem("token"),
+                    },
+                }
+            )
+            .then((response) => {
+                console.log("카트담기 성공");
+                console.log("200", response.data);
 
-      const OrderCourse = () => {
-     
-        axios.post("http://localhost:9090/order", {
-        
-         courseNo : id,
-          
-      })
-      .then((response) => {
-    
-          console.log("200", response.data);
-       
-      
-          if (response.status === 200) {
-              alert('주문 되었습니다. ');
-              console.log("주문하기 성공");
-             
-          }
-      })
-      .catch((error) => console.log(error.response));
-      
-      };
+                if (response.status === 200) {
+                    alert("장바구니 담기에 성공하였습니다.");
+                    console.log("카트담기 성공");
+                }
+            })
+            .catch((error) => console.log(error.response));
+    };
 
-    let navigate = useNavigate();   
+    const OrderCourse = () => {
+        axios
+            .post("http://localhost:9090/order", {
+                courseNo: id,
+            })
+            .then((response) => {
+                console.log("200", response.data);
 
+                if (response.status === 200) {
+                    alert("주문 되었습니다. ");
+                    console.log("주문하기 성공");
+                }
+            })
+            .catch((error) => console.log(error.response));
+    };
+
+    let navigate = useNavigate();
 
     return (
         <>
@@ -130,22 +128,35 @@ export default function Course() {
     </div>
         
             <div className="coursedetailsecondbox">
+                <div className="detailtab">
+                    <Box sx={{ maxWidth: { xs: 320, sm: 780 }, bgcolor: "background.paper" }}>
+                        <Tabs
+                            value={valuetab}
+                            onChange={handleChange}
+                            variant="scrollable"
+                            scrollButtons="auto"
+                            aria-label="scrollable auto tabs example"
+                        >
+                            <Tab label="상세 설명" />
+                            <Tab label="강의 소개" />
+                            <Tab label="추천 대상" />
+                        </Tabs>
 
-            <div className="detailtab">
+                        <h4>상세 설명</h4>
+                        <br />
+                        <p>{courseDetails.courseDec1}</p>
 
-            <Box sx={{ maxWidth: { xs: 320, sm: 780 }, bgcolor: 'background.paper' }}>
-      <Tabs
-        value={valuetab}
-        onChange={handleChange}
-        variant="scrollable"
-        scrollButtons="auto"
-        aria-label="scrollable auto tabs example"
-      >
-     
-        <Tab label="상세 설명" />
-        <Tab label="강의 소개" />
-        <Tab label="추천 대상" />
-        </Tabs>
+                        <br />
+                        <h4>강의 소개</h4>
+                        <br />
+                        <p>{courseDetails.courseDec2}</p>
+                        <br />
+                        <h4>추천 대상</h4>
+                        <br />
+                        <p>{courseDetails.courseDec3}</p>
+              
+                <div className="coursedetailcart">
+                    <hr />
 
             <h4>상세 설명</h4>
             <br />
@@ -162,33 +173,29 @@ export default function Course() {
             <br />
             <div><img src={courseImgDtoList[3]?.imgUrl} /></div>
             <p>{courseDetails.courseDec3}</p>
+            </div>
    
-    </Box>
+    </Box>  
+    </div>
+                    <h4> 결제 금액 : {courseDetails.coursePrice}원 </h4>
+                    <Button variant="contained" onClick={() => addCartItem()}>
+                        장바구니 담기
+                    </Button>
+                    <br />
+                    <Button variant="contained" color="success" onClick={() => OrderCourse()}>
+                        주문하기
+                    </Button>
 
-            </div>
-            <div className="coursedetailcart">
-            <hr />
+                    <hr />
 
-            <h4> 결제 금액 : {courseDetails.coursePrice}원 </h4>
-              <Button variant="contained"  onClick={() => addCartItem()}>
-      장바구니 담기
-    </Button><br/>
-    <Button variant="contained" color="success" onClick={() => OrderCourse()}>
-       주문하기
-      </Button>
-
-      <hr />
-
-      <ul className="detailsmall">   
-        <li>◎ 총 69개의 수업(20시간 46분)</li>
-        <li>◎ 수강 기한 : 12개월</li>
-        <li>◎ 수료증 : 발급</li>
-        <li>◎ 난이도 : LOW(초급)</li>
-      </ul>
-            </div>
-            </div>
+                    <ul className="detailsmall">
+                        <li>◎ 총 69개의 수업(20시간 46분)</li>
+                        <li>◎ 수강 기한 : 12개월</li>
+                        <li>◎ 수료증 : 발급</li>
+                        <li>◎ 난이도 : LOW(초급)</li>
+                    </ul>
+                </div>
+          
         </>
     );
-
 }
-   

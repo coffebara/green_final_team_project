@@ -14,25 +14,48 @@ import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 import DeleteIcon from '@mui/icons-material/Delete';
+import { useRoutes } from "react-router-dom";
+import { Location } from "react-router-dom";
 
 export default function CartList() {
-  
+  const router = useRoutes;
   // 카트 리스트를 조회하는 axios
   const baseUrl = "http://localhost:9090";
   const [courses, setCourses] = useState([]);
-  const [checkedList, setCheckedLists] = useState([]);
 
+  const [checkedList, setCheckedList] = useState([]
+  );
   console.log(checkedList);
+
  
+
+  const [totalarray, setTotalarray] = useState([]);
+  console.log(totalarray);
   const [subtotal , setSubtotal] = useState(0);
   const [totalprice, setTotalprice] = useState(0);
   const [discountprice, setDiscountprice] = useState(0);
 
 
+
+
+    useEffect(() => {
+     setTotalprice(0);
+    let totalP = 0;
+    let totalDiscount = 0;
+    totalarray.map(item => totalP += item);
+    
+    setTotalprice(totalP - (totalP * ((totalDiscount/totalarray.length || 0) / 100)))
   
+  }, [checkedList, totalprice, courses])
+
+  // 전체 체크 클릭 시 발생하는 함수
 
     const getCourses = async () => {
-      const response = await axios.get(baseUrl + "/cart"); 
+      const response = await axios.get(baseUrl + "/cart",{
+        headers: {
+            Authorization: localStorage.getItem("token"),
+        }
+    }) 
       setCourses(response.data.cartCources); 
       console.log(courses);
     };
@@ -53,6 +76,8 @@ export default function CartList() {
   .catch((error) => console.log(error.response));
   
 };
+
+
 
 // const OrderCourseList = useCallback(
 //   (checked) => {
@@ -94,15 +119,20 @@ export default function CartList() {
 //  console.log(datalist);
 
    
-
-
   
-   const OrderCourseList = async () => {
-
-
+   const OrderCourseList = async (e) => {
+ 
+     const payload = {
+      cartOrderDtoList : checkedList.map((cartCourseNo) => (
+        {
+        "cartCourseNo": cartCourseNo,
+        }
+        )),
+     };
+     console.log(payload);
 
     await axios
-      .post(baseUrl + "/cart/orders", )
+      .post(baseUrl + "/cart/orders", payload )
       .then(function (res) {
         if (res.status === 200) {
           window.alert("전송 성공");
@@ -116,26 +146,24 @@ export default function CartList() {
 
 
 
-  useEffect(() => {
-    setTotalprice(0);
-    let totalP = 0;
-    let totalDiscount = 0;
-    checkedList.map(item => totalP +=(item.coursePrice *1))
-    checkedList.map(item => totalDiscount += item.discount)
-    setTotalprice(totalP - (totalP * ((totalDiscount/checkedList.length || 0) / 100)))
-  
-  }, [checkedList, totalprice, courses])
-
-  // 전체 체크 클릭 시 발생하는 함수
   const onCheckedAll = useCallback(
+    
     (checked) => {
       if (checked) {
         const checkedListArray = [];
-         courses.forEach((list) => checkedListArray.push(list));
-        setCheckedLists(checkedListArray);   
-      } else {
-        setCheckedLists([]);
+        courses.forEach((list) => checkedListArray.push(list.cartCourseNo));
+        setCheckedList(checkedListArray);
+        const totalpricearray = [];
+        courses.forEach((list) => totalpricearray.push(list.coursePrice));
+        setTotalarray(totalpricearray);
+       
+       
+       
         
+      } else {
+        setCheckedList([]);
+        setTotalarray([]);
+       
       }
     },
     [courses]
@@ -143,19 +171,36 @@ export default function CartList() {
   const onCheckedElement = useCallback(
     (checked, list) => {
       if (checked) {
-        setCheckedLists([...checkedList, list]);
-        
+        setCheckedList([...checkedList, list.cartCourseNo]);
+        setTotalarray([...totalarray, list.coursePrice]);
        
       } else {
-        setCheckedLists(checkedList.filter((el) => el !== list.cartCourseNo));
-        
+        setCheckedList(checkedList.filter((el) => el !== list.cartCourseNo));
+        setTotalarray(totalarray.filter((el) => el !== list.coursePrice));
+       
       }
     },
     [checkedList]
+    [totalarray]
 
    
   );
 
+//   const callKakaoLoginHandler = () => {
+//     location.href({
+//       pathname: "https://kauth.kakao.com/oauth/authorize",
+//       query: {
+//         "response_type": "code",
+//         "client_id": "558768fb39533a79b56417d8f98d072b",
+//         "redirect_uri": "http://localhost:5000/callback/kakao"
+//       }
+//     })
+// }
+
+
+const callKakaoLoginHandler = () => {
+  window.location.href = "https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=558768fb39533a79b56417d8f98d072b&redirect_uri=http://localhost:5000/callback/kakao";
+};
 
   return (
     <>
@@ -212,7 +257,7 @@ export default function CartList() {
                   key={list.id}
                   type="checkbox"
                   onChange={(e) => onCheckedElement(e.target.checked, list)}
-                  checked={checkedList.includes(list) ? true : false}
+                  checked={checkedList.includes(list.cartCourseNo) ? true : false}
                 /> <img src={list.imgUrl} /></TableCell>
               <TableCell align="left">{list.courseTitle}</TableCell>
               <TableCell align="right">{list.coursePrice}원</TableCell>
@@ -287,6 +332,7 @@ export default function CartList() {
     <Button variant="contained" color="success" onClick={OrderCourseList} >
        주문하기
       </Button>
+      <Button onClick={callKakaoLoginHandler}>버튼</Button>
       <hr />
       </div>
       </div>

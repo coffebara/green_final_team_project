@@ -38,14 +38,16 @@ public class OrderService {
 	private final MemberRepository memberRepository;
 	private final OrderRepository orderRepository;
 	private final CourseImgRepository courseImgRepository;
-	
-	public Long order(OrderDto orderDto, String email) {
-		
-			
+	//String email
+	public Long order(OrderDto orderDto, String memberNo) {
+					
 		Course course = courseRepository.findById(orderDto.getCourseNo())
 				.orElseThrow(EntityNotFoundException::new);
 
-		Member member = memberRepository.findByEmail(email);
+		
+		//.findByEmail(email);
+		Member member = memberRepository.findByMemberNo(memberNo);
+		
 		
 		List<OrderCourse> orderCourseList = new ArrayList<>();
 		
@@ -60,10 +62,10 @@ public class OrderService {
 		return order.getOrderNo(); 
 	}
 	
-	@Transactional(readOnly = true)
-	public List<OrderHistDto> getOrderList(String email){
+	@Transactional(readOnly = true)//String email
+	public List<OrderHistDto> getOrderList(String memberNo){
 		
-		List<Order> orders = orderRepository.findOrders(email);
+		List<Order> orders = orderRepository.findOrders(memberNo);
 		
 		List<OrderHistDto> orderHistDtos = new ArrayList<>();
 		
@@ -79,25 +81,31 @@ public class OrderService {
 				CourseImg courseImg = courseImgRepository.findByCourseImgNoAndRepimgYn(orderCourse.getCourse().getCourseNo(), "Y");
 				
 				OrderCourseDto orderCourseDto = new OrderCourseDto(orderCourse, courseImg.getImgUrl());
-				orderHistDto.addOrderItemDto(orderCourseDto);
+				
+				orderHistDto.addOrderaCourseDto(orderCourseDto);
+				
 				
 			}
 			orderHistDtos.add(orderHistDto);
 		}
+		System.out.println(orderHistDtos);
 		return orderHistDtos;
+		
 	}
 	
 
-	@Transactional(readOnly = true)
-	public boolean validateOrder(Long orderNo, String email) {
-		Member curMember = memberRepository.findByEmail(email);
+	@Transactional(readOnly = true)//String email
+	public boolean validateOrder(Long orderNo, String memberNo) {
+		//.findByEmail(email);
+		Member curMember = memberRepository.findByMemberNo(memberNo);
+				
 		
 		Order order = orderRepository.findById(orderNo)
 				.orElseThrow(EntityNotFoundException::new);
 		
 		Member savedMember = order.getMember();
 		
-		if(!StringUtils.pathEquals(curMember.getEmail(), savedMember.getEmail())) {
+		if(!StringUtils.pathEquals(curMember.getMemberNo(), savedMember.getMemberNo())) {
 			return false;
 		}
 		return true;
@@ -109,11 +117,12 @@ public class OrderService {
 		order.cancleOrder();
 	}
 	
-	
-	public Long orders(List<OrderDto> orderDtoList, String email) {
+	//String email
+	public Long orders(List<OrderDto> orderDtoList, String memberNo) {
 		
-		
-		Member member = memberRepository.findByEmail(email);
+		//.findByEmail(email);
+		Member member = memberRepository.findByMemberNo(memberNo);
+				
 		
 		List<OrderCourse> orderCourseList = new ArrayList<>();
 		
@@ -136,10 +145,5 @@ public class OrderService {
  	}
 	
 	
-	
-	
-	
-	
-	
-	
+
 }

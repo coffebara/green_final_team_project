@@ -1,5 +1,21 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit";
 import itemReducer from "./slices/itemSlice"
+
+let userRolesSlice = createSlice({
+    name: "userRoles",
+    initialState: {role: ""},
+    reducers: {
+        setRoles(state, action) {
+            console.log("action: " +state)
+            console.log("action.payload: "+action.payload)
+            state.role = action.payload;
+        }
+    }
+
+})
+
+
+
 let cart = createSlice({
     name: "cart",
     initialState: [
@@ -89,5 +105,6 @@ const store = configureStore({
 export let { addCart, removeCart, updateQuantity, refreshCart } = cart.actions;
 export let { getDiscount, getTotalSum } = checkout.actions;
 export let { loginToggle, logout } = login.actions;
+export let { setRoles} = userRolesSlice.actions;
 
 export default store;

@@ -15,6 +15,9 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import jwt_decode from 'jwt-decode';
+import {setRoles} from '../store';
+import { useDispatch, useSelector  } from "react-redux";
 
 function Copyright(props) {
   return (
@@ -39,6 +42,9 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function SignIn() {
+  const dispatch = useDispatch();
+  let roles = useSelector(state => state.userRoles)
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -59,29 +65,39 @@ export default function SignIn() {
     float: "left",
   };
 
-  const [memberNo, setMemberNo] = useState("");
-  const [memberPwd, setMemberPwd] = useState("");
+    const [memberSignIn, setMemberSignIn] = useState({
+      memberNo: "",
+      memberPwd: "",
+    });
 
-  const handleMemberNo = (e) => {
-    setMemberNo(e.target.value);
-  };
-
-  const handleMemberPwd = (e) => {
-    setMemberPwd(e.target.value);
-  };
+    const handleSignIn = (e) => {
+        setMemberSignIn({
+          ...memberSignIn,
+          [e.target.name]: e.target.value,
+        });
+      };
 
   const navigate = useNavigate();
 
-  const onClickSignIn = () => {
-    axios
-      .post("http://localhost:9090/login",
-        {
-          memberNo: memberNo,
-          memberPwd: memberPwd,
-        },
-      ).catch(error => console.log(error))
-  };
+const onClickSignIn = () => {
+  axios
+    .post("http://localhost:9090/login", {
+      memberNo: memberSignIn.memberNo,
+      memberPwd: memberSignIn.memberPwd,
+    })
+    .then((response) => {
+      const jwtToken = response.headers['authorization'];
+      console.log('jwtToken: ' + jwtToken) // 받아온 토큰
+      localStorage.setItem("token", jwtToken)
+      let decode =  jwt_decode(jwtToken) // 토큰을 디코드함함
+      console.log(decode)
+      // dispatch(setRoles(decode.role[0]))
+      // 로그인 요청이 성공하면, 여기서 페이지 이동을 합니다.
+      navigate("/");
+    })
+    .catch((error) => console.log(error));
 
+};
   return (
     <ThemeProvider theme={defaultTheme}>
       <Container component="main" maxWidth="xs">
@@ -103,28 +119,25 @@ export default function SignIn() {
           />
           <Typography component="h1" variant="h5" />
           <Box
-            component="form"
-            onSubmit={handleSubmit}
             noValidate
             sx={{ mt: 1 }}
           >
-            <form action="/login" method="post">
               <TextField
                 margin="normal"
                 required
                 fullWidth
                 label="아이디"
                 name="memberNo"
-                value={memberNo}
-                onChange={handleMemberNo}
+                value={memberSignIn.memberNo}
+                onChange={handleSignIn}
               />
               <TextField
                 margin="normal"
                 required
                 fullWidth
                 name="memberPwd"
-                value={memberPwd}
-                onChange={handleMemberPwd}
+                value={memberSignIn.memberPwd}
+                onChange={handleSignIn}
                 label="비밀번호"
               />
               <FormControlLabel
@@ -142,7 +155,6 @@ export default function SignIn() {
               >
                 로그인
               </Button>
-            </form>
             <Grid container>
               <Grid item>
                 <Link href="#" variant="body2">

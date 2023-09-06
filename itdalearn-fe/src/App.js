@@ -21,12 +21,13 @@ import MyPage from "./pages/MyPage";
 import OrdersPage from "./pages/OrdersPage"
 import Member_SignInPage from "./pages/Member_SignInPage.js";
 
-
 import BoardFreeList from "./pages/BoardFreeList";
 import BoardFreeDetailPage from "./pages/BoardFreeDetailPage";
 import BoardFreeWritePage from "./pages/BoardFreeWritePage";
 import BoardFreeUpdate from "./pages/BoardFreeUpdate";
 import React from "react";
+import Payment from "./components/Order/Payment";
+
 
 function App() {
   // 디테일 페이지 용
@@ -57,6 +58,7 @@ function App() {
         <Route path="/signup" element={<Member_SignUpPage />} />
 
         <Route path="/orders" element={<OrdersPage />} />
+        <Route path="/payment" element={<Payment />} />
         <Route path="/mypage" element={<MyPage />} />
         <Route path="/members/login" element={<Member_SignInPage />} />
         <Route path="/members" element={<Member_SignUpPage />} />
