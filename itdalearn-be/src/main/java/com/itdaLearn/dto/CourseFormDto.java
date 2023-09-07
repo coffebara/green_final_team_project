@@ -45,6 +45,7 @@ public class CourseFormDto {
 	private SellStatus sellStatus;
 	private CourseLevel courseLevel;
 	private CourseCategory courseCategory;
+	private Integer sellCount;
 	
 	private List<CourseImgDto> courseImgDtoList = new ArrayList<>(); 
 

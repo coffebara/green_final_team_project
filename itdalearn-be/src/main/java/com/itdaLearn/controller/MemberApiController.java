@@ -60,7 +60,7 @@ public class MemberApiController {
 
     @PostMapping("members")
     public String members(AddMemberRequest memberRequest) {
-        memberRequest.setRole("ROLE_USER");
+        memberRequest.setRole("ROLE_ADMIN");
         // MemberRepository의 save() 메서드를 사용하여 회원 정보 저장
         memberService.save(memberRequest);
 

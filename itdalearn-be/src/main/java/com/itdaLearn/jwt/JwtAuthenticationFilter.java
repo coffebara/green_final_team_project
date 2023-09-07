@@ -73,7 +73,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         System.out.println("successfulAuthentication 실행됨:인증이 완료되었다는 뜻임");
         PrincipalDetails principalDetails = (PrincipalDetails) authResult.getPrincipal();
 
-        String jwtToken = JWT.create()
+        String accessToken = JWT.create()
                 .withSubject(principalDetails.getUsername())
                 .withExpiresAt(new Date(System.currentTimeMillis()+JwtProperties.EXPIRATION_TIME)) //토큰 만료시간 System.currentTimeMillis은 현재시간 뒤에는 1분 * 10 = 10분 토큰 만료시간은 10분
                 .withClaim("id", principalDetails.getMember().getId())
@@ -81,7 +81,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                 .withArrayClaim("role", principalDetails.getAuthorities().stream().map(GrantedAuthority::getAuthority)
                 	    .toArray(String[]::new))
                 .sign(Algorithm.HMAC512(JwtProperties.SECRET));
-
-        response.addHeader(JwtProperties.HEADER_STRING, JwtProperties.TOKEN_PREFIX+jwtToken); // Bearer은 무조건 한 칸 띄어야 함
+        
+        response.addHeader(JwtProperties.HEADER_STRING, JwtProperties.TOKEN_PREFIX+accessToken); // Bearer은 무조건 한 칸 띄어야 함
     }
 }

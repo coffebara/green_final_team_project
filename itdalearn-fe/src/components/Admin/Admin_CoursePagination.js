@@ -12,10 +12,10 @@ export default function Admin_CoursePagination({
 }) {
 
     return (
-        <div >
-            <Pagination size="lg">
+        <div>
+            <Pagination size="lg" style={{padding: "auto"}}>
                 <Pagination.First value="1" onClick={firstPage}/>
-                <Pagination.Prev onClick={previousPage} />
+                <Pagination.Prev onClick={previousPage} style={{display: totalPage<=10?"none":""}}/>
 
                 {displayPageNum.map((num, i) => (
                     <Pagination.Item
@@ -27,7 +27,7 @@ export default function Admin_CoursePagination({
                     </Pagination.Item>
                 ))}
 
-                <Pagination.Next onClick={nextPage} />
+                <Pagination.Next onClick={nextPage} style={{display: totalPage<=10?"none":""}}/>
                 <Pagination.Last value={totalPage} onClick={lastPage}/>
             </Pagination>
         </div>

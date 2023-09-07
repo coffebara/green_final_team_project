@@ -93,8 +93,10 @@ public class CartController {
 	   }
 	   
 	   @PostMapping(value = "/cart/orders")
-	   public @ResponseBody ResponseEntity orderCartItem(@RequestBody CartOrderDto cartOrderDto, PrincipalDetails principalDetails) {
-		  
+	   public @ResponseBody ResponseEntity orderCartItem(@RequestBody CartOrderDto cartOrderDto, Authentication authentication) {
+		
+
+		   PrincipalDetails principalDetails = (PrincipalDetails) authentication.getPrincipal();
 		   List<CartOrderDto> cartOrderDtoList = cartOrderDto.getCartOrderDtoList();
 //		 
 		   if(cartOrderDtoList == null || cartOrderDtoList.size() == 0 ) {

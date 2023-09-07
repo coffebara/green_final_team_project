@@ -37,7 +37,12 @@ export default function Orders() {
    
   
     const getCourses = async () => {
-      const response = await axios.get(baseUrl + "/orders"); 
+      const response = await axios.get(baseUrl + "/orders",
+      {
+          headers: {
+              Authorization: localStorage.getItem("token"),
+          },
+      })
       console.log(response)
       setCourses(response.data.orders);
     

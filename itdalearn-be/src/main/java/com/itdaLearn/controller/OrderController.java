@@ -12,6 +12,7 @@ import javax.validation.Valid;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
@@ -64,8 +65,9 @@ public class OrderController {
 	
 	@GetMapping(value = "/orders")
 	@ResponseBody
-	public Map<String, Object> orderHist(PrincipalDetails principalDetails) {
+	public Map<String, Object> orderHist(Authentication authentication) {
 		
+		PrincipalDetails principalDetails = (PrincipalDetails) authentication.getPrincipal();
 		String memberNo = principalDetails.getMember().getMemberNo();
 		
 		List<OrderHistDto> orderHistDtoList = orderService.getOrderList(memberNo);

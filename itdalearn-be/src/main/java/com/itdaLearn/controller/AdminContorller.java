@@ -13,6 +13,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -36,16 +38,22 @@ import lombok.RequiredArgsConstructor;
 public class AdminContorller {
 
 	private final CourseService courseService;
+	
+	// 관리자 페이지 권한 인증
+	@GetMapping(value="/admin")
+	public void checkAdmin() {
+		
+		
+	}
+	
 
 	// 코스 메인 페이지
 	@GetMapping(value = { "/admin/courses", "/admin/courses/{page}" })
 	@ResponseBody
-	// value에 상품 관리 화면 진입시 URL에 페이지 번호가 없는 경우와 페이지 번호가 있는 경우 2가지를 매핑
 	public Map<String, Object> courseManage(CourseSearchDto courseSerachDto,
 			@PathVariable("page") Optional<Integer> page) {
 			
-
-		Pageable pageable = PageRequest.of(page.isPresent() ? page.get() : 0, 10);
+		Pageable pageable = PageRequest.of(page.isPresent() ? page.get() : 0, 1);
 		Page<Course> course = courseService.getAdminCoursePage(courseSerachDto, pageable);
 		Map<String, Object> courseMng = new HashMap<>();
 		// 조회 조건과 페이징 정보를 파라미터로 넘겨서 Page<Item> 객체를 반환 받습니다
@@ -64,12 +72,10 @@ public class AdminContorller {
 	public ResponseEntity courseNew(@Valid CourseFormDto courseFormDto, BindingResult bindingResult,
 			@RequestParam("courseImgFile") List<MultipartFile> courseImgFileList) {
 		
-
 		if (bindingResult.hasErrors()) {
 			System.out.println("검증 오류 발생");
 			return new ResponseEntity<String>("검증 오류 발생.", HttpStatus.FOUND);
 		}
-
 
 		if (courseImgFileList.get(0).isEmpty() && courseFormDto.getCourseFormDtoNo() == null) {
 			System.out.println("첫 이미지 오류 발생");
@@ -94,7 +100,6 @@ public class AdminContorller {
 		try {
 			CourseFormDto courseFormDto = courseService.getCourseDtl(courseNo);
 			courseInfo.put("courseFormDto", courseFormDto);
-
 		} catch (EntityNotFoundException e) {
 			courseInfo.put("errorMessage", e);
 		}
@@ -118,12 +123,11 @@ public class AdminContorller {
 		}
 		
 		try {
+			System.out.println(courseImgFileList.size());
 			courseService.updateCourse(courseFormDto, courseImgFileList);
 		} catch (Exception e) {
-//			model.addAttribute("errorMessage","상품 등록 중 에러가 발생하였습니다.");
 			return new ResponseEntity<String>("상품 등록 중 에러 발생.", HttpStatus.FOUND);
 		}
-
 
 		return new ResponseEntity<String>("수정되었습니다.", HttpStatus.OK);
 
@@ -142,9 +146,7 @@ public class AdminContorller {
 			System.out.println(e);
 		}
 
-
 		return new ResponseEntity<Long>(courseNo, HttpStatus.FOUND);
-
 	}
 
 }
