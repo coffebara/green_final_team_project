@@ -55,8 +55,6 @@ export default function CartList() {
       if(localStorage.getItem("token") == null){
         window.alert("로그인이 필요한 서비스입니다.")
         window.location.href = '/members/login';
-        
-        
       }
       const response = await axios.get(baseUrl + "/cart",{
         headers: {
