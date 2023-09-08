@@ -11,34 +11,34 @@ export default function Admin_CourseDetail() {
     const [isModalShow, setIsModalShow] = useState(false);
     const courseLevels = ["HIGH", "MID", "LOW"];
     const courseCategories = ["BE", "FE"];
+    const sellStatus = ["SELL", "READY", "WAIT"];
+    const [imgFile, setImgFile] = useState([]);
     const [courseDetails, setCourseDetails] = useState({
-
         courseTitle: "",
         courseTeacher: "",
         coursePrice: "",
         courseDec1: "",
         courseDec2: "",
         courseDec3: "",
-        courseLevel: courseLevels[0],
-        courseCategory: courseCategories[0],
+        courseLevel: "",
+        courseCategory: "",
+        sellStatus: "",
         courseFormDtoNo: "",
         courseImgNo: "",
-
     });
     const [isUpdatable, setIsUpdatable] = useState(false);
-    const [courseImgDto, setCourseImgDto] = useState({
-        courseImgDtoNo: "",
-        imgName: "",
-        imgUrl: "",
-        oriImgName: "",
-    });
+    const [courseImgDtoList, setCourseImgDtoList] = useState([]);
     const [imgBase64, setImgBase64] = useState([]);
-    const [courseImgFile, setCourseImgFile] = useState(null);
+    const [courseImgNos, setCourseImgNos] = useState([]);
 
     //--------------강의 정보 가져오기
     const getCourseDetails = async () => {
         try {
-            const response = await axios.get(baseUrl + "/admin/course/" + id);
+            const response = await axios.get(baseUrl + "/admin/course/" + id, {
+                headers: {
+                    Authorization: localStorage.getItem("token"),
+                },
+            });
             console.log(response);
             const {
                 courseTitle,
@@ -49,6 +49,7 @@ export default function Admin_CourseDetail() {
                 courseDec3,
                 courseLevel,
                 courseCategory,
+                sellStatus,
             } = response.data.courseFormDto;
             setCourseDetails({
                 courseTitle: courseTitle,
@@ -59,17 +60,24 @@ export default function Admin_CourseDetail() {
                 courseDec3: courseDec3,
                 courseLevel: courseLevel,
                 courseCategory: courseCategory,
+                sellStatus: sellStatus,
                 courseFormDtoNo: id,
                 courseImgNo: id,
             });
-            setCourseImgDto(response.data.courseFormDto.courseImgDto);
+
+            setCourseImgDtoList(response.data.courseFormDto.courseImgDtoList);
+            const imgNoArray = response.data.courseFormDto.courseImgDtoList.map(
+                (item) => item.courseImgNo
+            );
+            setCourseImgNos(imgNoArray);
+
+            console.log(response.data.courseFormDto.courseImgDtoList);
         } catch (error) {
             console.log(error);
         }
     };
 
     useEffect(() => {
-
         getCourseDetails();
     }, []);
 
@@ -91,12 +99,14 @@ export default function Admin_CourseDetail() {
         for (const key in courseDetails) {
             formData.append(key, courseDetails[key]);
         }
+        formData.append("courseImgNos", courseImgNos);
 
-        formData.append("courseImgFile", courseImgFile);
+        imgFile.forEach((file, index) => {
+            formData.append("courseImgFile", file); // 수정된 부분
+        });
 
         await axios
-            .patch(baseUrl + "/admin/course/" + id, formData,
-            {
+            .patch(baseUrl + "/admin/course/" + id, formData, {
                 headers: {
                     Authorization: localStorage.getItem("token"),
                 },
@@ -109,7 +119,6 @@ export default function Admin_CourseDetail() {
             .catch((error) => {
                 if (error.response.status === 302) {
                     window.alert("강의가 수정이 실패하였습니다.");
-
                 }
             });
     };
@@ -118,7 +127,11 @@ export default function Admin_CourseDetail() {
     const handleDeleteCourse = () => {
         setIsModalShow(false);
         axios
-            .delete(baseUrl + "/admin/course/" + id)
+            .delete(baseUrl + "/admin/course/" + id, {
+                headers: {
+                    Authorization: localStorage.getItem("token"),
+                },
+            })
             .then((response) => {
                 console.log(response);
             })
@@ -136,13 +149,13 @@ export default function Admin_CourseDetail() {
     //수정
     const handleUpdate = (e) => {
         e.preventDefault();
+        console.log(courseImgDtoList);
         setIsUpdatable(true);
     };
 
     //사진 업로드
     const handleChangeFile = (e) => {
-
-        setCourseImgFile(e.target.files[0]);
+        setImgFile([...imgFile, e.target.files[0]]);
         setImgBase64([]);
         if (e.target.files[0]) {
             let reader = new FileReader();
@@ -157,8 +170,7 @@ export default function Admin_CourseDetail() {
         }
     };
     return (
-        <div className="container mt-5">
-
+        <div className="container p-auto">
             {/* 모달 시작 */}
             <Modal
                 show={isModalShow}
@@ -169,9 +181,7 @@ export default function Admin_CourseDetail() {
             >
                 <div>
                     <Modal.Body>
-
                         <h4>해당 강의를 삭제하시겠습니까?</h4>
-
                     </Modal.Body>
                     <Modal.Footer>
                         <Button
@@ -191,8 +201,7 @@ export default function Admin_CourseDetail() {
                     </Modal.Footer>
                 </div>
             </Modal>
-
-            <h2 className="mb-5">강의 상세보기</h2>
+            <h2 className="my-5">{!isUpdatable ? "강의 상세보기" : "강의 수정하기"}</h2>
             <form
                 className="row g-3 needs-validation mb-5 text_align_left"
                 onSubmit={handleSubmit}
@@ -249,7 +258,7 @@ export default function Admin_CourseDetail() {
                         <div className="invalid-feedback">Please choose a username.</div>
                     </div>
                 </div>
-                <div className="col-md-6">
+                <div className="col-md-4">
                     <label htmlFor="validationCustom04" className="form-label">
                         카테고리
                     </label>
@@ -261,17 +270,17 @@ export default function Admin_CourseDetail() {
                         disabled={!isUpdatable}
                     >
                         <option disabled value="">
-                            선택...
+                            선택...{console.log(courseDetails.sellStatus)}
                         </option>
                         {courseCategories.map((category, i) => (
-                            <option key={i} value={courseDetails.courseCategory}>
+                            <option key={i} value={courseDetails.courseCategory} selected={courseDetails.courseCategory==category? true:false}>
                                 {category}
-                            </option>   
+                            </option>
                         ))}
                     </select>
                     <div className="invalid-feedback">Please select a valid state.</div>
                 </div>
-                <div className="col-md-6">
+                <div className="col-md-4">
                     <label htmlFor="validationCustom04" className="form-label">
                         강의 레벨
                     </label>
@@ -286,8 +295,30 @@ export default function Admin_CourseDetail() {
                             선택...
                         </option>
                         {courseLevels.map((level, i) => (
-                            <option key={i} value={courseDetails.courseLevel}>
+                            <option key={i} value={courseDetails.courseLevel} selected={courseDetails.courseLevel==level? true:false}>
                                 {level}
+                            </option>
+                        ))}
+                    </select>
+                    <div className="invalid-feedback">Please select a valid state.</div>
+                </div>
+                <div className="col-md-4">
+                    <label htmlFor="validationCustom04" className="form-label">
+                        판매 상태
+                    </label>
+                    <select
+                        className="form-select"
+                        id="validationCustom04"
+                        name="sellStatus"
+                        required
+                        disabled={!isUpdatable}
+                    >
+                        <option disabled value="">
+                            선택...
+                        </option>
+                        {sellStatus.map((sellStatus, i) => (
+                            <option key={i} value={courseDetails.sellStatus} selected={courseDetails.sellStatus==sellStatus? true:false}>
+                                {sellStatus}
                             </option>
                         ))}
                     </select>
@@ -342,18 +373,50 @@ export default function Admin_CourseDetail() {
                     />
                     <div className="invalid-feedback">Please provide a valid city.</div>
                 </div>
-                <div className="mb-3">
+                <div>
                     <input
                         type="file"
-                        className="form-control"
+                        name="img1"
+                        class="form-control"
                         aria-label="file example"
                         onChange={handleChangeFile}
-                        id="validationFile"
                         accept="image/jpeg, image/png"
-                        // required
+                        required
                     />
-                    <label htmlFor="validationFile" className="form-label"></label>
-                    <div className="invalid-feedback">Example invalid form file feedback</div>
+                    <div class="invalid-feedback">Example invalid form file feedback</div>
+                </div>
+                <div>
+                    <input
+                        type="file"
+                        name="img2"
+                        class="form-control"
+                        aria-label="file example"
+                        onChange={handleChangeFile}
+                        accept="image/jpeg, image/png"
+                    />
+                    <div class="invalid-feedback">Example invalid form file feedback</div>
+                </div>
+                <div>
+                    <input
+                        type="file"
+                        name="img3"
+                        class="form-control"
+                        aria-label="file example"
+                        onChange={handleChangeFile}
+                        accept="image/jpeg, image/png"
+                    />
+                    <div class="invalid-feedback">Example invalid form file feedback</div>
+                </div>
+                <div>
+                    <input
+                        type="file"
+                        name="img4"
+                        class="form-control"
+                        aria-label="file example"
+                        onChange={handleChangeFile}
+                        accept="image/jpeg, image/png"
+                    />
+                    <div class="invalid-feedback">Example invalid form file feedback</div>
                 </div>
                 <div className="col-12">
                     {!isUpdatable ? (
@@ -365,7 +428,7 @@ export default function Admin_CourseDetail() {
                             >
                                 강의 수정
                             </button>
-                            <button className="btn btn-primary" type="button" onClick={handleModal}>
+                            <button className="btn btn-danger mx-1" type="button" onClick={handleModal}>
                                 삭제하기
                             </button>
                         </>
@@ -375,7 +438,7 @@ export default function Admin_CourseDetail() {
                                 강의 등록
                             </button>
                             <button
-                                className="btn btn-primary"
+                                className="btn btn-danger  mx-1"
                                 type="button"
                                 onClick={() => {
                                     setIsUpdatable(false);
@@ -387,7 +450,6 @@ export default function Admin_CourseDetail() {
                         </>
                     )}
                 </div>
-
             </form>
         </div>
     );

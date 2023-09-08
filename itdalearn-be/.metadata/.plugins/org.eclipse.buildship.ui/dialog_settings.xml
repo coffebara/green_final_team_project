@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.buildship.ui.wizard.project.import">
-		<item key="project_location" value="C:\Users\qwshp\Desktop\hy\itdalearn-be"/>
+		<item key="project_location" value="C:\Users\qwshp\Desktop\admin\itdalearn-be"/>
 		<item key="apply_working_sets" value="false"/>
 		<list key="working_sets">
 		</list>

@@ -11,7 +11,6 @@ import com.itdaLearn.entity.CourseImg;
 public interface CourseImgRepository extends JpaRepository<CourseImg, Long>{
 	
 	List<CourseImg> findByCourseCourseNoOrderByCourseImgNo(Long courseNo);
-	
-	CourseImg findByCourseCourseNoAndRepimgYn(Long CourseNo, String repimgYn);
-	
+	CourseImg findByCourseCourseNoAndRepimgYn(Long courseImgNo, String repimgYn);
+
 }

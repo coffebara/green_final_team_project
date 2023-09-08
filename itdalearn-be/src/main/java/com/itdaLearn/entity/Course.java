@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 
 import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
 
 import com.itdaLearn.constant.CourseCategory;
 import com.itdaLearn.constant.CourseLevel;
@@ -61,7 +63,7 @@ public class Course {
 	@Enumerated(EnumType.STRING)
 	private SellStatus sellStatus;
 
-	public void updateItem(CourseFormDto courseFormDto) {
+	public void updateCourse(CourseFormDto courseFormDto) {
     	this.courseTitle = courseFormDto.getCourseTitle();
     	this.coursePrice = courseFormDto.getCoursePrice();
     	this.courseTeacher = courseFormDto.getCourseTeacher();
@@ -73,7 +75,11 @@ public class Course {
     	this.courseCategory = courseFormDto.getCourseCategory();
     }
 	
-	public void decreaseSellCount() {
+	public void deleteCourse() {
+		this.sellStatus = SellStatus.WAIT;
+	}
+	
+	public void decreaseSellCount(int sellCount) {
     	--this.sellCount;
     }
 	

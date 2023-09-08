@@ -7,7 +7,6 @@ import java.util.Map;
 import javax.persistence.EntityNotFoundException;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -15,7 +14,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.itdaLearn.dto.CourseFormDto;
 import com.itdaLearn.repository.CourseRepository;
 import com.itdaLearn.service.CourseService;
-
 
 import lombok.RequiredArgsConstructor;
 

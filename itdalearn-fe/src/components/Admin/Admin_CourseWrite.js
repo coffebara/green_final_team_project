@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "../../styles/Admin_Course.css";
 import { useNavigate } from "react-router-dom";
 
@@ -10,7 +10,7 @@ export default function Admin_CourseWrite() {
     const baseUrl = "http://localhost:9090";
     const courseLevels = ["HIGH", "MID", "LOW"];
     const courseCategories = ["BE", "FE"];
-    const SellStatus = ["SELL", "READY", "WAIT"];
+    const sellStatus = ["SELL", "READY", "WAIT"];
     const [imgFile, setImgFile] = useState([]);
     const [imgBase64, setImgBase64] = useState([]);
     const [inputs, setInputs] = useState({
@@ -20,12 +20,25 @@ export default function Admin_CourseWrite() {
         courseDec1: "",
         courseDec2: "",
         courseDec3: "",
-        sellStatus: SellStatus[0],
+        sellStatus: sellStatus[0],
         courseLevel: courseLevels[0],
         courseCategory: courseCategories[0],
-        sellCount : 0
+        sellCount: 0
     });
-  
+
+    useEffect(()=> {
+        axios.get(baseUrl + "/admin", {
+            headers: {
+                Authorization: localStorage.getItem("token"),
+            },
+        }).catch((err) => {
+            if(err.response.status === 403) {
+                alert("관리자 권한이 필요합니다.");
+                navigate("/members/login");
+            }
+        })
+    },[])
+
     // 백으로 전송
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -44,8 +57,7 @@ export default function Admin_CourseWrite() {
         console.log(imgFile);
 
         await axios
-            .post(baseUrl + "/admin/course", formData,
-            {
+            .post(baseUrl + "/admin/course", formData,{
                 headers: {
                     Authorization: localStorage.getItem("token"),
                 },
@@ -56,7 +68,7 @@ export default function Admin_CourseWrite() {
                     navigate("/admin/courses");
                 }
             })
-            .catch(function (err) {
+            .catch((err) => {
                 window.alert("강의 등록이 실패하였습니다. " + err);
             });
     };
@@ -73,18 +85,6 @@ export default function Admin_CourseWrite() {
     //사진 업로드
     const handleChangeFile = (e) => {
         setImgFile([...imgFile, e.target.files[0]]);
-        setImgBase64([]);
-        if (e.target.files[0]) {
-            let reader = new FileReader();
-            reader.readAsDataURL(e.target.files[0]);
-            reader.onloadend = () => {
-                const base64 = reader.result; // 비트맵 데이터 리턴, 이 데이터를 통해 파일 미리보기가 가능함
-                if (base64) {
-                    let base64Sub = base64.toString();
-                    setImgBase64((imgBase64) => [...imgBase64, base64Sub]);
-                }
-            };
-        }
     };
 
     return (
@@ -148,8 +148,9 @@ export default function Admin_CourseWrite() {
                         class="form-select"
                         id="validationCustom04"
                         name="courseCategory"
-                        required
                         onChange={handleOnChange}
+                        required
+                     
                     >
                         <option selected disabled value="">
                             선택...
@@ -166,7 +167,9 @@ export default function Admin_CourseWrite() {
                     <label for="validationCustom04" class="form-label">
                         강의 레벨
                     </label>
-                    <select class="form-select" id="validationCustom04" name="courseLevel" required onChange={handleOnChange}>
+                    <select class="form-select" id="validationCustom04" 
+                    onChange={handleOnChange}
+                    name="courseLevel" required>
                         <option selected disabled value="">
                             선택...
                         </option>
@@ -185,14 +188,15 @@ export default function Admin_CourseWrite() {
                     <select
                         class="form-select"
                         id="validationCustom05"
-                        name="courseSellStatus"
-                        required
+                        name="sellStatus"
                         onChange={handleOnChange}
+                        required
+                        
                     >
                         <option selected disabled value="">
                             선택...
                         </option>
-                        {SellStatus.map((sellStatus, i) => (
+                        {sellStatus.map((sellStatus, i) => (
                             <option key={i} value={sellStatus}>
                                 {sellStatus}
                             </option>

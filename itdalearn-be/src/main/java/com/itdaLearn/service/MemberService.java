@@ -6,6 +6,8 @@ import com.itdaLearn.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 
 @RequiredArgsConstructor
 @Service
@@ -16,7 +18,11 @@ public class MemberService {
     public Long save(AddMemberRequest dto) {
         String password = dto.getMemberPwd();
         if (password == null || password.isEmpty()) {
-            throw new IllegalArgumentException("======================================");
+            throw new IllegalArgumentException("비밀번호가 입력되지 않았습니다.");
+        }
+        String memberNo = dto.getMemberNo();
+        if (memberNo == null || memberNo.isEmpty()) {
+            throw new IllegalArgumentException("회원 번호가 입력되지 않았습니다.");
         }
         return memberRepository.save(Member.builder()
                 .memberNo(dto.getMemberNo())
@@ -27,11 +33,36 @@ public class MemberService {
                 .memberTel(dto.getMemberTel())
                 .build()).getId();
     }
-    
-    public Member findById(Long userId) {
-    	return memberRepository.findById(userId)
-    			.orElseThrow( () -> new IllegalArgumentException("Unexpected user"));
+
+//    @Transactional
+//    public void modify(AddMemberRequest memberDto) {
+//        Member member = memberRepository.findByMemberNo(memberDto.AddMemberRequest().getMemberNo()).orElseThrow(() ->
+//             new IllegalArgumentException("해당 회원이 존재하지 않습니다."));
+//
+//     String encPassword = bCryptPasswordEncoder.encode(memberDto.getMemberPwd());
+//
+//        member.modify(memberDto.getMemberNo(), encPassword, memberDto.getMemberEmail(),
+//                memberDto.getMemberName(), memberDto.getMemberTel());
+//}
+    @Transactional
+    public void modify(AddMemberRequest memberDto) {
+        Member member = memberRepository.findByMemberNo(memberDto.getMemberNo());
+
+        if (member == null) {
+            throw new IllegalArgumentException("해당 회원이 존재하지 않습니다.");
+        }
+
+        String encPassword = bCryptPasswordEncoder.encode(memberDto.getMemberPwd());
+        member.modify(memberDto.getMemberNo(), encPassword, memberDto.getMemberEmail(),
+                memberDto.getMemberName(), memberDto.getMemberTel());
     }
+
+
+//    public Member findById(Long userId) {
+//    	return memberRepository.findById(userId)
+//    			.orElseThrow( () -> new IllegalArgumentException("Unexpected user"));
+//    }
+
 }
 
 
@@ -91,7 +122,7 @@ public class MemberService {
 //
 //            return User.builder()
 //                    .username(member.getEmail())
-//                    .password(member.getPassword())              
+//                    .password(member.getPassword())
 //                    .build();
 //        }
 //

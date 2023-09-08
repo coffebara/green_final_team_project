@@ -73,7 +73,6 @@ export default function Index() {
       searchBy: "",
       searchQuery: "",
   });
-  // console.log(useSelector(state => state.roles))
 
  let navigate = useNavigate();
 
