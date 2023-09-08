@@ -60,7 +60,7 @@ export default function SignUp() {
     memberPwd: "",
     memberPwdCheck: "",
     memberName: "",
-    email: "",
+    memberEmail: "",
     memberTel: "",
   });
 
@@ -73,15 +73,14 @@ export default function SignUp() {
 
   const onClickSignUp = () => {
     axios
-      .post("http://localhost:9090/members",
-        {
-          memberNo: memberSignUp.memberNo,
-          memberPwd: memberSignUp.memberPwd,
-          memberName: memberSignUp.memberName,
-          email: memberSignUp.email,
-          memberTel: memberSignUp.memberTel,
-        },
-      ).catch(error => console.log(error))
+      .post("http://localhost:9090/members", {
+        memberNo: memberSignUp.memberNo,
+        memberPwd: memberSignUp.memberPwd,
+        memberName: memberSignUp.memberName,
+        memberEmail: memberSignUp.memberEmail,
+        memberTel: memberSignUp.memberTel,
+      })
+      .catch((error) => console.log(error));
   };
 
   return (
@@ -128,6 +127,7 @@ export default function SignUp() {
                     fullWidth
                     name="memberPwd"
                     label="비밀번호"
+                    type="password"
                     onChange={handleSignUp}
                     value={memberSignUp.memberPwd}
                   />
@@ -138,6 +138,7 @@ export default function SignUp() {
                     fullWidth
                     name="memberPwdCheck"
                     label="비밀번호 확인"
+                    type="password"
                     onChange={handleSignUp}
                     value={memberSignUp.memberPwdCheck}
                   />
@@ -158,8 +159,8 @@ export default function SignUp() {
                     fullWidth
                     label="이메일"
                     onChange={handleSignUp}
-                    value={memberSignUp.email}
-                    name="email"
+                    value={memberSignUp.memberEmail}
+                    name="memberEmail"
                   />
                 </Grid>
                 <Grid item xs={12}>
@@ -173,14 +174,7 @@ export default function SignUp() {
                   />
                 </Grid>
 
-                <Grid item xs={12}>
-                  <FormControlLabel
-                    control={
-                      <Checkbox value="allowExtraEmails" color="primary" />
-                    }
-                    label="이메일을 통해 마케팅 프로모션 및 업데이트를 받고 싶습니다."
-                  />
-                </Grid>
+                <Grid item xs={12}></Grid>
               </Grid>
               <Button
                 type="submit"

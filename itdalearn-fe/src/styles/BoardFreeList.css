@@ -145,7 +145,7 @@
 }
 
 .board_free_contents_white{
-    white-space: pre-wrap;
+    white-space: pre-wrap; 
     text-align: start;
     margin-left: 1rem;
     margin-top: 1rem;

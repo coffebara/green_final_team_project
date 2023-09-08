@@ -37,7 +37,7 @@ public class Member implements UserDetails{
 
     private String memberTel;
 
-    @Builder
+	@Builder
     public Member(String memberNo, String memberPwd, String memberName, String memberEmail, String role, String memberTel, String auth) {
         this.memberNo = memberNo;
         this.memberPwd = memberPwd;
@@ -46,6 +46,14 @@ public class Member implements UserDetails{
         this.role = role;
         this.memberTel = memberTel;
     }
+	public void modify(String memberNo, String memberPwd, String memberName, String memberEmail, String memberTel) {
+		this.memberNo = memberNo;
+		this.memberPwd = memberPwd;
+		this.memberName = memberName;
+		this.memberEmail = memberEmail;
+		this.memberTel = memberTel;
+
+	}
 
     public List<String> getRoleList() {
     	System.out.println(getRole());

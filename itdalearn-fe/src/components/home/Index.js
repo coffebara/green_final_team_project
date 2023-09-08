@@ -14,7 +14,6 @@ import Admin_CoursePagination from '../Admin/Admin_CoursePagination';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import Link from '@mui/material/Link';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -30,9 +29,9 @@ import "../../styles/Index.css";
 import { green, pink } from '@mui/material/colors';
 import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
-import FolderIcon from '@mui/icons-material/Folder';
+
 import PageviewIcon from '@mui/icons-material/Pageview';
-import AssignmentIcon from '@mui/icons-material/Assignment';
+
 SwiperCore.use([Navigation, Pagination, Autoplay])	
 
 
@@ -59,6 +58,7 @@ const defaultTheme = createTheme(
       }
 );
 
+
 export default function Index() {
 
     const baseUrl = "http://localhost:9090";
@@ -73,18 +73,8 @@ export default function Index() {
       searchBy: "",
       searchQuery: "",
   });
-     let navigate = useNavigate();
-    
-    // useEffect(() => {
-    //     const getCourses = async () => {
-    //         const response = await axios.get(baseUrl + "/courses");
-    //         console.log(response);
-    //         setCourses(response.data.courseList);
-    //         console.log(courses);
-    //     };
-    //     getCourses();
-    // }, []);
 
+ let navigate = useNavigate();
 
     const getCourseList = async () => {
       const postPage = inputs.page - 1; // pageable객체는 page가 0부터 시작하므로
@@ -97,7 +87,7 @@ export default function Index() {
           console.log(courseList);
           console.log(courseList.content[0].imgUrl);
           const { content, number, size, totalPages } = courseList; // 강의리스트, 현재페이지, 페이지당강의수, 총페이지
-          setCourses(content);
+          setCourses(content); //강의 목록 전체가 들어감 
           setCurrPage(number + 1);
           setTotalPage(totalPages);
           setPageSize(size);
@@ -192,6 +182,48 @@ const handleSubmit = (e) => {
   }
 };
 
+// 다중필터링 
+
+const [filterKeyword, setFilterKeyword] = useState("");
+const [selectedLevel, setSelectedLevel] = useState(null);
+const levelOptions = ["ALL", "LOW", "MID", "HIGH"];
+const filterKeywords = ["ALL", "스프링부트", "입문", "HTML", "리액트", "풀스택", "JPA", "CSS", "Node.js", "자바스크립트", "SQL"];
+
+const handleFilterKeywordChange = (keyword) => {
+  setFilterKeyword(keyword);
+}
+
+const handleLevelFilter = (level) => {
+  setSelectedLevel(level);
+}
+
+const filterCourses = () => {
+  
+  return courses.filter((course) => {
+    
+    if(selectedLevel == "ALL")
+      return true;
+
+    if( selectedLevel && course.courseLevel !== selectedLevel) {
+      return false;
+    }
+
+    if(filterKeyword == "")
+    return true;
+
+    if(filterKeyword == "ALL")
+    return true;
+
+    if( filterKeyword && !course.courseTitle.includes(filterKeyword)) {
+      return false;
+    }
+
+    return true;
+  })
+}
+console.log(filterCourses)
+
+
 
   return (
    
@@ -237,26 +269,37 @@ const handleSubmit = (e) => {
       }}
     >
       <ButtonGroup variant="outlined" aria-label="outlined button group">
-        <Button>스프링부트</Button>
-        <Button>입문</Button>
-        <Button>HTML</Button>
-        <Button>리액트</Button>
-        <Button>풀스택</Button>
-        <Button>JPA</Button>
-        <Button>CSS</Button>
-        <Button>Node.js</Button>
-        <Button>자바스크립트</Button>
-        <Button>SQL</Button>
+ 
+        {filterKeywords.map((option) => (
+           <Button key = {option} onClick={() => handleFilterKeywordChange(option)}>{option}</Button>
+        ))}
       </ButtonGroup>
 
     </Box>
 </div>
+
+<div className='levelgroup'>
+<ButtonGroup variant="outlined" aria-label="outlined button group">
+ {levelOptions.map((option) => (
+    <Button key={option} onClick={() => handleLevelFilter(option)}>
+      {option}
+    </Button>
+  ))}
+</ButtonGroup>
+</div>
+
+
+
 <div className='icon'>
 <Stack direction="row" spacing={2}>   
       <Avatar sx={{ bgcolor: green[500] }}>
         <PageviewIcon />
       </Avatar> 
-    </Stack> </div>
+    </Stack> 
+</div>
+
+
+
 <div className='searchbox'>
 <Box
     sx={{
@@ -285,23 +328,26 @@ const handleSubmit = (e) => {
                     <div className='searchbtn'>
                     <button id="searchBtn" type="submit" className="btn btn-primary">
                         검색
-                    </button></div>
+                    </button>
+                    </div>
                 </div>
             </form>
   </Box>
-      </div>
+  </div>
+ 
         <Container sx={{ py: 8 }} maxWidth="md">
           {/* End hero unit */}
           <Grid container spacing={4}>
 
-                {courses.map((item, i, card) => (
-                     <Grid item key={i} xs={12} sm={6} md={4}>
+                {filterCourses().map((item, i, card) => (
+                  // setIndex={setIndex} index={i}
+                     <Grid item key={i} xs={12} sm={6} md={4}  >
                         <CardMedia
                     component="div"
                     sx={{
                       pt: '56.25%',
                     }}
-                    image={courses[i].imgUrl}
+                    image={filterCourses()[i].imgUrl}
                     onClick={() => {
                       navigate(`/course/${item.courseNo}`);
                   }}
@@ -316,6 +362,7 @@ const handleSubmit = (e) => {
                         <div className='mainbody'>
                         <div>{item.courseTeacher}</div>
                         <div>₩{item.coursePrice}원</div>
+                        <div>{item.courseLevel}</div>
                         <div>{item.courseDec}</div>
                         </div>
                     </Typography>
@@ -342,12 +389,14 @@ const handleSubmit = (e) => {
                     lastPage={lastPage}
                     totalPage={totalPage}
                    
-                /></div>
+                />
+                </div>
         </Container>
    
-      </main>
+     
+   
+     </main>
   
-    </ThemeProvider>
-    
+    </ThemeProvider> 
   );
 }

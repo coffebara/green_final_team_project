@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 
 import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
 
 import com.itdaLearn.constant.CourseCategory;
 import com.itdaLearn.constant.CourseLevel;
@@ -26,8 +28,8 @@ import lombok.ToString;
 @ToString
 public class Course {
 
-	@SequenceGenerator(name = "ITEM_SEQUENCE_GEN", sequenceName = "seq_item", initialValue = 1, allocationSize = 1) 																												
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ITEM_SEQUENCE_GEN")
+	@SequenceGenerator(name = "IMG_SEQUENCE_GEN", sequenceName = "seq_img", initialValue = 1, allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "IMG_SEQUENCE_GEN")
 	@Id
 	private Long courseNo;
 	
@@ -61,7 +63,7 @@ public class Course {
 	@Enumerated(EnumType.STRING)
 	private SellStatus sellStatus;
 
-	public void updateItem(CourseFormDto courseFormDto) {
+	public void updateCourse(CourseFormDto courseFormDto) {
     	this.courseTitle = courseFormDto.getCourseTitle();
     	this.coursePrice = courseFormDto.getCoursePrice();
     	this.courseTeacher = courseFormDto.getCourseTeacher();
@@ -73,11 +75,15 @@ public class Course {
     	this.courseCategory = courseFormDto.getCourseCategory();
     }
 	
+	public void deleteCourse() {
+		this.sellStatus = SellStatus.WAIT;
+	}
+	
 	public void decreaseSellCount(int sellCount) {
     	--this.sellCount;
     }
 	
-    public void addSellCount(int sellCount) {
+    public void addSellCount() {
     	++this.sellCount;
     }
 }

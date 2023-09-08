@@ -47,12 +47,5 @@ public class HomeController {
 			// 페이지 전환 시 기존 검색 조건을 유지한 채 이동할 수 있도록 뷰에 다시 전달
 
 		 return courseMng;
-	 }
-
-	 
-	 
-
-
-
-	
+	 }	
 }
