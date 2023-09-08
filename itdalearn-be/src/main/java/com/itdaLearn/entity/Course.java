@@ -9,8 +9,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 
+import org.hibernate.annotations.ColumnDefault;
+
 import com.itdaLearn.constant.CourseCategory;
 import com.itdaLearn.constant.CourseLevel;
+import com.itdaLearn.constant.SellStatus;
 import com.itdaLearn.dto.CourseFormDto;
 
 import lombok.Getter;
@@ -44,24 +47,37 @@ public class Course {
 	private String courseDec2;
 	
 	@Column(nullable = false, length = 1000)
-
 	private String courseDec3;
+	
+	@ColumnDefault("0")
+	private Integer sellCount;
 	
 	@Enumerated(EnumType.STRING)
 	private CourseLevel courseLevel;
 	
 	@Enumerated(EnumType.STRING)
 	private CourseCategory courseCategory;
+	
+	@Enumerated(EnumType.STRING)
+	private SellStatus sellStatus;
 
 	public void updateItem(CourseFormDto courseFormDto) {
     	this.courseTitle = courseFormDto.getCourseTitle();
+    	this.coursePrice = courseFormDto.getCoursePrice();
     	this.courseTeacher = courseFormDto.getCourseTeacher();
     	this.courseDec1 = courseFormDto.getCourseDec1();
     	this.courseDec2 = courseFormDto.getCourseDec2();
     	this.courseDec3 = courseFormDto.getCourseDec3();
+    	this.sellStatus = courseFormDto.getSellStatus();
     	this.courseLevel = courseFormDto.getCourseLevel();
     	this.courseCategory = courseFormDto.getCourseCategory();
-    	this.coursePrice = courseFormDto.getCoursePrice();
-
+    }
+	
+	public void decreaseSellCount(int sellCount) {
+    	--this.sellCount;
+    }
+	
+    public void addSellCount(int sellCount) {
+    	++this.sellCount;
     }
 }

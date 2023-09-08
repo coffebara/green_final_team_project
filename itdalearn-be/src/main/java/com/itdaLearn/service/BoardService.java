@@ -1,66 +1,78 @@
 package com.itdaLearn.service;
 
-import com.itdaLearn.Mapper.BoardMapper;
-import com.itdaLearn.dto.BoardSaveDto;
-import com.itdaLearn.entity.BoardEntity;
-import com.itdaLearn.something.Header;
-import com.itdaLearn.something.Pagination;
-import com.itdaLearn.something.Search;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
+import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
+import java.util.Map;
 
-@RequiredArgsConstructor
+
+import com.itdaLearn.config.ResourceNotFoundException;
+import com.itdaLearn.entity.Board;
+import com.itdaLearn.repository.BoardRepository;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+
+
 @Service
 public class BoardService {
-    private final BoardMapper boardMapper;
+    private final BoardRepository boardRepository;
 
-    public Header<List<BoardEntity>> getBoardList(int page, int size, Search search) {
-        HashMap<String, Object> paramMap = new HashMap<>();
-
-        if (page <= 1) {
-            paramMap.put("pageStart", 0);
-        } else {
-            paramMap.put("pageStart", (page - 1) * size);
-        }
-        paramMap.put("pageEnd", page * size);
-        paramMap.put("size", size);
-        paramMap.put("sk", search.getSk());
-        paramMap.put("sv", search.getSv());
-
-        List<BoardEntity> boardList = boardMapper.getBoardList(paramMap);
-        Pagination pagination = new Pagination(
-                boardMapper.getBoardTotalCount(paramMap),
-                page,
-                size,
-                10
-        );
-
-        return Header.OK(boardList, pagination);
+    @Autowired
+    public BoardService(BoardRepository boardRepository) {
+        this.boardRepository = boardRepository;
     }
 
-    public Header<BoardEntity> getBoardOne(Long idx) {
-        return Header.OK(boardMapper.getBoardOne(idx));
+    public Page<Board> getBoards(Pageable pageable) {
+        return boardRepository.findAll(pageable);
     }
 
-    public Header<BoardEntity> updateBoard(BoardSaveDto boardSaveDto) {
-        BoardEntity entity = boardSaveDto.toEntity();
-        if (boardMapper.updateBoard(entity) > 0) {
-            return Header.OK(entity);
-        } else {
-            return Header.ERROR("ERROR");
-        }
+
+    public Board createBoard(Board board) {
+        return boardRepository.save(board);
+    }
+    public ResponseEntity<Board> getBoard(Long bno) {
+        Board board = boardRepository.findById(bno)
+                .orElseThrow(() -> new ResourceNotFoundException("Not exist Board Data by no : ["+bno+"]"));
+        return ResponseEntity.ok(board);
+    }
+    public ResponseEntity<Board> updateBoard(
+            Long bno, Board updatedBoard) {
+        Board board = boardRepository.findById(bno)
+                .orElseThrow(() -> new ResourceNotFoundException("Not exist Board Data by no : ["+bno+"]"));
+        board.setType(updatedBoard.getType());
+        board.setTitle(updatedBoard.getTitle());
+        board.setContents(updatedBoard.getContents());
+        board.setUpdatedTime(new Date());
+
+        Board endUpdatedBoard = boardRepository.save(board);
+        return ResponseEntity.ok(endUpdatedBoard);
+    }
+    public ResponseEntity<Map<String, Boolean>> deleteBoard(
+            Long bno) {
+        Board board = boardRepository.findById(bno)
+                .orElseThrow(() -> new ResourceNotFoundException("Not exist Board Data by no : ["+bno+"]"));
+
+        boardRepository.delete(board);
+        Map<String, Boolean> response = new HashMap<>();
+        response.put("Deleted Board Data by id : ["+bno+"]", Boolean.TRUE);
+        return ResponseEntity.ok(response);
+    }
+    public Board findBoard(Long bno) {
+        return boardRepository.findById(bno).orElseThrow(() -> new IllegalArgumentException("Invalid board Id:" + bno));
+    }
+    public Page<Board> searchBoardsByTitle(String keyword, Pageable pageable) {
+        return boardRepository.findByTitleContaining(keyword, pageable);
     }
 
-    public Header<String> deleteBoard(Long idx) {
-        if (boardMapper.deleteBoard(idx) > 0) {
-            return Header.OK();
-        } else {
-            return Header.ERROR("ERROR");
-        }
+    public Page<Board> searchBoardsByContent(String keyword, Pageable pageable) {
+        return boardRepository.findByContentsContaining(keyword, pageable);
     }
-    public int insertBoard(BoardEntity entity) {
-        return boardMapper.insertBoard(entity);
+    public Page<Board> searchBoardsByMemberNo(String keyword, Pageable pageable) {
+        return boardRepository.findByMemberNoContaining(keyword, pageable);
     }
+
+
 }
