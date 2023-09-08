@@ -1,0 +1,20 @@
+package com.itdaLearn.entity;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+import lombok.Getter;
+import lombok.Setter;
+
+@Entity
+@Getter @Setter
+@Table
+public class Comment {
+
+	@Id
+    @GeneratedValue
+    @Column(name = "comment_no")
+    private Long commentNo;
+}

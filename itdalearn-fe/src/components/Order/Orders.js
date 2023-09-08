@@ -1,4 +1,5 @@
 import * as React from 'react';
+import Link from '@mui/material/Link';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -8,6 +9,7 @@ import Title from './Title';
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import '../../styles/Order.css'
 import { useCallback } from 'react';
@@ -18,7 +20,6 @@ export default function Orders() {
     let navigate = useNavigate();
     const baseUrl = "http://localhost:9090";
     const [courses, setCourses] = useState([]);
-    const [orderCourseDtoList, setOrderCourseDtoList] = useState([]);
 
     const [checkedList, setCheckedLists] = useState([]);
 
@@ -40,8 +41,7 @@ export default function Orders() {
       const response = await axios.get(baseUrl + "/orders"); 
       console.log(response)
       setCourses(response.data.orders);
-    
-      console.log(orderCourseDtoList);
+      console.log(response.data.orders.orderCourseDtoList);
     };
     
   useEffect(()=>{
@@ -49,7 +49,7 @@ export default function Orders() {
   },[])
 
 
-   const deleteorder = () => {
+  const deleteorder = () => {
     
     axios.post("http://localhost:9090/order/" + checkedList[0].orderNo + "/cancel", {
     
@@ -70,7 +70,7 @@ export default function Orders() {
   })
   .catch((error) => console.log(error.response));
   
-   };
+  };
   
   return (
     <>
@@ -80,7 +80,6 @@ export default function Orders() {
       <br />
       <Table size="small">
        
-
         <TableHead>
           <TableRow>
             <TableCell>No</TableCell>
@@ -92,32 +91,20 @@ export default function Orders() {
             <TableCell align="right"></TableCell>
           </TableRow>
         </TableHead>
-
         <TableBody>
-        {courses.map((order, index) => (
-            <TableRow key={index}>
-              <TableCell>
-                <input
-                  key={index}
+        {courses.map((item, i) => (
+            <TableRow key={i}>
+              <TableCell><input
+                  key={i}
                   type="checkbox"
-                  onChange={(e) => onCheckedElement(e.target.checked, order)}
-                  checked={checkedList.includes(order) ? true : false}
+                  onChange={(e) => onCheckedElement(e.target.checked, item)}
+                  checked={checkedList.includes(item) ? true : false}
                 /></TableCell>
-
-
-              {order.orderCourseDtoList.map((course, courseIndex) => (
-              <div key={courseIndex}>
-              <TableCell><img className='orderimg' src={course.imgUrl} /></TableCell>
-              <TableCell>{course.courseTitle}</TableCell>
-            
-              <TableCell>{course.coursePrice}원</TableCell>
-              
-              
-              </div>
-                     
-            ))} 
-              <TableCell>{order.orderDate}</TableCell>
-              <TableCell align="right">{order.orderStatus}</TableCell>
+              <TableCell><img className='orderimg' src={item.orderCourseDtoList[0].imgUrl} /></TableCell>
+              <TableCell>{item.orderCourseDtoList[0].courseTitle}</TableCell>
+              <TableCell>{item.orderCourseDtoList[0].coursePrice}</TableCell>
+              <TableCell>{item.orderDate}</TableCell>
+              <TableCell align="right">{item.orderStatus}</TableCell>
               <TableCell align="right">
               <Button onClick={deleteorder} variant="outlined">주문 취소</Button></TableCell>
             </TableRow>

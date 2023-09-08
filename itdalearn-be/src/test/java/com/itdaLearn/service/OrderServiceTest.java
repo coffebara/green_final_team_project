@@ -64,7 +64,7 @@ public class OrderServiceTest {
 		course.setCourseLevel(CourseLevel.LOW);
 		course.setCourseCategory(CourseCategory.BE);
 		course.setCoursePrice(20000);
-		course.setCourseDec("테스트 상품 상세설명입니다");
+		course.setCourseDec1("테스트 상품 상세설명입니다");
 		
 		return courseRepository.save(course);		
 	}

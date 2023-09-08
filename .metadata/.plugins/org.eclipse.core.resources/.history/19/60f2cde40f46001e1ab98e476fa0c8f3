@@ -1,0 +1,5 @@
+package com.itdaLearn.entity;
+
+public class Comment {
+
+}

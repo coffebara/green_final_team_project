@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+
 }
 
 .App-logo {
@@ -36,3 +37,53 @@
     transform: rotate(360deg);
   }
 }
+
+@font-face {
+  font-family: 'TheJamsil5Bold';
+  src: url('./styles/fonts/The\ Jamsil\ OTF\ 5\ Bold.otf');
+}
+
+
+@font-face {
+  font-family: 'TheJamsil5Medium';
+  src: url('./styles/fonts/The\ Jamsil\ OTF\ 4\ Medium.otf');
+}
+
+
+@font-face {
+  font-family: 'TheJamsil5Regular';
+  src: url('./styles/fonts/The\ Jamsil\ OTF\ 3\ Regular.otf');
+}
+
+@font-face {
+  font-family: 'TheJamsil5Light';
+  src: url('./styles/fonts/The\ Jamsil\ OTF\ 2\ Light.otf ');
+}
+
+
+
+@font-face {
+  font-family: 'GwanyangSunshineBold';
+  src: url('./styles/fonts/Gwangyang\ Sunshine\ Bold\(TTF용\).ttf');
+}
+
+
+@font-face {
+  font-family: 'GwanyangSunshineRegular';
+  src: url('./styles/fonts/Gwangyang\ Sunshine\ Regular\(TTF용\).ttf');
+}
+
+@font-face {
+  font-family: 'MICEGothic Bold';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-01@1.0/MICEGothic Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'MICEMyungjo';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-01@1.0/MICEMyungjo.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+

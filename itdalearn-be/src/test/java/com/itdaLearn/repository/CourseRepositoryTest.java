@@ -33,7 +33,11 @@ public class CourseRepositoryTest {
 	void createCourseTest() {
 		Course course = new Course();
 		course.setCourseTitle("스프링");
-		course.setCourseDec("예제로 배워보는 스프링 MVC");
+
+		course.setCourseDec1(null);
+
+		course.setCourseDec1("예제로 배워보는 스프링 MVC");
+
 		course.setCoursePrice(40000);
 		course.setCourseLevel(CourseLevel.HIGH);
 		course.setCourseCategory(CourseCategory.BE);

@@ -1,32 +1,28 @@
 package com.itdaLearn.service;
 
-
-import com.itdaLearn.entity.Member;
-import com.itdaLearn.repository.MemberRepository;
-import lombok.RequiredArgsConstructor;
-
-import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-// http://localhost:9090/login
+import com.itdaLearn.config.PrincipalDetails;
+import com.itdaLearn.entity.Member;
+import com.itdaLearn.repository.MemberRepository;
+
+
 @Service
-@RequiredArgsConstructor
 public class PrincipalDetailsService implements UserDetailsService {
 
-    private final MemberRepository memberRepository;
+    @Autowired
+    private MemberRepository memberRepository;
 
     @Override
     public UserDetails loadUserByUsername(String memberNo) throws UsernameNotFoundException {
-    	System.out.println("memberNo: " +memberNo);
-        System.out.println("PrincipalDetialsService의 loadUserByUsername()");
-        Member member = memberRepository.findByMemberNo(memberNo);
-        System.out.println("member = " + member);
-        return new PrincipalDetails(member);
+        Member memberEntity = memberRepository.findByMemberNo(memberNo);
+        if (memberEntity != null) { // null이 아니면 회원이라는 뜻이기 때문에
+            return new PrincipalDetails(memberEntity);
+        }
+        return null;
     }
-    
-    
-
 }

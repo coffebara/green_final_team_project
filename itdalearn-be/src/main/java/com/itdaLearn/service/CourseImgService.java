@@ -5,12 +5,12 @@ import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.itdaLearn.entity.CourseImg;
 import com.itdaLearn.repository.CourseImgRepository;
 
+import org.springframework.util.StringUtils;
 import lombok.RequiredArgsConstructor;
 
 
@@ -23,8 +23,8 @@ public class CourseImgService {
 	//상품 이미지를 업로드하고, 상품 이미지 정보를 저장하는 클래스
 	// itemImgLocation=C:/shop/item
 	private final CourseImgRepository courseImgRepository;
-	private final FileService fileService;
 	
+	private final FileService fileService;
 //상품 이미지를 저장하는 역할을 합니다
 	public void saveCourseImg(CourseImg courseImg, MultipartFile courseImgFile) throws Exception{
 		String oriImgName = courseImgFile.getOriginalFilename();//사용자가 업로드하는 파일의 이름입니다.
@@ -42,8 +42,7 @@ public class CourseImgService {
 
 	public void updateCourseImg(Long courseImgNo, MultipartFile courseImgFile) throws Exception{
 		if(!courseImgFile.isEmpty()) {
-			CourseImg savedCourseImg = courseImgRepository.findById(courseImgNo)
-					.orElseThrow(EntityNotFoundException::new);
+			CourseImg savedCourseImg = courseImgRepository.findByCourseCourseNo(courseImgNo);
 
 			//기존 이미지 파일 삭제
 			if(!StringUtils.isEmpty(savedCourseImg.getImgName())) {

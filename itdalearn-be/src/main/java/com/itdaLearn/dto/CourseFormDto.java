@@ -1,5 +1,6 @@
 package com.itdaLearn.dto;
 
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 import org.modelmapper.ModelMapper;
@@ -10,28 +11,40 @@ import com.itdaLearn.entity.Course;
 
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
 @Getter @Setter
-@ToString
 public class CourseFormDto {
 	
-	private Long courseNo;
 
-	@NotNull(message= "강의명은 필수 입력값입니다.")
+	private Long courseFormDtoNo;
+
+	@NotBlank(message= "강의명은 필수 입력값입니다.")
+
 	private String courseTitle;
 	
-	@NotNull(message= "강사명은 필수 입력값입니다.")
+	@NotBlank(message= "강사명은 필수 입력값입니다.")
 	private String courseTeacher;
-	
-	@NotNull(message= "강의 설명은 필수 입력값입니다.")
-	private String courseDec;
 	
 	@NotNull(message= "가격은 필수 입력값입니다.")
 	private Integer coursePrice;
 	
+
+	@NotBlank(message= "강의 설명은 필수 입력값입니다.")
+	private String courseDec1;
+	
+	@NotBlank(message= "강의 설명은 필수 입력값입니다.")
+	private String courseDec2;
+	
+	@NotBlank(message= "강의 설명은 필수 입력값입니다.")
+
+	private String courseDec3;
+	
 	private CourseLevel courseLevel;
 	private CourseCategory courseCategory;
+	
+	private CourseImgDto courseImgDto;
+	
+	private Long courseImgNo;
 	
 	private static ModelMapper modelMapper = new ModelMapper();
 	

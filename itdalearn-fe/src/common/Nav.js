@@ -1,6 +1,7 @@
 import { Navbar, Container, Nav, Badge } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 
 export default function NavSetting() {
@@ -15,7 +16,7 @@ export default function NavSetting() {
 
   return (
     <>
-      <Navbar bg="light" data-bs-theme="light">
+      <Navbar bg="light" data-bs-theme="light" >
         <Container>
           <Nav.Link
             onClick={() => {
@@ -31,7 +32,7 @@ export default function NavSetting() {
           <Nav>
             <Nav.Link
               onClick={() => {
-                navigate("/course");
+                navigate("/");
               }}
             >
               강의
@@ -46,17 +47,24 @@ export default function NavSetting() {
             </Nav.Link>
             {!state.login.isLogin ? (
               <Nav.Link
-                onClick={() => alert("로그인 연결시켜주세요~")}
+                onClick={() => {
+                  navigate("/members/login");
+                }}
               >
                 로그인
               </Nav.Link>
             ) : (
               <Nav.Link
-                onClick={() => alert("로그아웃 연결시켜주세요~")}
+
               >
                 로그아웃
               </Nav.Link>
             )}
+            <Nav.Link
+              onClick={() => axios.post("http://localhost:9090/logout").catch(error => console.log(error))  }
+            >
+              로그아웃
+            </Nav.Link>
 
             <Nav.Link
               onClick={() => {
@@ -68,9 +76,18 @@ export default function NavSetting() {
                 {state.cart.length}
               </Badge>
             </Nav.Link>
+            <Nav.Link
+                  onClick={() => {
+                    navigate("/mypage");
+                  }}
+              >
+                MyPage
+              </Nav.Link>
           </Nav>
         </Container>
       </Navbar>
     </>
   );
 }
+
+

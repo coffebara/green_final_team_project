@@ -32,7 +32,6 @@ public class CourseImg {
 	private String imgName;
 	private String oriImgName;
 	private String imgUrl;
-	private String repimgYn;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "course_no")
