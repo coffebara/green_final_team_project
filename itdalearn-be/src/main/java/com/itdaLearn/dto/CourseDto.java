@@ -2,6 +2,7 @@ package com.itdaLearn.dto;
 
 import com.itdaLearn.constant.CourseCategory;
 import com.itdaLearn.constant.CourseLevel;
+import com.itdaLearn.constant.SellStatus;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -17,5 +18,6 @@ public class CourseDto {
 	private Integer coursePrice;
 	private CourseLevel courseLevel;
 	private CourseCategory courseCategory;
-	
+	private SellStatus sellStatus;
+	private Integer sellCount;
 }

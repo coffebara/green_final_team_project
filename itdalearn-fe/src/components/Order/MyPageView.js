@@ -103,7 +103,12 @@ export default function MyPageView() {
     
     useEffect(() => {
         const getCourses = async () => {
-            const response = await axios.get(baseUrl +"/orders");
+            const response = await axios.get(baseUrl +"/orders",
+            {
+                headers: {
+                    Authorization: localStorage.getItem("token"),
+                },
+            });
             console.log(response)
             setCourses(response.data.orders);
             console.log(response.data.orders.orderCourseDtoList);

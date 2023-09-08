@@ -132,7 +132,11 @@ export default function CartList() {
      console.log(payload);
 
     await axios
-      .post(baseUrl + "/cart/orders", payload )
+      .post(baseUrl + "/cart/orders", payload ,{
+        headers: {
+            Authorization: localStorage.getItem("token"),
+        }
+    })
       .then(function (res) {
         if (res.status === 200) {
           window.alert("전송 성공");

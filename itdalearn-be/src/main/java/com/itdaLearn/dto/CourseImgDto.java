@@ -14,7 +14,7 @@ import lombok.ToString;
 
 public class CourseImgDto {
 
-	private Long courseImgDtoNo;
+	private Long courseImgNo;
 	private String imgName;
 	private String oriImgName;
 	private String imgUrl;

@@ -36,6 +36,7 @@ public class CourseService {
 	public Long saveCourse(CourseFormDto courseFormDto, List<MultipartFile> courseImgFileList) throws Exception {
 
 		Course course = courseFormDto.createCourse();
+		System.out.println(course.toString());
 		courseRepository.save(course);
 
 		for (int i = 0; i < courseImgFileList.size(); i++) {
@@ -56,11 +57,8 @@ public class CourseService {
 	// 코스 삭제
 	public void deleteCouseByNo(Long courseNo) {
 
-//		Course course = courseRepository.findById(courseNo).orElseThrow(EntityNotFoundException::new);
-//		CourseImg courseImg = courseImgRepository.findByCourseCourseNo(courseNo);
-		
-//		courseImgRepository.delete(courseImg);s
-//		courseRepository.deleteById(course.getCourseNo());
+		Course course = courseRepository.findById(courseNo).orElseThrow(EntityNotFoundException::new);
+		course.deleteCourse();
 	}
 
 	// 강의 상세보기
@@ -87,7 +85,7 @@ public class CourseService {
 		
 		Course course = courseRepository.findById(courseFormDto.getCourseFormDtoNo())
 				.orElseThrow(EntityNotFoundException::new);
-		course.updateItem(courseFormDto);
+		course.updateCourse(courseFormDto);
 		List<Long> courseImgNos = courseFormDto.getCourseImgNos();
 
 		for (int i = 0; i < courseImgFileList.size(); i++) {

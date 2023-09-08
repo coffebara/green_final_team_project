@@ -78,7 +78,6 @@ export default function Index() {
       searchBy: "",
       searchQuery: "",
   });
-  // console.log(useSelector(state => state.roles))
 
   function findObjectsBykey(objArray, key, value) {
     return objArray.filter((obj) => obj[key] === value);
