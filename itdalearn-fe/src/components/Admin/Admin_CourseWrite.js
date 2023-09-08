@@ -10,7 +10,7 @@ export default function Admin_CourseWrite() {
     const baseUrl = "http://localhost:9090";
     const courseLevels = ["HIGH", "MID", "LOW"];
     const courseCategories = ["BE", "FE"];
-    const courseSellStatus = ["SELL", "READY", "WAIT"];
+    const SellStatus = ["SELL", "READY", "WAIT"];
     const [imgFile, setImgFile] = useState([]);
     const [imgBase64, setImgBase64] = useState([]);
     const [inputs, setInputs] = useState({
@@ -20,19 +20,22 @@ export default function Admin_CourseWrite() {
         courseDec1: "",
         courseDec2: "",
         courseDec3: "",
-        courseSellStatus: courseSellStatus[0],
+        sellStatus: SellStatus[0],
         courseLevel: courseLevels[0],
         courseCategory: courseCategories[0],
+        sellCount : 0
     });
-
+  
     // 백으로 전송
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         const formData = new FormData();
+        
         for (const key in inputs) {
             formData.append(key, inputs[key]);
         }
+        console.log(inputs);
         console.log(imgFile)
         for (let i = 0; i < imgFile.length; i++) {
             formData.append("courseImgFile", imgFile[i]);
@@ -41,7 +44,12 @@ export default function Admin_CourseWrite() {
         console.log(imgFile);
 
         await axios
-            .post(baseUrl + "/admin/course", formData)
+            .post(baseUrl + "/admin/course", formData,
+            {
+                headers: {
+                    Authorization: localStorage.getItem("token"),
+                },
+            })
             .then((res) => {
                 if (res.status === 200) {
                     window.alert("강의가 등록되었습니다.");
@@ -60,6 +68,7 @@ export default function Admin_CourseWrite() {
             [e.target.name]: e.target.value,
         });
     };
+
 
     //사진 업로드
     const handleChangeFile = (e) => {
@@ -140,6 +149,7 @@ export default function Admin_CourseWrite() {
                         id="validationCustom04"
                         name="courseCategory"
                         required
+                        onChange={handleOnChange}
                     >
                         <option selected disabled value="">
                             선택...
@@ -156,7 +166,7 @@ export default function Admin_CourseWrite() {
                     <label for="validationCustom04" class="form-label">
                         강의 레벨
                     </label>
-                    <select class="form-select" id="validationCustom04" name="courseLevel" required>
+                    <select class="form-select" id="validationCustom04" name="courseLevel" required onChange={handleOnChange}>
                         <option selected disabled value="">
                             선택...
                         </option>
@@ -177,11 +187,12 @@ export default function Admin_CourseWrite() {
                         id="validationCustom05"
                         name="courseSellStatus"
                         required
+                        onChange={handleOnChange}
                     >
                         <option selected disabled value="">
                             선택...
                         </option>
-                        {courseSellStatus.map((sellStatus, i) => (
+                        {SellStatus.map((sellStatus, i) => (
                             <option key={i} value={sellStatus}>
                                 {sellStatus}
                             </option>

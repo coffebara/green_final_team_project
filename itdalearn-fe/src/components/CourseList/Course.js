@@ -1,6 +1,6 @@
 /* eslint-disable */
 
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, useHref } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import "../../styles/course.css";
@@ -13,6 +13,7 @@ import Tab from "@mui/material/Tab";
 import Button from "@mui/material/Button";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import IconButton from "@mui/material/IconButton";
+import { Category } from "@mui/icons-material";
 export default function Course() {
     scrollTo(top);
     let { id } = useParams();
@@ -29,6 +30,7 @@ export default function Course() {
       courseDec3: "",
       courseLevel: courseLevels[0],
       courseCategory: courseCategories[0],
+      sellCount : 0,
   });
   const [courseImgDtoList, setCourseImgDtoList] = useState([]);
   const [courseImgDto, setCourseImgDto] = useState({
@@ -46,6 +48,8 @@ export default function Course() {
         setValuetab(newValue);
     };
 
+
+
     useEffect(() => {
       const getCourseDetails = async () => {
           try {
@@ -61,9 +65,11 @@ export default function Course() {
   }, []);
 
     const addCartItem = () => {
-        4;
-        console.log("token : " + localStorage.getItem("token"));
-        console.log("상품아이디" + id);
+        if(localStorage.getItem("token") == null){
+            window.alert("로그인이 필요한 서비스입니다.")
+            window.location.href = '/members/login';
+          }
+      
         axios
             .post(
                 "http://localhost:9090/cart",
@@ -89,10 +95,19 @@ export default function Course() {
     };
 
     const OrderCourse = () => {
+        if(localStorage.getItem("token") == null){
+            window.alert("로그인이 필요한 서비스입니다.")
+            window.location.href = '/members/login';
+          }
         axios
             .post("http://localhost:9090/order", {
                 courseNo: id,
-            })
+            },
+             {
+                    headers: {
+                        Authorization: localStorage.getItem("token"),
+                    },
+                })
             .then((response) => {
                 console.log("200", response.data);
 
@@ -105,9 +120,11 @@ export default function Course() {
     };
 
     let navigate = useNavigate();
-
+    
     return (
         <>
+
+        {/* 상세보기 위쪽 박스 */}
      <div className="coursedetailback">
         <div><img src={courseImgDtoList[0]?.imgUrl} /></div>
 
@@ -120,14 +137,20 @@ export default function Course() {
         <br />
         <Box sx={{
         '& > legend': { mt: 2 },}}/>
-     <Typography component="legend">(5.0) 144개의 수강평 * 5898명의 수강생</Typography>
+     <Typography component="legend">(5.0) 144개의 수강평 * {courseDetails.sellCount}명의 수강생</Typography>
     <Rating name="read-only" value={value} readOnly />
         <p> 강사 : {courseDetails.courseTeacher}</p>
         <p> 난이도 : {courseDetails.courseLevel}</p> 
         </div>
     </div>
-        
-            <div className="coursedetailsecondbox">
+
+    {/* 상세내용 contents 버튼 박스  */}
+
+            {/* 아래 전체 박스 */}
+            <div className="coursedetailsecondbox"> 
+          
+
+
                 <div className="detailtab">
                     <Box sx={{ maxWidth: { xs: 320, sm: 780 }, bgcolor: "background.paper" }}>
                         <Tabs
@@ -135,49 +158,41 @@ export default function Course() {
                             onChange={handleChange}
                             variant="scrollable"
                             scrollButtons="auto"
-                            aria-label="scrollable auto tabs example"
-                        >
+                            aria-label="scrollable auto tabs example">
                             <Tab label="상세 설명" />
                             <Tab label="강의 소개" />
                             <Tab label="추천 대상" />
-                        </Tabs>
-
-                        <h4>상세 설명</h4>
+                        </Tabs> 
+                        </Box>  
                         <br />
-                        <p>{courseDetails.courseDec1}</p>
-
+                        <h4> 잇다런에서 제공하는 &nbsp;{courseDetails.courseCategory === "BE"? "백엔드" : "프론트엔드"} 강의입니다.</h4>
                         <br />
-                        <h4>강의 소개</h4>
+                        <p className="coursedetail">{courseDetails.courseDec1}</p>
                         <br />
-                        <p>{courseDetails.courseDec2}</p>
+                        <h4 value="강의 소개">강의 소개</h4>
                         <br />
-                        <h4>추천 대상</h4>
+                        <p className="coursedetail">{courseDetails.courseDec2}</p>
                         <br />
-                        <p>{courseDetails.courseDec3}</p>
-              
+                        <div><img src={courseImgDtoList[1]?.imgUrl} /></div>
+                       
+                        <br />
+                        <div><img src={courseImgDtoList[2]?.imgUrl} /></div>
+                       
+                        <br />
+                        <div><img src={courseImgDtoList[3]?.imgUrl} /></div>  
+                        <br />                      
+                         <h4>추천 대상</h4>
+                        <br />
+                        <p className="coursedetail">{courseDetails.courseDec3}</p>
+                    </div>
+  
+                   
                 <div className="coursedetailcart">
+                    
                     <hr />
-
-            <h4>상세 설명</h4>
-            <br />
-            <div><img src={courseImgDtoList[1]?.imgUrl} /></div>
-             <p>{courseDetails.courseDec1}</p>
-             
-            <br />
-             <h4>강의 소개</h4>
-             <br />
-             <div><img src={courseImgDtoList[2]?.imgUrl} /></div>
-            <p>{courseDetails.courseDec2}</p> 
-            <br />
-            <h4>추천 대상</h4>
-            <br />
-            <div><img src={courseImgDtoList[3]?.imgUrl} /></div>
-            <p>{courseDetails.courseDec3}</p>
-            </div>
-   
-    </Box>  
-    </div>
-                    <h4> 결제 금액 : {courseDetails.coursePrice}원 </h4>
+                    <br />
+                  <h4> 강의 가격 : {courseDetails.coursePrice}원 </h4>
+                  <br />
                     <Button variant="contained" onClick={() => addCartItem()}>
                         장바구니 담기
                     </Button>
@@ -185,16 +200,17 @@ export default function Course() {
                     <Button variant="contained" color="success" onClick={() => OrderCourse()}>
                         주문하기
                     </Button>
-
+                    <br />
                     <hr />
 
                     <ul className="detailsmall">
                         <li>◎ 총 69개의 수업(20시간 46분)</li>
                         <li>◎ 수강 기한 : 12개월</li>
                         <li>◎ 수료증 : 발급</li>
-                        <li>◎ 난이도 : LOW(초급)</li>
+                        <li>◎ 난이도 : {courseDetails.courseLevel} </li>
                     </ul>
-                </div>
+                    </div>
+               </div>
           
         </>
     );

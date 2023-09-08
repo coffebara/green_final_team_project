@@ -65,17 +65,20 @@ export default function NavSetting() {
             >
               로그아웃
             </Nav.Link>
+           
+         
+
 
             <Nav.Link
               onClick={() => {
                 navigate("/cart");
-              }}
-            >
-              장바구니
+              }}>장바구니
               <Badge className="ms-2" bg="secondary">
                 {state.cart.length}
-              </Badge>
+              </Badge> 
             </Nav.Link>
+
+
             <Nav.Link
                   onClick={() => {
                     navigate("/mypage");

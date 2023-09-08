@@ -44,7 +44,6 @@ public class AdminContorller {
 	public Map<String, Object> courseManage(CourseSearchDto courseSerachDto,
 			@PathVariable("page") Optional<Integer> page) {
 			
-
 		Pageable pageable = PageRequest.of(page.isPresent() ? page.get() : 0, 10);
 		Page<Course> course = courseService.getAdminCoursePage(courseSerachDto, pageable);
 		Map<String, Object> courseMng = new HashMap<>();

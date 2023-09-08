@@ -47,10 +47,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.formLogin().disable().httpBasic().disable()
 				.addFilter(new JwtAuthenticationFilter(authenticationManager()))
 				.addFilter(new JwtAuthorizationFilter(authenticationManager(), memberRepository)).authorizeRequests()
-				.antMatchers("/cart", "/user")
-					.access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
+				.antMatchers("/cart", "/user", "/order", "/orders")
+				.access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
 				.antMatchers("/admin/**")
-					.access("hasRole('ROLE_ADMIN')")
+				.access("hasRole('ROLE_ADMIN')")
 				.anyRequest().permitAll();
 
 //                .antMatchers("/cart/**").access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")

@@ -25,8 +25,12 @@ export default function Admin_Course() {
         const postPage = inputs.page - 1; // pageable객체는 page가 0부터 시작하므로
         const queryString =
             "/" + postPage + "?&searchBy=" + inputs.searchBy + "&searchQuery=" + inputs.searchQuery;
-        try {
-            const response = await axios.get(baseUrl + "/admin/courses" + queryString);
+            try {
+                const response = await axios.get(baseUrl + "/admin/courses" + queryString,{
+                    headers: {
+                        Authorization: localStorage.getItem("token"),
+                    },
+                });
             const { courseList } = response.data;
             const { content, number, size, totalPages } = courseList; // 강의리스트, 현재페이지, 페이지당강의수, 총페이지
             setCourses(content);

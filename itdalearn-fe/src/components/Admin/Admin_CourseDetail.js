@@ -95,7 +95,12 @@ export default function Admin_CourseDetail() {
         formData.append("courseImgFile", courseImgFile);
 
         await axios
-            .patch(baseUrl + "/admin/course/" + id, formData)
+            .patch(baseUrl + "/admin/course/" + id, formData,
+            {
+                headers: {
+                    Authorization: localStorage.getItem("token"),
+                },
+            })
             .then((response) => {
                 window.alert("강의가 수정되었습니다.");
                 console.log(response);
@@ -289,6 +294,7 @@ export default function Admin_CourseDetail() {
                     <div className="invalid-feedback">Please select a valid state.</div>
                 </div>
                 <div className="col-md-12">
+                    <div className="textarea">
                     <label htmlFor="validationCustom03" className="form-label">
                         강의 설명 1
                     </label>
@@ -301,7 +307,7 @@ export default function Admin_CourseDetail() {
                         onChange={handleOnChange}
                         required
                         readOnly={!isUpdatable}
-                    />
+                    /></div>
                     <div className="invalid-feedback">Please provide a valid city.</div>
                 </div>
                 <div className="col-md-12">

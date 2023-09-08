@@ -36,6 +36,7 @@ public class CourseService {
 	public Long saveCourse(CourseFormDto courseFormDto, List<MultipartFile> courseImgFileList) throws Exception {
 
 		Course course = courseFormDto.createCourse();
+		System.out.println(course);
 		courseRepository.save(course);
 
 		for (int i = 0; i < courseImgFileList.size(); i++) {
