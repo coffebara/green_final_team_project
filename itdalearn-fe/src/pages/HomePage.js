@@ -1,6 +1,5 @@
 import Nav from "../common/Nav";
 import Footer from "../common/Footer";
-import "../styles/Banner.css";
 import Index from "../components/home/Index";
 import React, { useEffect, useState } from "react";
 

@@ -1,5 +1,3 @@
-import "../../styles/Banner.css"
-
 import { useNavigate } from "react-router-dom";
 import Nav from "../../common/Nav";
 import Footer from "../../common/Footer";

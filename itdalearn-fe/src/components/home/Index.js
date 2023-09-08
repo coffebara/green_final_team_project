@@ -9,7 +9,7 @@ import CardMedia from '@mui/material/CardMedia';
 import CssBaseline from '@mui/material/CssBaseline';
 import Grid from '@mui/material/Grid';
 import { Navigate } from 'react-router-dom';
-import Admin_CoursePagination from '../Admin/Admin_CoursePagination';
+import Admin_CoursePagination from '../admin/Admin_CoursePagination';
 
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';

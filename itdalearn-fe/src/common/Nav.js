@@ -2,44 +2,42 @@ import { Navbar, Container, Nav, Badge } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
+import axios from "axios";
 
 export default function NavSetting() {
-  let navigate = useNavigate();
-  let state = useSelector((state) => state);
+    let navigate = useNavigate();
+    let state = useSelector((state) => state);
 
     const imageStyle = {
         width: 100,
         height: 25,
     };
 
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (token) {
-      setIsLoggedIn(true);
+    useEffect(() => {
+        const token = localStorage.getItem("token");
+        if (token) {
+            setIsLoggedIn(true);
+        }
+    }, []);
+
+    function handleLogout() {
+        localStorage.removeItem("token");
+        setIsLoggedIn(false);
+        alert("로그아웃 되셨습니다.");
     }
-  }, []);
-
-  function handleLogout() {
-    localStorage.removeItem("token");
-    setIsLoggedIn(false);
-    alert("로그아웃 되셨습니다.");
-  }
-  return (
-    <>
-      <Navbar bg="light" data-bs-theme="light">
-        <Container>
-          <Nav.Link
-            onClick={() => {
-              navigate("/");
-            }}
-          >
-            <img
-              src={process.env.PUBLIC_URL + "/favicon.ico"}
-              style={imageStyle}
-            />
-          </Nav.Link>
+    return (
+        <>
+            <Navbar bg="light" data-bs-theme="light">
+                <Container>
+                    <Nav.Link
+                        onClick={() => {
+                            navigate("/");
+                        }}
+                    >
+                        <img src={process.env.PUBLIC_URL + "/favicon.ico"} style={imageStyle} />
+                    </Nav.Link>
                     <Nav>
                         <Nav.Link
                             onClick={() => {
@@ -55,7 +53,7 @@ export default function NavSetting() {
                         >
                             게시판
                         </Nav.Link>
-                        {!state.login.isLogin ? (
+                        {!isLoggedIn ? (
                             <Nav.Link
                                 onClick={() => {
                                     navigate("/members/login");
@@ -64,18 +62,8 @@ export default function NavSetting() {
                                 로그인
                             </Nav.Link>
                         ) : (
-                            <Nav.Link>로그아웃</Nav.Link>
+                            <Nav.Link onClick={handleLogout}>로그아웃</Nav.Link>
                         )}
-                        <Nav.Link
-                            onClick={() =>
-                                axios
-                                    .post("http://localhost:9090/logout")
-                                    .catch((error) => console.log(error))
-                            }
-                        >
-                            로그아웃
-                        </Nav.Link>
-
                         <Nav.Link
                             onClick={() => {
                                 navigate("/cart");
@@ -86,6 +74,7 @@ export default function NavSetting() {
                                 {state.cart.length}
                             </Badge>
                         </Nav.Link>
+
                         <Nav.Link
                             onClick={() => {
                                 navigate("/mypage");
@@ -102,7 +91,11 @@ export default function NavSetting() {
                         <Container>
                             <Navbar.Brand>관리자 메뉴</Navbar.Brand>
                             <Nav>
-                                <Nav.Link onClick={() => {navigate("/admin/courses")}}>
+                                <Nav.Link
+                                    onClick={() => {
+                                        navigate("/admin/courses");
+                                    }}
+                                >
                                     강의 관리
                                 </Nav.Link>
                                 <Nav.Link onClick={() => navigate("/admin/course")}>
@@ -115,35 +108,6 @@ export default function NavSetting() {
             ) : (
                 <></>
             )}
-            <Nav.Link
-              onClick={() => axios.post("http://localhost:9090/logout").catch(error => console.log(error))  }
-            >
-              로그아웃
-            </Nav.Link>
-           
-         
-
-
-            <Nav.Link
-              onClick={() => {
-                navigate("/cart");
-              }}>장바구니
-              <Badge className="ms-2" bg="secondary">
-                {state.cart.length}
-              </Badge> 
-            </Nav.Link>
-
-
-            <Nav.Link
-                  onClick={() => {
-                    navigate("/mypage");
-                  }}
-              >
-                MyPage
-              </Nav.Link>
-          </Nav>
-        </Container>
-      </Navbar>
-    </>
-  );
+        </>
+    );
 }

@@ -1,10 +1,5 @@
 package com.itdaLearn.config;
 
-import com.itdaLearn.config.jwt.JwtAuthenticationFilter;
-import com.itdaLearn.config.jwt.JwtAuthorizationFilter;
-import com.itdaLearn.repository.MemberRepository;
-import com.itdaLearn.service.PrincipalDetailsService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -17,12 +12,11 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import com.itdaLearn.jwt.JwtAuthenticationFilter;
-import com.itdaLearn.jwt.JwtAuthorizationFilter;
+import com.itdaLearn.config.jwt.JwtAuthenticationFilter;
+import com.itdaLearn.config.jwt.JwtAuthorizationFilter;
 import com.itdaLearn.repository.MemberRepository;
 import com.itdaLearn.service.PrincipalDetailsService;
 
