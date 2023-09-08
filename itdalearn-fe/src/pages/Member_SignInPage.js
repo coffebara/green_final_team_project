@@ -38,6 +38,7 @@ const defaultTheme = createTheme();
 
 export default function SignIn() {
     const dispatch = useDispatch();
+    let roles = useSelector((state) => state.userRoles);
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -87,21 +88,21 @@ export default function SignIn() {
     };
 
     const checkJwt = (response) => {
-      const now = Math.floor(new Date().getTime() / 1000);
-                const jwtToken = response.headers["authorization"];
-                // console.log("jwtToken: " + jwtToken); // 받아온 토큰
-                localStorage.setItem("token", jwtToken);
-                let decode = jwt_decode(jwtToken); // 토큰을 디코드함함
-                // console.log(decode);
-                let exp = decode.exp;
-                let expSec = (exp - now) * 1000;
-                dispatch(setRoles(decode.role));
-                setTimeout(() => {
-                    dispatch(setRoles(""));
-                    alert("로그인이 만료되었습니다.");
-                    navigate("/");
-                }, expSec);
-    }
+        const now = Math.floor(new Date().getTime() / 1000);
+        const jwtToken = response.headers["authorization"];
+        // console.log("jwtToken: " + jwtToken); // 받아온 토큰
+        localStorage.setItem("token", jwtToken);
+        let decode = jwt_decode(jwtToken); // 토큰을 디코드함함
+        // console.log(decode);
+        let exp = decode.exp;
+        let expSec = (exp - now) * 1000;
+        dispatch(setRoles(decode.role));
+        setTimeout(() => {
+            dispatch(setRoles(""));
+            alert("로그인이 만료되었습니다.");
+            navigate("/");
+        }, expSec);
+    };
     return (
         <ThemeProvider theme={defaultTheme}>
             <Container component="main" maxWidth="xs">
@@ -140,11 +141,7 @@ export default function SignIn() {
                             value={memberSignIn.memberPwd}
                             onChange={handleSignIn}
                             label="비밀번호"
-                        />
-                        <FormControlLabel
-                            control={<Checkbox value="remember" color="primary" />}
-                            label="로그인 상태 유지"
-                            style={controlLableStrle}
+                            type="password"
                         />
                         <Button
                             type="submit"
@@ -157,18 +154,13 @@ export default function SignIn() {
                             로그인
                         </Button>
                         <Grid container>
-                            <Grid item>
-                                <Link href="#" variant="body2">
-                                    비밀번호 찾기
-                                </Link>
-                            </Grid>
-                            <Grid item xs>
-                                <Link href="#" variant="body2">
+                            <Grid item sx={{ marginRight: 30.7 }}>
+                                <Link href="/members/find/id" variant="body5">
                                     아이디 찾기
                                 </Link>
                             </Grid>
                             <Grid item>
-                                <Link href="/members" variant="body2">
+                                <Link href="/members" variant="body5">
                                     회원가입
                                 </Link>
                             </Grid>

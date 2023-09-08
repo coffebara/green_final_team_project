@@ -1,4 +1,4 @@
-package com.itdaLearn.jwt;
+package com.itdaLearn.config.jwt;
 
 public interface JwtProperties {
     String SECRET = "itdaLearn"; // 우리 서버만 알고 있는 비밀값

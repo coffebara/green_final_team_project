@@ -1,4 +1,4 @@
-package com.itdaLearn.jwt;
+package com.itdaLearn.config.jwt;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
@@ -45,7 +45,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                     authenticationManager.authenticate(authenticationToken); // Token을 통해 로그인 시도 정상적으로 작동되면 위 authentication에 로그인한 내 정보가 담김
 
             PrincipalDetails principalDetails = (PrincipalDetails) authentication.getPrincipal();
-            
+
             System.out.println("로그인 완료됨" + principalDetails.getMember().getMemberNo()); // getMemberNo 이 제대로 나왔다는 것은 로그인이 되었다는 뜻
 
             //authentication 객체가 session 영역에 저장을 해야하고 그 방법이 return 해주면 됨
@@ -79,7 +79,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                 .withClaim("id", principalDetails.getMember().getId())
                 .withClaim("username", principalDetails.getMember().getMemberNo()) // 비공개 클레임 마음대로 해도됨
                 .withArrayClaim("role", principalDetails.getAuthorities().stream().map(GrantedAuthority::getAuthority)
-                	    .toArray(String[]::new))
+                        .toArray(String[]::new))
                 .sign(Algorithm.HMAC512(JwtProperties.SECRET));
         
         response.addHeader(JwtProperties.HEADER_STRING, JwtProperties.TOKEN_PREFIX+accessToken); // Bearer은 무조건 한 칸 띄어야 함

@@ -1,29 +1,45 @@
 import { Navbar, Container, Nav, Badge } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import { useState, useEffect } from "react";
 
 export default function NavSetting() {
-    let navigate = useNavigate();
-    let state = useSelector((state) => state);
+  let navigate = useNavigate();
+  let state = useSelector((state) => state);
 
     const imageStyle = {
         width: 100,
         height: 25,
     };
 
-    return (
-        <>
-            <Navbar bg="light" data-bs-theme="light">
-                <Container>
-                    <Nav.Link
-                        onClick={() => {
-                            navigate("/");
-                        }}
-                    >
-                        <img src={process.env.PUBLIC_URL + "/favicon.ico"} style={imageStyle} />
-                    </Nav.Link>
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      setIsLoggedIn(true);
+    }
+  }, []);
+
+  function handleLogout() {
+    localStorage.removeItem("token");
+    setIsLoggedIn(false);
+    alert("로그아웃 되셨습니다.");
+  }
+  return (
+    <>
+      <Navbar bg="light" data-bs-theme="light">
+        <Container>
+          <Nav.Link
+            onClick={() => {
+              navigate("/");
+            }}
+          >
+            <img
+              src={process.env.PUBLIC_URL + "/favicon.ico"}
+              style={imageStyle}
+            />
+          </Nav.Link>
                     <Nav>
                         <Nav.Link
                             onClick={() => {
@@ -32,7 +48,6 @@ export default function NavSetting() {
                         >
                             강의
                         </Nav.Link>
-
                         <Nav.Link
                             onClick={() => {
                                 navigate("/board");
