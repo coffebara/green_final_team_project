@@ -1,0 +1,65 @@
+.coursedetailback {
+    background-color:#263238;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 400px;
+    gap: 130px;
+    color: white;
+    font-family: "TheJamsil5Regular";
+   
+}
+
+.coursedetailback img {
+    height: 300px;
+    width: 450px;
+    border-radius: 5px;  
+    margin-top: 50px;
+}
+
+.coursedetailtext {
+    text-align: left;
+    margin-top: 60px;
+    font-family: "TheJamsil5Regular";
+    width: 35%;
+}
+
+.coursedetailsecondbox {
+    display: flex;
+    justify-content: center;
+    gap: 80px;
+    font-family: "TheJamsil5Regular";
+    width: 75%;
+    padding: 30px;
+    height: auto;
+    margin-left: 13%;
+}
+.detailtab {
+    border: 1px solid #616161;
+    padding-left: 20px;
+    width: 830px;
+    font-family: "TheJamsil5Regular";
+    border-radius: 10px;
+  
+}
+
+.coursedetailcart {
+    border: 1px solid gray;
+    border-radius: 10px;
+    padding: 10px;
+    padding-top: 50px;
+    font-family: "TheJamsil5Regular";
+}
+
+.coursedetailcart Button {
+    width: 250px;
+    margin: 5px;
+    font-family: "TheJamsil5Regular";
+    font-size: 16px;
+}
+.coursedetailcart li {
+    font-size: 12px;
+    text-align: left;
+    padding-left: 2%;
+    color: #616161;
+}
