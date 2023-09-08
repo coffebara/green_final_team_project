@@ -1,8 +1,8 @@
+import "../../styles/cart.css";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { redirect, useNavigate } from "react-router-dom";
 import { useCallback } from "react";
-import "../../styles/cart.css";
 import * as React from "react";
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';

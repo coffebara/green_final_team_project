@@ -1,6 +1,6 @@
+import "../../styles/Admin_Course.css";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import "../../styles/Admin_Course.css";
 import { useNavigate, useParams } from "react-router-dom";
 import { Button, Modal } from "react-bootstrap";
 

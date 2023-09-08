@@ -5,7 +5,6 @@ import Footer from "../../common/Footer";
 export default function TermsOfUse() {
     let navigate = useNavigate();
 
-
     return (
         <>
             <Nav />

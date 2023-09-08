@@ -1,3 +1,4 @@
+import '../../styles/Order.css'
 import * as React from 'react';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -9,7 +10,6 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from '@mui/material/Button';
-import '../../styles/Order.css'
 import { useCallback } from 'react';
 
 

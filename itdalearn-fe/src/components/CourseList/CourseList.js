@@ -1,7 +1,7 @@
+import "../../styles/CartList.css";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import "../../styles/CartList.css";
 
 export default function CourseList() {
     const baseUrl = "http://localhost:9090";
