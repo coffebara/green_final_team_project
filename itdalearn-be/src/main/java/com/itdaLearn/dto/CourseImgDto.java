@@ -23,6 +23,6 @@ public class CourseImgDto {
 	
 	public static CourseImgDto of(CourseImg courseImg) {
 
-		return modelMapper.map(courseImg,  CourseImgDto.class);
+		return modelMapper.map(courseImg, CourseImgDto.class);
 	}
 }

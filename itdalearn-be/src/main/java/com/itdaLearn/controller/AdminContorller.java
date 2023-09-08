@@ -53,7 +53,7 @@ public class AdminContorller {
 	public Map<String, Object> courseManage(CourseSearchDto courseSerachDto,
 			@PathVariable("page") Optional<Integer> page) {
 			
-		Pageable pageable = PageRequest.of(page.isPresent() ? page.get() : 0, 5);
+		Pageable pageable = PageRequest.of(page.isPresent() ? page.get() : 0, 10);
 		Page<Course> course = courseService.getAdminCoursePage(courseSerachDto, pageable);
 		Map<String, Object> courseMng = new HashMap<>();
 		// 조회 조건과 페이징 정보를 파라미터로 넘겨서 Page<Item> 객체를 반환 받습니다

@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
+import com.itdaLearn.dto.CourseDto;
 import com.itdaLearn.dto.OrderCourseDto;
 import com.itdaLearn.dto.OrderDto;
 import com.itdaLearn.dto.OrderHistDto;
@@ -56,6 +57,7 @@ public class OrderService {
 		orderCourseList.add(orderCourse);
 	
 		Order order = Order.createOrder(member, orderCourseList);
+		
 
 		orderRepository.save(order);
 		
@@ -66,7 +68,7 @@ public class OrderService {
 	public List<OrderHistDto> getOrderList(String memberNo){
 		
 		List<Order> orders = orderRepository.findOrders(memberNo);
-		
+	
 		List<OrderHistDto> orderHistDtos = new ArrayList<>();
 		
 		
@@ -76,15 +78,16 @@ public class OrderService {
 			
 			List<OrderCourse> orderCourses = order.getOrderCourses();
 			
+			
+			
 			for( OrderCourse orderCourse : orderCourses) {
-				System.out.println(orderCourse.getCourse().getCourseNo());
-				CourseImg courseImg = courseImgRepository.findByCourseCourseNoAndRepimgYn(orderCourse.getCourse().getCourseNo(), "Y");
+				
+				CourseImg courseImg = courseImgRepository.findByCourseCourseNoAndRepimgYn(orderCourse.getCourse().getCourseNo(),"Y");
 				
 				OrderCourseDto orderCourseDto = new OrderCourseDto(orderCourse, courseImg.getImgUrl());
 				
-				orderHistDto.addOrderaCourseDto(orderCourseDto);
-				
-				
+				orderHistDto.addOrderCourseDto(orderCourseDto);
+						
 			}
 			orderHistDtos.add(orderHistDto);
 		}
@@ -115,6 +118,7 @@ public class OrderService {
 		Order order = orderRepository.findById(orderNo)
 				.orElseThrow(EntityNotFoundException::new);
 		order.cancleOrder();
+		
 	}
 	
 	//String email

@@ -47,6 +47,7 @@ public class Order {
     private OrderStatus orderStatus; //주문상태
    
     
+    
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL
             , orphanRemoval = true, fetch = FetchType.LAZY)  
     private List<OrderCourse> orderCourses = new ArrayList<>();
@@ -82,6 +83,10 @@ public class Order {
    //주문 취소 시 주문 수량을 상품의 재고에 더해주는 로직과 주문 상태를 취소 상태로 바꿔주는 메소드를 구현
    public void cancleOrder() {
 	   this.orderStatus = OrderStatus.CANCEL;
+	   for(OrderCourse orderCourse : orderCourses) {
+		   orderCourse.cancel();
+	   }
+	  
 	  
    }
    

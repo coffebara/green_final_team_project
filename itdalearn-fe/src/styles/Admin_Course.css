@@ -15,3 +15,9 @@
 .courseListBtn {
     background-color: white;
 }
+
+.textarea {
+    white-space: pre-wrap; 
+    word-break: break-all;
+
+}

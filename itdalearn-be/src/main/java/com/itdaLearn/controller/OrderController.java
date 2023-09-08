@@ -37,7 +37,10 @@ public class OrderController {
 	
 	@PostMapping(value = "/order")
 	public @ResponseBody ResponseEntity order(@RequestBody @Valid OrderDto orderDto
-			, BindingResult bindingResult, PrincipalDetails principalDetails) {
+			, BindingResult bindingResult, Authentication authentication) {
+		
+		 PrincipalDetails principalDetails = (PrincipalDetails) authentication.getPrincipal();
+		 String memberNo = principalDetails.getMember().getMemberNo();
 		
 		if(bindingResult.hasErrors()) {
 			
@@ -50,7 +53,7 @@ public class OrderController {
 			return new ResponseEntity<String>(sb.toString(), HttpStatus.BAD_REQUEST);
 			
 		}
-		String memberNo = principalDetails.getMember().getMemberNo();
+		
 		
 		Long orderNo;
 		
@@ -67,18 +70,23 @@ public class OrderController {
 	@ResponseBody
 	public Map<String, Object> orderHist(Authentication authentication) {
 		
-		PrincipalDetails principalDetails = (PrincipalDetails) authentication.getPrincipal();
-		String memberNo = principalDetails.getMember().getMemberNo();
+		 PrincipalDetails principalDetails = (PrincipalDetails) authentication.getPrincipal();
+		 String memberNo = principalDetails.getMember().getMemberNo();
 		
 		List<OrderHistDto> orderHistDtoList = orderService.getOrderList(memberNo);
+		
 		Map<String, Object> orderlist = new HashMap<>();
+		
 		orderlist.put("orders", orderHistDtoList);
+		
 		return orderlist;
 	}
 	
 	@PostMapping("/order/{orderNo}/cancel")
-	public @ResponseBody ResponseEntity cancelOrder(@PathVariable("orderNo") Long orderNo, PrincipalDetails principalDetails) {
-				String memberNo = principalDetails.getMember().getMemberNo();
+	public @ResponseBody ResponseEntity cancelOrder(@PathVariable("orderNo") Long orderNo, 
+			Authentication authentication) {
+		 PrincipalDetails principalDetails = (PrincipalDetails) authentication.getPrincipal();
+		 String memberNo = principalDetails.getMember().getMemberNo();
 		if(!orderService.validateOrder(orderNo, memberNo)) {
 			//취소할 주문 번호는 조작이 가능하므로 다른 사람의 주문을 취소하지 못하도록 주문 취소 권한검사를 합니다. 
 			 return new ResponseEntity<String>("주문 취소 권한이 없습니다.", HttpStatus.FORBIDDEN);

@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { redirect, useNavigate } from "react-router-dom";
 import { useCallback } from "react";
 import "../../styles/cart.css";
 import * as React from "react";
@@ -51,6 +51,11 @@ export default function CartList() {
   // 전체 체크 클릭 시 발생하는 함수
 
     const getCourses = async () => {
+    
+      if(localStorage.getItem("token") == null){
+        window.alert("로그인이 필요한 서비스입니다.")
+        window.location.href = '/members/login';
+      }
       const response = await axios.get(baseUrl + "/cart",{
         headers: {
             Authorization: localStorage.getItem("token"),
@@ -65,7 +70,14 @@ export default function CartList() {
   },[])
 
   const deletecart = () => {   
-    axios.delete("http://localhost:9090/cartCourse/"+ checkedList[0].cartCourseNo)
+    axios.delete("http://localhost:9090/cartCourse/"+ checkedList[0].cartCourseNo, 
+      {
+        headers: {
+            Authorization: localStorage.getItem("token"),
+        },
+    }
+    )
+    
     .then((response) => {
     
     console.log("삭제성공");
@@ -76,47 +88,6 @@ export default function CartList() {
   .catch((error) => console.log(error.response));
   
 };
-
-
-
-// const OrderCourseList = useCallback(
-//   (checked) => {
-//     if (checked) {
-//       const datalist = [];
-
-//       checkedList.forEach((list) => datalist.push(list.cartCourseNo));
-
-//       setData(datalist);
-      
-//     } else {
-//       setData([]);
-//       setParam(data);
-//       axios
-//       .post(baseUrl + "/cart/orders", param)
-//       .then(function (res) {
-//         if (res.status === 200) {
-//           window.alert("전송 성공");
-//         }
-//       })
-//       .catch(function (err) {
-//         window.alert("실패 " + err);
-//       });
-//     }
-//   },
-//   [checkedList]
-
-  
-// );
-//   const [param, setParam] = useState({
-//     "cartOrderDtoList" : [
-//       {"cartCourseNo" : }
-//     ]
-//   })
-//   const [data, setData] = useState();
-//   const [datalist, setDatalist]  = useState({
-//     "cartCourseNo" : ""
-//   } )
-//  console.log(datalist);
 
    
   
@@ -132,11 +103,12 @@ export default function CartList() {
      console.log(payload);
 
     await axios
-      .post(baseUrl + "/cart/orders", payload ,{
+      .post(baseUrl + "/cart/orders", payload,
+      {
         headers: {
             Authorization: localStorage.getItem("token"),
-        }
-    })
+        },
+    } )
       .then(function (res) {
         if (res.status === 200) {
           window.alert("전송 성공");
@@ -190,21 +162,7 @@ export default function CartList() {
    
   );
 
-//   const callKakaoLoginHandler = () => {
-//     location.href({
-//       pathname: "https://kauth.kakao.com/oauth/authorize",
-//       query: {
-//         "response_type": "code",
-//         "client_id": "558768fb39533a79b56417d8f98d072b",
-//         "redirect_uri": "http://localhost:5000/callback/kakao"
-//       }
-//     })
-// }
 
-
-const callKakaoLoginHandler = () => {
-  window.location.href = "https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=558768fb39533a79b56417d8f98d072b&redirect_uri=http://localhost:5000/callback/kakao";
-};
 
   return (
     <>
@@ -336,7 +294,6 @@ const callKakaoLoginHandler = () => {
     <Button variant="contained" color="success" onClick={OrderCourseList} >
        주문하기
       </Button>
-      <Button onClick={callKakaoLoginHandler}>버튼</Button>
       <hr />
       </div>
       </div>

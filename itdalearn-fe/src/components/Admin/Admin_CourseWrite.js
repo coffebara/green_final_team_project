@@ -44,9 +44,11 @@ export default function Admin_CourseWrite() {
         e.preventDefault();
 
         const formData = new FormData();
+        
         for (const key in inputs) {
             formData.append(key, inputs[key]);
         }
+        console.log(inputs);
         console.log(imgFile)
         for (let i = 0; i < imgFile.length; i++) {
             formData.append("courseImgFile", imgFile[i]);
@@ -78,6 +80,7 @@ export default function Admin_CourseWrite() {
             [e.target.name]: e.target.value,
         });
     };
+
 
     //사진 업로드
     const handleChangeFile = (e) => {
@@ -147,6 +150,7 @@ export default function Admin_CourseWrite() {
                         name="courseCategory"
                         onChange={handleOnChange}
                         required
+                     
                     >
                         <option selected disabled value="">
                             선택...
@@ -187,6 +191,7 @@ export default function Admin_CourseWrite() {
                         name="sellStatus"
                         onChange={handleOnChange}
                         required
+                        
                     >
                         <option selected disabled value="">
                             선택...

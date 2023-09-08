@@ -115,6 +115,35 @@ export default function NavSetting() {
             ) : (
                 <></>
             )}
-        </>
-    );
+            <Nav.Link
+              onClick={() => axios.post("http://localhost:9090/logout").catch(error => console.log(error))  }
+            >
+              로그아웃
+            </Nav.Link>
+           
+         
+
+
+            <Nav.Link
+              onClick={() => {
+                navigate("/cart");
+              }}>장바구니
+              <Badge className="ms-2" bg="secondary">
+                {state.cart.length}
+              </Badge> 
+            </Nav.Link>
+
+
+            <Nav.Link
+                  onClick={() => {
+                    navigate("/mypage");
+                  }}
+              >
+                MyPage
+              </Nav.Link>
+          </Nav>
+        </Container>
+      </Navbar>
+    </>
+  );
 }

@@ -56,12 +56,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers("/cart", "/user", "/orders")
 					.access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
 				.antMatchers("/admin/**")
-					.access("hasRole('ROLE_ADMIN')");
-				.antMatchers("/cart", "/user")
+					.access("hasRole('ROLE_ADMIN')")
+				// .antMatchers("/cart", "/user")
 				.anyRequest().permitAll();
 
 		http.exceptionHandling().accessDeniedPage("/denied");
-
 
 	}
 

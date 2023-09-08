@@ -28,8 +28,8 @@ import lombok.ToString;
 @ToString
 public class Course {
 
-	@SequenceGenerator(name = "ITEM_SEQUENCE_GEN", sequenceName = "seq_item", initialValue = 1, allocationSize = 1) 																												
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ITEM_SEQUENCE_GEN")
+	@SequenceGenerator(name = "IMG_SEQUENCE_GEN", sequenceName = "seq_img", initialValue = 1, allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "IMG_SEQUENCE_GEN")
 	@Id
 	private Long courseNo;
 	
@@ -83,7 +83,7 @@ public class Course {
     	--this.sellCount;
     }
 	
-    public void addSellCount(int sellCount) {
+    public void addSellCount() {
     	++this.sellCount;
     }
 }

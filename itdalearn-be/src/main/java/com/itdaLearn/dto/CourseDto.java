@@ -20,4 +20,5 @@ public class CourseDto {
 	private CourseCategory courseCategory;
 	private SellStatus sellStatus;
 	private Integer sellCount;
+	
 }

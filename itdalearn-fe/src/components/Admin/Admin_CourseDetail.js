@@ -325,6 +325,7 @@ export default function Admin_CourseDetail() {
                     <div className="invalid-feedback">Please select a valid state.</div>
                 </div>
                 <div className="col-md-12">
+                    <div className="textarea">
                     <label htmlFor="validationCustom03" className="form-label">
                         강의 설명 1
                     </label>
@@ -337,7 +338,7 @@ export default function Admin_CourseDetail() {
                         onChange={handleOnChange}
                         required
                         readOnly={!isUpdatable}
-                    />
+                    /></div>
                     <div className="invalid-feedback">Please provide a valid city.</div>
                 </div>
                 <div className="col-md-12">

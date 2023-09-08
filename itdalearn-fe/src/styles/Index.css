@@ -38,7 +38,7 @@
 .icon {
     float: left;
     margin-top: 65px;
-    margin-left: 427px;
+    margin-left: 480px;
 
 }
 
@@ -57,4 +57,10 @@
     margin-top: -38px;
     margin-left: 490px;
     width: 100px;
+}
+
+.levelgroup {
+
+    margin-left: -12px;
+    margin-top: 13px;
 }
