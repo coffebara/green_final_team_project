@@ -46,7 +46,6 @@ export default function Admin_Course() {
             setCurrPage(number + 1);
             setTotalPage(totalPages);
             setPageSize(size);
-            console.log(response.data);
         } catch (error) {
             if (error.response.status === 403) {
                 alert("관리자 권한이 필요합니다.");
@@ -85,27 +84,6 @@ export default function Admin_Course() {
         };
         generateDisplayPageNums();
     }, [currPage, totalPage]);
-    // useEffect(() => {
-    //     const getDisplayPageNum = () => {
-    //         let startPage = Math.floor((currPage - 1) / pageSize) * pageSize + 1;
-    //         let endPage = startPage + pageSize - 1;
-
-    //         if (startPage <= 0) {
-    //             startPage = 1;
-    //             endPage = pageSize;
-    //         }
-    //         if (endPage > totalPage) {
-    //             endPage = totalPage;
-    //         }
-    //         const tmpPages = [];
-    //         for (let i = startPage; i <= endPage; i++) {
-    //             tmpPages.push(i);
-    //         }
-
-    //         setDisplayPageNum(tmpPages);
-    //     };
-    //     getDisplayPageNum();
-    // }, [currPage, totalPage]);
 
     // 페이지네이션 버튼 클릭 이벤트
     const handlerClickBtn = (e) => {
@@ -205,24 +183,26 @@ export default function Admin_Course() {
                 <Table bordered hover className="my-4">
                     <thead>
                         <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">강의</th>
-                            <th scope="col">강사</th>
-                            <th scope="col">가격</th>
+                            <th scope="col" className="w-1">#</th>
+                            <th scope="col" className="w-4">강의</th>
+                            <th scope="col" className="w-2">강사</th>
+                            <th scope="col" className="w-2">가격</th>
+                            <th scope="col" className="w-1">판매량</th>
                         </tr>
                     </thead>
                     <tbody className="table-group-divider">
                         {courses.map((item, i) => (
                             <tr key={i}>
-                                <td scope="row">{item.courseNo}</td>
-                                <td
+                                <td scope="col" className="w-1">{item.courseNo}</td>
+                                <td scope="col" className="w-4"
                                     style={{ cursor: "pointer", color: "tomato" }}
                                     onClick={() => handleMoveDetailPage(item.courseNo)}
                                 >
                                     {item.courseTitle}
                                 </td>
-                                <td>{item.courseTeacher}</td>
-                                <td>{item.coursePrice}</td>
+                                <td scope="col" className="w-2">{item.courseTeacher}</td>
+                                <td scope="col" className="w-2">{item.coursePrice}</td>
+                                <td scope="col" className="w-1">{item.sellCount}</td>
                             </tr>
                         ))}
                     </tbody>
