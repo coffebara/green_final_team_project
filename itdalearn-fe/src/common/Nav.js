@@ -1,11 +1,9 @@
 import { Navbar, Container, Nav, Badge } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
-
+import React, { useState, useEffect } from "react";
 
 export default function NavSetting() {
-  
   let navigate = useNavigate();
   let state = useSelector((state) => state);
 
@@ -14,9 +12,23 @@ export default function NavSetting() {
     height: 25,
   };
 
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      setIsLoggedIn(true);
+    }
+  }, []);
+
+  function handleLogout() {
+    localStorage.removeItem("token");
+    setIsLoggedIn(false);
+    alert("로그아웃 되셨습니다.");
+  }
   return (
     <>
-      <Navbar bg="light" data-bs-theme="light" >
+      <Navbar bg="light" data-bs-theme="light">
         <Container>
           <Nav.Link
             onClick={() => {
@@ -45,7 +57,7 @@ export default function NavSetting() {
             >
               게시판
             </Nav.Link>
-            {!state.login.isLogin ? (
+            {!isLoggedIn ? (
               <Nav.Link
                 onClick={() => {
                   navigate("/members/login");
@@ -54,17 +66,8 @@ export default function NavSetting() {
                 로그인
               </Nav.Link>
             ) : (
-              <Nav.Link
-
-              >
-                로그아웃
-              </Nav.Link>
+              <Nav.Link onClick={handleLogout}>로그아웃</Nav.Link>
             )}
-            <Nav.Link
-              onClick={() => axios.post("http://localhost:9090/logout").catch(error => console.log(error))  }
-            >
-              로그아웃
-            </Nav.Link>
 
             <Nav.Link
               onClick={() => {
@@ -77,17 +80,15 @@ export default function NavSetting() {
               </Badge>
             </Nav.Link>
             <Nav.Link
-                  onClick={() => {
-                    navigate("/mypage");
-                  }}
-              >
-                MyPage
-              </Nav.Link>
+              onClick={() => {
+                navigate("/mypage");
+              }}
+            >
+              MyPage
+            </Nav.Link>
           </Nav>
         </Container>
       </Navbar>
     </>
   );
 }
-
-

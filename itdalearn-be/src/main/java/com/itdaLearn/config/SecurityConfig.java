@@ -1,7 +1,7 @@
 package com.itdaLearn.config;
 
-import com.itdaLearn.jwt.JwtAuthenticationFilter;
-import com.itdaLearn.jwt.JwtAuthorizationFilter;
+import com.itdaLearn.config.jwt.JwtAuthenticationFilter;
+import com.itdaLearn.config.jwt.JwtAuthorizationFilter;
 import com.itdaLearn.repository.MemberRepository;
 import com.itdaLearn.service.PrincipalDetailsService;
 import lombok.RequiredArgsConstructor;
@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.BeanIds;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -37,7 +38,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-        http.addFilterBefore(new JwtAuthenticationFilter(authenticationManager()), UsernamePasswordAuthenticationFilter.class);
+		http.addFilterBefore(new JwtAuthenticationFilter(authenticationManager()), UsernamePasswordAuthenticationFilter.class);
 		http.addFilter(corsConfig.corsFilter()).csrf().disable() // csrf 방지
 				.headers().frameOptions().disable();
 		http
@@ -48,9 +49,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.addFilter(new JwtAuthenticationFilter(authenticationManager()))
 				.addFilter(new JwtAuthorizationFilter(authenticationManager(), memberRepository)).authorizeRequests()
 				.antMatchers("/cart", "/user")
-					.access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
+				.access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
 				.antMatchers("/admin/**")
-					.access("hasRole('ROLE_ADMIN')")
+				.access("hasRole('ROLE_ADMIN')")
 				.anyRequest().permitAll();
 
 //                .antMatchers("/cart/**").access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
@@ -74,11 +75,22 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	}
 
 
-	@Bean
-	public AuthenticationManager authenticationManager(HttpSecurity http, BCryptPasswordEncoder bCryptPasswordEncoder,
-			UserDetailsService userDetailsService) throws Exception {
-		return http.getSharedObject(AuthenticationManagerBuilder.class).userDetailsService(memberService)
-				.passwordEncoder(bCryptPasswordEncoder).and().build();
+//	@Bean
+//	public AuthenticationManager authenticationManager(HttpSecurity http, BCryptPasswordEncoder bCryptPasswordEncoder,
+//													   UserDetailsService userDetailsService) throws Exception {
+//		return http.getSharedObject(AuthenticationManagerBuilder.class).userDetailsService(memberService)
+//				.passwordEncoder(bCryptPasswordEncoder).and().build();
+//	}
+
+	@Override
+	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+		auth.userDetailsService(memberService).passwordEncoder(bCryptPasswordEncoder());
+	}
+
+	@Bean(name = BeanIds.AUTHENTICATION_MANAGER)
+	@Override
+	public AuthenticationManager authenticationManagerBean() throws Exception {
+		return super.authenticationManagerBean();
 	}
 
 
