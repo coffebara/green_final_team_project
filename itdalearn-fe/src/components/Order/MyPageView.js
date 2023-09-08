@@ -23,7 +23,7 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import { mainListItems, secondaryListItems } from './listItems';
 import Chart from './Chart';
 import Deposits from './Deposits';
-import Orders from './Orders';
+import Orders from './Orders'
 import '../../styles/Order.css';
 
   const drawerWidth = 240;
@@ -103,7 +103,16 @@ export default function MyPageView() {
     
     useEffect(() => {
         const getCourses = async () => {
-            const response = await axios.get(baseUrl +"/orders");
+          if(localStorage.getItem("token") == null){
+            window.alert("로그인이 필요한 서비스입니다.")
+            window.location.href = '/members/login';
+          }
+            const response = await axios.get(baseUrl +"/orders", 
+            {
+              headers: {
+                  Authorization: localStorage.getItem("token"),
+              },
+          });
             console.log(response)
             setCourses(response.data.orders);
             console.log(response.data.orders.orderCourseDtoList);

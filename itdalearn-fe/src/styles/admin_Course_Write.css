@@ -1,5 +1,7 @@
 .admin-write-textarea {
-    resize: none
+    resize: none;
+    white-space: pre-wrap; 
+    word-break: break-all;
 }
 
 .text_align_left{

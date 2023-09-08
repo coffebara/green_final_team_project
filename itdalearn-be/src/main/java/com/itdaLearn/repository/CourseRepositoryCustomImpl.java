@@ -9,6 +9,7 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 
+import com.itdaLearn.constant.SellStatus;
 import com.itdaLearn.dto.CourseSearchDto;
 import com.itdaLearn.dto.MainCourseDto;
 import com.itdaLearn.dto.QMainCourseDto;
@@ -28,6 +29,12 @@ public class CourseRepositoryCustomImpl implements CourseRepositoryCustom {
 		this.queryFactory = new JPAQueryFactory(em);
 	}
 	
+	private BooleanExpression searchSellStatusEq(SellStatus searchSellStatus) {
+		return searchSellStatus == null? null : QCourse.course.sellStatus.eq(searchSellStatus);
+	}//상품 판매 상태 조건이 전체(null)일 경우는 null을 리턴 결과값이 null이면 where 절에서 해당 조건은 무시
+	//null이 아니라 판매중 or 품정 상태라면 해당 조건의 상품만 조회
+	
+	
 	private BooleanExpression searchByLike(String searchBy, String searchQuery) {
 // searchBy의 값에 따라서 상품명에 검색어를 포함하고 있는 상품 또는
 // 상품 생성자의 아이디에 검색어를 포함하고 있는 상품을 조회하도록 조건값을 반환합니다.
@@ -45,7 +52,8 @@ public class CourseRepositoryCustomImpl implements CourseRepositoryCustom {
 		// queryFactory를 이용해서 쿼리를 생성
 		QueryResults<Course> results = queryFactory
 				.selectFrom(QCourse.course)//상품 데이터를 조회하기 위해서 QItem의 item을 지정
-				.where(searchByLike(courseSearchDto.getSearchBy(),
+				.where(searchSellStatusEq(courseSearchDto.getSearchSellStatus()),
+						searchByLike(courseSearchDto.getSearchBy(),
 								courseSearchDto.getSearchQuery()))
 				.orderBy(QCourse.course.courseNo.desc())
 				.offset(pageable.getOffset())//데이터를 가지고 올 시작 인덱스를 지정
@@ -80,10 +88,13 @@ public class CourseRepositoryCustomImpl implements CourseRepositoryCustom {
 						course.courseDec1,
 						courseImg.imgUrl,
 						course.coursePrice,
-						course.courseTeacher)
+						course.courseTeacher,
+						course.courseCategory,
+						course.courseLevel)
 						)
 				.from(courseImg)
 				.join(courseImg.course, course)
+				.where(courseImg.repimgYn.eq("Y"))
 				.where(searchByLike(courseSearchDto.getSearchBy(),
 						courseSearchDto.getSearchQuery()))
 				.orderBy(QCourse.course.courseNo.desc())

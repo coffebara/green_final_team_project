@@ -14,7 +14,7 @@ import lombok.ToString;
 
 public class CourseImgDto {
 
-	private Long courseImgDtoNo;
+	private Long courseImgNo;
 	private String imgName;
 	private String oriImgName;
 	private String imgUrl;
@@ -23,6 +23,6 @@ public class CourseImgDto {
 	
 	public static CourseImgDto of(CourseImg courseImg) {
 
-		return modelMapper.map(courseImg,  CourseImgDto.class);
+		return modelMapper.map(courseImg, CourseImgDto.class);
 	}
 }

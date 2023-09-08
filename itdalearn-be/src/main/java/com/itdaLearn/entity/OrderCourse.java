@@ -8,7 +8,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-
 import lombok.Getter;
 import lombok.Setter;
 
@@ -37,12 +36,16 @@ public class OrderCourse {
     	OrderCourse orderCourse = new OrderCourse();
     	orderCourse.setCourse(course);
     	orderCourse.setOrderPrice(course.getCoursePrice());
-
+    	course.addSellCount();
+    	
     	return orderCourse;
   }
    
    public int getTotalPrice() {
 	   return orderPrice;
    }
-
+  
+   public void cancel() {
+	   this.getCourse().decreaseSellCount();	   
+   }
 }

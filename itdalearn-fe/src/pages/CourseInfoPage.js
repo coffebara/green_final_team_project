@@ -1,6 +1,6 @@
 import Nav from "../common/Nav";
 import Footer from "../common/Footer";
-import Course from "../components/CourseList/Course";
+import Course from "../components/courseList/Course";
 export default function CourseInfoPage() {
 
     return (

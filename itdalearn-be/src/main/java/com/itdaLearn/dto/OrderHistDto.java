@@ -32,7 +32,7 @@ public class OrderHistDto {
 
 		private List<OrderCourseDto> orderCourseDtoList = new ArrayList<>();
 		
-		public void addOrderItemDto(OrderCourseDto orderCourseDto) {
+		public void addOrderCourseDto(OrderCourseDto orderCourseDto) {
 			
 			orderCourseDtoList.add(orderCourseDto);
 		}

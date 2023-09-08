@@ -1,21 +1,25 @@
-
-// import Banner1 from "../components/home/Banner1";
-// import Banner3 from "../components/home/Banner3";
-// import Banner2 from "../components/home/Banner2";
 import Nav from "../common/Nav";
 import Footer from "../common/Footer";
-import "../styles/Banner.css";
 import Index from "../components/home/Index";
-
+import React, { useEffect, useState } from "react";
 
 export default function HomePage() {
-    //여기서부터
+  // window.location.reload();
 
-    return (
-        <>
-            <Nav/>
-            <Index />
-            <Footer />
-        </>
-    );
+  // function clearStorage() {
+  //   let session = sessionStorage.getItem("register");
+
+  //   if (session == null) {
+  //     localStorage.removeItem("token");
+  //   }
+  //   sessionStorage.setItem("register", 1);
+  // }
+  // window.addEventListener("load", clearStorage);
+  return (
+    <>
+      <Nav />
+      <Index />
+      <Footer />
+    </>
+  );
 }

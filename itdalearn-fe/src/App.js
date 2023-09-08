@@ -1,67 +1,62 @@
 import "./App.css";
 import "./styles/Nav.css";
-import "./styles/Banner.css";
 import "./styles/Footer.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import HomePage from "./pages/HomePage.js";
 import CartPage from "./pages/CartPage";
 import PrivacyPolicy from "./pages/PrivacyPolicyPage.js";
-import CheckoutPage from "./pages/CheckoutPage.js";
-import CoursePage from "./pages/CoursePage";
 import CourseInfoPage from "./pages/CourseInfoPage";
-import data from "./common/data.js";
-import { Routes, Route } from "react-router-dom";
 import TermsOfUse from "./components/checkout/TermsOfUse";
-import Admin_CoursePage from "./pages/Admin_CoursePage"
-import Admin_CourseWritePage from "./pages/Admin_CourseWritePage"
-import Admin_CourseDetailPage from "./pages/Admin_CourseDetailPage"
+import Admin_CoursePage from "./pages/Admin_CoursePage";
+import Admin_CourseWritePage from "./pages/Admin_CourseWritePage";
+import Admin_CourseDetailPage from "./pages/Admin_CourseDetailPage";
 import Member_SignUpPage from "./pages/Member_SignUpPage";
-import CourseListPage from "./pages/CourseListPage"
+import CourseListPage from "./pages/CourseListPage";
 import MyPage from "./pages/MyPage";
-import OrdersPage from "./pages/OrdersPage"
+import OrdersPage from "./pages/OrdersPage";
 import Member_SignInPage from "./pages/Member_SignInPage.js";
-
-
-import BoardFreeList from "./pages/BoardFreeList";
-import BoardFreeDetailPage from "./pages/BoardFreeDetailPage";
-import BoardFreeWritePage from "./pages/BoardFreeWritePage";
-import BoardFreeUpdate from "./pages/BoardFreeUpdate";
-import React from "react";
+// import Member_FindIdPage from "./pages/Member_FindIdPage.js";
+// import Member_MyPage_CheckPage from "./pages/Member_MyPage_CheckPage.js";
+// import Member_MyPage from "./pages/Member_MyPage";
+import Payment from "./components/order/Payment";
+import BoardListComponent from './pages/BoardListPage';
+import BoardCreateComponent from './pages/BoardCreatePage';
+import BoardReadComponent from './pages/BoardReadPage';
+import { Routes, Route } from "react-router-dom";
 
 function App() {
-  // 디테일 페이지 용
-  const items = data;
 
   return (
     <div className="App">
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/course" element={<CoursePage />} />
+        <Route path="/*" element={<div>잘못된 경로입니다.</div>} />
+        <Route path="/terms" element={<TermsOfUse />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/mypage" element={<MyPage />} />
 
-        <Route path="/board" element={<BoardFreeList />} />
-        <Route path="/board/:idx" element={<BoardFreeDetailPage />} />
-        <Route path="/write" element={<BoardFreeWritePage />} />
-        <Route path="/update/:idx" element={<BoardFreeUpdate />} />
+        <Route path="/board" element={<BoardListComponent />} />
+        <Route path="/board/write/:bno" element={<BoardCreateComponent />} />
+        <Route path="/board/detail/:bno" element={<BoardReadComponent />} />
 
         <Route path="/courselist" element={<CourseListPage />} />
         <Route path="/course/:id" element={<CourseInfoPage />} />
         <Route path="cart" element={<CartPage />} />
-        <Route path="checkout" element={<CheckoutPage />} />
-        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-        <Route path="/terms" element={<TermsOfUse />} />
-        <Route path="/*" element={<div>잘못된 경로입니다.</div>} />
-
-        <Route path="/admin/courses" element={<Admin_CoursePage/>} />
-        <Route path="/admin/course" element={<Admin_CourseWritePage/>}/>
-        <Route path="/admin/course/:id" element={<Admin_CourseDetailPage/>}/>
-        <Route path="/signup" element={<Member_SignUpPage />} />
-
+        <Route path="/payment" element={<Payment />} />
         <Route path="/orders" element={<OrdersPage />} />
-        <Route path="/mypage" element={<MyPage />} />
+
+        <Route path="/admin/courses" element={<Admin_CoursePage />} />
+        <Route path="/admin/course" element={<Admin_CourseWritePage />} />
+        <Route path="/admin/course/:id" element={<Admin_CourseDetailPage />} />
+
         <Route path="/members/login" element={<Member_SignInPage />} />
         <Route path="/members" element={<Member_SignUpPage />} />
-
-
+        {/* <Route path="/members/find/id" element={<Member_FindIdPage />} />
+        <Route
+          path="/members/mypage/check"
+          element={<Member_MyPage_CheckPage />}
+        />
+        <Route path="/members/mypage" element={<Member_MyPage />} /> */}
       </Routes>
     </div>
   );

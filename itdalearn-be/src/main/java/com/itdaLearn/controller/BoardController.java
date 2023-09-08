@@ -1,56 +1,79 @@
 package com.itdaLearn.controller;
+import java.util.Map;
 
-
-import com.itdaLearn.dto.BoardSaveDto;
-import com.itdaLearn.entity.BoardEntity;
+import com.itdaLearn.entity.Board;
+import com.itdaLearn.entity.Member;
 import com.itdaLearn.service.BoardService;
-import com.itdaLearn.something.Header;
-import com.itdaLearn.something.Search;
-import lombok.RequiredArgsConstructor;
+import com.itdaLearn.service.PrincipalDetails;
+import lombok.Getter;
+import lombok.Setter;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 
-@RequiredArgsConstructor
+
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
+//@RequestMapping("/")
+@Getter
+@Setter
 public class BoardController {
-    private final BoardService boardService;
 
-    //Http Get 방식으로 주소 가장 뒤 /board로 접근
+    @Autowired
+    private BoardService boardService;
+
     @GetMapping("/board")
-    Header<List<BoardEntity>> getBoardList(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int size, Search search) {
-        return boardService.getBoardList(page, size, search);
-    }
-
-    //idx의 데이터 1개를 조회한다.
-    @GetMapping("/board/{idx}")
-    Header<BoardEntity> getBoardOne(@PathVariable Long idx) {
-        return boardService.getBoardOne(idx);
+    public Page<Board> getBoards(Pageable pageable) {
+        return boardService.getBoards(pageable);
     }
 
     @PostMapping("/board")
-    public Header<BoardEntity> createBoard(@RequestBody BoardSaveDto boardSaveDto) {
-        // 삽입할 엔티티 생성
-        BoardEntity entity = boardSaveDto.toEntity();
+    public Board createBoard(@RequestBody Board board, Authentication authentication) {
+        PrincipalDetails principalDetails = (PrincipalDetails) authentication.getPrincipal();
+        Member currentMember = principalDetails.getMember();
 
-        // insertBoard 메서드 호출
-        int insertionResult = boardService.insertBoard(entity);
+        // 현재 로그인한 사용자를 게시글의 작성자로 설정
+        board.setMember(currentMember);
 
-        // 반환값을 활용하여 삽입 결과 확인
-        if (insertionResult > 0) {
-            return Header.OK(entity); // 삽입 성공
-        } else {
-            return Header.ERROR("Failed to insert"); // 삽입 실패
+        return boardService.createBoard(board);
+    }
+
+    @GetMapping("/board/{bno}")
+    public ResponseEntity<Board> getBoardByNo(
+            @PathVariable Long bno) {
+        return boardService.getBoard(bno);
+    }
+
+    @PutMapping("/board/{bno}")
+    public ResponseEntity<Board> updateBoardByNo(
+            @PathVariable Long bno, @RequestBody Board board){
+        return boardService.updateBoard(bno, board);
+    }
+    @DeleteMapping("/board/{bno}")
+    public ResponseEntity<Map<String, Boolean>> deleteBoardByNo(
+            @PathVariable Long bno) {
+
+        return boardService.deleteBoard(bno);
+    }
+    @GetMapping("/board/search")
+    public Page<Board> searchBoards(
+            @RequestParam String keyword,
+            @RequestParam(required = false) String type,
+            Pageable pageable) {
+        if ("content".equals(type)) {
+            return boardService.searchBoardsByContent(keyword, pageable);
+        } else if ("memberNo".equals(type)) { // writer 대신 username 사용
+            return boardService.searchBoardsByMemberNo(keyword, pageable);
+        } else { // default: search by title
+            return boardService.searchBoardsByTitle(keyword, pageable);
         }
     }
 
-    @PatchMapping("/board")
-    Header<BoardEntity> updateBoard(@RequestBody BoardSaveDto boardSaveDto) {
-        return boardService.updateBoard(boardSaveDto);
-    }
 
-    @DeleteMapping("/board/{idx}")
-    Header<String> deleteBoard(@PathVariable Long idx) {
-        return boardService.deleteBoard(idx);
-    }
+
 }

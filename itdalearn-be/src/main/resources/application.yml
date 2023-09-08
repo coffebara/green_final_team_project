@@ -22,11 +22,11 @@ spring:
   # JPA
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create
     properties:
       hibernate:
         show_sql: true
-      format_sql: true
+#        format_sql: true
     defer-datasource-initialization: true
 
 
@@ -50,3 +50,4 @@ logging:
     jdbc.audit: OFF
     jdbc.resultset: OFF
     jdbc.connection: OFF
+    

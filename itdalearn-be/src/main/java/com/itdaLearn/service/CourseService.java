@@ -1,5 +1,8 @@
 package com.itdaLearn.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.EntityNotFoundException;
 
 import org.springframework.data.domain.Page;
@@ -11,10 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.itdaLearn.dto.CourseFormDto;
 import com.itdaLearn.dto.CourseImgDto;
 import com.itdaLearn.dto.CourseSearchDto;
-
 import com.itdaLearn.dto.MainCourseDto;
-
-
 import com.itdaLearn.entity.Course;
 import com.itdaLearn.entity.CourseImg;
 import com.itdaLearn.repository.CourseImgRepository;
@@ -33,16 +33,23 @@ public class CourseService {
 
 
 	// 코스 생성
-	public Long saveCourse(CourseFormDto courseFormDto, MultipartFile courseImgFile) throws Exception {
+	public Long saveCourse(CourseFormDto courseFormDto, List<MultipartFile> courseImgFileList) throws Exception {
 
 		Course course = courseFormDto.createCourse();
+		System.out.println(course.toString());
 		courseRepository.save(course);
 
-		CourseImg courseImg = new CourseImg();
-		courseImg.setCourse(course);
-
-		courseImgService.saveCourseImg(courseImg, courseImgFile);
-
+		for (int i = 0; i < courseImgFileList.size(); i++) {
+			CourseImg courseImg = new CourseImg();
+			courseImg.setCourse(course);
+			
+			if (i == 0) {
+				courseImg.setRepimgYn("Y");
+			} else {
+				courseImg.setRepimgYn("N");
+			}
+		courseImgService.saveCourseImg(courseImg, courseImgFileList.get(i));
+		}
 
 		return course.getCourseNo();
 	}
@@ -51,39 +58,39 @@ public class CourseService {
 	public void deleteCouseByNo(Long courseNo) {
 
 		Course course = courseRepository.findById(courseNo).orElseThrow(EntityNotFoundException::new);
-		CourseImg courseImg = courseImgRepository.findByCourseCourseNo(courseNo);
-		
-		courseImgRepository.delete(courseImg);
-		courseRepository.deleteById(course.getCourseNo());
+		course.deleteCourse();
 	}
 
 	// 강의 상세보기
 	@Transactional(readOnly = true)
 	public CourseFormDto getCourseDtl(Long courseNo) {
 		
-		CourseImg courseImg = courseImgRepository.findByCourseCourseNo(courseNo);
-		CourseImgDto courseImgDto = CourseImgDto.of(courseImg);
-		
+		List<CourseImg> courseImgList = courseImgRepository.findByCourseCourseNoOrderByCourseImgNo(courseNo);
+		List<CourseImgDto> courseImgDtoList = new ArrayList<>();
+		for (CourseImg courseImg : courseImgList) {
+			// 조회한 ItemImg 엔티티를 ItemImgDto 객체로 만들어서 리스트에 추가
+						CourseImgDto courseImgDto = CourseImgDto.of(courseImg);
+						courseImgDtoList.add(courseImgDto);
+		}
 		Course course = courseRepository.findById(courseNo).orElseThrow(EntityNotFoundException::new);
 		CourseFormDto courseFormDto = CourseFormDto.of(course);
-		
-		courseFormDto.setCourseImgDto(courseImgDto);
-
+		courseFormDto.setCourseImgDtoList(courseImgDtoList);
 
 		return courseFormDto;
 	}
 
 	// 코스 업데이트
-	public Long updateCourse(CourseFormDto courseFormDto, MultipartFile courseImgFile) throws Exception {
+	public Long updateCourse(CourseFormDto courseFormDto, List<MultipartFile> courseImgFileList) throws Exception {
 
 		
 		Course course = courseRepository.findById(courseFormDto.getCourseFormDtoNo())
 				.orElseThrow(EntityNotFoundException::new);
-		course.updateItem(courseFormDto);
-		Long courseImgNo = courseFormDto.getCourseImgNo();
+		course.updateCourse(courseFormDto);
+		List<Long> courseImgNos = courseFormDto.getCourseImgNos();
 
-		courseImgService.updateCourseImg(courseImgNo, courseImgFile);
-
+		for (int i = 0; i < courseImgFileList.size(); i++) {
+			courseImgService.updateCourseImg(courseImgNos.get(i), courseImgFileList.get(i));
+		}
 		return course.getCourseNo();
 	}
 
