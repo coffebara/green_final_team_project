@@ -5,13 +5,11 @@ import com.itdaLearn.entity.Member;
 import com.itdaLearn.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-// http://localhost:9090/login
 @Service
 @RequiredArgsConstructor
 public class PrincipalDetailsService implements UserDetailsService {

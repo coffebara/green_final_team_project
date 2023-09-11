@@ -68,7 +68,8 @@ export default function MemberMyPage() {
 
   const onClickChangeMember = (e) => {
     e.preventDefault();
-
+    alert("수정에 성공하였습니다.");
+    navigate("/");
     const data = {
       id: id,
       memberNo: member.member.memberNo,
@@ -88,11 +89,11 @@ export default function MemberMyPage() {
         .patch(url, data, { headers: { Authorization: token } })
         .then((response) => {
           console.log(response);
-          // if (response.data.statusCode === 1) {
           if (response.status === 200) {
             alert("수정에 성공하였습니다.");
 
-            localStorage.setItem("token", response.data.data);
+            // Update local storage with the returned member data
+            localStorage.setItem("token", JSON.stringify(response.data));
 
             navigate("/");
           }
@@ -103,19 +104,6 @@ export default function MemberMyPage() {
     }
   };
 
-  // const onClickChangeMember = () => {
-  //   axios
-  //     .put(`http://localhost:9090/members/mypage/${MemberMyPage.id}`, {
-  //       // Use template literals to insert the member number into the URL
-  //       memberNo: MemberMyPage.memberNo,
-  //       memberPwd: MemberMyPage.memberPwd,
-  //       memberName: MemberMyPage.memberName,
-  //       memberEmail: MemberMyPage.memberEmail,
-  //       memberTel: MemberMyPage.memberTel,
-  //     })
-  //     .then((response) => alert("수정되었습니다"))
-  //     .catch((error) => console.log(error));
-  // };
   // 유저 정보 백엔드에서 갖고오기
 
   const [member, setMember] = useState(null);

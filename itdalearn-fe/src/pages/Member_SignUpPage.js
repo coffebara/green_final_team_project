@@ -74,8 +74,6 @@ export default function SignUp() {
   const [passwordMatch, setPasswordMatch] = useState(true);
 
   const onClickSignUp = (event) => {
-    // prevent form submission
-
     if (memberSignUp.memberPwd !== memberSignUp.memberPwdCheck) {
       alert("비밀번호와 비밀번호 확인이 일치하지 않습니다. 다시 입력해주세요.");
       event.preventDefault();
@@ -91,17 +89,11 @@ export default function SignUp() {
         memberTel: memberSignUp.memberTel,
       })
       .then((response) => {
-        // console.log(response);
-        // if (response.status === 200) {
-        //   alert("회원가입에 성공했습니다.");
-        //   navigate("/members/login");
-        //   console.log(response);
-        // }
+        alert("회원가입에 성공했습니다.");
+        console.log(response);
       })
       .catch((error) => {
         console.log(error);
-
-        alert("회원가입에 성공했습니다.");
       });
   };
   return (

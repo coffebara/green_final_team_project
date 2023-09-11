@@ -1,11 +1,8 @@
 package com.itdaLearn.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.itdaLearn.entity.Member;
 import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
 import javax.validation.constraints.*;
 
 @Getter
@@ -42,13 +39,5 @@ public class AddMemberRequest {
     @Pattern(regexp = "^01(?:0|1|[6-9])[.-]?(\\d{3}|\\d{4})[.-]?(\\d{4})$", message = "10 ~ 11 자리의 숫자만 입력 가능합니다.")
     private String memberTel;
 
-    public void modify(Long id, String memberNo, String memberPwd, String memberName, String memberEmail, String memberTel) {
-        this.id =id;
-        this.memberNo = memberNo;
-        this.memberPwd = memberPwd;
-        this.memberName = memberName;
-        this.memberEmail = memberEmail;
-        this.memberTel = memberTel;
 
-    }
 }

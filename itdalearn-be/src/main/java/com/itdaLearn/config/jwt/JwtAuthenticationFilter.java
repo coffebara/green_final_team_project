@@ -23,45 +23,37 @@ import java.util.Date;
 @RequiredArgsConstructor
 public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
     private final AuthenticationManager authenticationManager;
-
-    // /login 요청을 하면 로그인시도를 위해서 실행되는 함수
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response)
             throws AuthenticationException {
         System.out.println("로그인 시도중");
 
-        // 1. memberNo, memberPwd 받아서
         try {
-            ObjectMapper om = new ObjectMapper(); //json 데이터를 파싱함 username password 데이터 등
+            // ObjectMapper를 사용하여 HTTP 요청의 본문(JSON)을 Member 객체로 변환합니다.
+            ObjectMapper om = new ObjectMapper();
             Member member = om.readValue(request.getInputStream(), Member.class);
-            System.out.println("member = " + member); // 로그인할 때 username하고 password 받아옴
+            System.out.println("member = " + member);
 
-            UsernamePasswordAuthenticationToken authenticationToken =
-                    new UsernamePasswordAuthenticationToken(member.getMemberNo(), member.getMemberPwd()); //스프링이 알아서 처리해주기 때문에 자세하게 알필요 없다
+            // 이를 생성하기 위해 사용자가 입력한 아이디와 비밀번호를 사용합니다.
+            UsernamePasswordAuthenticationToken authenticationToken = // UsernamePasswordAuthenticationToken은 인증 요청을 나타내는 객체입니다.
+                    new UsernamePasswordAuthenticationToken(member.getMemberNo(), member.getMemberPwd());
 
-            // principalDetailsService의 loadUserByUsername() 함수가 실행된 후 정상이면 authentication이 리턴
-            // DB에 있는 username과 password가 일치한다
-            Authentication authentication = // authentication에 로그인한 내 정보가 담김
-                    authenticationManager.authenticate(authenticationToken); // Token을 통해 로그인 시도 정상적으로 작동되면 위 authentication에 로그인한 내 정보가 담김
+            // AuthenticationManager에게 인증 요청 토큰을 전달하여 인증을 시도합니다.
+            // 이때 loadUserByUsername 메소드가 호출되며, 해당 메소드에서는 DB 등에서 사용자 정보를 조회하고,
+            // 입력된 비밀번호와 저장된 비밀번호가 일치하는지 확인합니다.
+            Authentication authentication = authenticationManager.authenticate(authenticationToken);
 
+            // 인증이 성공하면 UserDetails 타입의 객체(여기서는 PrincipalDetails)를 반환받습니다.
             PrincipalDetails principalDetails = (PrincipalDetails) authentication.getPrincipal();
 
-            System.out.println("로그인 완료됨" + principalDetails.getMember().getMemberNo()); // getMemberNo 이 제대로 나왔다는 것은 로그인이 되었다는 뜻
+            System.out.println("로그인 완료됨" + principalDetails.getMember().getMemberNo());
 
-            //authentication 객체가 session 영역에 저장을 해야하고 그 방법이 return 해주면 됨
-            // 리턴의 이유는 권한 관리가를 security가 대신 해주기 때문에 편하려고 하는거임
-            // 굳이 JWT 토큰을 사용하면서 세션을 만들 이유가 없음 근데 단지 권한 처리 때문에 session 넣어줍니다
+            // 마지막으로, 인증 정보(Authentication)를 세션에 저장하고 반환합니다.
             return authentication;
         } catch (IOException e) {
             e.printStackTrace();
+            throw new RuntimeException(e);  // 추가: 예외 발생시 런타임 예외로 감싸서 던져주기
         }
-        System.out.println("==========================");
-        // 2. 정상인지 로그인 시도 authenticationManager 로 로그인 시도하면 PrincipalDetailsService 호출 loadUserByUsername() 함수 실행
-
-        // 3. PrincipalDetails 를 세션에 담고 // 권한때문에
-
-        // 4. JWT 토큰을 만들어서 응답해주면 됨
-        return null; // 오류가 나면 null 반환
     }
 
     // 전체적인 순서

@@ -91,7 +91,6 @@ export default function SignIn() {
         localStorage.setItem("token", jwtToken);
         let decode = jwt_decode(jwtToken); // 토큰을 디코드함함
         console.log(decode);
-        // dispatch(setRoles(decode.role[0]))
         // 로그인 요청이 성공하면, 여기서 페이지 이동을 합니다.
         navigate("/");
       })
