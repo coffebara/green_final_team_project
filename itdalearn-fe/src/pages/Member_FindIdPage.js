@@ -58,7 +58,6 @@ export default function SignIn() {
     width: 150,
     height: 50,
     marginTop: 40,
-    marginBottom: 10,
   };
 
   const controlLableStrle = {
@@ -95,12 +94,7 @@ export default function SignIn() {
         // 로그인 요청이 성공하면, 여기서 페이지 이동을 합니다.
         navigate("/");
       })
-      .catch((error) => {
-        // 로그인 실패한 경우
-        console.log(error);
-
-        alert("다시 입력해주세요."); // 알림창으로 실패 메시지 표시
-      });
+      .catch((error) => console.log(error));
   };
   return (
     <ThemeProvider theme={defaultTheme}>
@@ -114,20 +108,15 @@ export default function SignIn() {
             alignItems: "center",
           }}
         >
-          <img
-            src={process.env.PUBLIC_URL + "/favicon.ico"}
-            style={imageStyle}
-            onClick={() => {
-              navigate("/");
-            }}
-          />
-          <Typography component="h1" variant="h5" />
+          <Typography component="h1" variant="h5" sx={{ marginTop: 15 }}>
+            아이디 찾기
+          </Typography>
           <Box noValidate sx={{ mt: 1 }}>
             <TextField
               margin="normal"
               required
               fullWidth
-              label="아이디"
+              label="이메일"
               name="memberNo"
               value={memberSignIn.memberNo}
               onChange={handleSignIn}
@@ -139,8 +128,7 @@ export default function SignIn() {
               name="memberPwd"
               value={memberSignIn.memberPwd}
               onChange={handleSignIn}
-              label="비밀번호"
-              type="password"
+              label="전화번호"
             />
             <Button
               type="submit"
@@ -150,14 +138,9 @@ export default function SignIn() {
               style={{ fontSize: 18 }}
               onClick={onClickSignIn}
             >
-              로그인
+              아이디 찾기
             </Button>
             <Grid container>
-              <Grid item sx={{ marginRight: 30.7 }}>
-                <Link href="/members/find/id" variant="body5">
-                  아이디 찾기
-                </Link>
-              </Grid>
               <Grid item>
                 <Link href="/members" variant="body5">
                   회원가입

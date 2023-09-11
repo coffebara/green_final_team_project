@@ -15,6 +15,8 @@ import javax.validation.constraints.*;
 @NoArgsConstructor
 public class AddMemberRequest {
 
+    private Long id;
+
     @NotBlank(message = "아이디는 필수 입력 값입니다.")
     @Size(min = 3, max = 8)
     @Pattern(regexp = "^[ㄱ-ㅎ가-힣a-z0-9-_]{4,20}$", message = "아이디는 특수문자를 제외한 4~20자리여야 합니다.")
@@ -40,5 +42,13 @@ public class AddMemberRequest {
     @Pattern(regexp = "^01(?:0|1|[6-9])[.-]?(\\d{3}|\\d{4})[.-]?(\\d{4})$", message = "10 ~ 11 자리의 숫자만 입력 가능합니다.")
     private String memberTel;
 
+    public void modify(Long id, String memberNo, String memberPwd, String memberName, String memberEmail, String memberTel) {
+        this.id =id;
+        this.memberNo = memberNo;
+        this.memberPwd = memberPwd;
+        this.memberName = memberName;
+        this.memberEmail = memberEmail;
+        this.memberTel = memberTel;
 
+    }
 }
