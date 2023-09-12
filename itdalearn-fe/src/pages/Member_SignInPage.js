@@ -91,6 +91,7 @@ export default function SignIn() {
         localStorage.setItem("token", jwtToken);
         let decode = jwt_decode(jwtToken); // 토큰을 디코드함함
         console.log(decode);
+        checkJwt(decode);
         // 로그인 요청이 성공하면, 여기서 페이지 이동을 합니다.
         navigate("/");
       })
@@ -99,7 +100,18 @@ export default function SignIn() {
         console.log(error);
 
         alert("다시 입력해주세요."); // 알림창으로 실패 메시지 표시
-      });
+      });}
+
+      const checkJwt = (decode) => {
+        const now = Math.floor(new Date().getTime() / 1000);
+        let exp = decode.exp;
+        let expSec = (exp - now) * 1000;
+        dispatch(setRoles(decode.role));
+        setTimeout(() => {
+            dispatch(setRoles(""));
+            alert("로그인이 만료되었습니다.");
+            navigate("/");
+        }, expSec);
   };
   return (
     <ThemeProvider theme={defaultTheme}>

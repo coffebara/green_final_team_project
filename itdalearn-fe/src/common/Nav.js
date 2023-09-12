@@ -3,9 +3,12 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { Dispatch } from "react";
+import { setRoles } from "../store"
 
 export default function NavSetting() {
     let navigate = useNavigate();
+    const dispatch = useDispatch();
     let state = useSelector((state) => state);
 
     const imageStyle = {
@@ -24,6 +27,7 @@ export default function NavSetting() {
 
     function handleLogout() {
         localStorage.removeItem("token");
+        dispatch(setRoles(""));
         setIsLoggedIn(false);
         alert("로그아웃 되셨습니다.");
     }
