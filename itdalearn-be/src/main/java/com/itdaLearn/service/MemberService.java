@@ -1,6 +1,6 @@
 package com.itdaLearn.service;
 
-import com.itdaLearn.dto.AddMemberRequest;
+import com.itdaLearn.dto.MemberFormDto;
 import com.itdaLearn.entity.Member;
 import com.itdaLearn.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
@@ -17,7 +17,7 @@ public class MemberService {
     private final MemberRepository memberRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
-    public Long save(AddMemberRequest dto) {
+    public Long save(MemberFormDto dto) {
 
         String password = dto.getMemberPwd();
         if (password == null || password.isEmpty()) {
@@ -40,7 +40,7 @@ public class MemberService {
     }
 
     @Transactional
-    public Member modify(Long id, AddMemberRequest memberDto) {
+    public Member modify(Long id, MemberFormDto memberDto) {
         Optional<Member> optionalMember = memberRepository.findById(id);
 
         if (!optionalMember.isPresent()) {

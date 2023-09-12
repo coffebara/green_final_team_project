@@ -16,7 +16,7 @@ import org.springframework.security.oauth2.client.authentication.OAuth2Authentic
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import com.itdaLearn.dto.AddMemberRequest;
+import com.itdaLearn.dto.MemberFormDto;
 import com.itdaLearn.repository.MemberRepository;
 import com.itdaLearn.service.MemberService;
 import com.itdaLearn.service.PrincipalDetails;
@@ -26,7 +26,7 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @Controller
-public class MemberApiController {
+public class MemberController {
 
     @Autowired
     private final MemberService memberService;
@@ -35,7 +35,7 @@ public class MemberApiController {
 
     @PostMapping("/members")
 //    public String members(@Valid AddMemberRequest memberRequest) {
-    public String members(AddMemberRequest memberRequest) {
+    public String members(MemberFormDto memberRequest) {
         memberService.save(memberRequest);
 
         return "redirect:http://localhost:3000/members/login";
@@ -85,7 +85,7 @@ public class MemberApiController {
     @PatchMapping("/members/mypage/{id}")
     public String membersChange(Authentication authentication,
                                 @PathVariable Long id,
-                                @RequestBody AddMemberRequest memberDto) {
+                                @RequestBody MemberFormDto memberDto) {
 
         Member member = memberService.modify(id, memberDto);
         PrincipalDetails principalDetails = (PrincipalDetails) authentication.getPrincipal();

@@ -10,7 +10,7 @@ import javax.validation.constraints.*;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class AddMemberRequest {
+public class MemberFormDto {
 
     private Long id;
 
