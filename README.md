@@ -1,5 +1,3 @@
-# green_final_team_project
-
 #  IT-DA 최종 프로젝트
 
 # 인터넷 강의 판매 웹 페이지 v5.0
