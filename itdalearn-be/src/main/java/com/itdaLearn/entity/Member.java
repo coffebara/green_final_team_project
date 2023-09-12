@@ -8,8 +8,10 @@ import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.*;
 import java.util.*;
 
+
 @Table(name = "member")
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@NoArgsConstructor
+//(access = AccessLevel.PROTECTED)
 @Getter
 @ToString
 @Entity
@@ -46,6 +48,7 @@ public class Member implements UserDetails{
 		this.role = role;
 		this.memberTel = memberTel;
 	}
+
 
 	public List<String> getRoleList() {
 		System.out.println(getRole());

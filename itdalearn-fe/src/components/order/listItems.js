@@ -11,30 +11,31 @@ import LayersIcon from "@mui/icons-material/Layers";
 import AssignmentIcon from "@mui/icons-material/Assignment";
 import { Link, useNavigate } from "react-router-dom";
 
-export const mainListItems = (
+export const mainListItems=(navigate) => {
+  return(
   <React.Fragment>
-    <ListItemButton href="/mypage">
+    <ListItemButton onClick={()=>navigate("/mypage")}>
       <ListItemIcon>
         <DashboardIcon />
       </ListItemIcon>
       <ListItemText primary="MyPage" />
     </ListItemButton>
 
-    <ListItemButton href="/cart">
+    <ListItemButton onClick={()=>navigate("/cart")}>
       <ListItemIcon>
         <ShoppingCartIcon />
       </ListItemIcon>
       <ListItemText primary="장바구니"></ListItemText>
     </ListItemButton>
 
-    <ListItemButton href="/members/mypage/check">
+    <ListItemButton onClick={()=>navigate("/members/mypage/check")}>
       <ListItemIcon>
         <PeopleIcon />
       </ListItemIcon>
       <ListItemText primary="나의 정보" />
     </ListItemButton>
 
-    <ListItemButton href="/orders">
+    <ListItemButton onClick={()=>navigate("/orders")}>
       <ListItemIcon>
         <BarChartIcon />
       </ListItemIcon>
@@ -47,8 +48,8 @@ export const mainListItems = (
       <ListItemText primary="통합" />
     </ListItemButton>
   </React.Fragment>
-);
-
+  )
+};
 export const secondaryListItems = (
   <React.Fragment>
     <ListSubheader component="div" inset>

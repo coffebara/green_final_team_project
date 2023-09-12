@@ -12,6 +12,10 @@ body {
     padding: 20px;
 }
 
+.tablecontent {
+    width: 800px;
+}
+
 .cartbox Button {
     width: 250px;
     margin: 5px;
@@ -282,8 +286,12 @@ body {
     font-family: "TheJamsil5Regular";
 }
 
-.title {
+h2 {
     margin-top: 30px;
+}
+
+.title {
+    margin-top: 50px;
     font-family: "TheJamsil5Regular";
     text-align: left;
     padding-left: 13%;

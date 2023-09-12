@@ -268,12 +268,13 @@ export default function Admin_CourseDetail() {
                         name="courseCategory"
                         required
                         disabled={!isUpdatable}
+                        onChange={handleOnChange}
                     >
                         <option disabled value="">
                             선택...{console.log(courseDetails.sellStatus)}
                         </option>
                         {courseCategories.map((category, i) => (
-                            <option key={i} value={courseDetails.courseCategory} selected={courseDetails.courseCategory==category? true:false}>
+                            <option key={i} selected={courseDetails.courseCategory==category? true:false}>
                                 {category}
                             </option>
                         ))}
@@ -290,12 +291,13 @@ export default function Admin_CourseDetail() {
                         name="courseLevel"
                         required
                         disabled={!isUpdatable}
+                        onChange={handleOnChange}
                     >
                         <option disabled value="">
                             선택...
                         </option>
                         {courseLevels.map((level, i) => (
-                            <option key={i} value={courseDetails.courseLevel} selected={courseDetails.courseLevel==level? true:false}>
+                            <option key={i}  selected={courseDetails.courseLevel==level? true:false}>
                                 {level}
                             </option>
                         ))}
@@ -312,12 +314,13 @@ export default function Admin_CourseDetail() {
                         name="sellStatus"
                         required
                         disabled={!isUpdatable}
+                        onChange={handleOnChange}
                     >
                         <option disabled value="">
                             선택...
                         </option>
                         {sellStatus.map((sellStatus, i) => (
-                            <option key={i} value={courseDetails.sellStatus} selected={courseDetails.sellStatus==sellStatus? true:false}>
+                            <option key={i} selected={courseDetails.sellStatus==sellStatus? true:false}>
                                 {sellStatus}
                             </option>
                         ))}

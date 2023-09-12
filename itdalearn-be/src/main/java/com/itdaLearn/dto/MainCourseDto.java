@@ -2,6 +2,7 @@ package com.itdaLearn.dto;
 
 import com.itdaLearn.constant.CourseCategory;
 import com.itdaLearn.constant.CourseLevel;
+import com.itdaLearn.constant.SellStatus;
 import com.querydsl.core.annotations.QueryProjection;
 
 import lombok.Getter;
@@ -17,9 +18,10 @@ public class MainCourseDto {
 	private String courseTeacher;
 	private CourseLevel courseLevel;
 	private CourseCategory courseCategory;
+	private SellStatus sellStatus;
 	
 	@QueryProjection
-	public MainCourseDto(Long courseNo, String courseTitle, String courseDec1, String imgUrl, Integer coursePrice, String courseTeacher, CourseCategory courseCategory, CourseLevel courseLevel) {
+	public MainCourseDto(Long courseNo, String courseTitle, String courseDec1, String imgUrl, Integer coursePrice, String courseTeacher, CourseCategory courseCategory, CourseLevel courseLevel, SellStatus sellStatus) {
 		this.courseNo = courseNo;
 		this.courseTitle = courseTitle;
 		this.courseDec1 = courseDec1;
@@ -28,6 +30,7 @@ public class MainCourseDto {
 		this.courseTeacher = courseTeacher;
 		this.courseCategory = courseCategory;
 		this.courseLevel = courseLevel;
+		this.sellStatus = sellStatus;
 	}
 	
 }

@@ -111,21 +111,21 @@ export default function Orders() {
     <React.Fragment>
       <Title>최근 구매내역</Title>
       <br />
-      <select value={filterPeriod} onChange={handleFilterChange}>
+      {/* <select value={filterPeriod} onChange={handleFilterChange}>
          <option value="all">전체</option>
          <option value="oneMonth">1개월 전</option>
          <option value="sixMonths">6개월 전</option>
          <option value="oneYear">1년 전</option>
-       </select>
+       </select> */}
       <Table size="small">
        
         <TableHead>
           <TableRow>
             <TableCell>No</TableCell>
-            <TableCell>이미지</TableCell>
-            <TableCell>강의명</TableCell>
-            <TableCell>가격</TableCell>
-            <TableCell>구매날짜</TableCell>
+            <div className='title'><div className='title2'><TableCell>이미지</TableCell></div>
+            <div className='title1'><TableCell className='title1'>강의명</TableCell></div>
+            <div className='title1'><TableCell className='title1'> 가격</TableCell></div></div>
+            <TableCell className='title1'>구매날짜</TableCell>
             <TableCell align="right">구매상태</TableCell>
             <TableCell align="right"></TableCell>
           </TableRow>
@@ -142,7 +142,7 @@ export default function Orders() {
                   checked={checkedList.includes(order) ? true : false}
                 /></TableCell>
 
-
+          <div className='orderbox'>
               {order.orderCourseDtoList.map((course, courseIndex) => (
               <div key={courseIndex}>
               <TableCell><img className='orderimg' src={course.imgUrl} /></TableCell>
@@ -151,6 +151,7 @@ export default function Orders() {
               </div>
                      
             ))} 
+            </div>
               <TableCell>{order.orderDate}</TableCell>
               <TableCell align="right">{order.orderStatus}</TableCell>
               <TableCell align="right">

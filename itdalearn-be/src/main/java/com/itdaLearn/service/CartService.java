@@ -1,10 +1,13 @@
 package com.itdaLearn.service;
 
 import java.util.ArrayList;
+import java.util.DuplicateFormatFlagsException;
 import java.util.List;
 
 import javax.persistence.EntityNotFoundException;
 
+import org.springframework.dao.DuplicateKeyException;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
@@ -36,7 +39,7 @@ public class CartService {
 	private final CartCourseRespository cartCourseRespository;
 	private final OrderService orderService;
 		
-	public Long addCart(CartCourseDto cartCourseDto, String memberNo) {
+	public Long addCart(CartCourseDto cartCourseDto, String memberNo) throws Exception{
 				//String email
 		      Course course = courseRepository.findById(cartCourseDto.getCourseNo())
 		    		  .orElseThrow(EntityNotFoundException::new);
@@ -53,13 +56,22 @@ public class CartService {
 		         cartRepository.save(cart);
 		      }
 		      
-		      //CartCourse savedCartCourse = cartCourseRespository.findByCartCartNoAndCourseCourseNo(cart.getCartNo(), course.getCourseNo());
-		 
-		      CartCourse cartCourse = CartCourse.createCartCourse(cart, course);
-		       
-		      cartCourseRespository.save(cartCourse);
+		      CartCourse savedCartCourse = cartCourseRespository.findByCartCartNoAndCourseCourseNo(cart.getCartNo(), course.getCourseNo());
+		       //같은 상품이 있는 지 조회
+		      if(savedCartCourse != null) {
+		    	
+		    	  throw new Exception("같은 상품은 담을 수가 없습니다.");
+		    	  
+		      }else {
+		    	  
+		    	  CartCourse cartCourse = CartCourse.createCartCourse(cart, course);
+			       
+			      cartCourseRespository.save(cartCourse);
+			      
+			      return cartCourse.getCartCourseNo();
+		      }
 		      
-		      return cartCourse.getCartCourseNo();
+		  
 		
 		   }
 	   

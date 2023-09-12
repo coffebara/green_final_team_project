@@ -49,12 +49,22 @@ public class MemberService {
 
         Member member = optionalMember.get();
 
-
-        member.setMemberNo(memberDto.getMemberNo()); // 새 회원 번호 설정
-        member.setMemberPwd(bCryptPasswordEncoder.encode(memberDto.getMemberPwd()));
-        member.setMemberName(memberDto.getMemberName()); // 새 이름 설정
-        member.setMemberEmail(memberDto.getMemberEmail()); // 이메일이 제공된 경우, 새 이메일 설정
-        member.setMemberTel(memberDto.getMemberTel());
+        if (memberDto.getMemberNo() != null && !memberDto.getMemberNo().isEmpty()) {
+            member.setMemberNo(memberDto.getMemberNo());
+        }
+        if (memberDto.getMemberPwd() != null && !memberDto.getMemberPwd().isEmpty()) {
+            member.setMemberPwd(memberDto.getMemberPwd());
+//            member.setMemberPwd(bCryptPasswordEncoder.encode(memberDto.getMemberPwd()));
+        }
+        if (memberDto.getMemberName() != null && !memberDto.getMemberName().isEmpty()) {
+            member.setMemberName(memberDto.getMemberName());
+        }
+        if (memberDto.getMemberEmail() != null && !memberDto.getMemberEmail().isEmpty()) {
+            member.setMemberEmail(memberDto.getMemberEmail());
+        }
+        if (memberDto.getMemberTel() != null && !memberDto.getMemberTel().isEmpty()) {
+            member.setMemberTel(member.getMemberTel());
+        }
 
         return member;
     }

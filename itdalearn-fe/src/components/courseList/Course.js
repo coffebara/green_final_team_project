@@ -88,9 +88,14 @@ export default function Course() {
                 if (response.status === 200) {
                     alert("장바구니 담기에 성공하였습니다.");
                     console.log("카트담기 성공");
-                }
+                } 
             })
-            .catch((error) => console.log(error.response));
+            .catch((error) => {
+                console.log(error.response)
+            alert("같은 상품은 담을 수가 없습니다");
+            })
+            
+            
     };
 
     const OrderCourse = () => {
@@ -115,7 +120,10 @@ export default function Course() {
                     console.log("주문하기 성공");
                 }
             })
-            .catch((error) => console.log(error.response));
+            .catch((error) => {
+                console.log(error.response)
+            alert("이미 주문한 상품입니다.");
+            })
     };
 
     let navigate = useNavigate();

@@ -2,6 +2,8 @@ package com.itdaLearn.dto;
 
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.UniqueElements;
+
 import lombok.Getter;
 import lombok.Setter;
 

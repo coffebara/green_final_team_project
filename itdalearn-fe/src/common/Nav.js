@@ -85,9 +85,7 @@ export default function NavSetting() {
                             }}
                         >
                             장바구니
-                            <Badge className="ms-2" bg="secondary">
-                                {state.cart.length}
-                            </Badge>
+                        
                         </Nav.Link>
 
                         <Nav.Link

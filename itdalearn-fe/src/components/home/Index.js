@@ -199,6 +199,10 @@ const handleLevelFilter = (level) => {
 const filterCourses = () => {
   
   return courses.filter((course) => {
+
+    if(course.sellStatus !== "SELL")
+      return false;
+    
     
     if(selectedLevel == "ALL")
       return true;
@@ -220,7 +224,6 @@ const filterCourses = () => {
     return true;
   })
 }
-console.log(filterCourses)
 
 
 

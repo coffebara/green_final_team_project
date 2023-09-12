@@ -174,11 +174,11 @@ const OrderListTable = ({ courses }) => {
               >
                 MyPage
               </Typography>
-              <IconButton color="inherit">
+              {/* <IconButton color="inherit">
                 <Badge badgeContent={4} color="secondary">
                   <NotificationsIcon />
                 </Badge>
-              </IconButton>
+              </IconButton> */}
             </Toolbar>
           </AppBar>
           <div className="box">
@@ -199,7 +199,7 @@ const OrderListTable = ({ courses }) => {
             <Divider />
             <div className="sidebar">
             <List component="nav">
-              {mainListItems}
+            {mainListItems(navigate)}
               <Divider sx={{ my: 1 }} />
               {secondaryListItems}
             </List>
