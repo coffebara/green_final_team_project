@@ -14,21 +14,21 @@
 
 ## 설치 가이드
 
-요구 사항
+**요구 사항**
 - Npm  
 - Eclips EE (STS 4)  
 - VsCode  
 - Oracle 11g  
 
-초기화  
+**초기화**  
 
     $ git clone https://github.com/coffebara/green_final_team_project.git   
     $ cd green_final_team_project
 
-Backend  
+**Backend**  
 `$ cd itdalearn-be`  
 
-Fromtend  
+**Fromtend**  
 `$ cd itdalearn-fe`  
 `$ npm install`  
 `$ npm start`   
