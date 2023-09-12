@@ -22,14 +22,14 @@
 - VsCode  
 - Oracle 11g  
 
-초기화
+초기화  
  `$ git clone https://github.com/coffebara/green_final_team_project.git`  
  `$ cd green_final_team_project `  
 
 Backend
 `$ cd itdalearn-be`  
 
-Fromtend
+Fromtend  
 `$ cd itdalearn-fe`  
 `$ npm install`  
 `$ npm start`   
