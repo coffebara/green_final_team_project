@@ -21,7 +21,7 @@ export default function Footer() {
                 팀장: 김상준
               </li>
               <li id="Cursor_left" className="Nav_Toggletheme">
-                팀원: 권혜연, 지성현, 한현승
+                팀원: 권혜연, 지성현, 김현승
               </li>
               <li id="Cursor_left" className="Nav_Toggletheme">
                 이메일: greensn7447@gmail.com
@@ -43,7 +43,7 @@ export default function Footer() {
               </li>
               <li
                 onClick={() => {
-                  navigate("/class");
+                  navigate("/");
                 }}
                 id="Cursor"
                 className="Nav_Toggletheme"
@@ -61,7 +61,7 @@ export default function Footer() {
               </li>
               <li
                 onClick={() => {
-                  navigate("/login");
+                  navigate("/members/login");
                 }}
                 id="Cursor"
                 className="Nav_Toggletheme"
@@ -105,16 +105,9 @@ export default function Footer() {
           </div>
           <div id="Footer_ul_setting">
             <ul id="Footer_list_style">
+              
               <li>
-                <a href="https://www.npmjs.com/" target="_blank">
-                  <img
-                    src={process.env.PUBLIC_URL + "/npm.png"}
-                    id="Footer_img1"
-                  ></img>
-                </a>
-              </li>
-              <li>
-                <a href="https://github.com/" target="_blank">
+                <a href="https://github.com/coffebara/green_final_team_project.git" target="_blank">
                   <img
                     src={process.env.PUBLIC_URL + "/github.png"}
                     id="Footer_img2"

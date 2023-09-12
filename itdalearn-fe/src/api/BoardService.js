@@ -37,7 +37,7 @@ class BoardService {
     searchBoards(pageNum, searchType, searchKeyword) {
 
         return axios.get(
-            `${BOARD_API_BASE_URL}/search?page=${pageNum}&type=${encodeURIComponent(searchType)}&keyword=${encodeURIComponent(searchKeyword)}`
+            `${BOARD_API_BASE_URL}/search?page=${pageNum}&type=${encodeURIComponent(searchType)}&keyword=${encodeURIComponent(searchKeyword)}&sort=bno,desc`
         
             );
     }
@@ -61,9 +61,10 @@ class BoardService {
     }
 
 
-    addReply(bno, content) {
-        return axios.post(BOARD_API_BASE_URL + "/" + bno + "/replies", {content});
+    addReply(bno, content, username) {
+        return axios.post(BOARD_API_BASE_URL + "/" + bno + "/replies", {content, memberNo: username});
     }
+    
 
     updateReply(boardNo, replyId, content) {
         return axios.put(`${BOARD_API_BASE_URL}/${boardNo}/replies/${replyId}`, {content});

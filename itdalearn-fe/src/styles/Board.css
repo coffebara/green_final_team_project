@@ -1,0 +1,28 @@
+.board_title_setting{
+    text-align: left;
+}
+.board_title{
+    text-decoration-line: none;
+    color: inherit;
+}
+.board_title:hover{
+    text-decoration-line: underline;
+}
+/* CSS */
+.create_board_textarea {
+    min-height: 20rem !important;
+    resize: none;
+  }
+  
+.board_read_title{
+    text-align: left;
+}
+.board_read_content{
+    text-align: left;
+    white-space: pre-line; 
+    word-break: break-all;    
+    min-height: 20rem;
+}
+.board_setting{
+    min-height: 40rem;
+}

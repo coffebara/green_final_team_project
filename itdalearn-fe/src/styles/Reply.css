@@ -1,0 +1,15 @@
+.reply_textarea{
+    resize: none;
+    white-space: pre-line; 
+    word-break: break-all;
+    text-align: left;
+    min-height: 2rem;
+}
+.reply_member{
+    text-align: left;
+}
+.reply_content_textarea{
+    resize: none;
+    min-height: 5rem;
+    min-width: 100% !important;
+}

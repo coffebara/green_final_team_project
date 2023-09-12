@@ -36,7 +36,6 @@ public class ReplyController {
     public ResponseEntity<Reply> saveReply(@PathVariable Long bno, @RequestBody Reply reply) {
         Board board = boardService.findBoard(bno);
         reply.setBoard(board);
-
         return ResponseEntity.ok(replyService.saveReply(reply));
     }
 

@@ -36,10 +36,7 @@ public class BoardController {
     public Board createBoard(@RequestBody Board board, Authentication authentication) {
         PrincipalDetails principalDetails = (PrincipalDetails) authentication.getPrincipal();
         Member currentMember = principalDetails.getMember();
-
-        // 현재 로그인한 사용자를 게시글의 작성자로 설정
         board.setMember(currentMember);
-
         return boardService.createBoard(board);
     }
 
@@ -57,7 +54,6 @@ public class BoardController {
     @DeleteMapping("/board/{bno}")
     public ResponseEntity<Map<String, Boolean>> deleteBoardByNo(
             @PathVariable Long bno) {
-
         return boardService.deleteBoard(bno);
     }
     @GetMapping("/board/search")

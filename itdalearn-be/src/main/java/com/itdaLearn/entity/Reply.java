@@ -24,8 +24,6 @@ public class Reply {
     @JoinColumn(name = "board_no")
     private Board board;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
-    @JoinColumn(name = "member_id")
-    private Member member;
-
+    @Column(name = "member_no")
+    private String memberNo;
 }

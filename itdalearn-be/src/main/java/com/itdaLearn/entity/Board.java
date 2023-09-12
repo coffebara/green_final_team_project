@@ -34,9 +34,6 @@ public class Board {
     @Column(name = "board_contents")
     private String contents;
 
-    @Column(name = "board_username")
-    private String username;
-
     @ManyToOne
     @JoinColumn(name = "member_id")
     private Member member;
