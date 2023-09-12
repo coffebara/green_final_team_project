@@ -1,14 +1,14 @@
 #  IT-DA 최종 프로젝트
 
 # 인터넷 강의 판매 웹 페이지 v5.0
-> **성남 그린 컴퓨터 아카데미**
-> **KDT풀스택3기**
-> **개발기간: 2023.08.04 ~ 2023.09.12**
+> **성남 그린 컴퓨터 아카데미**  
+> **KDT풀스택3기**  
+> **개발기간: 2023.08.04 ~ 2023.09.12**  
 
 # 팀원소개
 
-팀장: 김상준
-팀원: 권혜연, 김현승, 지성현 
+팀장: 김상준  
+팀원: 권혜연, 김현승, 지성현   
 
 ## 프로젝트소개
 
@@ -17,22 +17,22 @@
 ## 설치 가이드
 
 요구 사항
-- Npm
-- Eclips EE (STS 4)
-- VsCode
-- Oracle 11g
+- Npm  
+- Eclips EE (STS 4)  
+- VsCode  
+- Oracle 11g  
 
 초기화
- `$ git clone https://github.com/coffebara/green_final_team_project.git`
- `$ cd green_final_team_project `
+ `$ git clone https://github.com/coffebara/green_final_team_project.git`  
+ `$ cd green_final_team_project `  
 
 Backend
-`$ cd itdalearn-be`
+`$ cd itdalearn-be`  
 
 Fromtend
-`$ cd itdalearn-fe`
-`$ npm install`
-`$ npm start` 
+`$ cd itdalearn-fe`  
+`$ npm install`  
+`$ npm start`   
  
 ## 주요 기능
 
