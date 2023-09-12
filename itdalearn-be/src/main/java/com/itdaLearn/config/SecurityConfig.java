@@ -1,8 +1,12 @@
 package com.itdaLearn.config;
 
+import com.itdaLearn.config.jwt.JwtAuthenticationFilter;
+import com.itdaLearn.config.jwt.JwtAuthorizationFilter;
+import com.itdaLearn.repository.MemberRepository;
+import com.itdaLearn.service.PrincipalDetailsService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.BeanIds;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -14,13 +18,6 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-
-import com.itdaLearn.config.jwt.JwtAuthenticationFilter;
-import com.itdaLearn.config.jwt.JwtAuthorizationFilter;
-import com.itdaLearn.repository.MemberRepository;
-import com.itdaLearn.service.PrincipalDetailsService;
-
-import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @EnableWebSecurity
@@ -34,6 +31,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	private final PrincipalDetailsService memberService;
 
+
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.addFilterBefore(new JwtAuthenticationFilter(authenticationManager()), UsernamePasswordAuthenticationFilter.class);
@@ -42,19 +40,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http
 				.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS) // 세션사용 x
 				.and()
-//                .addFilter(corsFilter) // 모든 요청은 모든 필터를 타고감 (cors 정책에서 벗어날 수 있따)
+				//                .addFilter(corsFilter) // 모든 요청은 모든 필터를 타고감 (cors 정책에서 벗어날 수 있따)
 				.formLogin().disable().httpBasic().disable()
 				.addFilter(new JwtAuthenticationFilter(authenticationManager()))
-				.addFilter(new JwtAuthorizationFilter(authenticationManager(), memberRepository)).authorizeRequests()
-				.mvcMatchers(HttpMethod.OPTIONS, "/**").permitAll()
-				.antMatchers("/cart", "/user", "/orders")
-					.access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
-				.antMatchers("/admin/**")
-					.access("hasRole('ROLE_ADMIN')")
-				// .antMatchers("/cart", "/user")
+				.addFilter(new JwtAuthorizationFilter(authenticationManager(), memberRepository))
+
+				.authorizeRequests()
+				.antMatchers("/cart", "/user", "/members/mypage/check", "/members/mypage/**").access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
+				.antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")
 				.anyRequest().permitAll();
 
 		http.exceptionHandling().accessDeniedPage("/denied");
+
 
 	}
 
@@ -63,15 +60,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		// 정적 리소스들이 보안필터를 거치지 않게끔
 		return (web) -> web.ignoring().antMatchers("/css/**", "/js/**", "/img/**", "/font/**", "/images/", "/css/**");
 	}
-
-
-//	@Bean
-//	public AuthenticationManager authenticationManager(HttpSecurity http, BCryptPasswordEncoder bCryptPasswordEncoder,
-//													   UserDetailsService userDetailsService) throws Exception {
-//		return http.getSharedObject(AuthenticationManagerBuilder.class).userDetailsService(memberService)
-//				.passwordEncoder(bCryptPasswordEncoder).and().build();
-//	}
-
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.userDetailsService(memberService).passwordEncoder(bCryptPasswordEncoder());

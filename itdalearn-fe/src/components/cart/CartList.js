@@ -1,8 +1,8 @@
+import "../../styles/cart.css";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { redirect, useNavigate } from "react-router-dom";
 import { useCallback } from "react";
-import "../../styles/cart.css";
 import * as React from "react";
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -36,8 +36,6 @@ export default function CartList() {
   const [discountprice, setDiscountprice] = useState(0);
 
 
-
-
     useEffect(() => {
      setTotalprice(0);
     let totalP = 0;
@@ -46,7 +44,8 @@ export default function CartList() {
     
     setTotalprice(totalP - (totalP * ((totalDiscount/totalarray.length || 0) / 100)))
   
-  }, [checkedList, totalprice, courses])
+  }, [checkedList, 0, courses])
+
 
   // 전체 체크 클릭 시 발생하는 함수
 
@@ -67,10 +66,12 @@ export default function CartList() {
     
   useEffect(()=>{
     getCourses();
+   
   },[])
 
   const deletecart = () => {   
-    axios.delete("http://localhost:9090/cartCourse/"+ checkedList[0].cartCourseNo, 
+    
+    axios.delete("http://localhost:9090/cartCourse/"+ checkedList[0],
       {
         headers: {
             Authorization: localStorage.getItem("token"),
@@ -81,8 +82,8 @@ export default function CartList() {
     .then((response) => {
     
     console.log("삭제성공");
-
     getCourses();
+    setTotalarray([]);
     console.log("200", response.data);  
   })
   .catch((error) => console.log(error.response));
@@ -109,11 +110,13 @@ export default function CartList() {
             Authorization: localStorage.getItem("token"),
         },
     } )
-      .then(function (res) {
-        if (res.status === 200) {
-          window.alert("전송 성공");
-        }
-      })
+    .then(function (res) {
+      if (res.status === 200) {
+        window.alert("전송 성공");
+        getCourses();
+        setTotalarray([]);
+      }
+    })
       .catch(function (err) {
         window.alert("실패 " + err);
       });
@@ -132,9 +135,6 @@ export default function CartList() {
         const totalpricearray = [];
         courses.forEach((list) => totalpricearray.push(list.coursePrice));
         setTotalarray(totalpricearray);
-       
-       
-       
         
       } else {
         setCheckedList([]);
@@ -288,9 +288,7 @@ export default function CartList() {
         <span> {totalprice}원</span>
        </div>
        </div>
-      <Button variant="contained" disableElevation>
-      장바구니 담기
-    </Button><br/>
+      
     <Button variant="contained" color="success" onClick={OrderCourseList} >
        주문하기
       </Button>

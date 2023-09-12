@@ -71,7 +71,15 @@ export default function SignUp() {
     });
   };
 
-  const onClickSignUp = () => {
+  const [passwordMatch, setPasswordMatch] = useState(true);
+
+  const onClickSignUp = (event) => {
+    if (memberSignUp.memberPwd !== memberSignUp.memberPwdCheck) {
+      alert("비밀번호와 비밀번호 확인이 일치하지 않습니다. 다시 입력해주세요.");
+      event.preventDefault();
+      return;
+    }
+
     axios
       .post("http://localhost:9090/members", {
         memberNo: memberSignUp.memberNo,
@@ -80,9 +88,14 @@ export default function SignUp() {
         memberEmail: memberSignUp.memberEmail,
         memberTel: memberSignUp.memberTel,
       })
-      .catch((error) => console.log(error));
+      .then((response) => {
+        alert("회원가입에 성공했습니다.");
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
-
   return (
     <ThemeProvider theme={defaultTheme}>
       <Container component="main" maxWidth="xs">

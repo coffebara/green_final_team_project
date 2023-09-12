@@ -1,12 +1,14 @@
 package com.itdaLearn.service;
 
-import com.itdaLearn.dto.AddMemberRequest;
+import com.itdaLearn.dto.MemberFormDto;
 import com.itdaLearn.entity.Member;
 import com.itdaLearn.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Optional;
 
 
 @RequiredArgsConstructor
@@ -15,7 +17,8 @@ public class MemberService {
     private final MemberRepository memberRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
-    public Long save(AddMemberRequest dto) {
+    public Long save(MemberFormDto dto) {
+
         String password = dto.getMemberPwd();
         if (password == null || password.isEmpty()) {
             throw new IllegalArgumentException("비밀번호가 입력되지 않았습니다.");
@@ -24,6 +27,7 @@ public class MemberService {
         if (memberNo == null || memberNo.isEmpty()) {
             throw new IllegalArgumentException("회원 번호가 입력되지 않았습니다.");
         }
+        dto.setRole("ROLE_USER");
         return memberRepository.save(Member.builder()
                 .memberNo(dto.getMemberNo())
                 .memberPwd(bCryptPasswordEncoder.encode(dto.getMemberPwd())) // 1234ppp -> ABC33333
@@ -32,98 +36,41 @@ public class MemberService {
                 .role(dto.getRole())
                 .memberTel(dto.getMemberTel())
                 .build()).getId();
+
     }
 
-//    @Transactional
-//    public void modify(AddMemberRequest memberDto) {
-//        Member member = memberRepository.findByMemberNo(memberDto.AddMemberRequest().getMemberNo()).orElseThrow(() ->
-//             new IllegalArgumentException("해당 회원이 존재하지 않습니다."));
-//
-//     String encPassword = bCryptPasswordEncoder.encode(memberDto.getMemberPwd());
-//
-//        member.modify(memberDto.getMemberNo(), encPassword, memberDto.getMemberEmail(),
-//                memberDto.getMemberName(), memberDto.getMemberTel());
-//}
     @Transactional
-    public void modify(AddMemberRequest memberDto) {
-        Member member = memberRepository.findByMemberNo(memberDto.getMemberNo());
+    public Member modify(Long id, MemberFormDto memberDto) {
+        Optional<Member> optionalMember = memberRepository.findById(id);
 
-        if (member == null) {
+        if (!optionalMember.isPresent()) {
             throw new IllegalArgumentException("해당 회원이 존재하지 않습니다.");
         }
 
-        String encPassword = bCryptPasswordEncoder.encode(memberDto.getMemberPwd());
-        member.modify(memberDto.getMemberNo(), encPassword, memberDto.getMemberEmail(),
-                memberDto.getMemberName(), memberDto.getMemberTel());
+        Member member = optionalMember.get();
+
+        if (memberDto.getMemberNo() != null && !memberDto.getMemberNo().isEmpty()) {
+            member.setMemberNo(memberDto.getMemberNo());
+        }
+        if (memberDto.getMemberPwd() != null && !memberDto.getMemberPwd().isEmpty()) {
+            member.setMemberPwd(memberDto.getMemberPwd());
+//            member.setMemberPwd(bCryptPasswordEncoder.encode(memberDto.getMemberPwd()));
+        }
+        if (memberDto.getMemberName() != null && !memberDto.getMemberName().isEmpty()) {
+            member.setMemberName(memberDto.getMemberName());
+        }
+        if (memberDto.getMemberEmail() != null && !memberDto.getMemberEmail().isEmpty()) {
+            member.setMemberEmail(memberDto.getMemberEmail());
+        }
+        if (memberDto.getMemberTel() != null && !memberDto.getMemberTel().isEmpty()) {
+            member.setMemberTel(member.getMemberTel());
+        }
+
+        return member;
     }
-
-
-//    public Member findById(Long userId) {
-//    	return memberRepository.findById(userId)
-//    			.orElseThrow( () -> new IllegalArgumentException("Unexpected user"));
-//    }
 
 }
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-//package com.itdaLearn.service;
-//
-//import javax.transaction.Transactional;
-//
-//import org.springframework.security.core.userdetails.User;
-//import org.springframework.security.core.userdetails.UserDetails;
-//import org.springframework.security.core.userdetails.UserDetailsService;
-//import org.springframework.security.core.userdetails.UsernameNotFoundException;
-//import org.springframework.stereotype.Service;
-//
-//import com.itdaLearn.entity.Member;
-//import com.itdaLearn.repository.MemberRepository;
-//
-//import lombok.RequiredArgsConstructor;
-//
-//@Service
-//@Transactional
-//@RequiredArgsConstructor
-//public class MemberService implements UserDetailsService {
-//
-//    private final MemberRepository memberRepository;
-//
-//    public Member saveMember(Member member){
-//        validateDuplicateMember(member);
-//        return memberRepository.save(member);
-//    }
-//
-//    private void validateDuplicateMember(Member member){
-//        Member findMember = memberRepository.findByEmail(member.getEmail());
-//        if(findMember != null){
-//            throw new IllegalStateException("이미 가입된 회원입니다.");
-//        }
-//    }
-//        @Override
-//        public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-//
-//            Member member = memberRepository.findByEmail(email);
-//
-//            if(member == null){
-//                throw new UsernameNotFoundException(email);
-//            }
-//
-//            return User.builder()
-//                    .username(member.getEmail())
-//                    .password(member.getPassword())
-//                    .build();
-//        }
-//
-//    }

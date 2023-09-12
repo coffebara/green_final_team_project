@@ -2,18 +2,31 @@ import { Navbar, Container, Nav, Badge } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import axios from "axios";
+import { setRoles } from "../store"
 
 export default function NavSetting() {
     let navigate = useNavigate();
+    const dispatch = useDispatch();
     let state = useSelector((state) => state);
+    function clearStorage() {
+        let session = sessionStorage.getItem("register");
+    
+        if (session == null) {
+          localStorage.removeItem("token");
+        }
+        sessionStorage.setItem("register", 1);
+      }
+
+
+
+      window.addEventListener("load", clearStorage);
 
     const imageStyle = {
         width: 100,
         height: 25,
     };
 
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(clearStorage);
 
     useEffect(() => {
         const token = localStorage.getItem("token");
@@ -24,8 +37,10 @@ export default function NavSetting() {
 
     function handleLogout() {
         localStorage.removeItem("token");
+        dispatch(setRoles(""));
         setIsLoggedIn(false);
         alert("로그아웃 되셨습니다.");
+        navigate("/");
     }
     return (
         <>
@@ -70,9 +85,7 @@ export default function NavSetting() {
                             }}
                         >
                             장바구니
-                            <Badge className="ms-2" bg="secondary">
-                                {state.cart.length}
-                            </Badge>
+                        
                         </Nav.Link>
 
                         <Nav.Link

@@ -15,7 +15,6 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Navigation, Pagination, Autoplay } from "swiper";	// 추가
 import "swiper/swiper.scss";
@@ -200,6 +199,10 @@ const handleLevelFilter = (level) => {
 const filterCourses = () => {
   
   return courses.filter((course) => {
+
+    if(course.sellStatus !== "SELL")
+      return false;
+    
     
     if(selectedLevel == "ALL")
       return true;
@@ -221,7 +224,6 @@ const filterCourses = () => {
     return true;
   })
 }
-console.log(filterCourses)
 
 
 

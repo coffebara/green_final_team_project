@@ -18,9 +18,27 @@
 }
 
 .orderstable {
-    width: 75%;
-    margin-left: 13%;
-    margin-top: 100px;
-    height: auto;
-    margin-bottom: 100px;
+width: 95%;
+margin-left: 3%;
+   margin-top: 20px;
+   
+}
+
+.orderbox {
+    border: 1px solid #e5e5e5;
+}
+
+.title {
+    margin-left: 100px;
+    margin-top: 3.4px;
+    display: flex;
+}
+
+.title1 {
+    padding-left: 90px;
+    padding-right: 40px;
+}
+.title2{
+    margin-left: -180px;
+    margin-right : 150px;
 }

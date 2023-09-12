@@ -35,13 +35,13 @@ public class BoardService {
     }
     public ResponseEntity<Board> getBoard(Long bno) {
         Board board = boardRepository.findById(bno)
-                .orElseThrow(() -> new ResourceNotFoundException("Not exist Board Data by no : ["+bno+"]"));
+                .orElseThrow(() -> new ResourceNotFoundException("오류 발생"));
         return ResponseEntity.ok(board);
     }
     public ResponseEntity<Board> updateBoard(
             Long bno, Board updatedBoard) {
         Board board = boardRepository.findById(bno)
-                .orElseThrow(() -> new ResourceNotFoundException("Not exist Board Data by no : ["+bno+"]"));
+                .orElseThrow(() -> new ResourceNotFoundException("오류 발생"));
         board.setType(updatedBoard.getType());
         board.setTitle(updatedBoard.getTitle());
         board.setContents(updatedBoard.getContents());
@@ -53,15 +53,16 @@ public class BoardService {
     public ResponseEntity<Map<String, Boolean>> deleteBoard(
             Long bno) {
         Board board = boardRepository.findById(bno)
-                .orElseThrow(() -> new ResourceNotFoundException("Not exist Board Data by no : ["+bno+"]"));
-
+                .orElseThrow(() -> new ResourceNotFoundException("오류 발생"));
         boardRepository.delete(board);
         Map<String, Boolean> response = new HashMap<>();
-        response.put("Deleted Board Data by id : ["+bno+"]", Boolean.TRUE);
+        response.put("오류 발생", Boolean.TRUE);
         return ResponseEntity.ok(response);
     }
+
+
     public Board findBoard(Long bno) {
-        return boardRepository.findById(bno).orElseThrow(() -> new IllegalArgumentException("Invalid board Id:" + bno));
+        return boardRepository.findById(bno).orElseThrow(() -> new IllegalArgumentException("오류 발생" + bno));
     }
     public Page<Board> searchBoardsByTitle(String keyword, Pageable pageable) {
         return boardRepository.findByTitleContaining(keyword, pageable);

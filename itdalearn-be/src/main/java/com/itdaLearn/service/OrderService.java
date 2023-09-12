@@ -3,12 +3,14 @@ package com.itdaLearn.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.imageio.spi.ImageTranscoderSpi;
 import javax.persistence.EntityNotFoundException;
 
 import org.hibernate.internal.build.AllowSysOut;
 import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties.Pageable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
@@ -17,6 +19,7 @@ import com.itdaLearn.dto.CourseDto;
 import com.itdaLearn.dto.OrderCourseDto;
 import com.itdaLearn.dto.OrderDto;
 import com.itdaLearn.dto.OrderHistDto;
+import com.itdaLearn.entity.CartCourse;
 import com.itdaLearn.entity.Course;
 import com.itdaLearn.entity.CourseImg;
 import com.itdaLearn.entity.Member;
@@ -25,6 +28,7 @@ import com.itdaLearn.entity.OrderCourse;
 import com.itdaLearn.repository.CourseImgRepository;
 import com.itdaLearn.repository.CourseRepository;
 import com.itdaLearn.repository.MemberRepository;
+import com.itdaLearn.repository.OrderCourseRepository;
 import com.itdaLearn.repository.OrderRepository;
 
 
@@ -39,21 +43,33 @@ public class OrderService {
 	private final MemberRepository memberRepository;
 	private final OrderRepository orderRepository;
 	private final CourseImgRepository courseImgRepository;
+	private final OrderCourseRepository orderCourseRepository;
 	//String email
-	public Long order(OrderDto orderDto, String memberNo) {
-					
+	public Long order(OrderDto orderDto, String memberNo) throws Exception {
+				
 		Course course = courseRepository.findById(orderDto.getCourseNo())
 				.orElseThrow(EntityNotFoundException::new);
 
-		
-		//.findByEmail(email);
+
 		Member member = memberRepository.findByMemberNo(memberNo);
 		
-		
+				
 		List<OrderCourse> orderCourseList = new ArrayList<>();
+
+		List<Order> orders = orderRepository.findOrders(memberNo);
+	      for(Order order : orders) {
+	         for(OrderCourse orderCourse: order.getOrderCourses()) {
+	            System.out.println(orderCourse.getCourse().getCourseNo());
+	            System.out.println(orderDto.getCourseNo());
+	            if(orderCourse.getCourse().getCourseNo() == orderDto.getCourseNo()) {
+	               System.out.println("주문 실패");
+	               throw(new Exception("같은 상품은 주문할 수 없습니다."));
+	            }
+	         }
+	      }
 		
 		OrderCourse orderCourse = OrderCourse.createOrderCourse(course);
-
+		
 		orderCourseList.add(orderCourse);
 	
 		Order order = Order.createOrder(member, orderCourseList);
@@ -62,6 +78,8 @@ public class OrderService {
 		orderRepository.save(order);
 		
 		return order.getOrderNo(); 
+		
+		
 	}
 	
 	@Transactional(readOnly = true)//String email
@@ -77,8 +95,6 @@ public class OrderService {
 			OrderHistDto orderHistDto = new OrderHistDto(order);
 			
 			List<OrderCourse> orderCourses = order.getOrderCourses();
-			
-			
 			
 			for( OrderCourse orderCourse : orderCourses) {
 				
