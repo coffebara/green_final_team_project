@@ -27,12 +27,12 @@
 
 **Backend**  
 
-    $ cd itdalearn-be  
+    $ cd itdalearn-be   
 
 **Fromtend**  
 
-    $ cd itdalearn-fe  
-    $ npm install  
+    $ cd itdalearn-fe   
+    $ npm install   
     $ npm start   
  
 ## 주요 기능
