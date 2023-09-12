@@ -22,8 +22,8 @@
 - Oracle 11g
 
 초기화
- `$  git clone https://github.com/coffebara/green_final_team_project.git`
- `$ cd green_final_team_project                                         `
+ `$ git clone https://github.com/coffebara/green_final_team_project.git`
+ `$ cd green_final_team_project `
 
 Backend
 `$ cd itdalearn-be`
