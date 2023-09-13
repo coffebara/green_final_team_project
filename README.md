@@ -3,14 +3,17 @@
 > **성남 그린 컴퓨터 아카데미**  
 > **개발기간: 2023.08.04 ~ 2023.09.12**  
 
+
 ## 팀원소개
 
 팀장: 김상준  
 팀원: 권혜연, 김현승, 지성현   
 
+
 ## 프로젝트소개
 
 개발자들을 위한 온라인 강의 교육 플랫폼
+
 
 ## 설치 가이드
 
@@ -34,6 +37,7 @@
     $ cd itdalearn-fe   
     $ npm install   
     $ npm start   
+
  
 ## 주요 기능
 
@@ -42,14 +46,19 @@
 - 강의 구매
 - 게시판
 
+
 ## 기술 스택
 
 - JAVA 11
 - Spring Boot 2.7
+- gradle
 - Spring Security 5.7.1
+- jwt
 - Oracle 11g
+- JavaScript
 - React 18
 - Redux Toolkit
+- GitHub
 
 
 
