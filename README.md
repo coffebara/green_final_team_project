@@ -42,13 +42,13 @@
    Enter username: system   
    Enter password: 1234   
    -> 'conn/as sysdba' 입력   
-   -> 'create user teset2 identified by 1234' 입력   
-   -> 'grant connect, resource, dba to tester2' 입력   
+   -> 'create user tester2 identified by 1234;' 입력   
+   -> 'grant connect, resource, dba to tester2;' 입력   
 2. 이클립스 실행   
 3. 프로젝트 Import   
-   [File] -> [import] -> [Existring Gradle Project] -> 'green_final_team_project/itdalaern-de' 폴더 선택   
+   [File] -> [import] -> [Existring Gradle Project] -> 'green_final_team_project/itdalaern-be' 폴더 선택   
 4. Querydsl를 위한 QClass생성   
-   [Window] -> [Show view] -> [Other] -> [Gradle Task] -> [itdalearn-be] -> [build] -> [build] -> itdalaern-de폴더 refresh   
+   [Window] -> [Show view] -> [Other] -> [Gradle Task] -> [itdalearn-be] -> [build] -> [build] -> itdalaern-be폴더 refresh   
 5. 로컬 파일 저장 폴더 생성   
    'C:\shop\course'   
 6. 실행
