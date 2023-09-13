@@ -2,6 +2,8 @@ package com.itdaLearn.controller;
 
 import java.util.logging.Logger;
 
+import javax.annotation.PostConstruct;
+
 import com.itdaLearn.config.jwt.JwtAuthenticationFilter;
 import com.itdaLearn.entity.Member;
 import lombok.Data;
@@ -33,12 +35,12 @@ public class MemberController {
     private MemberRepository memberRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
-    @PostMapping("/members")
-//    public String members(@Valid AddMemberRequest memberRequest) {
-    public String members(MemberFormDto memberRequest) {
+    @PostMapping("members")
+    @ResponseBody
+    public ResponseEntity<String> members(@RequestBody MemberFormDto memberRequest) {
         memberService.save(memberRequest);
 
-        return "redirect:http://localhost:3000/members/login";
+        return ResponseEntity.ok().build();
     }
 
     //회원수정을 위한 비밀번호 재확인
@@ -92,6 +94,12 @@ public class MemberController {
         principalDetails.setMember(member);
 
         return "redirect:http://localhost:3000/";
+    }
+//    관리자 계정
+    @PostConstruct
+    public void admin() {
+        MemberFormDto addMemberRequest = new MemberFormDto();
+        memberService.adminSave(addMemberRequest);
     }
 
 

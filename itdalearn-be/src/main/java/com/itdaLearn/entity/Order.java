@@ -85,9 +85,7 @@ public class Order {
 	   this.orderStatus = OrderStatus.CANCEL;
 	   for(OrderCourse orderCourse : orderCourses) {
 		   orderCourse.cancel();
-	   }
-	  
-	  
+	   }  
    }
    
 

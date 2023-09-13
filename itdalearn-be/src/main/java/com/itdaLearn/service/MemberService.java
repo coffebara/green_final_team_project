@@ -16,6 +16,24 @@ import java.util.Optional;
 public class MemberService {
     private final MemberRepository memberRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
+    
+    
+    public Long adminSave(MemberFormDto dto) {
+
+        dto.setMemberNo("admin");
+        dto.setMemberPwd("admin1234");
+        dto.setMemberName("admin");
+        dto.setMemberEmail("admin@admin.com");
+        dto.setRole("ROLE_ADMIN");
+
+        return memberRepository.save(Member.builder()
+                .memberNo(dto.getMemberNo())
+                .memberPwd(bCryptPasswordEncoder.encode(dto.getMemberPwd()))
+                .memberName(dto.getMemberName())
+                .memberEmail(dto.getMemberEmail())
+                .role(dto.getRole())
+                .build()).getId();
+    }
 
     public Long save(MemberFormDto dto) {
 
@@ -53,8 +71,7 @@ public class MemberService {
             member.setMemberNo(memberDto.getMemberNo());
         }
         if (memberDto.getMemberPwd() != null && !memberDto.getMemberPwd().isEmpty()) {
-            member.setMemberPwd(memberDto.getMemberPwd());
-//            member.setMemberPwd(bCryptPasswordEncoder.encode(memberDto.getMemberPwd()));
+            member.setMemberPwd(bCryptPasswordEncoder.encode(memberDto.getMemberPwd()));
         }
         if (memberDto.getMemberName() != null && !memberDto.getMemberName().isEmpty()) {
             member.setMemberName(memberDto.getMemberName());
@@ -68,6 +85,8 @@ public class MemberService {
 
         return member;
     }
+    
+    
 
 }
 

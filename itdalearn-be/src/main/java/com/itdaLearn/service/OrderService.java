@@ -138,21 +138,20 @@ public class OrderService {
 	}
 	
 	//String email
-	public Long orders(List<OrderDto> orderDtoList, String memberNo) {
+	public Long orders(List<OrderDto> orderDtoList, String memberNo)  {
 		
 		//.findByEmail(email);
 		Member member = memberRepository.findByMemberNo(memberNo);
-				
-		
+						
 		List<OrderCourse> orderCourseList = new ArrayList<>();
 		
 		for(OrderDto orderDto : orderDtoList) {
 			//주문할 상품 리스트를 만들어 줍니다. 
-			
+					
 			Course course = courseRepository.findById(orderDto.getCourseNo())
 					.orElseThrow(EntityNotFoundException::new);
-			
-			
+
+
 			OrderCourse orderCourse = OrderCourse.createOrderCourse(course);
 			orderCourseList.add(orderCourse);
 		}

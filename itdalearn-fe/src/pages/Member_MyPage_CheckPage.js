@@ -88,10 +88,13 @@ export default function SignIn() {
           navigate("/members/mypage"); // 사용자를 /members/mypage 로 리다이렉션합니다.
         } else {
           // 그 외의 경우(예: HTTP 401),
-          alert("비밀번호가 틀립니다"); // 오류 메시지를 출력합니다.
+          alert("비밀번호가 다릅니다"); // 오류 메시지를 출력합니다.
         }
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        alert("비밀번호가 다릅니다");
+        console.log(error);
+      });
   };
 
   return (

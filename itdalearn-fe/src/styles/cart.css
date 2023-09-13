@@ -1,7 +1,10 @@
 body {
     margin: 0;
 }
-
+.title {
+    margin-top: 20px;
+    margin-bottom: -20px;
+}
 .carttotalbox {
     display: flex;
     justify-content: center;
@@ -10,10 +13,11 @@ body {
     width: 80%;
     margin-left: 12%;
     padding: 20px;
+  
 }
 
 .tablecontent {
-    width: 800px;
+    width: 850px;
 }
 
 .cartbox Button {

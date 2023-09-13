@@ -155,7 +155,7 @@ export default function Orders() {
               <TableCell>{order.orderDate}</TableCell>
               <TableCell align="right">{order.orderStatus}</TableCell>
               <TableCell align="right">
-              <Button onClick={deleteorder} variant="outlined">주문 취소</Button></TableCell>
+              <div className='orderBtn'><Button onClick={deleteorder} variant="outlined">주문 취소</Button></div></TableCell>
             </TableRow>
           ))}
         </TableBody>
