@@ -28,7 +28,7 @@
     $ git clone https://github.com/coffebara/green_final_team_project.git   
     $ cd green_final_team_project   
     
-**Fromtend**  
+**Frontend**  
 
     $ cd itdalearn-fe   
     $ npm install   
@@ -46,9 +46,9 @@
    -> 'grant connect, resource, dba to tester2;' 입력   
 2. 이클립스 실행   
 3. 프로젝트 Import   
-   [File] -> [import] -> [Existring Gradle Project] -> 'green_final_team_project/itdalaern-be' 폴더 선택   
+   [File] -> [import] -> [Existring Gradle Project] -> 'green_final_team_project/itdalearn-be' 폴더 선택   
 4. Querydsl를 위한 QClass생성   
-   [Window] -> [Show view] -> [Other] -> [Gradle Task] -> [itdalearn-be] -> [build] -> [build] -> itdalaern-be폴더 refresh   
+   [Window] -> [Show view] -> [Other] -> [Gradle Task] -> [itdalearn-be] -> [build] -> [build] -> itdalearn-be폴더 refresh   
 5. 로컬 파일 저장 폴더 생성   
    'C:\shop\course'   
 6. 실행
