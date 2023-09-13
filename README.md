@@ -31,10 +31,14 @@
 **Backend**  
 
 1. 이클립스 실행
-2. [File] -> [import] -> [Existring Gradle Project] -> 'green_final_team_project/itdalaern-de' 폴더 선택
-3. [Window] -> [Show view] -> [Other] -> [Gradle Task] -> [itdalearn-be] -> [build] -> [build]
-4. 'C:\shop\course' 경로로 로컬 폴더 생성
-5. cmd 실행 -> 'sqlplus' 입력 ->   
+2. 프로젝트 Import
+   [File] -> [import] -> [Existring Gradle Project] -> 'green_final_team_project/itdalaern-de' 폴더 선택
+4. Querydsl를 위한 QClass생성
+   [Window] -> [Show view] -> [Other] -> [Gradle Task] -> [itdalearn-be] -> [build] -> [build]
+6. 로컬 파일 저장 폴더 생성
+   'C:\shop\course'
+8. Oracle Db 계정 생성   
+   cmd 실행 -> 'sqlplus' 입력 ->   
    Enter username: system   
    Enter password: 1234   
    -> 'conn/as sysdba' 입력   
