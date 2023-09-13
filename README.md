@@ -1,4 +1,5 @@
 # ItdaLearn v3.0
+![팀로고](https://github.com/coffebara/green_final_team_project/assets/104804458/0b37fce6-784a-476f-a593-9c22aa796f68)   
 > **KDT풀스택3기**  
 > **성남 그린 컴퓨터 아카데미**  
 > **개발기간: 2023.08.04 ~ 2023.09.13**  
