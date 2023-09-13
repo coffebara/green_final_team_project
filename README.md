@@ -30,7 +30,10 @@
 
 **Backend**  
 
-    $ cd itdalearn-be   
+1. 이클립스 실행
+2. [File] -> [import] -> [Existring Gradle Project] -> 'green_final_team_project/itdalaern-de' 폴더 선택
+3. [Window] -> [Show view] -> [Other] -> [Gradle Task] -> [itdalearn-be] -> [build] -> [build]
+4. C:\shop\course 경로로 로컬 폴더 생성
 
 **Fromtend**  
 
