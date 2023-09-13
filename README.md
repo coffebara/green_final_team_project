@@ -66,16 +66,25 @@
 
 ## 기술 스택
 
-- JAVA 11
-- Spring Boot 2.7
-- gradle
-- Spring Security 5.7.1
-- jwt
-- Oracle 11g
-- JavaScript
-- React 18
-- Redux Toolkit
-- GitHub
+- Backend
+  - JAVA 11
+  - Spring Boot 2.7 (JPA)
+  - gradle
+  - Spring Security 5.7.1
+  - jwt
+    
+- Frontend    
+  - JavaScript
+  - React 18
+  - Redux Toolkit
+  - Axios
+
+- DB
+  - Oracle 11g
+
+- Tools
+  - GitHub
+  - Postman   
 
 
 
