@@ -117,9 +117,10 @@ export default function CartList() {
         setTotalarray([]);
       }
     })
-      .catch(function (err) {
-        window.alert("실패 " + err);
-      });
+    .catch((error) => {
+      console.log(error.response)
+  alert("이미 주문한 상품입니다.");
+  })
    };
 
 
@@ -176,8 +177,8 @@ export default function CartList() {
             </section>
 
             {/* 여기서부터 카트 테이블  */}
-      <h2 className="title">수강바구니</h2>
-     
+      <div className="title"><h2>수강바구니</h2>
+     </div>
       <div className="carttotalbox">
 
         <div className="carttablebox">

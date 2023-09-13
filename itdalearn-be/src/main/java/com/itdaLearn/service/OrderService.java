@@ -142,17 +142,29 @@ public class OrderService {
 		
 		//.findByEmail(email);
 		Member member = memberRepository.findByMemberNo(memberNo);
-				
-		
+						
 		List<OrderCourse> orderCourseList = new ArrayList<>();
 		
 		for(OrderDto orderDto : orderDtoList) {
 			//주문할 상품 리스트를 만들어 줍니다. 
-			
+					
 			Course course = courseRepository.findById(orderDto.getCourseNo())
 					.orElseThrow(EntityNotFoundException::new);
 			
-			
+//			List<Order> orders = orderRepository.findOrders(memberNo);
+//			  
+//			for(Order order : orders) {
+//			     
+//				for(OrderCourse orderCourse: order.getOrderCourses()) {
+//			      System.out.println(orderCourse.getCourse().getCourseNo());
+//			      System.out.println(orderDto.getCourseNo());
+//			        if(orderCourse.getCourse().getCourseNo() == orderDto.getCourseNo()) {
+//			           System.out.println("주문 실패");
+//			               throw(new Exception("같은 상품은 주문할 수 없습니다."));
+//			            }
+//			         }
+//			      }
+		
 			OrderCourse orderCourse = OrderCourse.createOrderCourse(course);
 			orderCourseList.add(orderCourse);
 		}
