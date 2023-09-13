@@ -37,15 +37,6 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function SignUp() {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
-  };
-
   const imageStyle = {
     width: 150,
     height: 50,
@@ -71,15 +62,7 @@ export default function SignUp() {
     });
   };
 
-  const [passwordMatch, setPasswordMatch] = useState(true);
-
   const onClickSignUp = (event) => {
-    if (memberSignUp.memberPwd !== memberSignUp.memberPwdCheck) {
-      alert("비밀번호와 비밀번호 확인이 일치하지 않습니다. 다시 입력해주세요.");
-      event.preventDefault();
-      return;
-    }
-
     axios
       .post("http://localhost:9090/members", {
         memberNo: memberSignUp.memberNo,
@@ -89,12 +72,21 @@ export default function SignUp() {
         memberTel: memberSignUp.memberTel,
       })
       .then((response) => {
-        alert("회원가입에 성공했습니다.");
-        console.log(response);
+        if (response.status === 200) {
+          alert("회원가입에 성공했습니다.");
+          navigate("/members/login");
+          console.log(response);
+        }
       })
       .catch((error) => {
         console.log(error);
       });
+
+    if (memberSignUp.memberPwd !== memberSignUp.memberPwdCheck) {
+      alert("비밀번호와 비밀번호 확인이 일치하지 않습니다. 다시 입력해주세요.");
+      event.preventDefault();
+      return;
+    }
   };
   return (
     <ThemeProvider theme={defaultTheme}>
@@ -115,91 +107,84 @@ export default function SignUp() {
               navigate("/");
             }}
           />
-          <Box
-            component="form"
-            noValidate
-            onSubmit={handleSubmit}
-            sx={{ mt: 3 }}
-          >
-            <form method="post">
-              <Grid container spacing={2}>
-                <Grid item xs={12}>
-                  <TextField
-                    required
-                    fullWidth
-                    name="memberNo"
-                    label="아이디"
-                    onChange={handleSignUp}
-                    value={memberSignUp.memberNo}
-                    autoFocus
-                  />
-                </Grid>
-                <Grid item xs={12}>
-                  <TextField
-                    required
-                    fullWidth
-                    name="memberPwd"
-                    label="비밀번호"
-                    type="password"
-                    onChange={handleSignUp}
-                    value={memberSignUp.memberPwd}
-                  />
-                </Grid>
-                <Grid item xs={12}>
-                  <TextField
-                    required
-                    fullWidth
-                    name="memberPwdCheck"
-                    label="비밀번호 확인"
-                    type="password"
-                    onChange={handleSignUp}
-                    value={memberSignUp.memberPwdCheck}
-                  />
-                </Grid>
-                <Grid item xs={12}>
-                  <TextField
-                    name="memberName"
-                    required
-                    fullWidth
-                    label="이름"
-                    onChange={handleSignUp}
-                    value={memberSignUp.memberName}
-                  />
-                </Grid>
-                <Grid item xs={12}>
-                  <TextField
-                    required
-                    fullWidth
-                    label="이메일"
-                    onChange={handleSignUp}
-                    value={memberSignUp.memberEmail}
-                    name="memberEmail"
-                  />
-                </Grid>
-                <Grid item xs={12}>
-                  <TextField
-                    required
-                    fullWidth
-                    name="memberTel"
-                    label="전화번호"
-                    onChange={handleSignUp}
-                    value={memberSignUp.memberTel}
-                  />
-                </Grid>
-
-                <Grid item xs={12}></Grid>
+          <Box noValidate sx={{ mt: 3 }}>
+            <Grid container spacing={2}>
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  name="memberNo"
+                  label="아이디"
+                  onChange={handleSignUp}
+                  value={memberSignUp.memberNo}
+                  autoFocus
+                />
               </Grid>
-              <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                sx={{ mt: 3, mb: 2 }}
-                style={{ fontSize: 18 }}
-                onClick={onClickSignUp}
-              >
-                회원가입
-              </Button>
-            </form>
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  name="memberPwd"
+                  label="비밀번호"
+                  type="password"
+                  onChange={handleSignUp}
+                  value={memberSignUp.memberPwd}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  name="memberPwdCheck"
+                  label="비밀번호 확인"
+                  type="password"
+                  onChange={handleSignUp}
+                  value={memberSignUp.memberPwdCheck}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  name="memberName"
+                  required
+                  fullWidth
+                  label="이름"
+                  onChange={handleSignUp}
+                  value={memberSignUp.memberName}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  label="이메일"
+                  onChange={handleSignUp}
+                  value={memberSignUp.memberEmail}
+                  name="memberEmail"
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  name="memberTel"
+                  label="전화번호"
+                  onChange={handleSignUp}
+                  value={memberSignUp.memberTel}
+                />
+              </Grid>
+
+              <Grid item xs={12}></Grid>
+            </Grid>
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+              style={{ fontSize: 18 }}
+              onClick={onClickSignUp}
+            >
+              회원가입
+            </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
                 <Link href="/members/login" variant="body2">

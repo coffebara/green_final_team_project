@@ -149,10 +149,10 @@ export default function MemberMyPage() {
               <Grid item xs={12}>
                 <TextField
                   fullWidth
-                  name="memberNo"
-                  onChange={handleMypage}
+                  disabled
                   value={member.member.memberNo}
                   placeholder="아이디"
+                  label="아이디"
                 />
               </Grid>
               <Grid item xs={12}>
@@ -171,6 +171,7 @@ export default function MemberMyPage() {
                   onChange={handleMypage}
                   value={member.member.memberName}
                   placeholder="이름"
+                  label="이름"
                 />
               </Grid>
               <Grid item xs={12}>
@@ -180,6 +181,7 @@ export default function MemberMyPage() {
                   value={member.member.memberEmail}
                   name="memberEmail"
                   placeholder="이메일"
+                  label="이메일"
                 />
               </Grid>
               <Grid item xs={12}>
@@ -189,6 +191,7 @@ export default function MemberMyPage() {
                   onChange={handleMypage}
                   value={member.member.memberTel}
                   placeholder="전화번호"
+                  label="전화번호"
                 />
               </Grid>
             </Grid>

@@ -138,7 +138,7 @@ public class OrderService {
 	}
 	
 	//String email
-	public Long orders(List<OrderDto> orderDtoList, String memberNo) {
+	public Long orders(List<OrderDto> orderDtoList, String memberNo)  {
 		
 		//.findByEmail(email);
 		Member member = memberRepository.findByMemberNo(memberNo);
@@ -150,21 +150,8 @@ public class OrderService {
 					
 			Course course = courseRepository.findById(orderDto.getCourseNo())
 					.orElseThrow(EntityNotFoundException::new);
-			
-//			List<Order> orders = orderRepository.findOrders(memberNo);
-//			  
-//			for(Order order : orders) {
-//			     
-//				for(OrderCourse orderCourse: order.getOrderCourses()) {
-//			      System.out.println(orderCourse.getCourse().getCourseNo());
-//			      System.out.println(orderDto.getCourseNo());
-//			        if(orderCourse.getCourse().getCourseNo() == orderDto.getCourseNo()) {
-//			           System.out.println("주문 실패");
-//			               throw(new Exception("같은 상품은 주문할 수 없습니다."));
-//			            }
-//			         }
-//			      }
-		
+
+
 			OrderCourse orderCourse = OrderCourse.createOrderCourse(course);
 			orderCourseList.add(orderCourse);
 		}
