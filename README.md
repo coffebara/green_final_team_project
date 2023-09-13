@@ -34,12 +34,12 @@
 2. [File] -> [import] -> [Existring Gradle Project] -> 'green_final_team_project/itdalaern-de' 폴더 선택
 3. [Window] -> [Show view] -> [Other] -> [Gradle Task] -> [itdalearn-be] -> [build] -> [build]
 4. 'C:\shop\course' 경로로 로컬 폴더 생성
-5. cmd 실행 -> 'sqlplus' 입력 ->
-   Enter username: system
-   Enter password: 1234
+5. cmd 실행 -> 'sqlplus' 입력 ->   
+   Enter username: system   
+   Enter password: 1234   
    -> 'conn/as sysdba' 입력   
-   -> 'create user teset2 identified by 1234' 입력
-   -> 'grant connect, resource, dba to tester2' 입력   
+   -> 'create user teset2 identified by 1234' 입력   
+   -> 'grant connect, resource, dba to tester2' 입력    
 
 **Fromtend**  
 
