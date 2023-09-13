@@ -26,8 +26,15 @@
 **초기화**  
 
     $ git clone https://github.com/coffebara/green_final_team_project.git   
-    $ cd green_final_team_project
+    $ cd green_final_team_project   
+    
+**Fromtend**  
 
+    $ cd itdalearn-fe   
+    $ npm install   
+    $ npm start   
+
+ 
 **Backend**  
 
 1. Oracle Db 계정 생성   
@@ -47,13 +54,7 @@
 6. 실행
    [Run] -> [Run as] -> [Spring Boot App] 
 
-**Fromtend**  
 
-    $ cd itdalearn-fe   
-    $ npm install   
-    $ npm start   
-
- 
 ## 주요 기능
 
 - 회원가입
