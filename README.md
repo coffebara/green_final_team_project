@@ -96,8 +96,23 @@
 
 - Tools
   - GitHub
-  - Postman   
+  - Postman
+ 
 
+## 기획
+
+- 요구 사항 정의서
+![요구사항정의서](https://github.com/coffebara/green_final_team_project/assets/104804458/6fddc8ec-c766-4d00-8ba5-c75c75f74827)   
+
+- 아키텍처
+![아키텍처](https://github.com/coffebara/green_final_team_project/assets/104804458/a084a06b-3b91-48c9-9d6e-edcce704bebd)   
+
+- ERD    
+![ERD](https://github.com/coffebara/green_final_team_project/assets/104804458/2ba4470a-7915-458e-a180-14426e1175c0)   
+
+
+- API 설계   
+스프레드시트 : [바로가기](https://docs.google.com/spreadsheets/d/e/2PACX-1vSiKMHz4ZN_IORid8owC6seHaG8i_c2ntzjky92AvdviA2C0-eDI_jybtajNc5GDpJUk5cnK2kLysQp/pubhtml?gid=1938621129&single=true)
 
 
 ## 발표 순서
