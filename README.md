@@ -16,7 +16,7 @@
 
 
 [김상준 참조 링크 URL]: https://github.com/coffebara
-[권혜연 참조 링크 URL]: https://github.com/gwonhyeyeon/hyeyeon
+[권혜연 참조 링크 URL]: https://github.com/gwonhyeyeon
 [김현승 참조 링크 URL]: https://github.com/snueg
 [지성현 참조 링크 URL]: https://github.com/JayJi5204
 
