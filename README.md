@@ -7,8 +7,20 @@
 
 ## 팀원소개
 
-팀장: 김상준  
-팀원: 권혜연, 김현승, 지성현   
+| 이름 | 역할| 담당 기능 | 
+| --- | --- | --- |
+| [김상준][김상준 참조 링크 URL] |  |  | 
+| [권혜연][권혜연 참조 링크 URL] |  |  |
+| [김현승][김현승 참조 링크 URL] |  |  |
+| [지성현][지성현 참조 링크 URL] |  |  |
+
+
+[김상준 참조 링크 URL]: https://github.com/coffebara
+[권혜연 참조 링크 URL]: https://github.com/gwonhyeyeon/hyeyeon
+[김현승 참조 링크 URL]: https://github.com/snueg
+[지성현 참조 링크 URL]: https://github.com/JayJi5204
+
+
 
 
 ## 프로젝트소개
